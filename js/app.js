@@ -224,6 +224,24 @@ function destacarEsportsPropis() {
   }
 }
 
+// Permet reconèixer-se des d'un altre mòbil: si el nom ja consta, es recuperen
+// les seves dades en comptes de crear un duplicat buit.
+function recuperarSiJaHiEs() {
+  const nombre = $("#nombre").value.trim();
+  if (!nombre) return;
+  const existente = personas.find(
+    (p) => (p.nombre || "").toLowerCase() === nombre.toLowerCase()
+  );
+  if (!existente || existente.id === yo.id) return;
+
+  yo = structuredClone(existente);
+  store.guardarId(yo.id);
+  pintarFormulario();
+  const estado = $("#estadoGuardado");
+  estado.textContent = `Ja hi eres: hem recuperat les teves dades.`;
+  estado.className = "estado";
+}
+
 /* ---------- equip ---------- */
 
 function pintarEquipo() {
@@ -464,6 +482,7 @@ async function iniciar() {
   $("#filtroMios").addEventListener("change", pintarCalendario);
   $("#guardar").addEventListener("click", guardar);
   $("#borrarme").addEventListener("click", borrarme);
+  $("#nombre").addEventListener("change", recuperarSiJaHiEs);
   $("#exportar").addEventListener("click", exportar);
   $("#accesoForm").addEventListener("submit", intentarEntrar);
   $("#importar").addEventListener("change", (e) => {
