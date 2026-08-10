@@ -26,7 +26,11 @@ body {
 .cabecera { background: var(--azul); color: #fff; }
 .cabecera-fila {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 16px; padding-top: 20px; padding-bottom: 12px;
+  gap: 14px; padding-top: 20px; padding-bottom: 12px;
+}
+.escut {
+  width: 56px; height: 56px; border-radius: 10px; flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
 .cabecera h1 { margin: 0; font-size: 1.5rem; letter-spacing: -0.02em; }
 .sub { margin: 4px 0 0; color: #a9bdd4; font-size: 0.9rem; }
@@ -115,11 +119,18 @@ textarea { resize: vertical; }
 .dispo { display: flex; flex-direction: column; gap: 6px; }
 .dispo-fila {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--borde);
+  gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--borde);
 }
 .dispo-fila:last-child { border-bottom: 0; }
-.dispo-fila .etiqueta { font-size: 0.9rem; }
-.opciones { display: flex; gap: 4px; }
+.dispo-fila .etiqueta { font-size: 0.9rem; min-width: 0; }
+.dia-nom { font-weight: 600; }
+.dia-esports { margin-top: 2px; }
+.mini {
+  display: inline-block; font-size: 0.7rem; color: var(--gris);
+  background: #eef2f7; border-radius: 999px; padding: 1px 7px; margin: 2px 3px 0 0;
+}
+.mini.meu { background: var(--oro); color: #4a3800; font-weight: 600; }
+.opciones { display: flex; gap: 4px; flex-shrink: 0; }
 .opciones button {
   appearance: none; border: 1px solid var(--borde); background: #fff;
   border-radius: 999px; padding: 4px 12px; font: inherit; font-size: 0.8rem;
@@ -174,6 +185,7 @@ textarea { resize: vertical; }
   width: 100%; max-width: 340px; text-align: center;
 }
 .acceso-caja h2 { margin: 0 0 4px; }
+.escut-gran { width: 120px; height: 120px; border-radius: 14px; margin-bottom: 12px; }
 .acceso-caja input {
   text-align: center; letter-spacing: 0.3em; font-size: 1.2rem; margin: 14px 0;
 }

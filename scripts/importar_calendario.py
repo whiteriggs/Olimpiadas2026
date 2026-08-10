@@ -213,7 +213,7 @@ def main():
 
     datos = {
         "titulo": "Olimpíades Begues 2026",
-        "subtitulo": "Calendari provisional · 14–29 d'agost",
+        "subtitulo": "14–29 d'agost",
         "fuente": CSV_URL,
         "actualizado": date.today().isoformat(),
         "pruebas": pruebas,
@@ -221,6 +221,21 @@ def main():
         "limites": limites,
         "avisos": avisos,
     }
+
+    if len(pruebas) < 50:
+        raise SystemExit(
+            f"Solo se han detectado {len(pruebas)} pruebas: la hoja ha cambiado de formato. "
+            "Revisa el parser antes de sobrescribir el calendario."
+        )
+
+    # Mantener la fecha anterior si el contenido no ha cambiado, para no generar
+    # commits diarios vacíos desde la acción programada.
+    if SALIDA.exists():
+        previo = json.loads(SALIDA.read_text(encoding="utf-8"))
+        campos = ("pruebas", "lligues", "limites", "avisos", "titulo", "subtitulo")
+        if all(previo.get(c) == datos[c] for c in campos):
+            datos["actualizado"] = previo.get("actualizado", datos["actualizado"])
+
     SALIDA.parent.mkdir(parents=True, exist_ok=True)
     SALIDA.write_text(json.dumps(datos, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"{len(pruebas)} pruebas, {len(limites)} límites, {len(avisos)} avisos → {SALIDA}")

@@ -4,13 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0b1d33">
-<title>Olimpíades Begues 2026</title>
+<title>Diablos · Olimpíades Begues 2026</title>
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/escut-180.png">
+<meta property="og:title" content="Diablos · Olimpíades Begues 2026">
+<meta property="og:description" content="Calendari, inscripcions i disponibilitat de l'equip.">
+<meta property="og:image" content="https://whiteriggs.github.io/Olimpiadas2026/assets/escut.jpg">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <div id="acceso" class="acceso" hidden>
   <form class="acceso-caja" id="accesoForm">
+    <img class="escut-gran" src="assets/escut-180.png" alt="Escut dels Diablos" width="180" height="180">
     <h2>Codi d'accés</h2>
     <p class="ayuda">Introdueix el codi que us ha passat l'equip.</p>
     <input type="password" id="accesoCodi" inputmode="numeric" autocomplete="off" maxlength="20" aria-label="Codi d'accés">
@@ -21,9 +27,10 @@
 
 <header class="cabecera">
   <div class="contenedor cabecera-fila">
-    <div>
-      <h1 id="titulo">Olimpíades Begues 2026</h1>
-      <p id="subtitulo" class="sub">Calendari provisional</p>
+    <img class="escut" src="assets/escut-180.png" alt="Escut dels Diablos" width="180" height="180">
+    <div class="crece">
+      <h1 id="titulo">Diablos</h1>
+      <p id="subtitulo" class="sub">Olimpíades Begues 2026</p>
     </div>
     <div class="cuenta-atras" id="cuentaAtras" hidden>
       <strong id="cuentaAtrasNum">–</strong>
@@ -67,13 +74,14 @@
     </div>
 
     <div class="tarjeta">
-      <h2>Disponibilitat per dies</h2>
-      <div id="disponibilidad" class="dispo"></div>
+      <h2>Esports on m'apunto</h2>
+      <div id="pruebasCheck" class="pruebas-check"></div>
     </div>
 
     <div class="tarjeta">
-      <h2>Esports on m'apunto</h2>
-      <div id="pruebasCheck" class="pruebas-check"></div>
+      <h2>Disponibilitat per dies</h2>
+      <p class="ayuda">Sota cada dia hi ha els esports que s'hi juguen; els teus surten destacats.</p>
+      <div id="disponibilidad" class="dispo"></div>
     </div>
 
     <div class="tarjeta">
@@ -108,7 +116,7 @@
 </main>
 
 <footer class="contenedor pie">
-  <p>Fet per <a href="https://whiteriggs.com" rel="noopener">White Riggs</a> · Horaris provisionals, confirmeu-los amb l'organització.</p>
+  <p>Fet per <a href="https://whiteriggs.com" rel="noopener">White Riggs</a> · Horaris provisionals, confirmeu-los amb l'organització. <span id="actualitzat"></span></p>
 </footer>
 
 <script src="config.js"></script>

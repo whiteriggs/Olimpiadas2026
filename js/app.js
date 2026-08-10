@@ -2,6 +2,8 @@ import * as store from "./store.js";
 
 const $ = (sel) => document.querySelector(sel);
 
+const EQUIP = "Diablos";
+
 const ESTATS = [
   { valor: "si", texto: "Sí" },
   { valor: "quizas", texto: "Potser" },
@@ -20,6 +22,8 @@ let personas = [];
 let yo = null;
 let fechas = [];
 let esports = [];
+let esportsPerDia = new Map();
+const pastillasPorDia = new Map();
 
 /* ---------- utilitats DOM ---------- */
 
@@ -152,9 +156,20 @@ function pintarFormulario() {
 
   const dispo = $("#disponibilidad");
   vaciar(dispo);
+  pastillasPorDia.clear();
   for (const fecha of fechas) {
     const fila = el("div", "dispo-fila");
-    fila.appendChild(el("span", "etiqueta", fmtDia.format(aFecha(fecha))));
+
+    const etiqueta = el("div", "etiqueta");
+    etiqueta.appendChild(el("span", "dia-nom", fmtDia.format(aFecha(fecha))));
+    const susEsports = el("div", "dia-esports");
+    for (const nombre of esportsPerDia.get(fecha) || []) {
+      susEsports.appendChild(el("span", "mini", nombre));
+    }
+    etiqueta.appendChild(susEsports);
+    pastillasPorDia.set(fecha, susEsports);
+    fila.appendChild(etiqueta);
+
     const ops = el("div", "opciones");
     for (const est of ESTATS) {
       const b = el("button", null, est.texto);
@@ -187,6 +202,7 @@ function pintarFormulario() {
       if (input.checked) set.add(e.nombre);
       else set.delete(e.nombre);
       yo.esports = [...set];
+      destacarEsportsPropis();
     });
     const txt = el("span");
     txt.appendChild(el("strong", null, e.nombre));
@@ -194,6 +210,17 @@ function pintarFormulario() {
     label.appendChild(input);
     label.appendChild(txt);
     cont.appendChild(label);
+  }
+
+  destacarEsportsPropis();
+}
+
+function destacarEsportsPropis() {
+  const meus = new Set(yo.esports || []);
+  for (const cont of pastillasPorDia.values()) {
+    for (const span of cont.children) {
+      span.classList.toggle("meu", meus.has(span.textContent));
+    }
   }
 }
 
@@ -244,6 +271,15 @@ function pintarEquipo() {
 
 function derivarListas() {
   fechas = [...new Set(cal.pruebas.map((p) => p.fecha))].sort();
+
+  esportsPerDia = new Map();
+  for (const f of fechas) esportsPerDia.set(f, []);
+  for (const p of cal.pruebas) {
+    if (p.tipo !== "esport") continue;
+    const llista = esportsPerDia.get(p.fecha);
+    if (!llista.includes(p.esport)) llista.push(p.esport);
+  }
+  for (const llista of esportsPerDia.values()) llista.sort((a, b) => a.localeCompare(b, "ca"));
 
   const mapa = new Map();
   for (const p of cal.pruebas) {
@@ -437,9 +473,12 @@ async function iniciar() {
 
   const res = await fetch("data/calendario.json");
   cal = await res.json();
-  document.title = cal.titulo;
-  $("#titulo").textContent = cal.titulo;
-  $("#subtitulo").textContent = cal.subtitulo;
+  document.title = `${EQUIP} · ${cal.titulo}`;
+  $("#subtitulo").textContent = `${cal.titulo} · ${cal.subtitulo}`;
+  if (cal.actualizado) {
+    $("#actualitzat").textContent =
+      "Calendari actualitzat el " + fmtDia.format(aFecha(cal.actualizado)) + ".";
+  }
 
   derivarListas();
   pintarFiltros();

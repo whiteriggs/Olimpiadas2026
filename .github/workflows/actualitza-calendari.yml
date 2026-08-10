@@ -1,0 +1,30 @@
+name: Actualitza el calendari
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Importa el full de càlcul
+        run: python3 scripts/importar_calendario.py
+
+      - name: Publica els canvis
+        run: |
+          if git diff --quiet data/calendario.json; then
+            echo "Sense canvis al calendari."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/calendario.json
+          git commit -m "Actualitza el calendari des del full de càlcul"
+          git push

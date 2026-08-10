@@ -25,10 +25,19 @@ Hace falta un servidor (aunque sea local) porque la app usa módulos ES y `fetch
 Los horarios son provisionales. El origen es la hoja de cálculo de la organización;
 `scripts/importar_calendario.py` la convierte al JSON que consume la web.
 
+Una acción programada ([.github/workflows/actualitza-calendari.yml](.github/workflows/actualitza-calendari.yml))
+lo hace sola cada día a las 6:00 UTC y solo hace commit si el calendario ha
+cambiado. También se puede lanzar a mano desde la pestaña *Actions*.
+
+Para hacerlo en local:
+
 ```sh
 python3 scripts/importar_calendario.py                      # descarga la hoja publicada
 python3 scripts/importar_calendario.py data/calendario-original.csv   # desde el CSV guardado
 ```
+
+El script aborta si detecta menos de 50 pruebas, señal de que la hoja ha cambiado
+de formato y el parser necesita revisión.
 
 Genera `data/calendario.json` con:
 
@@ -70,6 +79,7 @@ styles.css
 config.js                       URL del backend (vacío = modo local)
 js/app.js                       render y lógica de la interfaz
 js/store.js                     persistencia local + remota y código de acceso
+assets/                         escudo del equipo e iconos
 data/calendario.json            calendario generado
 data/calendario-original.csv    export original de la hoja
 scripts/importar_calendario.py  conversor CSV → JSON
