@@ -358,19 +358,50 @@ function pintarFiltros() {
   }
 }
 
+const dosXifres = (n) => String(n).padStart(2, "0");
+
 function pintarCuentaAtras() {
   if (!fechas.length) return;
-  const dias = Math.ceil((aFecha(fechas[0]) - new Date()) / 86400000);
+
+  const primera = cal.pruebas
+    .filter((p) => p.fecha === fechas[0])
+    .sort((a, b) => a.orden - b.orden)[0];
+  const inici = new Date(`${fechas[0]}T${(primera && primera.hora) || "09:00"}:00`);
+  const fi = new Date(`${fechas[fechas.length - 1]}T23:59:59`);
+
   const caja = $("#cuentaAtras");
-  if (dias > 0) {
-    $("#cuentaAtrasNum").textContent = String(dias);
-    $("#cuentaAtrasTxt").textContent = dias === 1 ? "dia" : "dies";
+  const num = $("#cuentaAtrasNum");
+  const txt = $("#cuentaAtrasTxt");
+  let rellotge = null;
+
+  const refrescar = () => {
+    const ara = new Date();
+    if (ara > fi) {
+      caja.hidden = true;
+      clearInterval(rellotge);
+      return;
+    }
     caja.hidden = false;
-  } else if (dias > -20) {
-    $("#cuentaAtrasNum").textContent = "🔥";
-    $("#cuentaAtrasTxt").textContent = "en marxa";
-    caja.hidden = false;
-  }
+    if (ara >= inici) {
+      num.textContent = "🔥";
+      txt.textContent = "en marxa";
+      return;
+    }
+    const falten = Math.floor((inici - ara) / 1000);
+    const dies = Math.floor(falten / 86400);
+    const rellotgeTxt = [
+      Math.floor(falten / 3600) % 24,
+      Math.floor(falten / 60) % 60,
+      falten % 60,
+    ]
+      .map(dosXifres)
+      .join(":");
+    num.textContent = dies ? `${dies}d ${rellotgeTxt}` : rellotgeTxt;
+    txt.textContent = "per començar";
+  };
+
+  refrescar();
+  if (!caja.hidden) rellotge = setInterval(refrescar, 1000);
 }
 
 function repintar() {

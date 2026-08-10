@@ -41,10 +41,23 @@ body {
 
 .cuenta-atras {
   text-align: center; background: rgba(255, 255, 255, 0.08);
-  border-radius: var(--radio); padding: 8px 14px; min-width: 84px;
+  border-radius: var(--radio); padding: 8px 12px; min-width: 124px;
 }
-.cuenta-atras strong { display: block; font-size: 1.6rem; color: var(--oro); line-height: 1; }
+.cuenta-atras strong {
+  display: block; font-size: 1.15rem; color: var(--oro); line-height: 1.2;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
 .cuenta-atras span { font-size: 0.75rem; color: #a9bdd4; }
+
+/* En pantalles estretes el comptador passa a una franja sota el títol. */
+@media (max-width: 560px) {
+  .cabecera-fila { flex-wrap: wrap; }
+  .cuenta-atras {
+    flex: 1 0 100%; display: flex; gap: 8px;
+    align-items: baseline; justify-content: center; padding: 6px 12px;
+  }
+  .cuenta-atras strong { display: inline; font-size: 1.05rem; }
+}
 
 .tabs { display: flex; gap: 4px; }
 .tab {
