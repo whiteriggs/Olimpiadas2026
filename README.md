@@ -77,6 +77,8 @@ actualiza el sitio en un par de minutos.
 index.html                      página única con las tres pestañas
 styles.css
 config.js                       URL del backend (vacío = modo local)
+manifest.webmanifest            PWA: nombre, colores e iconos
+sw.js                           service worker (red primero, caché de reserva)
 js/app.js                       render y lógica de la interfaz
 js/store.js                     persistencia local + remota y código de acceso
 assets/                         escudo del equipo e iconos

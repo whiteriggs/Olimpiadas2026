@@ -25,6 +25,9 @@ function escribirLocal(personas) {
 export const codi = () => localStorage.getItem(CLAU_CODI) || "";
 export const guardarCodi = (v) => localStorage.setItem(CLAU_CODI, v);
 
+// Última còpia descarregada, per fer servir sense connexió.
+export const personasLocales = leerLocal;
+
 export function idGuardado() {
   return localStorage.getItem(CLAU_JO) || "";
 }

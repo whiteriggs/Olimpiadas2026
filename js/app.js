@@ -487,11 +487,18 @@ async function iniciar() {
   try {
     await cargarYPintar();
   } catch (e) {
-    personas = [];
-    yo = personaVacia();
+    if (e instanceof store.CodiInvalid) {
+      personas = [];
+      yo = personaVacia();
+      repintar();
+      mostrarAcceso();
+      return;
+    }
+    personas = store.personasLocales();
+    const mio = personas.find((p) => p.id === store.idGuardado());
+    yo = mio ? structuredClone(mio) : personaVacia();
     repintar();
-    if (e instanceof store.CodiInvalid) mostrarAcceso();
-    else aviso("No s'ha pogut connectar amb el servidor: " + e.message);
+    aviso("Sense connexió amb el servidor: veus l'última còpia desada en aquest dispositiu.");
   }
 }
 

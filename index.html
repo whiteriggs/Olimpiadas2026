@@ -7,6 +7,10 @@
 <title>Diablos · Olimpíades Begues 2026</title>
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/escut-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Diablos">
 <meta property="og:title" content="Diablos · Olimpíades Begues 2026">
 <meta property="og:description" content="Calendari, inscripcions i disponibilitat de l'equip.">
 <meta property="og:image" content="https://whiteriggs.github.io/Olimpiadas2026/assets/escut.jpg">
@@ -116,10 +120,15 @@
 </main>
 
 <footer class="contenedor pie">
-  <p>Fet per <a href="https://whiteriggs.com" rel="noopener">White Riggs</a> · Horaris provisionals, confirmeu-los amb l'organització. <span id="actualitzat"></span></p>
+  <p>Fet per <a href="https://whiteriggs.github.io/WhiteRiggsWeb/index.html" rel="noopener">White Riggs</a> · Horaris provisionals, confirmeu-los amb l'organització. <span id="actualitzat"></span></p>
 </footer>
 
 <script src="config.js"></script>
 <script type="module" src="js/app.js"></script>
+<script>
+  if ("serviceWorker" in navigator && location.protocol !== "file:") {
+    addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+  }
+</script>
 </body>
 </html>
