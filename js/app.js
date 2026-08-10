@@ -471,6 +471,10 @@ async function iniciar() {
     e.target.value = "";
   });
 
+  // Sense codi desat no cal ni intentar-ho: la porta surt de seguida.
+  const calCodi = store.modoRemoto() && !store.codi();
+  if (calCodi) mostrarAcceso();
+
   const res = await fetch("data/calendario.json");
   cal = await res.json();
   document.title = `${EQUIP} · ${cal.titulo}`;
@@ -483,6 +487,12 @@ async function iniciar() {
   derivarListas();
   pintarFiltros();
   pintarCuentaAtras();
+
+  if (calCodi) {
+    yo = personaVacia();
+    repintar();
+    return;
+  }
 
   try {
     await cargarYPintar();
