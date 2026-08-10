@@ -363,10 +363,12 @@ const dosXifres = (n) => String(n).padStart(2, "0");
 function pintarCuentaAtras() {
   if (!fechas.length) return;
 
-  const primera = cal.pruebas
-    .filter((p) => p.fecha === fechas[0])
-    .sort((a, b) => a.orden - b.orden)[0];
-  const inici = new Date(`${fechas[0]}T${(primera && primera.hora) || "09:00"}:00`);
+  // El compte enrere va a la primera competició (la natació), no a la reunió informativa.
+  const ordenades = [...cal.pruebas].sort(
+    (a, b) => a.fecha.localeCompare(b.fecha) || a.orden - b.orden
+  );
+  const primera = ordenades.find((p) => p.tipo === "esport") || ordenades[0];
+  const inici = new Date(`${primera.fecha}T${primera.hora || "09:00"}:00`);
   const fi = new Date(`${fechas[fechas.length - 1]}T23:59:59`);
 
   const caja = $("#cuentaAtras");
