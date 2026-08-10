@@ -76,7 +76,3 @@ export async function borrarPersona(id) {
   if (modoRemoto()) await enviar({ accion: "borrar", id });
   escribirLocal(leerLocal().filter((p) => p.id !== id));
 }
-
-export function reemplazarTodo(personas) {
-  escribirLocal(personas);
-}

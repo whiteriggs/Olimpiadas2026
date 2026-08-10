@@ -417,26 +417,6 @@ async function borrarme() {
   }
 }
 
-function exportar() {
-  const blob = new Blob([JSON.stringify(personas, null, 2)], { type: "application/json" });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "olimpiades2026-equip.json";
-  a.click();
-  URL.revokeObjectURL(a.href);
-}
-
-async function importar(archivo) {
-  try {
-    const datos = JSON.parse(await archivo.text());
-    if (!Array.isArray(datos)) throw new Error("El fitxer no conté una llista");
-    store.reemplazarTodo(datos);
-    await cargarYPintar();
-  } catch (e) {
-    aviso("No s'ha pogut importar: " + e.message);
-  }
-}
-
 /* ---------- porta d'accés ---------- */
 
 function mostrarAcceso(mensaje) {
@@ -483,12 +463,7 @@ async function iniciar() {
   $("#guardar").addEventListener("click", guardar);
   $("#borrarme").addEventListener("click", borrarme);
   $("#nombre").addEventListener("change", recuperarSiJaHiEs);
-  $("#exportar").addEventListener("click", exportar);
   $("#accesoForm").addEventListener("submit", intentarEntrar);
-  $("#importar").addEventListener("change", (e) => {
-    if (e.target.files[0]) importar(e.target.files[0]);
-    e.target.value = "";
-  });
 
   // Sense codi desat no cal ni intentar-ho: la porta surt de seguida.
   const calCodi = store.modoRemoto() && !store.codi();

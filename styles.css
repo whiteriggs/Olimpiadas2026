@@ -149,6 +149,7 @@ textarea { resize: vertical; }
 .prueba-check small { display: block; color: var(--gris); }
 
 .acciones { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
 .btn {
   appearance: none; border: 1px solid var(--borde); background: #fff; color: var(--texto);
   padding: 10px 18px; border-radius: 999px; font: inherit; font-weight: 600; cursor: pointer;
@@ -157,7 +158,6 @@ textarea { resize: vertical; }
 .btn.primario { background: var(--azul); border-color: var(--azul); color: #fff; }
 .btn.primario:hover { background: var(--azul-claro); }
 .btn.peligro { color: var(--rojo); border-color: #f0c5c0; }
-.como-boton { font-size: 1rem; color: var(--texto); }
 .estado { font-size: 0.85rem; color: var(--verde); }
 .estado.error { color: var(--rojo); }
 

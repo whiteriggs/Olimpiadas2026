@@ -64,7 +64,7 @@ nueva (*Implementar → Gestionar implementaciones → Editar → Versión nueva
 la URL no cambia.
 
 Sin backend la web también funciona: deja `API_URL` vacío y cada persona guarda
-lo suyo en su navegador, con exportar/importar JSON desde la pestaña *Equip*.
+lo suyo en su navegador, sin compartirlo con nadie.
 
 ## Publicar
 
