@@ -2,6 +2,8 @@
 
 Web del equipo para las **Olimpíades de Begues 2026** (14–29 de agosto).
 
+**https://whiteriggs.github.io/Olimpiadas2026/**
+
 - **Calendario** completo de pruebas por día, hora y sede, con los límites de las lligues.
 - **Apuntarse** a los esports en los que quieres jugar.
 - **Disponibilidad** día a día (sí / quizás / no).
@@ -55,8 +57,8 @@ la pestaña *Equipo* y alguien junta los archivos e importa el resultado.
 
 ## Publicar
 
-Al ser estática vale cualquier hosting. Con GitHub Pages: *Settings → Pages →
-Deploy from a branch → `main` / `root`.*
+Publicada con GitHub Pages desde `main` / `root`. Cada `git push` a `main`
+actualiza el sitio en un par de minutos.
 
 ## Estructura
 
