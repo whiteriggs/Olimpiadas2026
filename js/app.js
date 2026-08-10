@@ -24,6 +24,7 @@ let fechas = [];
 let esports = [];
 let esportsPerDia = new Map();
 const pastillasPorDia = new Map();
+let canvisSenseDesar = false;
 
 /* ---------- utilitats DOM ---------- */
 
@@ -42,6 +43,15 @@ function aviso(texto) {
   const n = $("#aviso");
   n.textContent = texto;
   n.hidden = !texto;
+}
+
+function marcarCanvis(hiHaCanvis) {
+  canvisSenseDesar = hiHaCanvis;
+  const estado = $("#estadoGuardado");
+  if (hiHaCanvis) {
+    estado.textContent = "Tens canvis sense desar.";
+    estado.className = "estado pendent";
+  }
 }
 
 /* ---------- estat ---------- */
@@ -183,6 +193,7 @@ function pintarFormulario() {
         for (const otro of ops.children) {
           otro.setAttribute("aria-pressed", String(dispoDe(yo, fecha) === otro.dataset.valor));
         }
+        marcarCanvis(true);
       });
       ops.appendChild(b);
     }
@@ -203,6 +214,7 @@ function pintarFormulario() {
       else set.delete(e.nombre);
       yo.esports = [...set];
       destacarEsportsPropis();
+      marcarCanvis(true);
     });
     const txt = el("span");
     txt.appendChild(el("strong", null, e.nombre));
@@ -233,13 +245,24 @@ function recuperarSiJaHiEs() {
     (p) => (p.nombre || "").toLowerCase() === nombre.toLowerCase()
   );
   if (!existente || existente.id === yo.id) return;
+  if (!esJo(existente)) return;
 
   yo = structuredClone(existente);
   store.guardarId(yo.id);
   pintarFormulario();
+  marcarCanvis(false);
   const estado = $("#estadoGuardado");
-  estado.textContent = `Ja hi eres: hem recuperat les teves dades.`;
+  estado.textContent = "Ja hi eres: hem recuperat les teves dades.";
   estado.className = "estado";
+}
+
+// Dos «Marc» diferents s'esborrarien les dades l'un a l'altre sense preguntar.
+function esJo(existente) {
+  return confirm(
+    `Ja hi ha algú apuntat com a «${existente.nombre}».\n\n` +
+      "Accepta si ets tu i vols editar les teves dades.\n" +
+      "Cancel·la si sou dues persones diferents i afegeix-hi el cognom."
+  );
 }
 
 /* ---------- equip ---------- */
@@ -386,7 +409,14 @@ async function guardar() {
   const existente = personas.find(
     (p) => p.nombre.toLowerCase() === nombre.toLowerCase() && p.id !== yo.id
   );
-  if (existente) yo.id = existente.id;
+  if (existente) {
+    if (!esJo(existente)) {
+      estado.textContent = "Afegeix el cognom per no barrejar-vos.";
+      estado.className = "estado error";
+      return;
+    }
+    yo.id = existente.id;
+  }
 
   yo.nombre = nombre;
   yo.comentario = $("#comentario").value.trim();
@@ -396,6 +426,7 @@ async function guardar() {
     await store.guardarPersona(structuredClone(yo));
     store.guardarId(yo.id);
     await cargarYPintar();
+    marcarCanvis(false);
     estado.textContent = "Desat ✓";
     estado.className = "estado";
   } catch (e) {
@@ -412,6 +443,8 @@ async function borrarme() {
     yo = personaVacia();
     store.guardarId("");
     await cargarYPintar();
+    marcarCanvis(false);
+    $("#estadoGuardado").textContent = "";
   } catch (e) {
     aviso("No s'ha pogut esborrar: " + e.message);
   }
@@ -448,8 +481,10 @@ function conectarPestanias() {
   for (const tab of tabs) {
     tab.addEventListener("click", () => {
       for (const t of tabs) {
-        t.classList.toggle("activa", t === tab);
-        $("#panel-" + t.dataset.panel).hidden = t !== tab;
+        const activa = t === tab;
+        t.classList.toggle("activa", activa);
+        t.setAttribute("aria-selected", String(activa));
+        $("#panel-" + t.dataset.panel).hidden = !activa;
       }
     });
   }
@@ -464,13 +499,24 @@ async function iniciar() {
   $("#borrarme").addEventListener("click", borrarme);
   $("#nombre").addEventListener("change", recuperarSiJaHiEs);
   $("#accesoForm").addEventListener("submit", intentarEntrar);
+  addEventListener("beforeunload", (e) => {
+    if (!canvisSenseDesar) return;
+    e.preventDefault();
+    e.returnValue = "";
+  });
 
   // Sense codi desat no cal ni intentar-ho: la porta surt de seguida.
   const calCodi = store.modoRemoto() && !store.codi();
   if (calCodi) mostrarAcceso();
 
-  const res = await fetch("data/calendario.json");
-  cal = await res.json();
+  try {
+    const res = await fetch("data/calendario.json");
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    cal = await res.json();
+  } catch (e) {
+    aviso("No s'ha pogut carregar el calendari. Torna-ho a provar més tard.");
+    return;
+  }
   document.title = `${EQUIP} · ${cal.titulo}`;
   $("#subtitulo").textContent = `${cal.titulo} · ${cal.subtitulo}`;
   if (cal.actualizado) {

@@ -2,7 +2,8 @@
 <html lang="ca">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
 <meta name="theme-color" content="#0b1d33">
 <title>Diablos · Olimpíades Begues 2026</title>
 <link rel="icon" href="assets/favicon.png" type="image/png">
@@ -42,9 +43,9 @@
     </div>
   </div>
   <nav class="tabs contenedor" role="tablist">
-    <button class="tab activa" role="tab" data-panel="calendario">Calendari</button>
-    <button class="tab" role="tab" data-panel="apuntarse">M'apunto</button>
-    <button class="tab" role="tab" data-panel="equipo">Equip</button>
+    <button class="tab activa" role="tab" data-panel="calendario" aria-selected="true" aria-controls="panel-calendario">Calendari</button>
+    <button class="tab" role="tab" data-panel="apuntarse" aria-selected="false" aria-controls="panel-apuntarse">M'apunto</button>
+    <button class="tab" role="tab" data-panel="equipo" aria-selected="false" aria-controls="panel-equipo">Equip</button>
   </nav>
 </header>
 
@@ -52,7 +53,7 @@
 
   <p id="aviso" class="aviso" hidden></p>
 
-  <section id="panel-calendario" class="panel">
+  <section id="panel-calendario" class="panel" role="tabpanel">
     <div class="filtros">
       <label>Dia
         <select id="filtroDia"><option value="">Tots</option></select>
@@ -67,7 +68,7 @@
     <div id="listaCalendario" class="dias"></div>
   </section>
 
-  <section id="panel-apuntarse" class="panel" hidden>
+  <section id="panel-apuntarse" class="panel" role="tabpanel" hidden>
     <div class="tarjeta">
       <h2>Qui ets?</h2>
       <label>Nom
@@ -100,7 +101,7 @@
     </div>
   </section>
 
-  <section id="panel-equipo" class="panel" hidden>
+  <section id="panel-equipo" class="panel" role="tabpanel" hidden>
     <div class="tarjeta">
       <h2>Apuntats per esport</h2>
       <div id="resumenPruebas" class="resumen"></div>
