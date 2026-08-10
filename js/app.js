@@ -2,16 +2,16 @@ import * as store from "./store.js";
 
 const $ = (sel) => document.querySelector(sel);
 
-const ESTADOS = [
+const ESTATS = [
   { valor: "si", texto: "Sí" },
-  { valor: "quizas", texto: "Quizás" },
+  { valor: "quizas", texto: "Potser" },
   { valor: "no", texto: "No" },
 ];
 
-const fmtDia = new Intl.DateTimeFormat("es-ES", {
+const fmtDia = new Intl.DateTimeFormat("ca-ES", {
   weekday: "long", day: "numeric", month: "long",
 });
-const fmtCorto = new Intl.DateTimeFormat("es-ES", { weekday: "short", day: "numeric" });
+const fmtCorto = new Intl.DateTimeFormat("ca-ES", { weekday: "short", day: "numeric" });
 
 const aFecha = (iso) => new Date(iso + "T12:00:00");
 
@@ -21,7 +21,7 @@ let yo = null;
 let fechas = [];
 let esports = [];
 
-/* ---------- utilidades DOM ---------- */
+/* ---------- utilitats DOM ---------- */
 
 function el(tag, clase, texto) {
   const n = document.createElement(tag);
@@ -40,13 +40,12 @@ function aviso(texto) {
   n.hidden = !texto;
 }
 
-/* ---------- estado ---------- */
+/* ---------- estat ---------- */
 
 function personaVacia() {
   return {
     id: store.nuevoId(),
     nombre: "",
-    telefono: "",
     esports: [],
     disponibilidad: {},
     comentario: "",
@@ -62,7 +61,7 @@ function dispoDe(persona, fecha) {
   return (persona.disponibilidad || {})[fecha] || "";
 }
 
-/* ---------- calendario ---------- */
+/* ---------- calendari ---------- */
 
 function pintarCalendario() {
   const cont = $("#listaCalendario");
@@ -81,7 +80,7 @@ function pintarCalendario() {
   });
 
   if (!visibles.length) {
-    cont.appendChild(el("p", "vacio", "No hay pruebas con estos filtros."));
+    cont.appendChild(el("p", "vacio", "No hi ha proves amb aquests filtres."));
     return;
   }
 
@@ -93,9 +92,7 @@ function pintarCalendario() {
     bloque.appendChild(el("h3", null, fmtDia.format(aFecha(fecha))));
 
     for (const lim of cal.limites.filter((l) => l.fecha === fecha)) {
-      bloque.appendChild(
-        el("p", "aviso", `${lim.texto} — ${lim.esports.join(", ")}`)
-      );
+      bloque.appendChild(el("p", "aviso", `${lim.texto} — ${lim.esports.join(", ")}`));
     }
     for (const av of cal.avisos.filter((a) => a.fecha === fecha)) {
       bloque.appendChild(el("p", "aviso", `${av.hora} · ${av.texto}`));
@@ -114,30 +111,35 @@ function tarjetaEvento(p, mios) {
 
   const cuerpo = el("div", "cuerpo");
   cuerpo.appendChild(el("div", "deporte", p.detalle ? `${p.esport} · ${p.detalle}` : p.esport));
-  cuerpo.appendChild(el("div", "meta", [p.lloc, `${p.hora}–${p.horaFin}`].filter(Boolean).join(" · ")));
+  cuerpo.appendChild(
+    el("div", "meta", [p.lloc, `${p.hora}–${p.horaFin}`].filter(Boolean).join(" · "))
+  );
 
   const gente = apuntadosA(p.esport);
   if (gente.length) {
     const fila = el("div", "apuntados");
     for (const persona of gente) {
       const estado = dispoDe(persona, p.fecha);
-      const clase = estado === "si" ? "pastilla ok" : estado === "no" ? "pastilla falta" : estado === "quizas" ? "pastilla quizas" : "pastilla";
+      const clase =
+        estado === "si" ? "pastilla ok"
+        : estado === "no" ? "pastilla falta"
+        : estado === "quizas" ? "pastilla quizas"
+        : "pastilla";
       fila.appendChild(el("span", clase, persona.nombre));
     }
     cuerpo.appendChild(fila);
   } else if (p.tipo === "esport") {
-    cuerpo.appendChild(el("div", "apuntados vacio", "Nadie apuntado todavía"));
+    cuerpo.appendChild(el("div", "apuntados vacio", "Ningú apuntat encara"));
   }
 
   art.appendChild(cuerpo);
   return art;
 }
 
-/* ---------- apuntarse ---------- */
+/* ---------- apuntar-se ---------- */
 
 function pintarFormulario() {
   $("#nombre").value = yo.nombre;
-  $("#telefono").value = yo.telefono || "";
   $("#comentario").value = yo.comentario || "";
 
   const lista = $("#personasExistentes");
@@ -154,7 +156,7 @@ function pintarFormulario() {
     const fila = el("div", "dispo-fila");
     fila.appendChild(el("span", "etiqueta", fmtDia.format(aFecha(fecha))));
     const ops = el("div", "opciones");
-    for (const est of ESTADOS) {
+    for (const est of ESTATS) {
       const b = el("button", null, est.texto);
       b.type = "button";
       b.dataset.valor = est.valor;
@@ -195,14 +197,14 @@ function pintarFormulario() {
   }
 }
 
-/* ---------- equipo ---------- */
+/* ---------- equip ---------- */
 
 function pintarEquipo() {
   const resumen = $("#resumenPruebas");
   vaciar(resumen);
   const conGente = esports.filter((e) => apuntadosA(e.nombre).length);
   if (!conGente.length) {
-    resumen.appendChild(el("p", "vacio", "Todavía no se ha apuntado nadie."));
+    resumen.appendChild(el("p", "vacio", "Encara no s'hi ha apuntat ningú."));
   }
   for (const e of conGente) {
     const fila = el("div", "resumen-fila");
@@ -222,7 +224,7 @@ function pintarEquipo() {
   const tbody = tabla.createTBody();
   if (!personas.length) {
     const fila = tbody.insertRow();
-    const celda = el("td", "vacio", "Sin datos todavía");
+    const celda = el("td", "vacio", "Encara no hi ha dades");
     celda.colSpan = fechas.length + 1;
     fila.appendChild(celda);
   }
@@ -231,13 +233,14 @@ function pintarEquipo() {
     fila.appendChild(el("td", null, p.nombre));
     for (const f of fechas) {
       const estado = dispoDe(p, f);
-      const texto = estado === "si" ? "✓" : estado === "no" ? "✗" : estado === "quizas" ? "?" : "";
+      const texto =
+        estado === "si" ? "✓" : estado === "no" ? "✗" : estado === "quizas" ? "?" : "";
       fila.appendChild(el("td", estado, texto));
     }
   }
 }
 
-/* ---------- carga y guardado ---------- */
+/* ---------- llistes derivades ---------- */
 
 function derivarListas() {
   fechas = [...new Set(cal.pruebas.map((p) => p.fecha))].sort();
@@ -251,14 +254,14 @@ function derivarListas() {
   esports = [...mapa.entries()]
     .map(([nombre, lista]) => ({
       nombre,
-      resumen: `${lista.length} ${lista.length === 1 ? "prueba" : "pruebas"} · desde ${fmtCorto.format(aFecha(lista[0].fecha))}`,
+      resumen: `${lista.length} ${lista.length === 1 ? "prova" : "proves"} · des del ${fmtCorto.format(aFecha(lista[0].fecha))}`,
     }))
     .concat(
       (cal.lligues || [])
         .filter((n) => !mapa.has(n))
-        .map((nombre) => ({ nombre, resumen: "Lliga · fechas límite por ronda" }))
+        .map((nombre) => ({ nombre, resumen: "Lliga · dates límit per ronda" }))
     )
-    .sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+    .sort((a, b) => a.nombre.localeCompare(b.nombre, "ca"));
 }
 
 function pintarFiltros() {
@@ -284,11 +287,11 @@ function pintarCuentaAtras() {
   const caja = $("#cuentaAtras");
   if (dias > 0) {
     $("#cuentaAtrasNum").textContent = String(dias);
-    $("#cuentaAtrasTxt").textContent = dias === 1 ? "día" : "días";
+    $("#cuentaAtrasTxt").textContent = dias === 1 ? "dia" : "dies";
     caja.hidden = false;
   } else if (dias > -20) {
     $("#cuentaAtrasNum").textContent = "🔥";
-    $("#cuentaAtrasTxt").textContent = "en marcha";
+    $("#cuentaAtrasTxt").textContent = "en marxa";
     caja.hidden = false;
   }
 }
@@ -299,26 +302,30 @@ function repintar() {
   pintarEquipo();
 }
 
-async function recargarPersonas() {
-  try {
-    personas = await store.cargarPersonas();
-    aviso(store.modoRemoto() ? "" : "Modo local: los datos solo se guardan en este navegador. Configura API_URL en config.js para compartirlos.");
-  } catch (e) {
-    personas = [];
-    aviso("No se pudo conectar con el servidor: " + e.message);
-  }
-  personas.sort((a, b) => (a.nombre || "").localeCompare(b.nombre || "", "es"));
+/* ---------- dades ---------- */
 
-  const guardado = store.idGuardado();
-  const mio = personas.find((p) => p.id === guardado);
+async function recargarPersonas() {
+  personas = await store.cargarPersonas();
+  personas.sort((a, b) => (a.nombre || "").localeCompare(b.nombre || "", "ca"));
+  const mio = personas.find((p) => p.id === store.idGuardado());
   yo = mio ? structuredClone(mio) : yo || personaVacia();
+}
+
+async function cargarYPintar() {
+  await recargarPersonas();
+  aviso(
+    store.modoRemoto()
+      ? ""
+      : "Mode local: les dades només es desen en aquest navegador."
+  );
+  repintar();
 }
 
 async function guardar() {
   const estado = $("#estadoGuardado");
   const nombre = $("#nombre").value.trim();
   if (!nombre) {
-    estado.textContent = "Escribe tu nombre.";
+    estado.textContent = "Escriu el teu nom.";
     estado.className = "estado error";
     return;
   }
@@ -328,37 +335,39 @@ async function guardar() {
   if (existente) yo.id = existente.id;
 
   yo.nombre = nombre;
-  yo.telefono = $("#telefono").value.trim();
   yo.comentario = $("#comentario").value.trim();
   yo.actualizado = new Date().toISOString();
 
   try {
     await store.guardarPersona(structuredClone(yo));
     store.guardarId(yo.id);
-    await recargarPersonas();
-    repintar();
-    estado.textContent = "Guardado ✓";
+    await cargarYPintar();
+    estado.textContent = "Desat ✓";
     estado.className = "estado";
   } catch (e) {
-    estado.textContent = "Error al guardar: " + e.message;
+    if (e instanceof store.CodiInvalid) return mostrarAcceso("La sessió ha caducat.");
+    estado.textContent = "No s'ha pogut desar: " + e.message;
     estado.className = "estado error";
   }
 }
 
 async function borrarme() {
-  if (!confirm("¿Borrar tus datos de inscripción?")) return;
-  await store.borrarPersona(yo.id);
-  yo = personaVacia();
-  store.guardarId("");
-  await recargarPersonas();
-  repintar();
+  if (!confirm("Vols esborrar les teves dades d'inscripció?")) return;
+  try {
+    await store.borrarPersona(yo.id);
+    yo = personaVacia();
+    store.guardarId("");
+    await cargarYPintar();
+  } catch (e) {
+    aviso("No s'ha pogut esborrar: " + e.message);
+  }
 }
 
 function exportar() {
   const blob = new Blob([JSON.stringify(personas, null, 2)], { type: "application/json" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = "olimpiadas2026-equipo.json";
+  a.download = "olimpiades2026-equip.json";
   a.click();
   URL.revokeObjectURL(a.href);
 }
@@ -366,23 +375,46 @@ function exportar() {
 async function importar(archivo) {
   try {
     const datos = JSON.parse(await archivo.text());
-    if (!Array.isArray(datos)) throw new Error("El archivo no contiene una lista");
+    if (!Array.isArray(datos)) throw new Error("El fitxer no conté una llista");
     store.reemplazarTodo(datos);
-    await recargarPersonas();
-    repintar();
+    await cargarYPintar();
   } catch (e) {
-    aviso("No se pudo importar: " + e.message);
+    aviso("No s'ha pogut importar: " + e.message);
   }
 }
 
-/* ---------- arranque ---------- */
+/* ---------- porta d'accés ---------- */
+
+function mostrarAcceso(mensaje) {
+  $("#accesoError").textContent = mensaje || "";
+  $("#acceso").hidden = false;
+  $("#accesoCodi").focus();
+}
+
+async function intentarEntrar(evento) {
+  evento.preventDefault();
+  const codi = $("#accesoCodi").value.trim();
+  if (!codi) return;
+  store.guardarCodi(codi);
+  try {
+    await cargarYPintar();
+    $("#acceso").hidden = true;
+    $("#accesoCodi").value = "";
+  } catch (e) {
+    store.guardarCodi("");
+    $("#accesoError").textContent =
+      e instanceof store.CodiInvalid ? "Codi incorrecte." : "Error de connexió: " + e.message;
+  }
+}
+
+/* ---------- arrencada ---------- */
 
 function conectarPestanias() {
   const tabs = [...document.querySelectorAll(".tab")];
   for (const tab of tabs) {
     tab.addEventListener("click", () => {
-      for (const t of tabs) t.classList.toggle("activa", t === tab);
       for (const t of tabs) {
+        t.classList.toggle("activa", t === tab);
         $("#panel-" + t.dataset.panel).hidden = t !== tab;
       }
     });
@@ -397,6 +429,7 @@ async function iniciar() {
   $("#guardar").addEventListener("click", guardar);
   $("#borrarme").addEventListener("click", borrarme);
   $("#exportar").addEventListener("click", exportar);
+  $("#accesoForm").addEventListener("submit", intentarEntrar);
   $("#importar").addEventListener("change", (e) => {
     if (e.target.files[0]) importar(e.target.files[0]);
     e.target.value = "";
@@ -411,8 +444,16 @@ async function iniciar() {
   derivarListas();
   pintarFiltros();
   pintarCuentaAtras();
-  await recargarPersonas();
-  repintar();
+
+  try {
+    await cargarYPintar();
+  } catch (e) {
+    personas = [];
+    yo = personaVacia();
+    repintar();
+    if (e instanceof store.CodiInvalid) mostrarAcceso();
+    else aviso("No s'ha pogut connectar amb el servidor: " + e.message);
+  }
 }
 
 iniciar();

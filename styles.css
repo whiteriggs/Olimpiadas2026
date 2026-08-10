@@ -164,6 +164,22 @@ textarea { resize: vertical; }
 
 .vacio { color: var(--gris); font-size: 0.9rem; }
 
+.acceso {
+  position: fixed; inset: 0; z-index: 10; background: var(--azul);
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+.acceso[hidden] { display: none; }
+.acceso-caja {
+  background: #fff; border-radius: var(--radio); padding: 24px;
+  width: 100%; max-width: 340px; text-align: center;
+}
+.acceso-caja h2 { margin: 0 0 4px; }
+.acceso-caja input {
+  text-align: center; letter-spacing: 0.3em; font-size: 1.2rem; margin: 14px 0;
+}
+.acceso-caja .btn { width: 100%; }
+.acceso-caja .estado { display: block; margin: 10px 0 0; min-height: 1.2em; }
+
 .pie { color: var(--gris); font-size: 0.8rem; padding-bottom: 30px; }
 .pie a { color: var(--azul-claro); }
 

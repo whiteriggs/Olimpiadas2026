@@ -6,10 +6,10 @@ Web del equipo para las **Olimpíades de Begues 2026** (14–29 de agosto).
 
 - **Calendario** completo de pruebas por día, hora y sede, con los límites de las lligues.
 - **Apuntarse** a los esports en los que quieres jugar.
-- **Disponibilidad** día a día (sí / quizás / no).
+- **Disponibilidad** día a día (sí / potser / no).
 - **Vista de equipo**: quién se ha apuntado a qué y tabla de disponibilidad.
 
-HTML, CSS y JavaScript sin dependencias ni build.
+Interfaz en catalán. HTML, CSS y JavaScript sin dependencias ni build.
 
 ## Ejecutar en local
 
@@ -41,19 +41,21 @@ Genera `data/calendario.json` con:
 
 ## Compartir los datos con el equipo
 
-Por defecto todo se guarda en el `localStorage` del navegador: cada persona ve
-solo lo suyo. Para que el equipo comparta inscripciones hay dos opciones.
+Los datos viven en un Google Sheet a través de un Apps Script publicado como
+aplicación web; la URL está en [config.js](config.js). El backend solo responde
+si la petición lleva el código de acceso que hay en la constante `CODI` de
+[backend/apps-script.gs](backend/apps-script.gs), y la web lo pide al entrar.
 
-**Opción A — Google Apps Script (recomendada).** Sigue las instrucciones de
-[backend/apps-script.gs](backend/apps-script.gs) y pega la URL `/exec` en
-[config.js](config.js):
+El código evita que un curioso lea la lista, pero no es seguridad real: quien
+mire el tráfico de la web lo encuentra. Por eso solo se guardan nombre, esports,
+disponibilidad y comentario.
 
-```js
-window.CONFIG = { API_URL: "https://script.google.com/macros/s/.../exec" };
-```
+Para cambiar el código, edita `CODI` en el Apps Script y publica una versión
+nueva (*Implementar → Gestionar implementaciones → Editar → Versión nueva*), así
+la URL no cambia.
 
-**Opción B — sin backend.** Cada persona rellena lo suyo, exporta el JSON desde
-la pestaña *Equipo* y alguien junta los archivos e importa el resultado.
+Sin backend la web también funciona: deja `API_URL` vacío y cada persona guarda
+lo suyo en su navegador, con exportar/importar JSON desde la pestaña *Equip*.
 
 ## Publicar
 
@@ -67,7 +69,7 @@ index.html                      página única con las tres pestañas
 styles.css
 config.js                       URL del backend (vacío = modo local)
 js/app.js                       render y lógica de la interfaz
-js/store.js                     persistencia local + remota
+js/store.js                     persistencia local + remota y código de acceso
 data/calendario.json            calendario generado
 data/calendario-original.csv    export original de la hoja
 scripts/importar_calendario.py  conversor CSV → JSON
