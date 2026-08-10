@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1d33">
+<title>Olimpiadas Begues 2026</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="cabecera">
+  <div class="contenedor cabecera-fila">
+    <div>
+      <h1 id="titulo">Olimpiadas Begues 2026</h1>
+      <p id="subtitulo" class="sub">Calendario provisional</p>
+    </div>
+    <div class="cuenta-atras" id="cuentaAtras" hidden>
+      <strong id="cuentaAtrasNum">–</strong>
+      <span id="cuentaAtrasTxt">días</span>
+    </div>
+  </div>
+  <nav class="tabs contenedor" role="tablist">
+    <button class="tab activa" role="tab" data-panel="calendario">Calendario</button>
+    <button class="tab" role="tab" data-panel="apuntarse">Apuntarme</button>
+    <button class="tab" role="tab" data-panel="equipo">Equipo</button>
+  </nav>
+</header>
+
+<main class="contenedor">
+
+  <p id="aviso" class="aviso" hidden></p>
+
+  <section id="panel-calendario" class="panel">
+    <div class="filtros">
+      <label>Día
+        <select id="filtroDia"><option value="">Todos</option></select>
+      </label>
+      <label>Esport
+        <select id="filtroDeporte"><option value="">Todos</option></select>
+      </label>
+      <label class="check">
+        <input type="checkbox" id="filtroMios"> Solo los míos
+      </label>
+    </div>
+    <div id="listaCalendario" class="dias"></div>
+  </section>
+
+  <section id="panel-apuntarse" class="panel" hidden>
+    <div class="tarjeta">
+      <h2>¿Quién eres?</h2>
+      <div class="fila">
+        <label class="crece">Nombre
+          <input type="text" id="nombre" list="personasExistentes" placeholder="Tu nombre y apellido" autocomplete="name" maxlength="60">
+          <datalist id="personasExistentes"></datalist>
+        </label>
+        <label>Teléfono <span class="opc">(opcional)</span>
+          <input type="tel" id="telefono" placeholder="600 000 000" maxlength="20">
+        </label>
+      </div>
+      <p class="ayuda">Escribe el mismo nombre para editar lo que ya habías apuntado.</p>
+    </div>
+
+    <div class="tarjeta">
+      <h2>Disponibilidad por día</h2>
+      <div id="disponibilidad" class="dispo"></div>
+    </div>
+
+    <div class="tarjeta">
+      <h2>Esports en los que me apunto</h2>
+      <div id="pruebasCheck" class="pruebas-check"></div>
+    </div>
+
+    <div class="tarjeta">
+      <h2>Comentarios</h2>
+      <textarea id="comentario" rows="3" maxlength="500" placeholder="Ej.: el jueves llego a partir de las 19h"></textarea>
+    </div>
+
+    <div class="acciones">
+      <button id="guardar" class="btn primario">Guardar</button>
+      <button id="borrarme" class="btn peligro">Borrar mis datos</button>
+      <span id="estadoGuardado" class="estado"></span>
+    </div>
+  </section>
+
+  <section id="panel-equipo" class="panel" hidden>
+    <div class="tarjeta">
+      <h2>Apuntados por esport</h2>
+      <div id="resumenPruebas" class="resumen"></div>
+    </div>
+    <div class="tarjeta">
+      <h2>Disponibilidad</h2>
+      <div class="scroll-x"><table id="tablaDispo" class="tabla"></table></div>
+    </div>
+    <div class="acciones">
+      <button id="exportar" class="btn">Exportar JSON</button>
+      <label class="btn como-boton">
+        Importar JSON<input type="file" id="importar" accept="application/json" hidden>
+      </label>
+    </div>
+  </section>
+
+</main>
+
+<footer class="contenedor pie">
+  <p>Hecho por <a href="https://whiteriggs.com" rel="noopener">White Riggs</a> · Horarios provisionales, confirmar con la organización.</p>
+</footer>
+<script src="config.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
