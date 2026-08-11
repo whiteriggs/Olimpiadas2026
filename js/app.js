@@ -14,6 +14,7 @@ const fmtDia = new Intl.DateTimeFormat("ca-ES", {
   weekday: "long", day: "numeric", month: "long",
 });
 const fmtCorto = new Intl.DateTimeFormat("ca-ES", { weekday: "short", day: "numeric" });
+const fmtHora = new Intl.DateTimeFormat("ca-ES", { hour: "2-digit", minute: "2-digit" });
 
 const aFecha = (iso) => new Date(iso + "T12:00:00");
 
@@ -39,9 +40,10 @@ function vaciar(nodo) {
   while (nodo.firstChild) nodo.removeChild(nodo.firstChild);
 }
 
-function aviso(texto) {
+function aviso(texto, tipus) {
   const n = $("#aviso");
   n.textContent = texto;
+  n.className = tipus ? "aviso " + tipus : "aviso";
   n.hidden = !texto;
 }
 
@@ -342,25 +344,26 @@ function derivarListas() {
 }
 
 function pintarFiltros() {
-  const dia = $("#filtroDia");
-  for (const f of fechas) {
-    const o = document.createElement("option");
-    o.value = f;
-    o.textContent = fmtDia.format(aFecha(f));
-    dia.appendChild(o);
-  }
-  const dep = $("#filtroDeporte");
-  for (const e of esports) {
-    const o = document.createElement("option");
-    o.value = e.nombre;
-    o.textContent = e.nombre;
-    dep.appendChild(o);
-  }
+  const omplir = (sel, valors, etiqueta) => {
+    const anterior = sel.value;
+    vaciar(sel);
+    sel.appendChild(el("option", null, "Tots"));
+    for (const v of valors) {
+      const o = el("option", null, etiqueta(v));
+      o.value = v;
+      sel.appendChild(o);
+    }
+    sel.value = [...sel.options].some((o) => o.value === anterior) ? anterior : "";
+  };
+  omplir($("#filtroDia"), fechas, (f) => fmtDia.format(aFecha(f)));
+  omplir($("#filtroDeporte"), esports.map((e) => e.nombre), (n) => n);
 }
 
 const dosXifres = (n) => String(n).padStart(2, "0");
+let rellotge = null;
 
 function pintarCuentaAtras() {
+  clearInterval(rellotge);
   if (!fechas.length) return;
 
   // El compte enrere va a la primera competició (la natació), no a la reunió informativa.
@@ -374,7 +377,6 @@ function pintarCuentaAtras() {
   const caja = $("#cuentaAtras");
   const num = $("#cuentaAtrasNum");
   const txt = $("#cuentaAtrasTxt");
-  let rellotge = null;
 
   const refrescar = () => {
     const ara = new Date();
@@ -429,6 +431,59 @@ async function cargarYPintar() {
       : "Mode local: les dades només es desen en aquest navegador."
   );
   repintar();
+}
+
+async function carregarCalendari(forcant) {
+  const res = await fetch("data/calendario.json", forcant ? { cache: "reload" } : {});
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  cal = await res.json();
+  document.title = `${EQUIP} · ${cal.titulo}`;
+  $("#subtitulo").textContent = `${cal.titulo} · ${cal.subtitulo}`;
+  if (cal.actualizado) {
+    $("#actualitzat").textContent =
+      "Calendari actualitzat el " + fmtDia.format(aFecha(cal.actualizado)) + ".";
+  }
+  derivarListas();
+  pintarFiltros();
+  pintarCuentaAtras();
+}
+
+// Botó de rescat: buida la còpia offline i ho torna a demanar tot al servidor.
+async function refrescarTot() {
+  const boto = $("#refresca");
+  if (boto.disabled) return;
+  if (canvisSenseDesar && !confirm("Tens canvis sense desar i es perdran. Vols continuar?")) return;
+
+  boto.disabled = true;
+  boto.classList.add("girant");
+  aviso("Actualitzant…");
+  try {
+    if (window.caches) {
+      const noms = await caches.keys();
+      await Promise.all(noms.map((n) => caches.delete(n)));
+    }
+    const reg = navigator.serviceWorker && (await navigator.serviceWorker.getRegistration());
+    if (reg) await reg.update();
+
+    await carregarCalendari(true);
+    if (store.modoRemoto() && !store.codi()) {
+      repintar();
+      mostrarAcceso();
+    } else {
+      await cargarYPintar();
+      marcarCanvis(false);
+      aviso("Actualitzat a les " + fmtHora.format(new Date()) + ".", "ok");
+      setTimeout(() => {
+        if ($("#aviso").classList.contains("ok")) aviso("");
+      }, 5000);
+    }
+  } catch (e) {
+    if (e instanceof store.CodiInvalid) mostrarAcceso("La sessió ha caducat.");
+    else aviso("No s'ha pogut actualitzar: " + e.message + ". Comprova la connexió.");
+  } finally {
+    boto.disabled = false;
+    boto.classList.remove("girant");
+  }
 }
 
 async function guardar() {
@@ -532,6 +587,7 @@ async function iniciar() {
   $("#borrarme").addEventListener("click", borrarme);
   $("#nombre").addEventListener("change", recuperarSiJaHiEs);
   $("#accesoForm").addEventListener("submit", intentarEntrar);
+  $("#refresca").addEventListener("click", refrescarTot);
   addEventListener("beforeunload", (e) => {
     if (!canvisSenseDesar) return;
     e.preventDefault();
@@ -543,23 +599,11 @@ async function iniciar() {
   if (calCodi) mostrarAcceso();
 
   try {
-    const res = await fetch("data/calendario.json");
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    cal = await res.json();
+    await carregarCalendari(false);
   } catch (e) {
-    aviso("No s'ha pogut carregar el calendari. Torna-ho a provar més tard.");
+    aviso("No s'ha pogut carregar el calendari. Prova el botó ↻ de dalt a la dreta.");
     return;
   }
-  document.title = `${EQUIP} · ${cal.titulo}`;
-  $("#subtitulo").textContent = `${cal.titulo} · ${cal.subtitulo}`;
-  if (cal.actualizado) {
-    $("#actualitzat").textContent =
-      "Calendari actualitzat el " + fmtDia.format(aFecha(cal.actualizado)) + ".";
-  }
-
-  derivarListas();
-  pintarFiltros();
-  pintarCuentaAtras();
 
   if (calCodi) {
     yo = personaVacia();
@@ -581,7 +625,7 @@ async function iniciar() {
     const mio = personas.find((p) => p.id === store.idGuardado());
     yo = mio ? structuredClone(mio) : personaVacia();
     repintar();
-    aviso("Sense connexió amb el servidor: veus l'última còpia desada en aquest dispositiu.");
+    aviso("Sense connexió amb el servidor: veus l'última còpia desada en aquest dispositiu. Prova el botó ↻ de dalt a la dreta.");
   }
 }
 

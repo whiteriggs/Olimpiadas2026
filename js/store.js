@@ -53,14 +53,32 @@ async function enviar(cuerpo) {
   if (!datos.ok) throw new Error(datos.error || "error desconegut");
 }
 
-export async function cargarPersonas() {
-  if (!modoRemoto()) return leerLocal();
-  const res = await fetch(api() + "?codi=" + encodeURIComponent(codi()));
+const espera = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function baixarPersones() {
+  const res = await fetch(api() + "?codi=" + encodeURIComponent(codi()), {
+    cache: "no-store",
+  });
   if (!res.ok) throw new Error("HTTP " + res.status);
   const datos = await res.json();
   if (!Array.isArray(datos)) throw new CodiInvalid("codi incorrecte");
-  escribirLocal(datos); // còpia local per si falla la connexió
   return datos;
+}
+
+// Apps Script triga a despertar-se si fa hores que ningú l'ha tocat: hi insistim.
+export async function cargarPersonas() {
+  if (!modoRemoto()) return leerLocal();
+  const esperes = [800, 2500, 5000];
+  for (let intent = 0; ; intent++) {
+    try {
+      const datos = await baixarPersones();
+      escribirLocal(datos); // còpia local per si falla la connexió
+      return datos;
+    } catch (e) {
+      if (e instanceof CodiInvalid || intent >= esperes.length) throw e;
+      await espera(esperes[intent]);
+    }
+  }
 }
 
 export async function guardarPersona(persona) {
