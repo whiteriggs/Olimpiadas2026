@@ -2,7 +2,7 @@
   "titulo": "Olimpíades Begues 2026",
   "subtitulo": "14–29 d'agost",
   "fuente": "https://docs.google.com/spreadsheets/d/1gB3BzDDBQATh5wTy8JRPxCHLMUqPpnQwFcp3pIsIvLo/export?format=csv&gid=572313569",
-  "actualizado": "2026-08-10",
+  "actualizado": "2026-08-12",
   "pruebas": [
     {
       "id": "2026-08-14-18-reunio-informativa",
@@ -60,14 +60,14 @@
       "lloc": "Club De Begues"
     },
     {
-      "id": "2026-08-15-18-tardeo",
+      "id": "2026-08-15-20-tardeo",
       "esport": "Tardeo",
       "detalle": "",
       "tipo": "acte",
       "fecha": "2026-08-15",
-      "hora": "18:00",
-      "horaFin": "19:00",
-      "orden": 18,
+      "hora": "20:00",
+      "horaFin": "21:00",
+      "orden": 20,
       "lloc": "Altres"
     },
     {
@@ -126,17 +126,6 @@
       "lloc": "Campo de Futbol"
     },
     {
-      "id": "2026-08-16-20-basquet",
-      "esport": "Bàsquet",
-      "detalle": "PREV.",
-      "tipo": "esport",
-      "fecha": "2026-08-16",
-      "hora": "20:00",
-      "horaFin": "21:00",
-      "orden": 20,
-      "lloc": "Poliesportiu"
-    },
-    {
       "id": "2026-08-16-20-futbol-7",
       "esport": "Futbol 7",
       "detalle": "PREV.",
@@ -156,6 +145,17 @@
       "hora": "21:00",
       "horaFin": "22:00",
       "orden": 21,
+      "lloc": "Poliesportiu"
+    },
+    {
+      "id": "2026-08-16-22-basquet",
+      "esport": "Bàsquet",
+      "detalle": "PREV.",
+      "tipo": "esport",
+      "fecha": "2026-08-16",
+      "hora": "22:00",
+      "horaFin": "23:00",
+      "orden": 22,
       "lloc": "Poliesportiu"
     },
     {
@@ -511,6 +511,28 @@
       "lloc": "Poliesportiu"
     },
     {
+      "id": "2026-08-20-22-volei",
+      "esport": "Vòlei",
+      "detalle": "PREV.",
+      "tipo": "esport",
+      "fecha": "2026-08-20",
+      "hora": "22:00",
+      "horaFin": "23:00",
+      "orden": 22,
+      "lloc": "Poliesportiu"
+    },
+    {
+      "id": "2026-08-21-18-volei",
+      "esport": "Vòlei",
+      "detalle": "1ª",
+      "tipo": "esport",
+      "fecha": "2026-08-21",
+      "hora": "18:00",
+      "horaFin": "19:00",
+      "orden": 18,
+      "lloc": "Poliesportiu"
+    },
+    {
       "id": "2026-08-21-18-waterpolo",
       "esport": "Waterpolo",
       "detalle": "1",
@@ -522,9 +544,9 @@
       "lloc": "Club De Begues"
     },
     {
-      "id": "2026-08-21-19-basquet",
-      "esport": "Bàsquet",
-      "detalle": "SEMIS",
+      "id": "2026-08-21-19-volei",
+      "esport": "Vòlei",
+      "detalle": "1ª",
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "19:00",
@@ -555,17 +577,6 @@
       "lloc": "Club De Begues"
     },
     {
-      "id": "2026-08-21-20-basquet",
-      "esport": "Bàsquet",
-      "detalle": "5-6",
-      "tipo": "esport",
-      "fecha": "2026-08-21",
-      "hora": "20:00",
-      "horaFin": "21:00",
-      "orden": 20,
-      "lloc": "Poliesportiu"
-    },
-    {
       "id": "2026-08-21-20-dards",
       "esport": "Dards",
       "detalle": "3-61ª I SEMIS",
@@ -586,6 +597,17 @@
       "horaFin": "21:00",
       "orden": 20,
       "lloc": "Altres"
+    },
+    {
+      "id": "2026-08-21-20-volei",
+      "esport": "Vòlei",
+      "detalle": "1-2",
+      "tipo": "esport",
+      "fecha": "2026-08-21",
+      "hora": "20:00",
+      "horaFin": "21:00",
+      "orden": 20,
+      "lloc": "Poliesportiu"
     },
     {
       "id": "2026-08-21-20-waterpolo",
@@ -610,9 +632,9 @@
       "lloc": "Poliesportiu"
     },
     {
-      "id": "2026-08-21-22-volei",
-      "esport": "Vòlei",
-      "detalle": "PREV.",
+      "id": "2026-08-21-22-basquet",
+      "esport": "Bàsquet",
+      "detalle": "SEMIS",
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "22:00",
@@ -621,25 +643,14 @@
       "lloc": "Poliesportiu"
     },
     {
-      "id": "2026-08-21-23-volei",
-      "esport": "Vòlei",
-      "detalle": "1ª",
+      "id": "2026-08-21-23-basquet",
+      "esport": "Bàsquet",
+      "detalle": "5-6",
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "23:00",
       "horaFin": "00:00",
       "orden": 23,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-21-00-volei",
-      "esport": "Vòlei",
-      "detalle": "1ª",
-      "tipo": "esport",
-      "fecha": "2026-08-21",
-      "hora": "00:00",
-      "horaFin": "01:00",
-      "orden": 24,
       "lloc": "Poliesportiu"
     },
     {
@@ -698,17 +709,6 @@
       "lloc": "Club De Begues"
     },
     {
-      "id": "2026-08-22-15-volei",
-      "esport": "Vòlei",
-      "detalle": "1-2",
-      "tipo": "esport",
-      "fecha": "2026-08-22",
-      "hora": "15:00",
-      "horaFin": "16:00",
-      "orden": 15,
-      "lloc": "Poliesportiu"
-    },
-    {
       "id": "2026-08-22-16-volei",
       "esport": "Vòlei",
       "detalle": "3-4",
@@ -751,6 +751,17 @@
       "horaFin": "20:00",
       "orden": 19,
       "lloc": "Club De Begues"
+    },
+    {
+      "id": "2026-08-22-22-dards",
+      "esport": "Dards",
+      "detalle": "",
+      "tipo": "esport",
+      "fecha": "2026-08-22",
+      "hora": "22:00",
+      "horaFin": "23:00",
+      "orden": 22,
+      "lloc": "Altres"
     },
     {
       "id": "2026-08-22-22-futboli",
