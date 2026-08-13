@@ -2,7 +2,7 @@
   "titulo": "Olimpíades Begues 2026",
   "subtitulo": "14–29 d'agost",
   "fuente": "https://docs.google.com/spreadsheets/d/1gB3BzDDBQATh5wTy8JRPxCHLMUqPpnQwFcp3pIsIvLo/export?format=csv&gid=572313569",
-  "actualizado": "2026-08-12",
+  "actualizado": "2026-08-13",
   "pruebas": [
     {
       "id": "2026-08-14-18-reunio-informativa",
@@ -920,23 +920,12 @@
     {
       "id": "2026-08-23-23-basquet",
       "esport": "Bàsquet",
-      "detalle": "FINALS",
+      "detalle": "FINALS C.I PREV F.",
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "23:00",
       "horaFin": "00:00",
       "orden": 23,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-23-00-basquet",
-      "esport": "Bàsquet",
-      "detalle": "PREV. F.",
-      "tipo": "esport",
-      "fecha": "2026-08-23",
-      "hora": "00:00",
-      "horaFin": "01:00",
-      "orden": 24,
       "lloc": "Poliesportiu"
     },
     {
