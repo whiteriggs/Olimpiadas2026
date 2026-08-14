@@ -251,19 +251,19 @@ textarea { resize: vertical; }
   background: var(--superficie);
   color: var(--texto);
   box-shadow: var(--ombra-alta);
+  overflow: hidden;
 }
+.modal[open] { display: flex; flex-direction: column; }
 .modal::backdrop { background: rgb(0 0 0 / 0.55); }
 .modal-cap {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  position: sticky;
-  top: 0;
+  flex: none;
   padding: 14px 16px;
   border-bottom: 1px solid var(--borde);
   background: var(--superficie);
-  border-radius: var(--radio) var(--radio) 0 0;
 }
 .modal-cap h2 { margin: 0; font-size: 1.05rem; }
 .tanca {
@@ -279,7 +279,23 @@ textarea { resize: vertical; }
   cursor: pointer;
 }
 .tanca:hover { background: var(--rojo); border-color: var(--rojo); color: #fff; }
-.modal-cos { padding: 4px 16px 18px; overflow-y: auto; }
+.modal-cos {
+  flex: 1;
+  min-height: 0;
+  padding: 4px 16px 18px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--borde) transparent;
+}
+.modal-cos::-webkit-scrollbar { width: 6px; }
+.modal-cos::-webkit-scrollbar-track { background: transparent; }
+.modal-cos::-webkit-scrollbar-thumb { background: var(--borde); border-radius: 999px; }
+.modal-cos::-webkit-scrollbar-thumb:hover { background: var(--gris); }
+
+/* Amb el quadre obert, el fons no s'ha de moure ni encongir. */
+html { scrollbar-gutter: stable; }
+body:has(.modal[open]) { overflow: hidden; }
 
 .ronda-bloc { margin-top: 18px; }
 .ronda-bloc h3 {
@@ -516,7 +532,10 @@ textarea { resize: vertical; }
 .resumen-fila { border-bottom: 1px solid var(--borde); padding-bottom: 12px; }
 .resumen-fila:last-child { border-bottom: 0; padding-bottom: 0; }
 
-.scroll-x { overflow-x: auto; border-radius: var(--radio-s); }
+.scroll-x { overflow-x: auto; border-radius: var(--radio-s); scrollbar-width: thin; scrollbar-color: var(--borde) transparent; }
+.scroll-x::-webkit-scrollbar { height: 6px; }
+.scroll-x::-webkit-scrollbar-track { background: transparent; }
+.scroll-x::-webkit-scrollbar-thumb { background: var(--borde); border-radius: 999px; }
 .tabla { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
 .tabla th, .tabla td {
   border: 1px solid var(--borde); padding: 7px 9px;

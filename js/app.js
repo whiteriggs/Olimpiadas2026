@@ -760,13 +760,22 @@ function repintar() {
 /* ---------- dades ---------- */
 
 async function recargarPersonas() {
-  personas = await store.cargarPersonas();
+  usarPersonas(await store.cargarPersonas());
+}
+
+function usarPersonas(llista) {
+  personas = llista;
   for (const p of personas) {
     p.esports = [...new Set((p.esports || []).map(canonic))];
   }
   personas.sort((a, b) => (a.nombre || "").localeCompare(b.nombre || "", "ca"));
   const mio = personas.find((p) => p.id === store.idGuardado());
   yo = mio ? structuredClone(mio) : yo || personaVacia();
+}
+
+/** Fa girar el botó ↻ mentre esperem el servidor. */
+function carregant(si) {
+  $("#refresca").classList.toggle("girant", si);
 }
 
 async function cargarYPintar() {
@@ -781,22 +790,20 @@ async function cargarYPintar() {
 
 async function carregarCalendari(forcant) {
   const opcions = forcant ? { cache: "reload" } : {};
-  const res = await fetch("data/calendario.json", opcions);
+  // Sense resultats la web segueix servint: només perdem quadres i punts.
+  const [res, resT] = await Promise.all([
+    fetch("data/calendario.json", opcions),
+    fetch("data/torneig.json", opcions).catch(() => null),
+  ]);
   if (!res.ok) throw new Error("HTTP " + res.status);
   cal = await res.json();
+  torneig = resT && resT.ok ? await resT.json().catch(() => null) : null;
+
   document.title = `${EQUIP} · ${cal.titulo}`;
   $("#subtitulo").textContent = `${cal.titulo} · ${cal.subtitulo}`;
   if (cal.actualizado) {
     $("#actualitzat").textContent =
       "Calendari actualitzat el " + fmtDia.format(aFecha(cal.actualizado)) + ".";
-  }
-
-  // Sense resultats la web segueix servint: només perdem cuadres i punts.
-  try {
-    const resT = await fetch("data/torneig.json", opcions);
-    torneig = resT.ok ? await resT.json() : null;
-  } catch {
-    torneig = null;
   }
 
   derivarListas();
@@ -976,6 +983,12 @@ async function iniciar() {
     return;
   }
 
+  // Pintem ja amb l'última còpia d'aquest mòbil; el servidor pot trigar segons.
+  usarPersonas(store.personasLocales());
+  repintar();
+  aviso(personas.length ? "Actualitzant la llista de gent…" : "Carregant la llista de gent…", "pendent");
+  carregant(true);
+
   try {
     await cargarYPintar();
   } catch (e) {
@@ -991,6 +1004,8 @@ async function iniciar() {
     yo = mio ? structuredClone(mio) : personaVacia();
     repintar();
     aviso("Sense connexió amb el servidor: veus l'última còpia desada en aquest dispositiu. Prova el botó ↻ de dalt a la dreta.");
+  } finally {
+    carregant(false);
   }
 }
 
