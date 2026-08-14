@@ -151,6 +151,14 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 .refresca.girant { animation: gira 1s linear infinite; }
 @keyframes gira { to { transform: rotate(360deg); } }
 
+@media (max-width: 430px) {
+  .tab { padding: 8px 2px; font-size: 0.79rem; letter-spacing: -0.02em; }
+  .refresca { width: 34px; height: 34px; }
+}
+@media (max-width: 340px) {
+  .tab { font-size: 0.71rem; }
+}
+
 .refresca:focus-visible, .tab:focus-visible, .btn:focus-visible,
 input:focus-visible, select:focus-visible, textarea:focus-visible,
 .opciones button:focus-visible, .prueba-check:focus-within {
@@ -257,6 +265,48 @@ textarea { resize: vertical; }
   font-variant-numeric: tabular-nums;
 }
 .evento .apuntados { font-size: 0.85rem; margin-top: 8px; }
+
+/* ---------- els nostres partits ---------- */
+
+.evento.nostre { border-color: color-mix(in srgb, var(--azul-2) 40%, var(--borde)); }
+.evento .rival .sigla {
+  display: inline-block; min-width: 44px; margin-right: 6px;
+  font-size: 0.68rem; font-weight: 700; color: var(--gris);
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.evento .rival.nostre { font-weight: 600; }
+.evento .rival.nostre .sigla { color: var(--oro); }
+.resultat {
+  margin-left: 8px; font-weight: 700; font-size: 0.78rem;
+  border-radius: 6px; padding: 1px 7px;
+  background: var(--neutre-fons); color: var(--gris);
+}
+.resultat.ok { background: var(--verde-fons); color: var(--verde); }
+.resultat.falta { background: var(--rojo-fons); color: var(--rojo); }
+
+.seguent {
+  display: flex; flex-direction: column; gap: 3px;
+  background: var(--azul); color: #fff; border-radius: var(--radio);
+  padding: 16px 18px; margin-bottom: 18px; box-shadow: var(--ombra-alta);
+}
+.seguent[hidden] { display: none; }
+.seguent strong { font-size: 1.3rem; letter-spacing: -0.02em; }
+.seguent-etiqueta {
+  font-size: 0.68rem; font-weight: 700; color: var(--oro);
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+.seguent-quan { font-size: 0.88rem; color: #9fb6d0; }
+.seguent-rival { font-size: 0.95rem; font-weight: 600; margin-top: 4px; }
+.seguent-gent { font-size: 0.85rem; color: #9fb6d0; margin-top: 6px; }
+
+.tarjeta.destacada { border-color: var(--oro); }
+.tarjeta.destacada .gran {
+  display: block; font-size: 1.9rem; letter-spacing: -0.03em; margin: 2px 0 4px;
+}
+.tarjeta.destacada .seguent-etiqueta { color: var(--ambar); }
+.tarjeta.destacada .meta { font-size: 0.88rem; color: var(--gris); }
+
+.tabla tr.meu td { background: color-mix(in srgb, var(--oro) 16%, var(--superficie)); font-weight: 700; }
 
 .pastilla {
   display: inline-block; font-size: 0.74rem; font-weight: 600;

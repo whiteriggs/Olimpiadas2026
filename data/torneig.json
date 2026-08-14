@@ -1,0 +1,4370 @@
+{
+ "actualizado": "2026-08-14T07:04:41+00:00",
+ "nosaltres": null,
+ "equips": [
+  {
+   "id": "E1",
+   "nom": "Equip 1"
+  },
+  {
+   "id": "E2",
+   "nom": "Equip 2"
+  },
+  {
+   "id": "E3",
+   "nom": "Equip 3"
+  },
+  {
+   "id": "E4",
+   "nom": "Equip 4"
+  },
+  {
+   "id": "E5",
+   "nom": "Equip 5"
+  },
+  {
+   "id": "E6",
+   "nom": "Equip 6"
+  },
+  {
+   "id": "E7",
+   "nom": "Equip 7"
+  },
+  {
+   "id": "E8",
+   "nom": "Equip 8"
+  },
+  {
+   "id": "E9",
+   "nom": "Equip 9"
+  },
+  {
+   "id": "E10",
+   "nom": "Equip 10"
+  }
+ ],
+ "esports": [
+  {
+   "id": "petanca",
+   "nom": "Petanca",
+   "categoria": "individual",
+   "format": "quadre",
+   "taulaPunts": [
+    40,
+    32,
+    29,
+    26,
+    20,
+    17,
+    14,
+    11,
+    8,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E5",
+      "E9"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E7",
+      "E3"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E1"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E4",
+      "E8"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E2"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E10",
+      "E6"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "voleibol-playa",
+   "nom": "Voleibol platja",
+   "categoria": "individual",
+   "format": "quadre",
+   "taulaPunts": [
+    40,
+    32,
+    29,
+    26,
+    20,
+    17,
+    14,
+    11,
+    8,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E1",
+      "E8"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E10",
+      "E5"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E3"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E2",
+      "E6"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E9"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E7",
+      "E4"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "voleibol-pista",
+   "nom": "Voleibol pista",
+   "categoria": "equip",
+   "format": "quadre",
+   "taulaPunts": [
+    70,
+    54,
+    48,
+    42,
+    30,
+    25,
+    20,
+    15,
+    10,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E2",
+      "E3"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E4",
+      "E9"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E8"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E7",
+      "E1"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E5"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E6",
+      "E10"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "tenis",
+   "nom": "Tennis",
+   "categoria": "individual",
+   "format": "quadre",
+   "taulaPunts": [
+    40,
+    32,
+    29,
+    26,
+    20,
+    17,
+    14,
+    11,
+    8,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E2",
+      "E7"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E1",
+      "E9"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E5"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E8",
+      "E10"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E6"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E3",
+      "E4"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "fronton",
+   "nom": "Frontó",
+   "categoria": "individual",
+   "format": "quadre",
+   "taulaPunts": [
+    40,
+    32,
+    29,
+    26,
+    20,
+    17,
+    14,
+    11,
+    8,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E4",
+      "E3"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E5",
+      "E1"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E6"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E10",
+      "E2"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E8"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E9",
+      "E7"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "padel",
+   "nom": "Pàdel",
+   "categoria": "individual",
+   "format": "quadre",
+   "taulaPunts": [
+    40,
+    32,
+    29,
+    26,
+    20,
+    17,
+    14,
+    11,
+    8,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E10",
+      "E3"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E6",
+      "E8"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E7"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E4",
+      "E5"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E2"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E9",
+      "E1"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "ping-pong",
+   "nom": "Ping-pong",
+   "categoria": "individual",
+   "format": "quadre",
+   "taulaPunts": [
+    40,
+    32,
+    29,
+    26,
+    20,
+    17,
+    14,
+    11,
+    8,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E9",
+      "E8"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E6",
+      "E4"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E5"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E2",
+      "E3"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E7"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E1",
+      "E10"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "futbol-sala",
+   "nom": "Futbol sala",
+   "categoria": "equip",
+   "format": "quadre",
+   "taulaPunts": [
+    70,
+    54,
+    48,
+    42,
+    30,
+    25,
+    20,
+    15,
+    10,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E10",
+      "E1"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E8",
+      "E2"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E4"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E3",
+      "E5"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E7"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E6",
+      "E9"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "futbol-siete",
+   "nom": "Futbol 7",
+   "categoria": "equip",
+   "format": "quadre",
+   "taulaPunts": [
+    70,
+    54,
+    48,
+    42,
+    30,
+    25,
+    20,
+    15,
+    10,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E5",
+      "E4"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E7",
+      "E9"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E10"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E6",
+      "E1"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E2"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E8",
+      "E3"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "balonmano",
+   "nom": "Handbol",
+   "categoria": "equip",
+   "format": "quadre",
+   "taulaPunts": [
+    70,
+    54,
+    48,
+    42,
+    30,
+    25,
+    20,
+    15,
+    10,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E8",
+      "E5"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E3",
+      "E1"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E6"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E4",
+      "E2"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E7"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E10",
+      "E9"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "baloncesto",
+   "nom": "Bàsquet",
+   "categoria": "equip",
+   "format": "quadre",
+   "taulaPunts": [
+    70,
+    54,
+    48,
+    42,
+    30,
+    25,
+    20,
+    15,
+    10,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E6",
+      "E5"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E4",
+      "E10"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E7"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E2",
+      "E1"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E8"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E3",
+      "E9"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "waterpolo",
+   "nom": "Waterpolo",
+   "categoria": "equip",
+   "format": "quadre",
+   "taulaPunts": [
+    70,
+    54,
+    48,
+    42,
+    30,
+    25,
+    20,
+    15,
+    10,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E10",
+      "E7"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E6",
+      "E2"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E3"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E1",
+      "E4"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E5"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E8",
+      "E9"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "domino",
+   "nom": "Dòmino",
+   "categoria": "individual",
+   "format": "quadre",
+   "taulaPunts": [
+    40,
+    32,
+    29,
+    26,
+    20,
+    17,
+    14,
+    11,
+    8,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E2",
+      "E1"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E3",
+      "E6"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E9"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E5",
+      "E10"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E4"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E7",
+      "E8"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "ajedrez",
+   "nom": "Escacs",
+   "categoria": "individual",
+   "format": "quadre",
+   "taulaPunts": [
+    40,
+    32,
+    29,
+    26,
+    20,
+    17,
+    14,
+    11,
+    8,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E10",
+      "E9"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E8",
+      "E7"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E4"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E2",
+      "E1"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E5"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E3",
+      "E6"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "dardos",
+   "nom": "Dards",
+   "categoria": "individual",
+   "format": "quadre",
+   "taulaPunts": [
+    40,
+    32,
+    29,
+    26,
+    20,
+    17,
+    14,
+    11,
+    8,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E7",
+      "E5"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E2",
+      "E10"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E6"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E1",
+      "E3"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E8"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E9",
+      "E4"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "futbolin",
+   "nom": "Futbolí",
+   "categoria": "individual",
+   "format": "quadre",
+   "taulaPunts": [
+    40,
+    32,
+    29,
+    26,
+    20,
+    17,
+    14,
+    11,
+    8,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E7",
+      "E4"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E9",
+      "E6"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E2"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E10",
+      "E3"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E8"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E5",
+      "E1"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "billar",
+   "nom": "Billar",
+   "categoria": "individual",
+   "format": "quadre",
+   "taulaPunts": [
+    40,
+    32,
+    29,
+    26,
+    20,
+    17,
+    14,
+    11,
+    8,
+    5
+   ],
+   "partits": [
+    {
+     "id": "previa1",
+     "ronda": "previes",
+     "nom": "Prèvia 1",
+     "sigla": "P1",
+     "equips": [
+      "E2",
+      "E4"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "previa2",
+     "ronda": "previes",
+     "nom": "Prèvia 2",
+     "sigla": "P2",
+     "equips": [
+      "E6",
+      "E1"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf1",
+     "ronda": "quarts",
+     "nom": "Quarts 1",
+     "sigla": "QF1",
+     "equips": [
+      null,
+      "E5"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf2",
+     "ronda": "quarts",
+     "nom": "Quarts 2",
+     "sigla": "QF2",
+     "equips": [
+      "E3",
+      "E9"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "qf3",
+     "ronda": "quarts",
+     "nom": "Quarts 3",
+     "sigla": "QF3",
+     "equips": [
+      null,
+      "E8"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "qf4",
+     "ronda": "quarts",
+     "nom": "Quarts 4",
+     "sigla": "QF4",
+     "equips": [
+      "E7",
+      "E10"
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "pendent"
+    },
+    {
+     "id": "sf1",
+     "ronda": "semis",
+     "nom": "Semifinal 1",
+     "sigla": "SF1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "sf2",
+     "ronda": "semis",
+     "nom": "Semifinal 2",
+     "sigla": "SF2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "final",
+     "ronda": "final",
+     "nom": "Final",
+     "sigla": "Final",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "tercerPuesto",
+     "ronda": "llocs",
+     "nom": "3r i 4t lloc",
+     "sigla": "3r/4t",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf1",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 1",
+     "sigla": "SC1",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consSf2",
+     "ronda": "consSemis",
+     "nom": "Semifinal consolació 2",
+     "sigla": "SC2",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consFinal",
+     "ronda": "consFinal",
+     "nom": "Final consolació · 5è i 6è lloc",
+     "sigla": "5è/6è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "consTercero",
+     "ronda": "llocs",
+     "nom": "7è i 8è lloc",
+     "sigla": "7è/8è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    },
+    {
+     "id": "puesto9",
+     "ronda": "llocs",
+     "nom": "9è i 10è lloc",
+     "sigla": "9è/10è",
+     "equips": [
+      null,
+      null
+     ],
+     "guanyador": null,
+     "perdedor": null,
+     "marcador": "",
+     "estat": "bloquejat"
+    }
+   ],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "minigolf",
+   "nom": "Minigolf",
+   "categoria": "individual",
+   "format": "classificacio",
+   "taulaPunts": [
+    40,
+    32,
+    29,
+    26,
+    20,
+    17,
+    14,
+    11,
+    8,
+    5
+   ],
+   "partits": [],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "ciclismo",
+   "nom": "Ciclisme",
+   "categoria": "resistencia",
+   "format": "classificacio",
+   "taulaPunts": [
+    50,
+    37,
+    33,
+    29,
+    25,
+    21,
+    17,
+    13,
+    9,
+    5
+   ],
+   "partits": [],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "atletismo",
+   "nom": "Atletisme",
+   "categoria": "resistencia",
+   "format": "classificacio",
+   "taulaPunts": [
+    50,
+    37,
+    33,
+    29,
+    25,
+    21,
+    17,
+    13,
+    9,
+    5
+   ],
+   "partits": [],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  },
+  {
+   "id": "natacion",
+   "nom": "Natació",
+   "categoria": "resistencia",
+   "format": "classificacio",
+   "taulaPunts": [
+    50,
+    37,
+    33,
+    29,
+    25,
+    21,
+    17,
+    13,
+    9,
+    5
+   ],
+   "partits": [],
+   "posicions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "punts": {}
+  }
+ ],
+ "general": [
+  {
+   "id": "E1",
+   "nom": "Equip 1",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E10",
+   "nom": "Equip 10",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E2",
+   "nom": "Equip 2",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E3",
+   "nom": "Equip 3",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E4",
+   "nom": "Equip 4",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E5",
+   "nom": "Equip 5",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E6",
+   "nom": "Equip 6",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E7",
+   "nom": "Equip 7",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E8",
+   "nom": "Equip 8",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E9",
+   "nom": "Equip 9",
+   "punts": 0,
+   "posicio": 1
+  }
+ ],
+ "avisos": []
+}

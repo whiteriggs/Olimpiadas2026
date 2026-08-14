@@ -7,7 +7,9 @@
     {
       "id": "2026-08-14-18-reunio-informativa",
       "esport": "Reunió informativa",
+      "esportId": "",
       "detalle": "",
+      "partits": [],
       "tipo": "acte",
       "fecha": "2026-08-14",
       "hora": "18:00",
@@ -20,7 +22,9 @@
     {
       "id": "2026-08-15-09-natacio",
       "esport": "Natació",
+      "esportId": "natacion",
       "detalle": "",
+      "partits": [],
       "tipo": "esport",
       "fecha": "2026-08-15",
       "hora": "09:00",
@@ -33,7 +37,9 @@
     {
       "id": "2026-08-15-15-ping-pong",
       "esport": "Ping-pong",
+      "esportId": "ping-pong",
       "detalle": "",
+      "partits": [],
       "tipo": "esport",
       "fecha": "2026-08-15",
       "hora": "15:00",
@@ -46,7 +52,9 @@
     {
       "id": "2026-08-15-15-voleibol-platja",
       "esport": "Voleibol platja",
+      "esportId": "voleibol-playa",
       "detalle": "",
+      "partits": [],
       "tipo": "esport",
       "fecha": "2026-08-15",
       "hora": "15:00",
@@ -59,7 +67,9 @@
     {
       "id": "2026-08-15-20-tardeo",
       "esport": "Tardeo",
+      "esportId": "",
       "detalle": "",
+      "partits": [],
       "tipo": "acte",
       "fecha": "2026-08-15",
       "hora": "20:00",
@@ -72,7 +82,9 @@
     {
       "id": "2026-08-16-10-minigolf",
       "esport": "Minigolf",
+      "esportId": "minigolf",
       "detalle": "",
+      "partits": [],
       "tipo": "esport",
       "fecha": "2026-08-16",
       "hora": "10:00",
@@ -85,7 +97,9 @@
     {
       "id": "2026-08-16-10-ping-pong",
       "esport": "Ping-pong",
+      "esportId": "ping-pong",
       "detalle": "",
+      "partits": [],
       "tipo": "esport",
       "fecha": "2026-08-16",
       "hora": "10:00",
@@ -98,7 +112,9 @@
     {
       "id": "2026-08-16-10-voleibol-platja",
       "esport": "Voleibol platja",
+      "esportId": "voleibol-playa",
       "detalle": "",
+      "partits": [],
       "tipo": "esport",
       "fecha": "2026-08-16",
       "hora": "10:00",
@@ -111,7 +127,9 @@
     {
       "id": "2026-08-16-16-escacs",
       "esport": "Escacs",
+      "esportId": "ajedrez",
       "detalle": "",
+      "partits": [],
       "tipo": "esport",
       "fecha": "2026-08-16",
       "hora": "16:00",
@@ -124,7 +142,12 @@
     {
       "id": "2026-08-16-20-futbol-7",
       "esport": "Futbol 7",
+      "esportId": "futbol-siete",
       "detalle": "Prèvia 1, Prèvia 2",
+      "partits": [
+        "previa1",
+        "previa2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-16",
       "hora": "20:00",
@@ -137,7 +160,12 @@
     {
       "id": "2026-08-16-22-basquet",
       "esport": "Bàsquet",
+      "esportId": "baloncesto",
       "detalle": "Prèvia 1, Prèvia 2",
+      "partits": [
+        "previa1",
+        "previa2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-16",
       "hora": "22:00",
@@ -150,7 +178,11 @@
     {
       "id": "2026-08-17-18-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "Prèvia 1",
+      "partits": [
+        "previa1"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-17",
       "hora": "18:00",
@@ -163,7 +195,11 @@
     {
       "id": "2026-08-17-19-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "Prèvia 2",
+      "partits": [
+        "previa2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-17",
       "hora": "19:00",
@@ -176,7 +212,12 @@
     {
       "id": "2026-08-17-20-futbol-7",
       "esport": "Futbol 7",
+      "esportId": "futbol-siete",
       "detalle": "Quarts 1, Quarts 3",
+      "partits": [
+        "qf1",
+        "qf3"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-17",
       "hora": "20:00",
@@ -189,7 +230,12 @@
     {
       "id": "2026-08-17-21-futbol-7",
       "esport": "Futbol 7",
+      "esportId": "futbol-siete",
       "detalle": "Quarts 2, Quarts 4",
+      "partits": [
+        "qf2",
+        "qf4"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-17",
       "hora": "21:00",
@@ -202,7 +248,11 @@
     {
       "id": "2026-08-17-22-futbol-7",
       "esport": "Futbol 7",
+      "esportId": "futbol-siete",
       "detalle": "9è i 10è lloc",
+      "partits": [
+        "puesto9"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-17",
       "hora": "22:00",
@@ -215,7 +265,11 @@
     {
       "id": "2026-08-18-18-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "Quarts 1",
+      "partits": [
+        "qf1"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-18",
       "hora": "18:00",
@@ -228,7 +282,11 @@
     {
       "id": "2026-08-18-19-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "Quarts 2",
+      "partits": [
+        "qf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-18",
       "hora": "19:00",
@@ -241,7 +299,11 @@
     {
       "id": "2026-08-18-20-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "Quarts 3",
+      "partits": [
+        "qf3"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-18",
       "hora": "20:00",
@@ -254,7 +316,11 @@
     {
       "id": "2026-08-18-21-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "Quarts 4",
+      "partits": [
+        "qf4"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-18",
       "hora": "21:00",
@@ -267,7 +333,12 @@
     {
       "id": "2026-08-18-22-futbol-7",
       "esport": "Futbol 7",
+      "esportId": "futbol-siete",
       "detalle": "Semifinal consolació 1, Semifinal consolació 2",
+      "partits": [
+        "consSf1",
+        "consSf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-18",
       "hora": "22:00",
@@ -280,7 +351,12 @@
     {
       "id": "2026-08-18-23-futbol-7",
       "esport": "Futbol 7",
+      "esportId": "futbol-siete",
       "detalle": "Semifinal 1, Semifinal 2",
+      "partits": [
+        "sf1",
+        "sf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-18",
       "hora": "23:00",
@@ -293,7 +369,11 @@
     {
       "id": "2026-08-19-18-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "Semifinal consolació 1",
+      "partits": [
+        "consSf1"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-19",
       "hora": "18:00",
@@ -306,7 +386,11 @@
     {
       "id": "2026-08-19-19-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "Semifinal consolació 2",
+      "partits": [
+        "consSf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-19",
       "hora": "19:00",
@@ -319,7 +403,12 @@
     {
       "id": "2026-08-19-20-futbol-7",
       "esport": "Futbol 7",
+      "esportId": "futbol-siete",
       "detalle": "7è i 8è lloc, 3r i 4t lloc",
+      "partits": [
+        "consTercero",
+        "tercerPuesto"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-19",
       "hora": "20:00",
@@ -332,7 +421,12 @@
     {
       "id": "2026-08-19-21-futbol-7",
       "esport": "Futbol 7",
+      "esportId": "futbol-siete",
       "detalle": "Final consolació · 5è i 6è lloc, Final",
+      "partits": [
+        "consFinal",
+        "final"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-19",
       "hora": "21:00",
@@ -345,7 +439,11 @@
     {
       "id": "2026-08-19-22-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "Semifinal 1",
+      "partits": [
+        "sf1"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-19",
       "hora": "22:00",
@@ -358,7 +456,11 @@
     {
       "id": "2026-08-19-23-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "Semifinal 2",
+      "partits": [
+        "sf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-19",
       "hora": "23:00",
@@ -371,7 +473,12 @@
     {
       "id": "2026-08-20-19-basquet",
       "esport": "Bàsquet",
+      "esportId": "baloncesto",
       "detalle": "Quarts 1, Quarts 2",
+      "partits": [
+        "qf1",
+        "qf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-20",
       "hora": "19:00",
@@ -384,7 +491,12 @@
     {
       "id": "2026-08-20-20-basquet",
       "esport": "Bàsquet",
+      "esportId": "baloncesto",
       "detalle": "Quarts 3, Quarts 4",
+      "partits": [
+        "qf3",
+        "qf4"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-20",
       "hora": "20:00",
@@ -397,7 +509,16 @@
     {
       "id": "2026-08-20-20-dards",
       "esport": "Dards",
+      "esportId": "dardos",
       "detalle": "Prèvia 1, Prèvia 2, Quarts 1, Quarts 2, Quarts 3, Quarts 4",
+      "partits": [
+        "previa1",
+        "previa2",
+        "qf1",
+        "qf2",
+        "qf3",
+        "qf4"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-20",
       "hora": "20:00",
@@ -410,7 +531,12 @@
     {
       "id": "2026-08-20-20-futboli",
       "esport": "Futbolí",
+      "esportId": "futbolin",
       "detalle": "Prèvia 1, Prèvia 2",
+      "partits": [
+        "previa1",
+        "previa2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-20",
       "hora": "20:00",
@@ -423,7 +549,12 @@
     {
       "id": "2026-08-20-22-voleibol-pista",
       "esport": "Voleibol pista",
+      "esportId": "voleibol-pista",
       "detalle": "Prèvia 1, Prèvia 2",
+      "partits": [
+        "previa1",
+        "previa2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-20",
       "hora": "22:00",
@@ -436,7 +567,12 @@
     {
       "id": "2026-08-21-18-voleibol-pista",
       "esport": "Voleibol pista",
+      "esportId": "voleibol-pista",
       "detalle": "Quarts 1, Quarts 4",
+      "partits": [
+        "qf1",
+        "qf4"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "18:00",
@@ -449,7 +585,12 @@
     {
       "id": "2026-08-21-19-voleibol-pista",
       "esport": "Voleibol pista",
+      "esportId": "voleibol-pista",
       "detalle": "Quarts 2, Quarts 3",
+      "partits": [
+        "qf2",
+        "qf3"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "19:00",
@@ -462,7 +603,11 @@
     {
       "id": "2026-08-21-19-waterpolo",
       "esport": "Waterpolo",
+      "esportId": "waterpolo",
       "detalle": "Prèvia 2",
+      "partits": [
+        "previa2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "19:30",
@@ -475,7 +620,18 @@
     {
       "id": "2026-08-21-20-dards",
       "esport": "Dards",
+      "esportId": "dardos",
       "detalle": "Quarts 1, Quarts 2, Quarts 3, Quarts 4, Semifinal consolació 1, Semifinal consolació 2, Semifinal 1, Semifinal 2",
+      "partits": [
+        "qf1",
+        "qf2",
+        "qf3",
+        "qf4",
+        "consSf1",
+        "consSf2",
+        "sf1",
+        "sf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "20:00",
@@ -488,7 +644,18 @@
     {
       "id": "2026-08-21-20-futboli",
       "esport": "Futbolí",
+      "esportId": "futbolin",
       "detalle": "Quarts 1, Quarts 2, Quarts 3, Quarts 4, Semifinal consolació 1, Semifinal consolació 2, Semifinal 1, Semifinal 2",
+      "partits": [
+        "qf1",
+        "qf2",
+        "qf3",
+        "qf4",
+        "consSf1",
+        "consSf2",
+        "sf1",
+        "sf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "20:00",
@@ -501,7 +668,11 @@
     {
       "id": "2026-08-21-20-waterpolo",
       "esport": "Waterpolo",
+      "esportId": "waterpolo",
       "detalle": "Prèvia 1",
+      "partits": [
+        "previa1"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "20:15",
@@ -514,7 +685,12 @@
     {
       "id": "2026-08-21-21-basquet",
       "esport": "Bàsquet",
+      "esportId": "baloncesto",
       "detalle": "Semifinal consolació 1, Semifinal consolació 2",
+      "partits": [
+        "consSf1",
+        "consSf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "21:00",
@@ -527,7 +703,12 @@
     {
       "id": "2026-08-21-22-basquet",
       "esport": "Bàsquet",
+      "esportId": "baloncesto",
       "detalle": "Semifinal 1, Semifinal 2",
+      "partits": [
+        "sf1",
+        "sf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "22:00",
@@ -540,7 +721,9 @@
     {
       "id": "2026-08-22-09-ciclisme",
       "esport": "Ciclisme",
+      "esportId": "ciclismo",
       "detalle": "",
+      "partits": [],
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "09:00",
@@ -553,7 +736,11 @@
     {
       "id": "2026-08-22-11-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "Prèvia 1",
+      "partits": [
+        "previa1"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "11:00",
@@ -566,7 +753,11 @@
     {
       "id": "2026-08-22-12-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "Prèvia 2",
+      "partits": [
+        "previa2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "12:00",
@@ -579,7 +770,11 @@
     {
       "id": "2026-08-22-14-waterpolo",
       "esport": "Waterpolo",
+      "esportId": "waterpolo",
       "detalle": "Quarts 1",
+      "partits": [
+        "qf1"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "14:00",
@@ -592,7 +787,11 @@
     {
       "id": "2026-08-22-14-waterpolo-2",
       "esport": "Waterpolo",
+      "esportId": "waterpolo",
       "detalle": "Quarts 2",
+      "partits": [
+        "qf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "14:45",
@@ -605,7 +804,11 @@
     {
       "id": "2026-08-22-15-waterpolo",
       "esport": "Waterpolo",
+      "esportId": "waterpolo",
       "detalle": "Quarts 3",
+      "partits": [
+        "qf3"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "15:30",
@@ -618,7 +821,11 @@
     {
       "id": "2026-08-22-16-waterpolo",
       "esport": "Waterpolo",
+      "esportId": "waterpolo",
       "detalle": "Quarts 4",
+      "partits": [
+        "qf4"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "16:15",
@@ -631,7 +838,11 @@
     {
       "id": "2026-08-22-17-voleibol-pista",
       "esport": "Voleibol pista",
+      "esportId": "voleibol-pista",
       "detalle": "9è i 10è lloc",
+      "partits": [
+        "puesto9"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "17:00",
@@ -644,7 +855,12 @@
     {
       "id": "2026-08-22-18-voleibol-pista",
       "esport": "Voleibol pista",
+      "esportId": "voleibol-pista",
       "detalle": "Semifinal consolació 1, Semifinal consolació 2",
+      "partits": [
+        "consSf1",
+        "consSf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "18:00",
@@ -657,7 +873,9 @@
     {
       "id": "2026-08-22-19-atletisme",
       "esport": "Atletisme",
+      "esportId": "atletismo",
       "detalle": "",
+      "partits": [],
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "19:00",
@@ -670,7 +888,9 @@
     {
       "id": "2026-08-22-22-dards",
       "esport": "Dards",
+      "esportId": "dardos",
       "detalle": "",
+      "partits": [],
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "22:00",
@@ -683,7 +903,9 @@
     {
       "id": "2026-08-22-22-futboli",
       "esport": "Futbolí",
+      "esportId": "futbolin",
       "detalle": "",
+      "partits": [],
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "22:00",
@@ -696,7 +918,12 @@
     {
       "id": "2026-08-22-23-voleibol-pista",
       "esport": "Voleibol pista",
+      "esportId": "voleibol-pista",
       "detalle": "Semifinal 1, Semifinal 2",
+      "partits": [
+        "sf1",
+        "sf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "23:00",
@@ -709,7 +936,9 @@
     {
       "id": "2026-08-23-10-atletisme",
       "esport": "Atletisme",
+      "esportId": "atletismo",
       "detalle": "",
+      "partits": [],
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "10:00",
@@ -722,7 +951,14 @@
     {
       "id": "2026-08-23-13-waterpolo",
       "esport": "Waterpolo",
+      "esportId": "waterpolo",
       "detalle": "Semifinal consolació 1, Semifinal consolació 2, Semifinal 1, Semifinal 2",
+      "partits": [
+        "consSf1",
+        "consSf2",
+        "sf1",
+        "sf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "13:00",
@@ -735,7 +971,11 @@
     {
       "id": "2026-08-23-16-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "7è i 8è lloc",
+      "partits": [
+        "consTercero"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "16:00",
@@ -748,7 +988,11 @@
     {
       "id": "2026-08-23-17-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "3r i 4t lloc",
+      "partits": [
+        "tercerPuesto"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "17:00",
@@ -761,7 +1005,9 @@
     {
       "id": "2026-08-23-19-atletisme",
       "esport": "Atletisme",
+      "esportId": "atletismo",
       "detalle": "",
+      "partits": [],
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "19:00",
@@ -774,7 +1020,12 @@
     {
       "id": "2026-08-23-21-basquet",
       "esport": "Bàsquet",
+      "esportId": "baloncesto",
       "detalle": "7è i 8è lloc, 3r i 4t lloc",
+      "partits": [
+        "consTercero",
+        "tercerPuesto"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "21:00",
@@ -787,7 +1038,11 @@
     {
       "id": "2026-08-23-22-basquet",
       "esport": "Bàsquet",
+      "esportId": "baloncesto",
       "detalle": "Final",
+      "partits": [
+        "final"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "22:00",
@@ -800,7 +1055,12 @@
     {
       "id": "2026-08-23-23-basquet",
       "esport": "Bàsquet",
+      "esportId": "baloncesto",
       "detalle": "Final consolació · 5è i 6è lloc, 9è i 10è lloc",
+      "partits": [
+        "consFinal",
+        "puesto9"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "23:00",
@@ -813,7 +1073,11 @@
     {
       "id": "2026-08-24-18-waterpolo",
       "esport": "Waterpolo",
+      "esportId": "waterpolo",
       "detalle": "Final consolació · 5è i 6è lloc",
+      "partits": [
+        "consFinal"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-24",
       "hora": "18:00",
@@ -826,7 +1090,11 @@
     {
       "id": "2026-08-24-18-waterpolo-2",
       "esport": "Waterpolo",
+      "esportId": "waterpolo",
       "detalle": "3r i 4t lloc",
+      "partits": [
+        "tercerPuesto"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-24",
       "hora": "18:45",
@@ -839,7 +1107,11 @@
     {
       "id": "2026-08-24-19-waterpolo",
       "esport": "Waterpolo",
+      "esportId": "waterpolo",
       "detalle": "Final",
+      "partits": [
+        "final"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-24",
       "hora": "19:30",
@@ -852,7 +1124,12 @@
     {
       "id": "2026-08-24-20-voleibol-pista",
       "esport": "Voleibol pista",
+      "esportId": "voleibol-pista",
       "detalle": "7è i 8è lloc, 3r i 4t lloc",
+      "partits": [
+        "consTercero",
+        "tercerPuesto"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-24",
       "hora": "20:00",
@@ -865,7 +1142,11 @@
     {
       "id": "2026-08-24-20-waterpolo",
       "esport": "Waterpolo",
+      "esportId": "waterpolo",
       "detalle": "7è i 8è lloc",
+      "partits": [
+        "consTercero"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-24",
       "hora": "20:15",
@@ -878,7 +1159,12 @@
     {
       "id": "2026-08-24-21-voleibol-pista",
       "esport": "Voleibol pista",
+      "esportId": "voleibol-pista",
       "detalle": "Final consolació · 5è i 6è lloc, Final",
+      "partits": [
+        "consFinal",
+        "final"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-24",
       "hora": "21:00",
@@ -891,7 +1177,11 @@
     {
       "id": "2026-08-26-18-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "Quarts 1",
+      "partits": [
+        "qf1"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-26",
       "hora": "18:00",
@@ -904,7 +1194,11 @@
     {
       "id": "2026-08-26-19-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "Quarts 2",
+      "partits": [
+        "qf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-26",
       "hora": "19:00",
@@ -917,7 +1211,11 @@
     {
       "id": "2026-08-26-22-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "Quarts 3",
+      "partits": [
+        "qf3"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-26",
       "hora": "22:00",
@@ -930,7 +1228,11 @@
     {
       "id": "2026-08-26-23-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "Quarts 4",
+      "partits": [
+        "qf4"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-26",
       "hora": "23:00",
@@ -943,7 +1245,12 @@
     {
       "id": "2026-08-27-21-dards",
       "esport": "Dards",
+      "esportId": "dardos",
       "detalle": "7è i 8è lloc, 3r i 4t lloc",
+      "partits": [
+        "consTercero",
+        "tercerPuesto"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-27",
       "hora": "21:00",
@@ -956,7 +1263,11 @@
     {
       "id": "2026-08-28-18-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "9è i 10è lloc",
+      "partits": [
+        "puesto9"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-28",
       "hora": "18:00",
@@ -969,7 +1280,11 @@
     {
       "id": "2026-08-28-19-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "Semifinal consolació 1",
+      "partits": [
+        "consSf1"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-28",
       "hora": "19:00",
@@ -982,7 +1297,11 @@
     {
       "id": "2026-08-28-20-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "Semifinal consolació 2",
+      "partits": [
+        "consSf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-28",
       "hora": "20:00",
@@ -995,7 +1314,12 @@
     {
       "id": "2026-08-28-21-dards",
       "esport": "Dards",
+      "esportId": "dardos",
       "detalle": "Final consolació · 5è i 6è lloc, Final",
+      "partits": [
+        "consFinal",
+        "final"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-28",
       "hora": "21:00",
@@ -1008,7 +1332,11 @@
     {
       "id": "2026-08-28-23-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "Semifinal 1",
+      "partits": [
+        "sf1"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-28",
       "hora": "23:00",
@@ -1021,7 +1349,11 @@
     {
       "id": "2026-08-28-00-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "Semifinal 2",
+      "partits": [
+        "sf2"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-28",
       "hora": "00:00",
@@ -1034,7 +1366,11 @@
     {
       "id": "2026-08-29-11-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "7è i 8è lloc",
+      "partits": [
+        "consTercero"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-29",
       "hora": "11:00",
@@ -1047,7 +1383,11 @@
     {
       "id": "2026-08-29-12-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "3r i 4t lloc",
+      "partits": [
+        "tercerPuesto"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-29",
       "hora": "12:00",
@@ -1060,7 +1400,11 @@
     {
       "id": "2026-08-29-14-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "9è i 10è lloc",
+      "partits": [
+        "puesto9"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-29",
       "hora": "14:00",
@@ -1073,7 +1417,11 @@
     {
       "id": "2026-08-29-15-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "Final consolació · 5è i 6è lloc",
+      "partits": [
+        "consFinal"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-29",
       "hora": "15:00",
@@ -1086,7 +1434,11 @@
     {
       "id": "2026-08-29-16-handbol",
       "esport": "Handbol",
+      "esportId": "balonmano",
       "detalle": "Final",
+      "partits": [
+        "final"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-29",
       "hora": "16:00",
@@ -1099,7 +1451,11 @@
     {
       "id": "2026-08-29-19-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "Final consolació · 5è i 6è lloc",
+      "partits": [
+        "consFinal"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-29",
       "hora": "19:00",
@@ -1112,7 +1468,11 @@
     {
       "id": "2026-08-29-20-futbol-sala",
       "esport": "Futbol sala",
+      "esportId": "futbol-sala",
       "detalle": "Final",
+      "partits": [
+        "final"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-29",
       "hora": "20:00",
@@ -1125,7 +1485,9 @@
     {
       "id": "2026-08-29-21-acte",
       "esport": "Acte",
+      "esportId": "",
       "detalle": "",
+      "partits": [],
       "tipo": "acte",
       "fecha": "2026-08-29",
       "hora": "21:00",
@@ -1138,7 +1500,9 @@
     {
       "id": "2026-08-29-21-sopar-cloenda",
       "esport": "Sopar cloenda",
+      "esportId": "",
       "detalle": "",
+      "partits": [],
       "tipo": "acte",
       "fecha": "2026-08-29",
       "hora": "21:00",

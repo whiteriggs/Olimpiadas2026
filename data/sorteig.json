@@ -1,0 +1,478 @@
+{
+ "petanca": {
+  "previa1": [
+   "E5",
+   "E9"
+  ],
+  "previa2": [
+   "E7",
+   "E3"
+  ],
+  "qf1Rival": "E1",
+  "qf2": [
+   "E4",
+   "E8"
+  ],
+  "qf3Rival": "E2",
+  "qf4": [
+   "E10",
+   "E6"
+  ],
+  "exentos": [
+   "E1",
+   "E4",
+   "E8",
+   "E2",
+   "E10",
+   "E6"
+  ]
+ },
+ "voleibol-playa": {
+  "previa1": [
+   "E1",
+   "E8"
+  ],
+  "previa2": [
+   "E10",
+   "E5"
+  ],
+  "qf1Rival": "E3",
+  "qf2": [
+   "E2",
+   "E6"
+  ],
+  "qf3Rival": "E9",
+  "qf4": [
+   "E7",
+   "E4"
+  ],
+  "exentos": [
+   "E3",
+   "E2",
+   "E6",
+   "E9",
+   "E7",
+   "E4"
+  ]
+ },
+ "voleibol-pista": {
+  "previa1": [
+   "E2",
+   "E3"
+  ],
+  "previa2": [
+   "E4",
+   "E9"
+  ],
+  "qf1Rival": "E8",
+  "qf2": [
+   "E7",
+   "E1"
+  ],
+  "qf3Rival": "E5",
+  "qf4": [
+   "E6",
+   "E10"
+  ],
+  "exentos": [
+   "E8",
+   "E7",
+   "E1",
+   "E5",
+   "E6",
+   "E10"
+  ]
+ },
+ "tenis": {
+  "previa1": [
+   "E2",
+   "E7"
+  ],
+  "previa2": [
+   "E1",
+   "E9"
+  ],
+  "qf1Rival": "E5",
+  "qf2": [
+   "E8",
+   "E10"
+  ],
+  "qf3Rival": "E6",
+  "qf4": [
+   "E3",
+   "E4"
+  ],
+  "exentos": [
+   "E5",
+   "E8",
+   "E10",
+   "E6",
+   "E3",
+   "E4"
+  ]
+ },
+ "fronton": {
+  "previa1": [
+   "E4",
+   "E3"
+  ],
+  "previa2": [
+   "E5",
+   "E1"
+  ],
+  "qf1Rival": "E6",
+  "qf2": [
+   "E10",
+   "E2"
+  ],
+  "qf3Rival": "E8",
+  "qf4": [
+   "E9",
+   "E7"
+  ],
+  "exentos": [
+   "E6",
+   "E10",
+   "E2",
+   "E8",
+   "E9",
+   "E7"
+  ]
+ },
+ "padel": {
+  "previa1": [
+   "E10",
+   "E3"
+  ],
+  "previa2": [
+   "E6",
+   "E8"
+  ],
+  "qf1Rival": "E7",
+  "qf2": [
+   "E4",
+   "E5"
+  ],
+  "qf3Rival": "E2",
+  "qf4": [
+   "E9",
+   "E1"
+  ],
+  "exentos": [
+   "E7",
+   "E4",
+   "E5",
+   "E2",
+   "E9",
+   "E1"
+  ]
+ },
+ "ping-pong": {
+  "previa1": [
+   "E9",
+   "E8"
+  ],
+  "previa2": [
+   "E6",
+   "E4"
+  ],
+  "qf1Rival": "E5",
+  "qf2": [
+   "E2",
+   "E3"
+  ],
+  "qf3Rival": "E7",
+  "qf4": [
+   "E1",
+   "E10"
+  ],
+  "exentos": [
+   "E5",
+   "E2",
+   "E3",
+   "E7",
+   "E1",
+   "E10"
+  ]
+ },
+ "futbol-sala": {
+  "previa1": [
+   "E10",
+   "E1"
+  ],
+  "previa2": [
+   "E8",
+   "E2"
+  ],
+  "qf1Rival": "E4",
+  "qf2": [
+   "E3",
+   "E5"
+  ],
+  "qf3Rival": "E7",
+  "qf4": [
+   "E6",
+   "E9"
+  ],
+  "exentos": [
+   "E4",
+   "E3",
+   "E5",
+   "E7",
+   "E6",
+   "E9"
+  ]
+ },
+ "futbol-siete": {
+  "previa1": [
+   "E5",
+   "E4"
+  ],
+  "previa2": [
+   "E7",
+   "E9"
+  ],
+  "qf1Rival": "E10",
+  "qf2": [
+   "E6",
+   "E1"
+  ],
+  "qf3Rival": "E2",
+  "qf4": [
+   "E8",
+   "E3"
+  ],
+  "exentos": [
+   "E10",
+   "E6",
+   "E1",
+   "E2",
+   "E8",
+   "E3"
+  ]
+ },
+ "balonmano": {
+  "previa1": [
+   "E8",
+   "E5"
+  ],
+  "previa2": [
+   "E3",
+   "E1"
+  ],
+  "qf1Rival": "E6",
+  "qf2": [
+   "E4",
+   "E2"
+  ],
+  "qf3Rival": "E7",
+  "qf4": [
+   "E10",
+   "E9"
+  ],
+  "exentos": [
+   "E6",
+   "E4",
+   "E2",
+   "E7",
+   "E10",
+   "E9"
+  ]
+ },
+ "baloncesto": {
+  "previa1": [
+   "E6",
+   "E5"
+  ],
+  "previa2": [
+   "E4",
+   "E10"
+  ],
+  "qf1Rival": "E7",
+  "qf2": [
+   "E2",
+   "E1"
+  ],
+  "qf3Rival": "E8",
+  "qf4": [
+   "E3",
+   "E9"
+  ],
+  "exentos": [
+   "E7",
+   "E2",
+   "E1",
+   "E8",
+   "E3",
+   "E9"
+  ]
+ },
+ "waterpolo": {
+  "previa1": [
+   "E10",
+   "E7"
+  ],
+  "previa2": [
+   "E6",
+   "E2"
+  ],
+  "qf1Rival": "E3",
+  "qf2": [
+   "E1",
+   "E4"
+  ],
+  "qf3Rival": "E5",
+  "qf4": [
+   "E8",
+   "E9"
+  ],
+  "exentos": [
+   "E3",
+   "E1",
+   "E4",
+   "E5",
+   "E8",
+   "E9"
+  ]
+ },
+ "domino": {
+  "previa1": [
+   "E2",
+   "E1"
+  ],
+  "previa2": [
+   "E3",
+   "E6"
+  ],
+  "qf1Rival": "E9",
+  "qf2": [
+   "E5",
+   "E10"
+  ],
+  "qf3Rival": "E4",
+  "qf4": [
+   "E7",
+   "E8"
+  ],
+  "exentos": [
+   "E9",
+   "E5",
+   "E10",
+   "E4",
+   "E7",
+   "E8"
+  ]
+ },
+ "ajedrez": {
+  "previa1": [
+   "E10",
+   "E9"
+  ],
+  "previa2": [
+   "E8",
+   "E7"
+  ],
+  "qf1Rival": "E4",
+  "qf2": [
+   "E2",
+   "E1"
+  ],
+  "qf3Rival": "E5",
+  "qf4": [
+   "E3",
+   "E6"
+  ],
+  "exentos": [
+   "E4",
+   "E2",
+   "E1",
+   "E5",
+   "E3",
+   "E6"
+  ]
+ },
+ "dardos": {
+  "previa1": [
+   "E7",
+   "E5"
+  ],
+  "previa2": [
+   "E2",
+   "E10"
+  ],
+  "qf1Rival": "E6",
+  "qf2": [
+   "E1",
+   "E3"
+  ],
+  "qf3Rival": "E8",
+  "qf4": [
+   "E9",
+   "E4"
+  ],
+  "exentos": [
+   "E6",
+   "E1",
+   "E3",
+   "E8",
+   "E9",
+   "E4"
+  ]
+ },
+ "futbolin": {
+  "previa1": [
+   "E7",
+   "E4"
+  ],
+  "previa2": [
+   "E9",
+   "E6"
+  ],
+  "qf1Rival": "E2",
+  "qf2": [
+   "E10",
+   "E3"
+  ],
+  "qf3Rival": "E8",
+  "qf4": [
+   "E5",
+   "E1"
+  ],
+  "exentos": [
+   "E2",
+   "E10",
+   "E3",
+   "E8",
+   "E5",
+   "E1"
+  ]
+ },
+ "billar": {
+  "previa1": [
+   "E2",
+   "E4"
+  ],
+  "previa2": [
+   "E6",
+   "E1"
+  ],
+  "qf1Rival": "E5",
+  "qf2": [
+   "E3",
+   "E9"
+  ],
+  "qf3Rival": "E8",
+  "qf4": [
+   "E7",
+   "E10"
+  ],
+  "exentos": [
+   "E5",
+   "E3",
+   "E9",
+   "E8",
+   "E7",
+   "E10"
+  ]
+ }
+}

@@ -36,6 +36,7 @@ Para hacerlo en local:
 ```sh
 python3 scripts/importar_calendario.py                      # descarga la hoja publicada
 python3 scripts/importar_calendario.py data/calendario-original.csv   # desde el CSV guardado
+python3 scripts/importar_torneig.py                         # equipos, cuadros y puntos
 ```
 
 El script aborta si detecta menos de 50 pruebas, señal de que la hoja ha cambiado
@@ -49,6 +50,16 @@ Genera `data/calendario.json` con:
 | `lligues` | esports sin horario fijo (petanca, dòmino, tennis, frontó, pàdel, billar) |
 | `limites` | fechas límite de cada ronda de las lligues |
 | `avisos` | notas sueltas de la hoja (hoy vacío) |
+
+`scripts/importar_torneig.py` genera además `data/torneig.json` cruzando las
+pestañas *Equips* y *Masculí* con el sorteo que la organización publica en
+[su repo](https://github.com/jordilolapay/clubbegues) (del que guardamos copia en
+`data/sorteig.json`). Resuelve los 15 partidos de cada cuadro, deduce los puestos
+finales y reparte los puntos del reglamento, así que la web sabe contra quién
+jugamos, qué hemos ganado y en qué posición de la general vamos.
+
+El equipo propio se detecta buscando el nombre *Diablos* en la pestaña *Equips*:
+hasta que la organización no lo escriba, la pestaña de puntos lo avisa.
 
 ## Compartir los datos con el equipo
 

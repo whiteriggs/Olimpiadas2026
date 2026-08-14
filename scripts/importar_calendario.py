@@ -19,6 +19,8 @@ import urllib.request
 from datetime import date
 from pathlib import Path
 
+from comu import ESPORTS, PARTIT_PER_NOM
+
 HOJA = "1gB3BzDDBQATh5wTy8JRPxCHLMUqPpnQwFcp3pIsIvLo"
 PESTANIA = "Calendari"
 CSV_URL = (
@@ -154,7 +156,9 @@ def main():
             pruebas.append({
                 "id": ident,
                 "esport": esport,
+                "esportId": (ESPORTS.get(esport) or ("",))[0],
                 "detalle": "" if partidos == ["Tot"] else ", ".join(partidos),
+                "partits": [PARTIT_PER_NOM[p] for p in partidos if p in PARTIT_PER_NOM],
                 "tipo": "acte" if tipo_fila == "ACTE" else "esport",
                 "fecha": fecha,
                 "hora": hora,

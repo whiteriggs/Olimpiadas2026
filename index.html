@@ -47,6 +47,7 @@
       <button class="tab activa" role="tab" data-panel="calendario" aria-selected="true" aria-controls="panel-calendario">Calendari</button>
       <button class="tab" role="tab" data-panel="apuntarse" aria-selected="false" aria-controls="panel-apuntarse">M'apunto</button>
       <button class="tab" role="tab" data-panel="equipo" aria-selected="false" aria-controls="panel-equipo">Equip</button>
+      <button class="tab" role="tab" data-panel="punts" aria-selected="false" aria-controls="panel-punts">Punts</button>
     </nav>
     <button type="button" id="refresca" class="refresca" title="Actualitza-ho tot" aria-label="Actualitza-ho tot">↻</button>
   </div>
@@ -57,6 +58,7 @@
   <p id="aviso" class="aviso" hidden></p>
 
   <section id="panel-calendario" class="panel" role="tabpanel">
+    <div id="seguent" class="seguent" hidden></div>
     <div class="filtros">
       <label>Dia
         <select id="filtroDia"><option value="">Tots</option></select>
@@ -112,6 +114,19 @@
     <div class="tarjeta">
       <h2>Disponibilitat</h2>
       <div class="scroll-x"><table id="tablaDispo" class="tabla"></table></div>
+    </div>
+  </section>
+
+  <section id="panel-punts" class="panel" role="tabpanel" hidden>
+    <div id="nostreEstat"></div>
+    <div class="tarjeta">
+      <h2>Classificació general</h2>
+      <div class="scroll-x"><table id="classificacio" class="tabla"></table></div>
+      <p class="ayuda">Punts per lloc: esports d'equip 70/54/48… · resistència 50/37/33… · individuals 40/32/29…</p>
+    </div>
+    <div class="tarjeta">
+      <h2>On som a cada esport</h2>
+      <div id="nostrePas" class="resumen"></div>
     </div>
   </section>
 

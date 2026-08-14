@@ -27,6 +27,7 @@ const ALIES = {
 const canonic = (nom) => ALIES[nom] || nom;
 
 let cal = { pruebas: [], lligues: [], limites: [], avisos: [] };
+let torneig = null;
 let personas = [];
 let yo = null;
 let fechas = [];
@@ -85,6 +86,50 @@ function dispoDe(persona, fecha) {
   return (persona.disponibilidad || {})[fecha] || "";
 }
 
+/* ---------- torneig ---------- */
+
+const nosaltres = () => (torneig && torneig.nosaltres) || null;
+
+function nomEquip(id) {
+  if (!id) return null;
+  const equip = (torneig.equips || []).find((e) => e.id === id);
+  return equip ? equip.nom : id;
+}
+
+function esportDe(idEsport) {
+  return torneig ? (torneig.esports || []).find((e) => e.id === idEsport) : null;
+}
+
+/** Els partits del quadre que es juguen en aquesta franja del calendari. */
+function partitsDe(p) {
+  const esport = esportDe(p.esportId);
+  if (!esport || !p.partits.length) return [];
+  return esport.partits.filter((x) => p.partits.includes(x.id));
+}
+
+/**
+ * Si hi juguem nosaltres: true, false, o null quan encara depèn d'una ronda anterior.
+ * Les proves sense quadre (natació, atletisme…) hi anem tots.
+ */
+function hiJuguem(p) {
+  const jo = nosaltres();
+  if (!jo || p.tipo !== "esport") return null;
+  const partits = partitsDe(p);
+  if (!partits.length) return p.partits.length ? null : true;
+  if (partits.some((x) => x.equips.includes(jo))) return true;
+  return partits.every((x) => x.estat !== "bloquejat") ? false : null;
+}
+
+function rivalNostre(partit) {
+  const jo = nosaltres();
+  return nomEquip(partit.equips.find((e) => e && e !== jo));
+}
+
+function quiPotVenir(p) {
+  const gent = apuntadosA(p.esport);
+  return { poden: gent.filter((x) => dispoDe(x, p.fecha) === "si").length, total: gent.length };
+}
+
 /* ---------- calendari ---------- */
 
 function pintarCalendario() {
@@ -136,7 +181,11 @@ function pintarCalendario() {
 }
 
 function tarjetaEvento(p, mios) {
-  const art = el("article", "evento" + (mios.has(p.esport) ? " apuntado" : ""));
+  const juguem = hiJuguem(p);
+  const art = el(
+    "article",
+    "evento" + (mios.has(p.esport) ? " apuntado" : "") + (juguem ? " nostre" : "")
+  );
   art.appendChild(el("div", "hora", p.hora));
 
   const cuerpo = el("div", "cuerpo");
@@ -148,8 +197,14 @@ function tarjetaEvento(p, mios) {
       .join(" · "))
   );
   if (p.nota) cuerpo.appendChild(el("div", "nota", p.nota));
-  for (const linea of (p.quiJuga || "").split("\n").filter(Boolean)) {
-    cuerpo.appendChild(el("div", "rival", linea));
+
+  const partits = partitsDe(p);
+  if (partits.length) {
+    for (const partit of partits) cuerpo.appendChild(liniaPartit(partit));
+  } else {
+    for (const linea of (p.quiJuga || "").split("\n").filter(Boolean)) {
+      cuerpo.appendChild(el("div", "rival", linea));
+    }
   }
 
   const gente = apuntadosA(p.esport);
@@ -172,6 +227,161 @@ function tarjetaEvento(p, mios) {
   art.appendChild(cuerpo);
   return art;
 }
+
+function liniaPartit(partit) {
+  const jo = nosaltres();
+  const nostre = jo && partit.equips.includes(jo);
+  const fila = el("div", "rival" + (nostre ? " nostre" : ""));
+  fila.appendChild(el("span", "sigla", partit.sigla));
+
+  const [a, b] = partit.equips;
+  const enfront = a && b ? `${nomEquip(a)} – ${nomEquip(b)}` : "pendent de la ronda anterior";
+  fila.appendChild(el("span", null, enfront));
+
+  if (partit.guanyador) {
+    const guanyem = partit.guanyador === jo;
+    const marcador = partit.marcador ? ` ${partit.marcador}` : "";
+    fila.appendChild(
+      el(
+        "span",
+        "resultat " + (jo ? (guanyem ? "ok" : "falta") : ""),
+        (jo ? (guanyem ? "Guanyem" : "Perdem") : nomEquip(partit.guanyador)) + marcador
+      )
+    );
+  }
+  return fila;
+}
+
+/** Targeta de dalt: el pròxim compromís nostre, amb qui hi pot anar. */
+function pintarSeguent() {
+  const caja = $("#seguent");
+  vaciar(caja);
+  caja.hidden = true;
+  if (!nosaltres()) return;
+
+  const ara = new Date();
+  const proxima = cal.pruebas
+    .filter((p) => p.tipo === "esport" && hiJuguem(p) !== false)
+    .map((p) => ({ p, quan: new Date(`${p.fecha}T${p.hora || "09:00"}:00`) }))
+    .filter((x) => x.quan > ara)
+    .sort((a, b) => a.quan - b.quan)[0];
+  if (!proxima) return;
+
+  const { p } = proxima;
+  const meus = partitsDe(p).filter((x) => x.equips.includes(nosaltres()));
+  const gent = quiPotVenir(p);
+
+  caja.hidden = false;
+  caja.appendChild(el("span", "seguent-etiqueta", "El pròxim nostre"));
+  caja.appendChild(el("strong", null, p.esport));
+  caja.appendChild(
+    el("span", "seguent-quan", `${fmtCorto.format(aFecha(p.fecha))} · ${p.hora} · ${p.lloc}`)
+  );
+  for (const partit of meus) {
+    const rival = rivalNostre(partit);
+    caja.appendChild(el("span", "seguent-rival", `${partit.nom}: contra ${rival || "?"}`));
+  }
+  caja.appendChild(
+    el(
+      "span",
+      "seguent-gent",
+      gent.total
+        ? `Hi poden anar ${gent.poden} dels ${gent.total} apuntats.`
+        : "Encara no s'hi ha apuntat ningú."
+    )
+  );
+}
+
+/* ---------- punts ---------- */
+
+function pintarPunts() {
+  const estat = $("#nostreEstat");
+  vaciar(estat);
+  const tabla = $("#classificacio");
+  vaciar(tabla);
+  const pas = $("#nostrePas");
+  vaciar(pas);
+
+  if (!torneig) {
+    estat.appendChild(el("p", "vacio", "Encara no hi ha dades del torneig."));
+    return;
+  }
+
+  const jo = nosaltres();
+  const meu = jo && torneig.general.find((e) => e.id === jo);
+  if (meu) {
+    const caja = el("div", "tarjeta destacada");
+    caja.appendChild(el("span", "seguent-etiqueta", "Diablos"));
+    caja.appendChild(el("strong", "gran", `${meu.posicio}è · ${meu.punts} punts`));
+    const lider = torneig.general[0];
+    caja.appendChild(
+      el(
+        "span",
+        "meta",
+        meu.posicio === 1
+          ? "Anem primers."
+          : `A ${lider.punts - meu.punts} punts del primer (${lider.nom}).`
+      )
+    );
+    estat.appendChild(caja);
+  } else {
+    estat.appendChild(
+      el("p", "aviso", "Encara no sé quin equip som: falta que l'organització posi els noms del sorteig.")
+    );
+  }
+
+  const cap = tabla.createTHead().insertRow();
+  for (const t of ["#", "Equip", "Punts"]) cap.appendChild(el("th", null, t));
+  const cos = tabla.createTBody();
+  for (const e of torneig.general) {
+    const fila = cos.insertRow();
+    if (e.id === jo) fila.className = "meu";
+    fila.appendChild(el("td", null, String(e.posicio)));
+    fila.appendChild(el("td", null, e.nom));
+    fila.appendChild(el("td", null, String(e.punts)));
+  }
+
+  if (!jo) return;
+  for (const esport of torneig.esports) {
+    const fila = el("div", "resumen-fila");
+    fila.appendChild(el("strong", null, esport.nom));
+    fila.appendChild(el("span", "meta", resumEsport(esport, jo)));
+    pas.appendChild(fila);
+  }
+}
+
+function resumEsport(esport, jo) {
+  const lloc = esport.posicions.indexOf(jo);
+  if (lloc >= 0) {
+    return `Acabat: ${lloc + 1}è lloc · ${esport.taulaPunts[lloc]} punts.`;
+  }
+  if (esport.format !== "quadre") return "Pendent de disputar-se.";
+
+  const seguent = esport.partits.find(
+    (p) => p.estat === "pendent" && p.equips.includes(jo)
+  );
+  if (seguent) {
+    const punts = esport.taulaPunts[PITJOR_SI_GUANYA[seguent.id]];
+    return `${seguent.nom} contra ${rivalNostre(seguent)}. Si guanyem, mínim ${punts} punts.`;
+  }
+  const ultim = [...esport.partits].reverse().find((p) => p.equips.includes(jo));
+  if (ultim && ultim.estat === "jugat") return `Esperem rival després de ${ultim.nom}.`;
+  const bloquejat = esport.partits.find(
+    (p) => p.estat === "bloquejat" && p.equips.includes(jo)
+  );
+  if (bloquejat) return `${bloquejat.nom}: esperem rival de la ronda anterior.`;
+  return "Pendent de rondes anteriors.";
+}
+
+/** Pitjor lloc (índex) que ja no pots baixar si guanyes aquest partit. */
+const PITJOR_SI_GUANYA = {
+  previa1: 7, previa2: 7,
+  qf1: 3, qf2: 3, qf3: 3, qf4: 3,
+  sf1: 1, sf2: 1,
+  final: 0, tercerPuesto: 2,
+  consSf1: 5, consSf2: 5,
+  consFinal: 4, consTercero: 6, puesto9: 8,
+};
 
 /* ---------- apuntar-se ---------- */
 
@@ -434,8 +644,10 @@ function pintarCuentaAtras() {
 
 function repintar() {
   pintarCalendario();
+  pintarSeguent();
   pintarFormulario();
   pintarEquipo();
+  pintarPunts();
 }
 
 /* ---------- dades ---------- */
@@ -461,7 +673,8 @@ async function cargarYPintar() {
 }
 
 async function carregarCalendari(forcant) {
-  const res = await fetch("data/calendario.json", forcant ? { cache: "reload" } : {});
+  const opcions = forcant ? { cache: "reload" } : {};
+  const res = await fetch("data/calendario.json", opcions);
   if (!res.ok) throw new Error("HTTP " + res.status);
   cal = await res.json();
   document.title = `${EQUIP} · ${cal.titulo}`;
@@ -470,6 +683,15 @@ async function carregarCalendari(forcant) {
     $("#actualitzat").textContent =
       "Calendari actualitzat el " + fmtDia.format(aFecha(cal.actualizado)) + ".";
   }
+
+  // Sense resultats la web segueix servint: només perdem cuadres i punts.
+  try {
+    const resT = await fetch("data/torneig.json", opcions);
+    torneig = resT.ok ? await resT.json() : null;
+  } catch {
+    torneig = null;
+  }
+
   derivarListas();
   pintarFiltros();
   pintarCuentaAtras();

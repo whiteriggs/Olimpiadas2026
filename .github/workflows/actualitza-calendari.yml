@@ -2,6 +2,8 @@ name: Actualitza el calendari
 
 on:
   schedule:
+    # Durant les olimpíades cada 20 minuts; la resta de l'any, un cop al dia.
+    - cron: "*/20 * 14-29 8 *"
     - cron: "0 6 * * *"
   workflow_dispatch:
 
@@ -17,14 +19,17 @@ jobs:
       - name: Importa el full de càlcul
         run: python3 scripts/importar_calendario.py
 
+      - name: Importa equips, quadres i punts
+        run: python3 scripts/importar_torneig.py
+
       - name: Publica els canvis
         run: |
-          if git diff --quiet data/calendario.json; then
-            echo "Sense canvis al calendari."
+          if git diff --quiet data/; then
+            echo "Sense canvis."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/calendario.json
-          git commit -m "Actualitza el calendari des del full de càlcul"
+          git add data/
+          git commit -m "Actualitza dades des del full de càlcul"
           git push
