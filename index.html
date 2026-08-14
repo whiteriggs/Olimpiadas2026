@@ -127,10 +127,21 @@
     <div class="tarjeta">
       <h2>On som a cada esport</h2>
       <div id="nostrePas" class="resumen"></div>
-      <p class="ayuda">Els quadres sencers de tots els esports els publica l'organització.</p>
-      <a class="enllac-extern" href="https://jordilolapay.github.io/clubbegues/" target="_blank" rel="noopener">Veure els quadres oficials</a>
+    </div>
+    <div class="tarjeta">
+      <h2>Quadres</h2>
+      <p class="ayuda">Toca un esport per veure el quadre sencer.</p>
+      <div id="graella" class="graella"></div>
     </div>
   </section>
+
+  <dialog id="quadre" class="modal">
+    <div class="modal-cap">
+      <h2 id="quadreTitol"></h2>
+      <button id="tancaQuadre" class="tanca" aria-label="Tanca">&times;</button>
+    </div>
+    <div id="quadreCos" class="modal-cos"></div>
+  </dialog>
 
 </main>
 

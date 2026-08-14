@@ -213,22 +213,120 @@ input[type="text"], input[type="tel"], input[type="password"], select, textarea 
 textarea { resize: vertical; }
 .ayuda { font-size: 0.82rem; color: var(--gris); margin: 10px 0 0; }
 
-.enllac-extern {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 9px 14px;
+/* ---------- graella d'esports i quadres ---------- */
+
+.graella {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+.xip-esport {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 12px;
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--gris);
+  border-radius: var(--radio-s);
+  background: var(--superficie-2);
+  color: var(--texto);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transicio);
+}
+.xip-esport:hover { transform: translateY(-1px); box-shadow: var(--ombra); }
+.xip-esport.acabat { border-left-color: var(--verde); }
+.xip-esport.jugant { border-left-color: var(--ambar); }
+.xip-nom { font-weight: 600; font-size: 0.92rem; }
+.xip-estat { font-size: 0.74rem; color: var(--gris); text-transform: uppercase; letter-spacing: 0.04em; }
+
+.modal {
+  width: min(560px, calc(100vw - 24px));
+  max-height: min(84vh, 760px);
+  padding: 0;
+  border: none;
+  border-radius: var(--radio);
+  background: var(--superficie);
+  color: var(--texto);
+  box-shadow: var(--ombra-alta);
+}
+.modal::backdrop { background: rgb(0 0 0 / 0.55); }
+.modal-cap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--borde);
+  background: var(--superficie);
+  border-radius: var(--radio) var(--radio) 0 0;
+}
+.modal-cap h2 { margin: 0; font-size: 1.05rem; }
+.tanca {
+  flex: none;
+  width: 32px;
+  height: 32px;
   border: 1px solid var(--borde);
   border-radius: 999px;
   background: var(--superficie-2);
   color: var(--texto);
-  font-size: 0.88rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transicio);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
 }
-.enllac-extern::after { content: " ↗"; color: var(--gris); }
-.enllac-extern:hover { border-color: var(--oro); background: var(--oro); color: var(--oro-fosc); }
-.enllac-extern:hover::after { color: inherit; }
+.tanca:hover { background: var(--rojo); border-color: var(--rojo); color: #fff; }
+.modal-cos { padding: 4px 16px 18px; overflow-y: auto; }
+
+.ronda-bloc { margin-top: 18px; }
+.ronda-bloc h3 {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gris);
+}
+.partit, .lloc {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radio-s);
+  background: var(--neutre-fons);
+  margin-bottom: 6px;
+}
+.partit.nostre, .lloc.nostre { background: var(--oro); color: var(--oro-fosc); }
+.partit-equips { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+.partit-equip { font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.partit-equip.guanya { font-weight: 700; }
+.partit-equip.guanya::after { content: " ✓"; color: var(--verde); }
+.partit.nostre .partit-equip.guanya::after { color: inherit; }
+.partit-equip.jo { font-style: italic; }
+.partit-marcador { flex: none; font-variant-numeric: tabular-nums; font-weight: 600; }
+.partit-marcador.buit { color: var(--gris); font-weight: 400; }
+.punts-lloc { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--gris); }
+.lloc.nostre .punts-lloc { color: inherit; }
+
+.resumen-fila.clicable {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  width: 100%;
+  padding: 4px 6px 12px;
+  border: 0;
+  border-bottom: 1px solid var(--borde);
+  border-radius: var(--radio-s);
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.resumen-fila.clicable:hover { background: var(--neutre-fons); }
 
 /* ---------- calendari ---------- */
 

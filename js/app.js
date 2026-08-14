@@ -18,6 +18,9 @@ const fmtHora = new Intl.DateTimeFormat("ca-ES", { hour: "2-digit", minute: "2-d
 
 const aFecha = (iso) => new Date(iso + "T12:00:00");
 
+/** Ordinals en català: 1r, 2n, 3r, 4t i d'aquí en amunt è. */
+const ordinal = (n) => n + (["", "r", "n", "r", "t"][n] || "è");
+
 // La pestanya nova de l'organització anòmena diferent alguns esports.
 const ALIES = {
   "Vòlei": "Voleibol pista",
@@ -312,7 +315,7 @@ function pintarPunts() {
   if (meu) {
     const caja = el("div", "tarjeta destacada");
     caja.appendChild(el("span", "seguent-etiqueta", "Diablos"));
-    caja.appendChild(el("strong", "gran", `${meu.posicio}è · ${meu.punts} punts`));
+    caja.appendChild(el("strong", "gran", `${ordinal(meu.posicio)} · ${meu.punts} punts`));
     const lider = torneig.general[0];
     caja.appendChild(
       el(
@@ -343,17 +346,120 @@ function pintarPunts() {
 
   if (!jo) return;
   for (const esport of torneig.esports) {
-    const fila = el("div", "resumen-fila");
+    const fila = el("button", "resumen-fila clicable");
+    fila.type = "button";
     fila.appendChild(el("strong", null, esport.nom));
     fila.appendChild(el("span", "meta", resumEsport(esport, jo)));
+    fila.addEventListener("click", () => obrirQuadre(esport.id));
     pas.appendChild(fila);
   }
+}
+
+/* ---------- quadres ---------- */
+
+const RONDES = [
+  ["Prèvies", ["previa1", "previa2"]],
+  ["Quarts", ["qf1", "qf2", "qf3", "qf4"]],
+  ["Semifinals", ["sf1", "sf2"]],
+  ["Final", ["final", "tercerPuesto"]],
+  ["Consolació", ["consSf1", "consSf2", "consFinal", "consTercero", "puesto9"]],
+];
+
+/** Com va l'esport: acabat, en joc o encara sense començar. */
+function estatEsport(esport) {
+  if (esport.posicions.some(Boolean)) {
+    return esport.posicions.every(Boolean) ? "acabat" : "jugant";
+  }
+  return esport.partits.some((p) => p.estat === "jugat") ? "jugant" : "pendent";
+}
+
+function pintarGraella() {
+  const caja = $("#graella");
+  vaciar(caja);
+  if (!torneig) return;
+
+  for (const esport of torneig.esports) {
+    const estat = estatEsport(esport);
+    const boto = el("button", `xip-esport ${estat}`);
+    boto.type = "button";
+    boto.appendChild(el("span", "xip-nom", esport.nom));
+    boto.appendChild(
+      el("span", "xip-estat", estat === "acabat" ? "Acabat" : estat === "jugant" ? "En joc" : "Pendent")
+    );
+    boto.addEventListener("click", () => obrirQuadre(esport.id));
+    caja.appendChild(boto);
+  }
+}
+
+function obrirQuadre(idEsport) {
+  const esport = esportDe(idEsport);
+  if (!esport) return;
+  $("#quadreTitol").textContent = esport.nom;
+  const cos = $("#quadreCos");
+  vaciar(cos);
+
+  const meta = el("p", "ayuda", `Punts per lloc: ${esport.taulaPunts.join(" · ")}`);
+  cos.appendChild(meta);
+
+  if (esport.format === "quadre") {
+    const perId = new Map(esport.partits.map((p) => [p.id, p]));
+    for (const [titol, ids] of RONDES) {
+      const partits = ids.map((id) => perId.get(id)).filter(Boolean);
+      if (!partits.length) continue;
+      const bloc = el("div", "ronda-bloc");
+      bloc.appendChild(el("h3", null, titol));
+      for (const partit of partits) bloc.appendChild(filaQuadre(partit));
+      cos.appendChild(bloc);
+    }
+  }
+
+  const decidides = esport.posicions.filter(Boolean).length;
+  if (decidides) {
+    const bloc = el("div", "ronda-bloc");
+    bloc.appendChild(el("h3", null, "Classificació"));
+    esport.posicions.forEach((idEquip, i) => {
+      if (!idEquip) return;
+      const fila = el("div", "lloc" + (idEquip === nosaltres() ? " nostre" : ""));
+      fila.appendChild(el("span", "sigla", ordinal(i + 1)));
+      fila.appendChild(el("span", null, nomEquip(idEquip)));
+      fila.appendChild(el("span", "punts-lloc", `${esport.taulaPunts[i]} p`));
+      bloc.appendChild(fila);
+    });
+    cos.appendChild(bloc);
+  } else if (esport.format !== "quadre") {
+    cos.appendChild(el("p", "vacio", "Encara no hi ha resultats."));
+  }
+
+  $("#quadre").showModal();
+}
+
+function filaQuadre(partit) {
+  const jo = nosaltres();
+  const fila = el("div", "partit" + (jo && partit.equips.includes(jo) ? " nostre" : ""));
+  fila.appendChild(el("span", "sigla", partit.sigla));
+
+  const centre = el("div", "partit-equips");
+  for (const idEquip of partit.equips) {
+    const linia = el(
+      "span",
+      "partit-equip" +
+        (idEquip && idEquip === partit.guanyador ? " guanya" : "") +
+        (idEquip && idEquip === jo ? " jo" : "")
+    );
+    linia.textContent = idEquip ? nomEquip(idEquip) : "—";
+    centre.appendChild(linia);
+  }
+  fila.appendChild(centre);
+
+  if (partit.marcador) fila.appendChild(el("span", "partit-marcador", partit.marcador));
+  else if (partit.estat === "bloquejat") fila.appendChild(el("span", "partit-marcador buit", "…"));
+  return fila;
 }
 
 function resumEsport(esport, jo) {
   const lloc = esport.posicions.indexOf(jo);
   if (lloc >= 0) {
-    return `Acabat: ${lloc + 1}è lloc · ${esport.taulaPunts[lloc]} punts.`;
+    return `Acabat: ${ordinal(lloc + 1)} lloc · ${esport.taulaPunts[lloc]} punts.`;
   }
   if (esport.format !== "quadre") return "Pendent de disputar-se.";
 
@@ -648,6 +754,7 @@ function repintar() {
   pintarFormulario();
   pintarEquipo();
   pintarPunts();
+  pintarGraella();
 }
 
 /* ---------- dades ---------- */
@@ -837,6 +944,15 @@ async function iniciar() {
   $("#nombre").addEventListener("change", recuperarSiJaHiEs);
   $("#accesoForm").addEventListener("submit", intentarEntrar);
   $("#refresca").addEventListener("click", refrescarTot);
+  $("#tancaQuadre").addEventListener("click", () => $("#quadre").close());
+  // Clic al fons fosc del dialog: el tanquem.
+  $("#quadre").addEventListener("click", (e) => {
+    if (e.target.id === "quadre") $("#quadre").close();
+  });
+  // Alguns navegadors no tanquen el dialog amb Escape; ho fem nosaltres.
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && $("#quadre").open) $("#quadre").close();
+  });
   addEventListener("beforeunload", (e) => {
     if (!canvisSenseDesar) return;
     e.preventDefault();
