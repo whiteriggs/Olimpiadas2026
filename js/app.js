@@ -18,6 +18,14 @@ const fmtHora = new Intl.DateTimeFormat("ca-ES", { hour: "2-digit", minute: "2-d
 
 const aFecha = (iso) => new Date(iso + "T12:00:00");
 
+// La pestanya nova de l'organització anòmena diferent alguns esports.
+const ALIES = {
+  "Vòlei": "Voleibol pista",
+  "Vòlei platja": "Voleibol platja",
+  Cros: "Atletisme",
+};
+const canonic = (nom) => ALIES[nom] || nom;
+
 let cal = { pruebas: [], lligues: [], limites: [], avisos: [] };
 let personas = [];
 let yo = null;
@@ -102,16 +110,22 @@ function pintarCalendario() {
 
   for (const fecha of fechas) {
     const delDia = visibles.filter((p) => p.fecha === fecha);
-    if (!delDia.length) continue;
+    const limitsDelDia = (cal.limites || []).filter((l) => {
+      if (l.fecha !== fecha) return false;
+      if (esport && !l.esports.includes(esport)) return false;
+      if (soloMios && !l.esports.some((e) => mios.has(e))) return false;
+      return true;
+    });
+    if (!delDia.length && !limitsDelDia.length) continue;
 
     const bloque = el("section", "dia");
     bloque.appendChild(el("h3", null, fmtDia.format(aFecha(fecha))));
 
-    for (const lim of cal.limites.filter((l) => l.fecha === fecha)) {
-      bloque.appendChild(el("p", "aviso", `${lim.texto} — ${lim.esports.join(", ")}`));
-    }
-    for (const av of cal.avisos.filter((a) => a.fecha === fecha)) {
-      bloque.appendChild(el("p", "aviso", `${av.hora} · ${av.texto}`));
+    for (const lim of limitsDelDia) {
+      const caja = el("div", "limit");
+      caja.appendChild(el("strong", null, "Data límit: " + lim.rondes.join(", ")));
+      caja.appendChild(el("span", null, lim.esports.join(" · ")));
+      bloque.appendChild(caja);
     }
 
     const lista = el("div", "eventos");
@@ -126,10 +140,17 @@ function tarjetaEvento(p, mios) {
   art.appendChild(el("div", "hora", p.hora));
 
   const cuerpo = el("div", "cuerpo");
-  cuerpo.appendChild(el("div", "deporte", p.detalle ? `${p.esport} · ${p.detalle}` : p.esport));
+  cuerpo.appendChild(el("div", "deporte", p.esport));
+  if (p.detalle) cuerpo.appendChild(el("div", "ronda", p.detalle));
   cuerpo.appendChild(
-    el("div", "meta", [p.lloc, `${p.hora}–${p.horaFin}`].filter(Boolean).join(" · "))
+    el("div", "meta", [p.lloc, [p.hora, p.horaFin].filter(Boolean).join("–")]
+      .filter(Boolean)
+      .join(" · "))
   );
+  if (p.nota) cuerpo.appendChild(el("div", "nota", p.nota));
+  for (const linea of (p.quiJuga || "").split("\n").filter(Boolean)) {
+    cuerpo.appendChild(el("div", "rival", linea));
+  }
 
   const gente = apuntadosA(p.esport);
   if (gente.length) {
@@ -313,7 +334,10 @@ function pintarEquipo() {
 /* ---------- llistes derivades ---------- */
 
 function derivarListas() {
-  fechas = [...new Set(cal.pruebas.map((p) => p.fecha))].sort();
+  const limites = cal.limites || [];
+  fechas = [
+    ...new Set([...cal.pruebas.map((p) => p.fecha), ...limites.map((l) => l.fecha)]),
+  ].sort();
 
   esportsPerDia = new Map();
   for (const f of fechas) esportsPerDia.set(f, []);
@@ -418,6 +442,9 @@ function repintar() {
 
 async function recargarPersonas() {
   personas = await store.cargarPersonas();
+  for (const p of personas) {
+    p.esports = [...new Set((p.esports || []).map(canonic))];
+  }
   personas.sort((a, b) => (a.nombre || "").localeCompare(b.nombre || "", "ca"));
   const mio = personas.find((p) => p.id === store.idGuardado());
   yo = mio ? structuredClone(mio) : yo || personaVacia();

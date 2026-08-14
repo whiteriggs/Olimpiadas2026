@@ -1,8 +1,8 @@
 {
   "titulo": "Olimpíades Begues 2026",
   "subtitulo": "14–29 d'agost",
-  "fuente": "https://docs.google.com/spreadsheets/d/1gB3BzDDBQATh5wTy8JRPxCHLMUqPpnQwFcp3pIsIvLo/export?format=csv&gid=572313569",
-  "actualizado": "2026-08-13",
+  "fuente": "https://docs.google.com/spreadsheets/d/1gB3BzDDBQATh5wTy8JRPxCHLMUqPpnQwFcp3pIsIvLo/gviz/tq?tqx=out:csv&sheet=Calendari",
+  "actualizado": "2026-08-14",
   "pruebas": [
     {
       "id": "2026-08-14-18-reunio-informativa",
@@ -11,20 +11,11 @@
       "tipo": "acte",
       "fecha": "2026-08-14",
       "hora": "18:00",
-      "horaFin": "19:00",
+      "horaFin": "20:00",
       "orden": 18,
-      "lloc": "Club De Begues"
-    },
-    {
-      "id": "2026-08-15-09-inauguracio",
-      "esport": "Inauguració",
-      "detalle": "",
-      "tipo": "acte",
-      "fecha": "2026-08-15",
-      "hora": "09:00",
-      "horaFin": "10:00",
-      "orden": 9,
-      "lloc": "Club De Begues"
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-15-09-natacio",
@@ -33,9 +24,11 @@
       "tipo": "esport",
       "fecha": "2026-08-15",
       "hora": "09:00",
-      "horaFin": "10:00",
+      "horaFin": "14:00",
       "orden": 9,
-      "lloc": "Club De Begues"
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": "INAUGURACIÓ + NATACIÓ"
     },
     {
       "id": "2026-08-15-15-ping-pong",
@@ -44,20 +37,24 @@
       "tipo": "esport",
       "fecha": "2026-08-15",
       "hora": "15:00",
-      "horaFin": "16:00",
+      "horaFin": "00:00",
       "orden": 15,
-      "lloc": "Club De Begues"
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
     },
     {
-      "id": "2026-08-15-15-volei-platja",
-      "esport": "Vòlei platja",
+      "id": "2026-08-15-15-voleibol-platja",
+      "esport": "Voleibol platja",
       "detalle": "",
       "tipo": "esport",
       "fecha": "2026-08-15",
       "hora": "15:00",
-      "horaFin": "16:00",
+      "horaFin": "00:00",
       "orden": 15,
-      "lloc": "Club De Begues"
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-15-20-tardeo",
@@ -66,9 +63,11 @@
       "tipo": "acte",
       "fecha": "2026-08-15",
       "hora": "20:00",
-      "horaFin": "21:00",
+      "horaFin": "01:00",
       "orden": 20,
-      "lloc": "Altres"
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-16-10-minigolf",
@@ -77,9 +76,11 @@
       "tipo": "esport",
       "fecha": "2026-08-16",
       "hora": "10:00",
-      "horaFin": "11:00",
+      "horaFin": "16:00",
       "orden": 10,
-      "lloc": "Club De Begues"
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-16-10-ping-pong",
@@ -88,20 +89,24 @@
       "tipo": "esport",
       "fecha": "2026-08-16",
       "hora": "10:00",
-      "horaFin": "11:00",
+      "horaFin": "20:00",
       "orden": 10,
-      "lloc": "Club De Begues"
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
     },
     {
-      "id": "2026-08-16-10-volei-platja",
-      "esport": "Vòlei platja",
+      "id": "2026-08-16-10-voleibol-platja",
+      "esport": "Voleibol platja",
       "detalle": "",
       "tipo": "esport",
       "fecha": "2026-08-16",
       "hora": "10:00",
-      "horaFin": "11:00",
+      "horaFin": "20:00",
       "orden": 10,
-      "lloc": "Club De Begues"
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-16-16-escacs",
@@ -110,548 +115,427 @@
       "tipo": "esport",
       "fecha": "2026-08-16",
       "hora": "16:00",
-      "horaFin": "17:00",
+      "horaFin": "19:00",
       "orden": 16,
-      "lloc": "Club De Begues"
-    },
-    {
-      "id": "2026-08-16-19-futbol-7",
-      "esport": "Futbol 7",
-      "detalle": "1-2",
-      "tipo": "esport",
-      "fecha": "2026-08-16",
-      "hora": "19:00",
-      "horaFin": "20:00",
-      "orden": 19,
-      "lloc": "Campo de Futbol"
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-16-20-futbol-7",
       "esport": "Futbol 7",
-      "detalle": "PREV.",
+      "detalle": "Prèvia 1, Prèvia 2",
       "tipo": "esport",
       "fecha": "2026-08-16",
       "hora": "20:00",
       "horaFin": "21:00",
       "orden": 20,
-      "lloc": "Campo de Futbol"
-    },
-    {
-      "id": "2026-08-16-21-basquet",
-      "esport": "Bàsquet",
-      "detalle": "1-2",
-      "tipo": "esport",
-      "fecha": "2026-08-16",
-      "hora": "21:00",
-      "horaFin": "22:00",
-      "orden": 21,
-      "lloc": "Poliesportiu"
+      "lloc": "Camp de futbol",
+      "quiJuga": "P1: Equip 5 - Equip 4P2: Equip 7 - Equip 9",
+      "nota": ""
     },
     {
       "id": "2026-08-16-22-basquet",
       "esport": "Bàsquet",
-      "detalle": "PREV.",
+      "detalle": "Prèvia 1, Prèvia 2",
       "tipo": "esport",
       "fecha": "2026-08-16",
       "hora": "22:00",
       "horaFin": "23:00",
       "orden": 22,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "P1: Equip 6 - Equip 5P2: Equip 4 - Equip 10",
+      "nota": ""
     },
     {
       "id": "2026-08-17-18-handbol",
       "esport": "Handbol",
-      "detalle": "PREV.",
+      "detalle": "Prèvia 1",
       "tipo": "esport",
       "fecha": "2026-08-17",
       "hora": "18:00",
       "horaFin": "19:00",
       "orden": 18,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-17-19-futbol-7",
-      "esport": "Futbol 7",
-      "detalle": "3-4",
-      "tipo": "esport",
-      "fecha": "2026-08-17",
-      "hora": "19:00",
-      "horaFin": "20:00",
-      "orden": 19,
-      "lloc": "Altres"
+      "lloc": "Poliesportiu",
+      "quiJuga": "Equip 8 - Equip 5",
+      "nota": ""
     },
     {
       "id": "2026-08-17-19-handbol",
       "esport": "Handbol",
-      "detalle": "PREV.",
+      "detalle": "Prèvia 2",
       "tipo": "esport",
       "fecha": "2026-08-17",
       "hora": "19:00",
       "horaFin": "20:00",
       "orden": 19,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "Equip 3 - Equip 1",
+      "nota": ""
     },
     {
       "id": "2026-08-17-20-futbol-7",
       "esport": "Futbol 7",
-      "detalle": "1ª",
+      "detalle": "Quarts 1, Quarts 3",
       "tipo": "esport",
       "fecha": "2026-08-17",
       "hora": "20:00",
       "horaFin": "21:00",
       "orden": 20,
-      "lloc": "Altres"
+      "lloc": "Altres",
+      "quiJuga": "QF1: Guanyador P1 - Equip 10QF3: Guanyador P2 - Equip 2",
+      "nota": ""
     },
     {
       "id": "2026-08-17-21-futbol-7",
       "esport": "Futbol 7",
-      "detalle": "1ª",
+      "detalle": "Quarts 2, Quarts 4",
       "tipo": "esport",
       "fecha": "2026-08-17",
       "hora": "21:00",
       "horaFin": "22:00",
       "orden": 21,
-      "lloc": "Altres"
-    },
-    {
-      "id": "2026-08-17-21-handbol",
-      "esport": "Handbol",
-      "detalle": "1",
-      "tipo": "esport",
-      "fecha": "2026-08-17",
-      "hora": "21:00",
-      "horaFin": "22:00",
-      "orden": 21,
-      "lloc": "Poliesportiu"
+      "lloc": "Altres",
+      "quiJuga": "QF2: Equip 6 - Equip 1QF4: Equip 8 - Equip 3",
+      "nota": ""
     },
     {
       "id": "2026-08-17-22-futbol-7",
       "esport": "Futbol 7",
-      "detalle": "PREV. F.",
+      "detalle": "9è i 10è lloc",
       "tipo": "esport",
       "fecha": "2026-08-17",
       "hora": "22:00",
       "horaFin": "23:00",
       "orden": 22,
-      "lloc": "Altres"
-    },
-    {
-      "id": "2026-08-17-22-handbol",
-      "esport": "Handbol",
-      "detalle": "2",
-      "tipo": "esport",
-      "fecha": "2026-08-17",
-      "hora": "22:00",
-      "horaFin": "23:00",
-      "orden": 22,
-      "lloc": "Poliesportiu"
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-18-18-handbol",
       "esport": "Handbol",
-      "detalle": "1ª",
+      "detalle": "Quarts 1",
       "tipo": "esport",
       "fecha": "2026-08-18",
       "hora": "18:00",
       "horaFin": "19:00",
       "orden": 18,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-18-19-futbol-7",
-      "esport": "Futbol 7",
-      "detalle": "5-6",
-      "tipo": "esport",
-      "fecha": "2026-08-18",
-      "hora": "19:00",
-      "horaFin": "20:00",
-      "orden": 19,
-      "lloc": "Altres"
+      "lloc": "Poliesportiu",
+      "quiJuga": "Guanyador P1 - Equip 6",
+      "nota": ""
     },
     {
       "id": "2026-08-18-19-handbol",
       "esport": "Handbol",
-      "detalle": "1ª",
+      "detalle": "Quarts 2",
       "tipo": "esport",
       "fecha": "2026-08-18",
       "hora": "19:00",
       "horaFin": "20:00",
       "orden": 19,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "Equip 4 - Equip 2",
+      "nota": ""
     },
     {
       "id": "2026-08-18-20-handbol",
       "esport": "Handbol",
-      "detalle": "1ª",
+      "detalle": "Quarts 3",
       "tipo": "esport",
       "fecha": "2026-08-18",
       "hora": "20:00",
       "horaFin": "21:00",
       "orden": 20,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "Guanyador P2 - Equip 7",
+      "nota": ""
     },
     {
       "id": "2026-08-18-21-handbol",
       "esport": "Handbol",
-      "detalle": "1ª",
+      "detalle": "Quarts 4",
       "tipo": "esport",
       "fecha": "2026-08-18",
       "hora": "21:00",
       "horaFin": "22:00",
       "orden": 21,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "Equip 10 - Equip 9",
+      "nota": ""
     },
     {
       "id": "2026-08-18-22-futbol-7",
       "esport": "Futbol 7",
-      "detalle": "SEMIS",
+      "detalle": "Semifinal consolació 1, Semifinal consolació 2",
       "tipo": "esport",
       "fecha": "2026-08-18",
       "hora": "22:00",
       "horaFin": "23:00",
       "orden": 22,
-      "lloc": "Altres"
-    },
-    {
-      "id": "2026-08-18-22-handbol",
-      "esport": "Handbol",
-      "detalle": "3",
-      "tipo": "esport",
-      "fecha": "2026-08-18",
-      "hora": "22:00",
-      "horaFin": "23:00",
-      "orden": 22,
-      "lloc": "Poliesportiu"
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-18-23-futbol-7",
       "esport": "Futbol 7",
-      "detalle": "SEMIS",
+      "detalle": "Semifinal 1, Semifinal 2",
       "tipo": "esport",
       "fecha": "2026-08-18",
       "hora": "23:00",
       "horaFin": "00:00",
       "orden": 23,
-      "lloc": "Altres"
-    },
-    {
-      "id": "2026-08-18-23-handbol",
-      "esport": "Handbol",
-      "detalle": "4",
-      "tipo": "esport",
-      "fecha": "2026-08-18",
-      "hora": "23:00",
-      "horaFin": "00:00",
-      "orden": 23,
-      "lloc": "Poliesportiu"
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-19-18-handbol",
       "esport": "Handbol",
-      "detalle": "SEMIS",
+      "detalle": "Semifinal consolació 1",
       "tipo": "esport",
       "fecha": "2026-08-19",
       "hora": "18:00",
       "horaFin": "19:00",
       "orden": 18,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-19-19-futbol-7",
-      "esport": "Futbol 7",
-      "detalle": "7-8",
-      "tipo": "esport",
-      "fecha": "2026-08-19",
-      "hora": "19:00",
-      "horaFin": "20:00",
-      "orden": 19,
-      "lloc": "Altres"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-19-19-handbol",
       "esport": "Handbol",
-      "detalle": "SEMIS",
+      "detalle": "Semifinal consolació 2",
       "tipo": "esport",
       "fecha": "2026-08-19",
       "hora": "19:00",
       "horaFin": "20:00",
       "orden": 19,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-19-20-futbol-7",
       "esport": "Futbol 7",
-      "detalle": "3ª-4ª",
+      "detalle": "7è i 8è lloc, 3r i 4t lloc",
       "tipo": "esport",
       "fecha": "2026-08-19",
       "hora": "20:00",
       "horaFin": "21:00",
       "orden": 20,
-      "lloc": "Altres"
-    },
-    {
-      "id": "2026-08-19-20-handbol",
-      "esport": "Handbol",
-      "detalle": "5",
-      "tipo": "esport",
-      "fecha": "2026-08-19",
-      "hora": "20:00",
-      "horaFin": "21:00",
-      "orden": 20,
-      "lloc": "Poliesportiu"
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-19-21-futbol-7",
       "esport": "Futbol 7",
-      "detalle": "FINALS",
+      "detalle": "Final consolació · 5è i 6è lloc, Final",
       "tipo": "esport",
       "fecha": "2026-08-19",
       "hora": "21:00",
       "horaFin": "22:00",
       "orden": 21,
-      "lloc": "Altres"
-    },
-    {
-      "id": "2026-08-19-21-handbol",
-      "esport": "Handbol",
-      "detalle": "6",
-      "tipo": "esport",
-      "fecha": "2026-08-19",
-      "hora": "21:00",
-      "horaFin": "22:00",
-      "orden": 21,
-      "lloc": "Poliesportiu"
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-19-22-handbol",
       "esport": "Handbol",
-      "detalle": "SEMIS",
+      "detalle": "Semifinal 1",
       "tipo": "esport",
       "fecha": "2026-08-19",
       "hora": "22:00",
       "horaFin": "23:00",
       "orden": 22,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-19-23-handbol",
       "esport": "Handbol",
-      "detalle": "SEMIS",
+      "detalle": "Semifinal 2",
       "tipo": "esport",
       "fecha": "2026-08-19",
       "hora": "23:00",
       "horaFin": "00:00",
       "orden": 23,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-20-19-basquet",
       "esport": "Bàsquet",
-      "detalle": "1ª",
+      "detalle": "Quarts 1, Quarts 2",
       "tipo": "esport",
       "fecha": "2026-08-20",
       "hora": "19:00",
       "horaFin": "20:00",
       "orden": 19,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-20-19-futbol-7",
-      "esport": "Futbol 7",
-      "detalle": "9-10",
-      "tipo": "esport",
-      "fecha": "2026-08-20",
-      "hora": "19:00",
-      "horaFin": "20:00",
-      "orden": 19,
-      "lloc": "Altres"
+      "lloc": "Poliesportiu",
+      "quiJuga": "QF1: Guanyador P1 - Equip 7QF2: Equip 2 - Equip 1",
+      "nota": ""
     },
     {
       "id": "2026-08-20-20-basquet",
       "esport": "Bàsquet",
-      "detalle": "1ª",
+      "detalle": "Quarts 3, Quarts 4",
       "tipo": "esport",
       "fecha": "2026-08-20",
       "hora": "20:00",
       "horaFin": "21:00",
       "orden": 20,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "QF3: Guanyador P2 - Equip 8QF4: Equip 3 - Equip 9",
+      "nota": ""
     },
     {
       "id": "2026-08-20-20-dards",
       "esport": "Dards",
-      "detalle": "1-2PREV.",
+      "detalle": "Prèvia 1, Prèvia 2, Quarts 1, Quarts 2, Quarts 3, Quarts 4",
       "tipo": "esport",
       "fecha": "2026-08-20",
       "hora": "20:00",
-      "horaFin": "21:00",
+      "horaFin": "01:00",
       "orden": 20,
-      "lloc": "Altres"
+      "lloc": "Altres",
+      "quiJuga": "P1: Equip 7 - Equip 5P2: Equip 2 - Equip 10QF1: Guanyador P1 - Equip 6QF2: Equip 1 - Equip 3QF3: Guanyador P2 - Equip 8QF4: Equip 9 - Equip 4",
+      "nota": ""
     },
     {
       "id": "2026-08-20-20-futboli",
       "esport": "Futbolí",
-      "detalle": "",
+      "detalle": "Prèvia 1, Prèvia 2",
       "tipo": "esport",
       "fecha": "2026-08-20",
       "hora": "20:00",
-      "horaFin": "21:00",
+      "horaFin": "01:00",
       "orden": 20,
-      "lloc": "Altres"
+      "lloc": "Altres",
+      "quiJuga": "P1: Equip 7 - Equip 4P2: Equip 9 - Equip 6F2-F5: Tocapelotas - DynamosF3-F4: Motomamis - Birra sana",
+      "nota": ""
     },
     {
-      "id": "2026-08-20-21-basquet",
-      "esport": "Bàsquet",
-      "detalle": "3-4",
-      "tipo": "esport",
-      "fecha": "2026-08-20",
-      "hora": "21:00",
-      "horaFin": "22:00",
-      "orden": 21,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-20-22-volei",
-      "esport": "Vòlei",
-      "detalle": "PREV.",
+      "id": "2026-08-20-22-voleibol-pista",
+      "esport": "Voleibol pista",
+      "detalle": "Prèvia 1, Prèvia 2",
       "tipo": "esport",
       "fecha": "2026-08-20",
       "hora": "22:00",
       "horaFin": "23:00",
       "orden": 22,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "P1: Equip 2 - Equip 3P2: Equip 4 - Equip 9",
+      "nota": ""
     },
     {
-      "id": "2026-08-21-18-volei",
-      "esport": "Vòlei",
-      "detalle": "1ª",
+      "id": "2026-08-21-18-voleibol-pista",
+      "esport": "Voleibol pista",
+      "detalle": "Quarts 1, Quarts 4",
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "18:00",
       "horaFin": "19:00",
       "orden": 18,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "QF1: Guanyador P1 - Equip 8QF4: Equip 6 - Equip 10",
+      "nota": ""
     },
     {
-      "id": "2026-08-21-18-waterpolo",
-      "esport": "Waterpolo",
-      "detalle": "1",
-      "tipo": "esport",
-      "fecha": "2026-08-21",
-      "hora": "18:00",
-      "horaFin": "19:00",
-      "orden": 18,
-      "lloc": "Club De Begues"
-    },
-    {
-      "id": "2026-08-21-19-volei",
-      "esport": "Vòlei",
-      "detalle": "1ª",
+      "id": "2026-08-21-19-voleibol-pista",
+      "esport": "Voleibol pista",
+      "detalle": "Quarts 2, Quarts 3",
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "19:00",
       "horaFin": "20:00",
       "orden": 19,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "QF2: Equip 7 - Equip 1QF3: Guanyador P2 - Equip 5",
+      "nota": ""
     },
     {
       "id": "2026-08-21-19-waterpolo",
       "esport": "Waterpolo",
-      "detalle": "2",
+      "detalle": "Prèvia 2",
       "tipo": "esport",
       "fecha": "2026-08-21",
-      "hora": "19:00",
-      "horaFin": "20:00",
+      "hora": "19:30",
+      "horaFin": "20:15",
       "orden": 19,
-      "lloc": "Club De Begues"
-    },
-    {
-      "id": "2026-08-21-19-waterpolo-2",
-      "esport": "Waterpolo",
-      "detalle": "PREV. 1",
-      "tipo": "esport",
-      "fecha": "2026-08-21",
-      "hora": "19:00",
-      "horaFin": "20:00",
-      "orden": 19,
-      "lloc": "Club De Begues"
+      "lloc": "Club de Begues",
+      "quiJuga": "Equip 6 - Equip 2",
+      "nota": ""
     },
     {
       "id": "2026-08-21-20-dards",
       "esport": "Dards",
-      "detalle": "3-61ª I SEMIS",
+      "detalle": "Quarts 1, Quarts 2, Quarts 3, Quarts 4, Semifinal consolació 1, Semifinal consolació 2, Semifinal 1, Semifinal 2",
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "20:00",
-      "horaFin": "21:00",
+      "horaFin": "01:00",
       "orden": 20,
-      "lloc": "Altres"
+      "lloc": "Altres",
+      "quiJuga": "QF1: Guanyador P1 - Equip 6QF2: Equip 1 - Equip 3QF3: Guanyador P2 - Equip 8QF4: Equip 9 - Equip 4F2-F5: Tocapelotas - DynamosF3-F4: Motomamis - Birra sanaF1-F5: Las potras salvajes - DynamosF2-F3: Tocapelotas - Motomamis",
+      "nota": ""
     },
     {
       "id": "2026-08-21-20-futboli",
       "esport": "Futbolí",
-      "detalle": "",
+      "detalle": "Quarts 1, Quarts 2, Quarts 3, Quarts 4, Semifinal consolació 1, Semifinal consolació 2, Semifinal 1, Semifinal 2",
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "20:00",
-      "horaFin": "21:00",
+      "horaFin": "01:00",
       "orden": 20,
-      "lloc": "Altres"
-    },
-    {
-      "id": "2026-08-21-20-volei",
-      "esport": "Vòlei",
-      "detalle": "1-2",
-      "tipo": "esport",
-      "fecha": "2026-08-21",
-      "hora": "20:00",
-      "horaFin": "21:00",
-      "orden": 20,
-      "lloc": "Poliesportiu"
+      "lloc": "Altres",
+      "quiJuga": "QF1: Guanyador P1 - Equip 2QF2: Equip 10 - Equip 3QF3: Guanyador P2 - Equip 8QF4: Equip 5 - Equip 1F1-F5: Las potras salvajes - DynamosF2-F3: Tocapelotas - MotomamisF1-F4: Las potras salvajes - Birra sanaF5-F3: Dynamos - Motomamis",
+      "nota": ""
     },
     {
       "id": "2026-08-21-20-waterpolo",
       "esport": "Waterpolo",
-      "detalle": "PREV. 2",
+      "detalle": "Prèvia 1",
       "tipo": "esport",
       "fecha": "2026-08-21",
-      "hora": "20:00",
+      "hora": "20:15",
       "horaFin": "21:00",
       "orden": 20,
-      "lloc": "Club De Begues"
+      "lloc": "Club de Begues",
+      "quiJuga": "Equip 10 - Equip 7",
+      "nota": ""
     },
     {
       "id": "2026-08-21-21-basquet",
       "esport": "Bàsquet",
-      "detalle": "SEMIS",
+      "detalle": "Semifinal consolació 1, Semifinal consolació 2",
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "21:00",
       "horaFin": "22:00",
       "orden": 21,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-21-22-basquet",
       "esport": "Bàsquet",
-      "detalle": "SEMIS",
+      "detalle": "Semifinal 1, Semifinal 2",
       "tipo": "esport",
       "fecha": "2026-08-21",
       "hora": "22:00",
       "horaFin": "23:00",
       "orden": 22,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-21-23-basquet",
-      "esport": "Bàsquet",
-      "detalle": "5-6",
-      "tipo": "esport",
-      "fecha": "2026-08-21",
-      "hora": "23:00",
-      "horaFin": "00:00",
-      "orden": 23,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-22-09-ciclisme",
@@ -660,97 +544,128 @@
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "09:00",
-      "horaFin": "10:00",
+      "horaFin": "11:00",
       "orden": 9,
-      "lloc": "Altres"
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-22-11-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "PREV.",
+      "detalle": "Prèvia 1",
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "11:00",
       "horaFin": "12:00",
       "orden": 11,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-22-11-waterpolo",
-      "esport": "Waterpolo",
-      "detalle": "3-6",
-      "tipo": "esport",
-      "fecha": "2026-08-22",
-      "hora": "11:00",
-      "horaFin": "12:00",
-      "orden": 11,
-      "lloc": "Club De Begues"
+      "lloc": "Poliesportiu",
+      "quiJuga": "Equip 10 - Equip 1",
+      "nota": ""
     },
     {
       "id": "2026-08-22-12-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "PREV.",
+      "detalle": "Prèvia 2",
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "12:00",
       "horaFin": "13:00",
       "orden": 12,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "Equip 8 - Equip 2",
+      "nota": ""
     },
     {
       "id": "2026-08-22-14-waterpolo",
       "esport": "Waterpolo",
-      "detalle": "1ª",
+      "detalle": "Quarts 1",
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "14:00",
-      "horaFin": "15:00",
+      "horaFin": "14:45",
       "orden": 14,
-      "lloc": "Club De Begues"
+      "lloc": "Club de Begues",
+      "quiJuga": "QF1: Guanyador P1 - Equip 3",
+      "nota": ""
     },
     {
-      "id": "2026-08-22-16-volei",
-      "esport": "Vòlei",
-      "detalle": "3-4",
+      "id": "2026-08-22-14-waterpolo-2",
+      "esport": "Waterpolo",
+      "detalle": "Quarts 2",
       "tipo": "esport",
       "fecha": "2026-08-22",
-      "hora": "16:00",
-      "horaFin": "17:00",
-      "orden": 16,
-      "lloc": "Poliesportiu"
+      "hora": "14:45",
+      "horaFin": "15:30",
+      "orden": 14,
+      "lloc": "Club de Begues",
+      "quiJuga": "QF2: Equip 1 - Equip 4",
+      "nota": ""
     },
     {
-      "id": "2026-08-22-17-volei",
-      "esport": "Vòlei",
-      "detalle": "PREV. F.",
+      "id": "2026-08-22-15-waterpolo",
+      "esport": "Waterpolo",
+      "detalle": "Quarts 3",
+      "tipo": "esport",
+      "fecha": "2026-08-22",
+      "hora": "15:30",
+      "horaFin": "16:15",
+      "orden": 15,
+      "lloc": "Club de Begues",
+      "quiJuga": "QF3: Guanyador P2 - Equip 5",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-22-16-waterpolo",
+      "esport": "Waterpolo",
+      "detalle": "Quarts 4",
+      "tipo": "esport",
+      "fecha": "2026-08-22",
+      "hora": "16:15",
+      "horaFin": "17:00",
+      "orden": 16,
+      "lloc": "Club de Begues",
+      "quiJuga": "QF4: Equip 8 - Equip 9",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-22-17-voleibol-pista",
+      "esport": "Voleibol pista",
+      "detalle": "9è i 10è lloc",
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "17:00",
       "horaFin": "18:00",
       "orden": 17,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
-      "id": "2026-08-22-18-volei",
-      "esport": "Vòlei",
-      "detalle": "SEMIS",
+      "id": "2026-08-22-18-voleibol-pista",
+      "esport": "Voleibol pista",
+      "detalle": "Semifinal consolació 1, Semifinal consolació 2",
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "18:00",
       "horaFin": "19:00",
       "orden": 18,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-22-19-atletisme",
       "esport": "Atletisme",
-      "detalle": "PESSALT LONGITUD",
+      "detalle": "",
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "19:00",
-      "horaFin": "20:00",
+      "horaFin": "22:00",
       "orden": 19,
-      "lloc": "Club De Begues"
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": "ATLETISME / PES / SALT LONGITUD"
     },
     {
       "id": "2026-08-22-22-dards",
@@ -759,9 +674,11 @@
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "22:00",
-      "horaFin": "23:00",
+      "horaFin": "01:00",
       "orden": 22,
-      "lloc": "Altres"
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-22-22-futboli",
@@ -770,592 +687,466 @@
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "22:00",
-      "horaFin": "23:00",
+      "horaFin": "01:00",
       "orden": 22,
-      "lloc": "Altres"
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
     },
     {
-      "id": "2026-08-22-22-volei",
-      "esport": "Vòlei",
-      "detalle": "5-6",
-      "tipo": "esport",
-      "fecha": "2026-08-22",
-      "hora": "22:00",
-      "horaFin": "23:00",
-      "orden": 22,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-22-23-volei",
-      "esport": "Vòlei",
-      "detalle": "SEMIS",
+      "id": "2026-08-22-23-voleibol-pista",
+      "esport": "Voleibol pista",
+      "detalle": "Semifinal 1, Semifinal 2",
       "tipo": "esport",
       "fecha": "2026-08-22",
       "hora": "23:00",
       "horaFin": "00:00",
       "orden": 23,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-23-10-atletisme",
       "esport": "Atletisme",
-      "detalle": "100mRELLEUS",
+      "detalle": "",
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "10:00",
-      "horaFin": "11:00",
+      "horaFin": "13:00",
       "orden": 10,
-      "lloc": "Altres"
-    },
-    {
-      "id": "2026-08-23-13-basquet",
-      "esport": "Bàsquet",
-      "detalle": "7-8",
-      "tipo": "esport",
-      "fecha": "2026-08-23",
-      "hora": "13:00",
-      "horaFin": "14:00",
-      "orden": 13,
-      "lloc": "Poliesportiu"
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": "ATLETISME / 100m / RELLEUS"
     },
     {
       "id": "2026-08-23-13-waterpolo",
       "esport": "Waterpolo",
-      "detalle": "SEMIS",
+      "detalle": "Semifinal consolació 1, Semifinal consolació 2, Semifinal 1, Semifinal 2",
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "13:00",
-      "horaFin": "14:00",
-      "orden": 13,
-      "lloc": "Club De Begues"
-    },
-    {
-      "id": "2026-08-23-14-handbol",
-      "esport": "Handbol",
-      "detalle": "7",
-      "tipo": "esport",
-      "fecha": "2026-08-23",
-      "hora": "14:00",
-      "horaFin": "15:00",
-      "orden": 14,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-23-15-handbol",
-      "esport": "Handbol",
-      "detalle": "8",
-      "tipo": "esport",
-      "fecha": "2026-08-23",
-      "hora": "15:00",
       "horaFin": "16:00",
-      "orden": 15,
-      "lloc": "Poliesportiu"
+      "orden": 13,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-23-16-handbol",
       "esport": "Handbol",
-      "detalle": "3ª-4ª",
+      "detalle": "7è i 8è lloc",
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "16:00",
       "horaFin": "17:00",
       "orden": 16,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-23-16-waterpolo",
-      "esport": "Waterpolo",
-      "detalle": "7-10",
-      "tipo": "esport",
-      "fecha": "2026-08-23",
-      "hora": "16:00",
-      "horaFin": "17:00",
-      "orden": 16,
-      "lloc": "Club De Begues"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-23-17-handbol",
       "esport": "Handbol",
-      "detalle": "3ª-4ª",
+      "detalle": "3r i 4t lloc",
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "17:00",
       "horaFin": "18:00",
       "orden": 17,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
-      "id": "2026-08-23-19-cros",
-      "esport": "Cros",
+      "id": "2026-08-23-19-atletisme",
+      "esport": "Atletisme",
       "detalle": "",
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "19:00",
-      "horaFin": "20:00",
+      "horaFin": "21:00",
       "orden": 19,
-      "lloc": "Altres"
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": "CROSS"
     },
     {
       "id": "2026-08-23-21-basquet",
       "esport": "Bàsquet",
-      "detalle": "3ª-4ª",
+      "detalle": "7è i 8è lloc, 3r i 4t lloc",
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "21:00",
       "horaFin": "22:00",
       "orden": 21,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-23-22-basquet",
       "esport": "Bàsquet",
-      "detalle": "FINALS",
+      "detalle": "Final",
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "22:00",
       "horaFin": "23:00",
       "orden": 22,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-23-23-basquet",
       "esport": "Bàsquet",
-      "detalle": "FINALS C.I PREV F.",
+      "detalle": "Final consolació · 5è i 6è lloc, 9è i 10è lloc",
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "23:00",
       "horaFin": "00:00",
       "orden": 23,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-24-18-volei",
-      "esport": "Vòlei",
-      "detalle": "7-8",
-      "tipo": "esport",
-      "fecha": "2026-08-24",
-      "hora": "18:00",
-      "horaFin": "19:00",
-      "orden": 18,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-24-18-waterpolo",
       "esport": "Waterpolo",
-      "detalle": "FINALS3ª-4ª LLOC",
+      "detalle": "Final consolació · 5è i 6è lloc",
       "tipo": "esport",
       "fecha": "2026-08-24",
       "hora": "18:00",
-      "horaFin": "19:00",
+      "horaFin": "18:45",
       "orden": 18,
-      "lloc": "Club De Begues"
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
     },
     {
-      "id": "2026-08-24-19-volei",
-      "esport": "Vòlei",
-      "detalle": "9-10",
+      "id": "2026-08-24-18-waterpolo-2",
+      "esport": "Waterpolo",
+      "detalle": "3r i 4t lloc",
       "tipo": "esport",
       "fecha": "2026-08-24",
-      "hora": "19:00",
-      "horaFin": "20:00",
-      "orden": 19,
-      "lloc": "Poliesportiu"
+      "hora": "18:45",
+      "horaFin": "19:30",
+      "orden": 18,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
     },
     {
-      "id": "2026-08-24-20-volei",
-      "esport": "Vòlei",
-      "detalle": "3ª-4ª",
+      "id": "2026-08-24-19-waterpolo",
+      "esport": "Waterpolo",
+      "detalle": "Final",
+      "tipo": "esport",
+      "fecha": "2026-08-24",
+      "hora": "19:30",
+      "horaFin": "20:15",
+      "orden": 19,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-24-20-voleibol-pista",
+      "esport": "Voleibol pista",
+      "detalle": "7è i 8è lloc, 3r i 4t lloc",
       "tipo": "esport",
       "fecha": "2026-08-24",
       "hora": "20:00",
       "horaFin": "21:00",
       "orden": 20,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
-      "id": "2026-08-24-21-volei",
-      "esport": "Vòlei",
-      "detalle": "FINALS",
+      "id": "2026-08-24-20-waterpolo",
+      "esport": "Waterpolo",
+      "detalle": "7è i 8è lloc",
+      "tipo": "esport",
+      "fecha": "2026-08-24",
+      "hora": "20:15",
+      "horaFin": "21:00",
+      "orden": 20,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-24-21-voleibol-pista",
+      "esport": "Voleibol pista",
+      "detalle": "Final consolació · 5è i 6è lloc, Final",
       "tipo": "esport",
       "fecha": "2026-08-24",
       "hora": "21:00",
       "horaFin": "22:00",
       "orden": 21,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-24-22-futbol-sala",
-      "esport": "Futbol sala",
-      "detalle": "1",
-      "tipo": "esport",
-      "fecha": "2026-08-24",
-      "hora": "22:00",
-      "horaFin": "23:00",
-      "orden": 22,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-24-23-futbol-sala",
-      "esport": "Futbol sala",
-      "detalle": "2",
-      "tipo": "esport",
-      "fecha": "2026-08-24",
-      "hora": "23:00",
-      "horaFin": "00:00",
-      "orden": 23,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-25-18-futbol-sala",
-      "esport": "Futbol sala",
-      "detalle": "3",
-      "tipo": "esport",
-      "fecha": "2026-08-25",
-      "hora": "18:00",
-      "horaFin": "19:00",
-      "orden": 18,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-25-19-futbol-sala",
-      "esport": "Futbol sala",
-      "detalle": "4",
-      "tipo": "esport",
-      "fecha": "2026-08-25",
-      "hora": "19:00",
-      "horaFin": "20:00",
-      "orden": 19,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-26-18-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "1ª",
+      "detalle": "Quarts 1",
       "tipo": "esport",
       "fecha": "2026-08-26",
       "hora": "18:00",
       "horaFin": "19:00",
       "orden": 18,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "Guanyador P1 - Equip 4",
+      "nota": ""
     },
     {
       "id": "2026-08-26-19-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "1ª",
+      "detalle": "Quarts 2",
       "tipo": "esport",
       "fecha": "2026-08-26",
       "hora": "19:00",
       "horaFin": "20:00",
       "orden": 19,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-26-20-futbol-sala",
-      "esport": "Futbol sala",
-      "detalle": "5",
-      "tipo": "esport",
-      "fecha": "2026-08-26",
-      "hora": "20:00",
-      "horaFin": "21:00",
-      "orden": 20,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-26-21-futbol-sala",
-      "esport": "Futbol sala",
-      "detalle": "6",
-      "tipo": "esport",
-      "fecha": "2026-08-26",
-      "hora": "21:00",
-      "horaFin": "22:00",
-      "orden": 21,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "Equip 3 - Equip 5",
+      "nota": ""
     },
     {
       "id": "2026-08-26-22-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "1ª",
+      "detalle": "Quarts 3",
       "tipo": "esport",
       "fecha": "2026-08-26",
       "hora": "22:00",
       "horaFin": "23:00",
       "orden": 22,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "Guanyador P2 - Equip 7",
+      "nota": ""
     },
     {
       "id": "2026-08-26-23-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "1ª",
+      "detalle": "Quarts 4",
       "tipo": "esport",
       "fecha": "2026-08-26",
       "hora": "23:00",
       "horaFin": "00:00",
       "orden": 23,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-27-18-futbol-sala",
-      "esport": "Futbol sala",
-      "detalle": "7",
-      "tipo": "esport",
-      "fecha": "2026-08-27",
-      "hora": "18:00",
-      "horaFin": "19:00",
-      "orden": 18,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-27-19-futbol-sala",
-      "esport": "Futbol sala",
-      "detalle": "8",
-      "tipo": "esport",
-      "fecha": "2026-08-27",
-      "hora": "19:00",
-      "horaFin": "20:00",
-      "orden": 19,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-27-20-dards",
-      "esport": "Dards",
-      "detalle": "7-8",
-      "tipo": "esport",
-      "fecha": "2026-08-27",
-      "hora": "20:00",
-      "horaFin": "21:00",
-      "orden": 20,
-      "lloc": "Altres"
+      "lloc": "Poliesportiu",
+      "quiJuga": "Equip 6 - Equip 9",
+      "nota": ""
     },
     {
       "id": "2026-08-27-21-dards",
       "esport": "Dards",
-      "detalle": "3ª-4ª",
+      "detalle": "7è i 8è lloc, 3r i 4t lloc",
       "tipo": "esport",
       "fecha": "2026-08-27",
       "hora": "21:00",
       "horaFin": "22:00",
       "orden": 21,
-      "lloc": "Altres"
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-28-18-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "PREV. F.",
+      "detalle": "9è i 10è lloc",
       "tipo": "esport",
       "fecha": "2026-08-28",
       "hora": "18:00",
       "horaFin": "19:00",
       "orden": 18,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-28-19-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "SEMIS",
+      "detalle": "Semifinal consolació 1",
       "tipo": "esport",
       "fecha": "2026-08-28",
       "hora": "19:00",
       "horaFin": "20:00",
       "orden": 19,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-28-20-dards",
-      "esport": "Dards",
-      "detalle": "9-10",
-      "tipo": "esport",
-      "fecha": "2026-08-28",
-      "hora": "20:00",
-      "horaFin": "21:00",
-      "orden": 20,
-      "lloc": "Altres"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-28-20-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "SEMIS",
+      "detalle": "Semifinal consolació 2",
       "tipo": "esport",
       "fecha": "2026-08-28",
       "hora": "20:00",
       "horaFin": "21:00",
       "orden": 20,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-28-21-dards",
       "esport": "Dards",
-      "detalle": "FINALS",
+      "detalle": "Final consolació · 5è i 6è lloc, Final",
       "tipo": "esport",
       "fecha": "2026-08-28",
       "hora": "21:00",
       "horaFin": "22:00",
       "orden": 21,
-      "lloc": "Altres"
-    },
-    {
-      "id": "2026-08-28-21-futbol-sala",
-      "esport": "Futbol sala",
-      "detalle": "9",
-      "tipo": "esport",
-      "fecha": "2026-08-28",
-      "hora": "21:00",
-      "horaFin": "22:00",
-      "orden": 21,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-28-22-futbol-sala",
-      "esport": "Futbol sala",
-      "detalle": "10",
-      "tipo": "esport",
-      "fecha": "2026-08-28",
-      "hora": "22:00",
-      "horaFin": "23:00",
-      "orden": 22,
-      "lloc": "Poliesportiu"
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-28-23-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "SEMIS",
+      "detalle": "Semifinal 1",
       "tipo": "esport",
       "fecha": "2026-08-28",
       "hora": "23:00",
       "horaFin": "00:00",
       "orden": 23,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-28-00-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "SEMIS",
+      "detalle": "Semifinal 2",
       "tipo": "esport",
       "fecha": "2026-08-28",
       "hora": "00:00",
       "horaFin": "01:00",
       "orden": 24,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-29-11-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "3ª-4ª",
+      "detalle": "7è i 8è lloc",
       "tipo": "esport",
       "fecha": "2026-08-29",
       "hora": "11:00",
       "horaFin": "12:00",
       "orden": 11,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-29-12-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "3ª-4ª",
+      "detalle": "3r i 4t lloc",
       "tipo": "esport",
       "fecha": "2026-08-29",
       "hora": "12:00",
       "horaFin": "13:00",
       "orden": 12,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-29-13-basquet",
-      "esport": "Bàsquet",
-      "detalle": "9-10",
-      "tipo": "esport",
-      "fecha": "2026-08-29",
-      "hora": "13:00",
-      "horaFin": "14:00",
-      "orden": 13,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-29-14-handbol",
       "esport": "Handbol",
-      "detalle": "PREV. F.",
+      "detalle": "9è i 10è lloc",
       "tipo": "esport",
       "fecha": "2026-08-29",
       "hora": "14:00",
       "horaFin": "15:00",
       "orden": 14,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-29-15-handbol",
       "esport": "Handbol",
-      "detalle": "FINAL",
+      "detalle": "Final consolació · 5è i 6è lloc",
       "tipo": "esport",
       "fecha": "2026-08-29",
       "hora": "15:00",
       "horaFin": "16:00",
       "orden": 15,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-29-16-handbol",
       "esport": "Handbol",
-      "detalle": "FINAL",
+      "detalle": "Final",
       "tipo": "esport",
       "fecha": "2026-08-29",
       "hora": "16:00",
       "horaFin": "17:00",
       "orden": 16,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-29-17-handbol",
-      "esport": "Handbol",
-      "detalle": "9",
-      "tipo": "esport",
-      "fecha": "2026-08-29",
-      "hora": "17:00",
-      "horaFin": "18:00",
-      "orden": 17,
-      "lloc": "Poliesportiu"
-    },
-    {
-      "id": "2026-08-29-18-handbol",
-      "esport": "Handbol",
-      "detalle": "10",
-      "tipo": "esport",
-      "fecha": "2026-08-29",
-      "hora": "18:00",
-      "horaFin": "19:00",
-      "orden": 18,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-29-19-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "FINAL",
+      "detalle": "Final consolació · 5è i 6è lloc",
       "tipo": "esport",
       "fecha": "2026-08-29",
       "hora": "19:00",
       "horaFin": "20:00",
       "orden": 19,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
       "id": "2026-08-29-20-futbol-sala",
       "esport": "Futbol sala",
-      "detalle": "FINAL",
+      "detalle": "Final",
       "tipo": "esport",
       "fecha": "2026-08-29",
       "hora": "20:00",
       "horaFin": "21:00",
       "orden": 20,
-      "lloc": "Poliesportiu"
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
     },
     {
-      "id": "2026-08-29-21-sopar-de-cloenda",
-      "esport": "Sopar de cloenda",
+      "id": "2026-08-29-21-acte",
+      "esport": "Acte",
       "detalle": "",
       "tipo": "acte",
       "fecha": "2026-08-29",
       "hora": "21:00",
-      "horaFin": "22:00",
+      "horaFin": "06:00",
       "orden": 21,
-      "lloc": "Club De Begues"
+      "lloc": "Club de Begues",
+      "quiJuga": "SOPAR CLOENDA",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-29-21-sopar-cloenda",
+      "esport": "Sopar cloenda",
+      "detalle": "",
+      "tipo": "acte",
+      "fecha": "2026-08-29",
+      "hora": "21:00",
+      "horaFin": "06:00",
+      "orden": 21,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
     }
   ],
   "lligues": [
@@ -1369,7 +1160,7 @@
   "limites": [
     {
       "fecha": "2026-08-17",
-      "texto": "Limit Previa",
+      "texto": "Limit previa",
       "esports": [
         "Petanca",
         "Dòmino",
@@ -1377,23 +1168,15 @@
         "Frontó",
         "Pàdel",
         "Billar"
-      ]
-    },
-    {
-      "fecha": "2026-08-19",
-      "texto": "Limit Meitat Lliga",
-      "esports": [
-        "Petanca",
-        "Dòmino",
-        "Tennis",
-        "Frontó",
-        "Pàdel",
-        "Billar"
+      ],
+      "rondes": [
+        "Prèvia 1",
+        "Prèvia 2"
       ]
     },
     {
       "fecha": "2026-08-21",
-      "texto": "Limit 1ª Ronda",
+      "texto": "Limit 1ª ronda",
       "esports": [
         "Petanca",
         "Dòmino",
@@ -1401,11 +1184,17 @@
         "Frontó",
         "Pàdel",
         "Billar"
+      ],
+      "rondes": [
+        "Quarts 1",
+        "Quarts 2",
+        "Quarts 3",
+        "Quarts 4"
       ]
     },
     {
       "fecha": "2026-08-25",
-      "texto": "Limit Semis I 9ª - 10ª Lloc",
+      "texto": "Limit semis i 9ª - 10ª lloc",
       "esports": [
         "Petanca",
         "Dòmino",
@@ -1413,23 +1202,18 @@
         "Frontó",
         "Pàdel",
         "Billar"
-      ]
-    },
-    {
-      "fecha": "2026-08-27",
-      "texto": "Limit Finalització Lliga",
-      "esports": [
-        "Petanca",
-        "Dòmino",
-        "Tennis",
-        "Frontó",
-        "Pàdel",
-        "Billar"
+      ],
+      "rondes": [
+        "Semifinal consolació 1",
+        "Semifinal consolació 2",
+        "Semifinal 1",
+        "Semifinal 2",
+        "9è i 10è lloc"
       ]
     },
     {
       "fecha": "2026-08-28",
-      "texto": "Limit 3ª-4ª I Finals",
+      "texto": "Limit 3ª-4ª i finals",
       "esports": [
         "Petanca",
         "Dòmino",
@@ -1437,29 +1221,14 @@
         "Frontó",
         "Pàdel",
         "Billar"
+      ],
+      "rondes": [
+        "7è i 8è lloc",
+        "3r i 4t lloc",
+        "Final consolació · 5è i 6è lloc",
+        "Final"
       ]
     }
   ],
-  "avisos": [
-    {
-      "fecha": "2026-08-18",
-      "hora": "20:00",
-      "texto": "FUTBOL 11 OCUPAT 20:30-22:15"
-    },
-    {
-      "fecha": "2026-08-20",
-      "hora": "20:00",
-      "texto": "FUTBOL 11 OCUPAT 20:30-22:15"
-    },
-    {
-      "fecha": "2026-08-21",
-      "hora": "20:00",
-      "texto": "FUTBOL 11 OCUPAT 20:30-22:15"
-    },
-    {
-      "fecha": "2026-08-22",
-      "hora": "19:00",
-      "texto": "FUTBOL 11 OCUPAT 19:00-21:00"
-    }
-  ]
+  "avisos": []
 }

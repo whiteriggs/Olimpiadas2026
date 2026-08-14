@@ -22,8 +22,10 @@ Hace falta un servidor (aunque sea local) porque la app usa módulos ES y `fetch
 
 ## Actualizar el calendario
 
-Los horarios son provisionales. El origen es la hoja de cálculo de la organización;
-`scripts/importar_calendario.py` la convierte al JSON que consume la web.
+Los horarios son provisionales. El origen es la pestaña *Calendari* de la hoja de
+cálculo de la organización (la misma que alimenta su web);
+`scripts/importar_calendario.py` la convierte al JSON que consume la web y de paso
+descarta lo que es solo del equipo femenino.
 
 Una acción programada ([.github/workflows/actualitza-calendari.yml](.github/workflows/actualitza-calendari.yml))
 lo hace sola cada día a las 6:00 UTC y solo hace commit si el calendario ha
@@ -43,10 +45,10 @@ Genera `data/calendario.json` con:
 
 | campo | contenido |
 | --- | --- |
-| `pruebas` | cada franja del calendario: esport, detalle (fase), fecha, hora, sede |
+| `pruebas` | cada franja del calendario: esport, detalle (ronda), fecha, hora, sede, rivales y nota |
 | `lligues` | esports sin horario fijo (petanca, dòmino, tennis, frontó, pàdel, billar) |
 | `limites` | fechas límite de cada ronda de las lligues |
-| `avisos` | notas de la hoja, p. ej. campo de fútbol 11 ocupado |
+| `avisos` | notas sueltas de la hoja (hoy vacío) |
 
 ## Compartir los datos con el equipo
 

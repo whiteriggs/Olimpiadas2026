@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Convierte el calendario provisional (Google Sheets) a data/calendario.json.
+"""Convierte la pestaña «Calendari» de la organización a data/calendario.json.
+
+Es la misma hoja que lee la web oficial (jordilolapay/clubbegues), así que
+mientras ellos la mantengan al día, nosotros vamos sincronizados. Solo nos
+quedamos con la competición masculina.
 
 Uso:
     python3 scripts/importar_calendario.py            # descarga la hoja publicada
@@ -16,55 +20,21 @@ from datetime import date
 from pathlib import Path
 
 HOJA = "1gB3BzDDBQATh5wTy8JRPxCHLMUqPpnQwFcp3pIsIvLo"
-GID = "572313569"
-CSV_URL = f"https://docs.google.com/spreadsheets/d/{HOJA}/export?format=csv&gid={GID}"
+PESTANIA = "Calendari"
+CSV_URL = (
+    f"https://docs.google.com/spreadsheets/d/{HOJA}/gviz/tq?tqx=out:csv&sheet={PESTANIA}"
+)
 
 ANIO = 2026
-MES = 8  # las olimpíades van del 14 al 29 de agosto
 
 RAIZ = Path(__file__).resolve().parent.parent
 SALIDA = RAIZ / "data" / "calendario.json"
 
-DIAS = {
-    "DILLUNS": 0, "DIMARTS": 1, "DIMECRES": 2, "DIJOUS": 3,
-    "DIVENDRES": 4, "DISSABTE": 5, "DIUMENGE": 6,
-}
+# Las filas sin competición valen para las dos: son pruebas compartidas.
+NUESTRA = {"", "MASCULI"}
 
-# Orden importa: los nombres largos deben ir antes que los cortos.
-TERMINOS = [
-    ("VOLEY PLATJA", "Vòlei platja", "esport"),
-    ("VOLEI PLATJA", "Vòlei platja", "esport"),
-    ("FUTBOL SALA", "Futbol sala", "esport"),
-    ("FUTBOL 7", "Futbol 7", "esport"),
-    ("FUTBOL 11", "Futbol 11", "esport"),
-    ("PING PONG", "Ping-pong", "esport"),
-    ("WATERPOLO", "Waterpolo", "esport"),
-    ("HANDBALL", "Handbol", "esport"),
-    ("BASQUET", "Bàsquet", "esport"),
-    ("MINIGOLF", "Minigolf", "esport"),
-    ("ATLETISME", "Atletisme", "esport"),
-    ("CICLISME", "Ciclisme", "esport"),
-    ("FUTBOLIN", "Futbolí", "esport"),
-    ("NATACIO", "Natació", "esport"),
-    ("ESCACS", "Escacs", "esport"),
-    ("PETANCA", "Petanca", "esport"),
-    ("DOMINO", "Dòmino", "esport"),
-    ("FRONTON", "Frontó", "esport"),
-    ("BILLAR", "Billar", "esport"),
-    ("DARDS", "Dards", "esport"),
-    ("PADEL", "Pàdel", "esport"),
-    ("TENIS", "Tennis", "esport"),
-    ("CROSS", "Cros", "esport"),
-    ("VOLEY", "Vòlei", "esport"),
-    ("VOLEI", "Vòlei", "esport"),
-    ("REUNIO INFORMATIVA", "Reunió informativa", "acte"),
-    ("INAUGURACIO", "Inauguració", "acte"),
-    ("SOPAR CLOENDA", "Sopar de cloenda", "acte"),
-    ("TARDEO", "Tardeo", "acte"),
-]
-
-# Valores de la columna de leyenda que no son eventos.
-LEYENDA = {"MASCULI", "FEMENI", "MASCULI I FEMENI", "NO DISPONIBLE", ""}
+# Los partidos de la liga femenina se llaman «F1-F2».
+PARTIDO_FEMENINO = re.compile(r"^F\d\s*-\s*F\d$", re.I)
 
 
 def sin_acentos(texto):
@@ -74,62 +44,52 @@ def sin_acentos(texto):
 
 
 def normaliza(celda):
-    return re.sub(r"\s+", " ", celda.replace("\n", " ")).strip()
+    return re.sub(r"[ \t]+", " ", (celda or "").replace("\r", "")).strip()
 
 
 def clave(texto):
     return sin_acentos(normaliza(texto)).upper()
 
 
-def limpia_detalle(texto):
-    return re.sub(r"^[\s\-+I·]+|[\s\-+I·]+$", "", texto).strip()
+def troceja(celda):
+    return [t.strip() for t in normaliza(celda).split(",") if t.strip()]
 
 
-def nombre_canonico(texto):
-    plano = clave(texto)
-    for patron, nombre, _ in TERMINOS:
-        if patron in plano:
-            return nombre
-    return normaliza(texto).title()
-
-
-def parte_horas(etiqueta):
-    m = re.match(r"^(\d{1,2})\s*-\s*(\d{1,2})h$", etiqueta.strip(), re.I)
+def parte_fecha(celda):
+    texto = normaliza(celda)
+    if re.match(r"^\d{4}-\d{2}-\d{2}$", texto):
+        return texto
+    m = re.match(r"^(\d{1,2})/(\d{1,2})(?:/(\d{4}))?$", texto)
     if not m:
         return None
-    ini, fin = int(m.group(1)), int(m.group(2))
-    # Las franjas de 0h a 6h son de madrugada: van al final del día.
-    orden = ini if ini >= 7 else ini + 24
-    return f"{ini:02d}:00", f"{fin:02d}:00", orden
+    return date(int(m.group(3) or ANIO), int(m.group(2)), int(m.group(1))).isoformat()
 
 
-def separa_eventos(celda):
-    """Una celda puede contener varios esports ('FUTBOLIN / DARDS 1-2 PREV.')."""
-    texto = normaliza(celda)
+def parte_horas(celda):
+    """«21-22h», «21:00-22:00» o «21h» → ('21:00', '22:00', orden)."""
+    texto = normaliza(celda).replace("h", "")
     if not texto:
-        return []
-    plano = clave(texto)
-    encontrados = []
-    ocupado = [False] * len(plano)
-    for patron, nombre, tipo in TERMINOS:
-        for m in re.finditer(re.escape(patron), plano):
-            if any(ocupado[m.start():m.end()]):
-                continue
-            for i in range(m.start(), m.end()):
-                ocupado[i] = True
-            encontrados.append((m.start(), m.end(), nombre, tipo))
-    if not encontrados:
-        return [{"nombre": texto, "detalle": "", "tipo": "altres"}]
+        return None
+    horas = []
+    for parte in texto.split("-"):
+        m = re.match(r"^(\d{1,2})(?::(\d{2}))?$", parte.strip())
+        if not m:
+            return None
+        horas.append(f"{int(m.group(1)):02d}:{m.group(2) or '00'}")
+    inicio = horas[0]
+    # Las franjas de madrugada (0h–6h) cierran el día anterior, no lo abren.
+    hora = int(inicio[:2])
+    return inicio, (horas[1] if len(horas) > 1 else ""), hora if hora >= 7 else hora + 24
 
-    encontrados.sort()
-    eventos = []
-    for i, (ini, fin, nombre, tipo) in enumerate(encontrados):
-        sig = encontrados[i + 1][0] if i + 1 < len(encontrados) else len(texto)
-        detalle = texto[fin:sig]
-        if i == 0 and ini > 0:
-            detalle = texto[:ini] + " " + detalle
-        eventos.append({"nombre": nombre, "detalle": limpia_detalle(detalle), "tipo": tipo})
-    return eventos
+
+def solo_masculino(partidos, quien_juega):
+    """En las franjas compartidas quita lo que sea de la liga femenina."""
+    lineas = [
+        linea.strip()
+        for linea in quien_juega.split("\n")
+        if linea.strip() and not re.match(r"^F\d\s*-\s*F\d\s*:", linea.strip(), re.I)
+    ]
+    return [p for p in partidos if not PARTIDO_FEMENINO.match(p)], "\n".join(lineas)
 
 
 def lee_csv(origen):
@@ -138,78 +98,79 @@ def lee_csv(origen):
     else:
         with urllib.request.urlopen(CSV_URL) as r:  # noqa: S310 - URL fija y conocida
             texto = r.read().decode("utf-8")
-    return list(csv.reader(texto.splitlines()))
+    return list(csv.DictReader(texto.splitlines()))
 
 
 def main():
     filas = lee_csv(sys.argv[1] if len(sys.argv) > 1 else None)
+    faltan = {"Data", "Esport", "Partit"} - set(filas[0] if filas else set())
+    if faltan:
+        raise SystemExit(f"La pestaña «{PESTANIA}» no tiene las columnas {faltan}.")
 
-    pruebas, limites, avisos = [], [], []
-    fecha_actual = None
-    sedes = {}
+    pruebas, limites = [], []
     vistos = set()
 
     for fila in filas:
-        fila = list(fila) + [""] * (8 - len(fila))
-        col0 = normaliza(fila[0])
-
-        m_dia = re.match(r"^([A-Za-zÀ-ÿ]+)\s+(\d{1,2})$", normaliza(fila[1])) if not col0 else None
-        if m_dia and clave(m_dia.group(1)) in DIAS:
-            fecha_actual = date(ANIO, MES, int(m_dia.group(2))).isoformat()
-            sedes = {}
+        if clave(fila.get("Competició")) not in NUESTRA:
+            continue
+        fecha = parte_fecha(fila.get("Data"))
+        if not fecha:
             continue
 
-        if fecha_actual and not col0 and normaliza(fila[1]).upper().startswith("LIMIT"):
+        tipo_fila = clave(fila.get("Tipus"))
+        nota = normaliza(fila.get("Nota"))
+        esports = troceja(fila.get("Esport"))
+        partidos, quien = solo_masculino(
+            troceja(fila.get("Partit")), fila.get("Qui juga") or ""
+        )
+
+        if tipo_fila == "LIMIT":
             limites.append({
-                "fecha": fecha_actual,
-                "texto": normaliza(fila[1]).title(),
-                "esports": [nombre_canonico(t) for t in normaliza(fila[7]).split(",") if t.strip()],
+                "fecha": fecha,
+                "texto": nota.capitalize() if nota else "Data límit",
+                "esports": esports,
+                "rondes": partidos,
             })
             continue
 
-        # Fila de sedes: va justo debajo del nombre del día.
-        if not col0 and not sedes and any(normaliza(fila[i]) for i in (1, 3, 5)):
-            for i in (1, 3, 5):
-                nombre = normaliza(fila[i])
-                if nombre:
-                    sedes[i] = nombre
-                    sedes[i + 1] = nombre
+        horas = parte_horas(fila.get("Hora"))
+        if tipo_fila == "ACTE":
+            hora, hora_fin, orden = horas or ("", "", 99)
+            esports = [nota.capitalize() or "Acte"]
+            nota = ""
+        elif horas:
+            hora, hora_fin, orden = horas
+        else:
             continue
 
-        horas = parte_horas(col0)
-        if not horas or not fecha_actual:
-            continue
-        hora, hora_fin, orden = horas
-
-        nota = normaliza(fila[7])
-        if nota and clave(nota) not in LEYENDA:
-            avisos.append({"fecha": fecha_actual, "hora": hora, "texto": nota})
-
-        for col in range(1, 7):
-            for ev in separa_eventos(fila[col]):
-                base = re.sub(r"[^a-z0-9]+", "-", sin_acentos(ev["nombre"]).lower()).strip("-")
-                ident = f"{fecha_actual}-{hora[:2]}-{base}"
-                sufijo = 2
-                while ident in vistos:
-                    ident = f"{fecha_actual}-{hora[:2]}-{base}-{sufijo}"
-                    sufijo += 1
-                vistos.add(ident)
-                pruebas.append({
-                    "id": ident,
-                    "esport": ev["nombre"],
-                    "detalle": ev["detalle"],
-                    "tipo": ev["tipo"],
-                    "fecha": fecha_actual,
-                    "hora": hora,
-                    "horaFin": hora_fin,
-                    "orden": orden,
-                    "lloc": sedes.get(col, ""),
-                })
+        for esport in esports:
+            base = re.sub(r"[^a-z0-9]+", "-", sin_acentos(esport).lower()).strip("-")
+            ident = f"{fecha}-{hora[:2] or 'xx'}-{base}"
+            sufijo = 2
+            while ident in vistos:
+                ident = f"{fecha}-{hora[:2] or 'xx'}-{base}-{sufijo}"
+                sufijo += 1
+            vistos.add(ident)
+            pruebas.append({
+                "id": ident,
+                "esport": esport,
+                "detalle": "" if partidos == ["Tot"] else ", ".join(partidos),
+                "tipo": "acte" if tipo_fila == "ACTE" else "esport",
+                "fecha": fecha,
+                "hora": hora,
+                "horaFin": hora_fin,
+                "orden": orden,
+                "lloc": normaliza(fila.get("Lloc")),
+                "quiJuga": quien,
+                "nota": nota,
+            })
 
     pruebas.sort(key=lambda p: (p["fecha"], p["orden"], p["esport"]))
+    limites.sort(key=lambda l: l["fecha"])
 
-    # Esports de lliga: no tienen franja fija, solo fechas límite de ronda.
-    lligues = sorted({e for l in limites for e in l["esports"]})
+    # Esports de lliga: no tienen franja fija, solo fechas límite por ronda.
+    con_horario = {p["esport"] for p in pruebas}
+    lligues = sorted({e for l in limites for e in l["esports"]} - con_horario)
 
     datos = {
         "titulo": "Olimpíades Begues 2026",
@@ -219,7 +180,7 @@ def main():
         "pruebas": pruebas,
         "lligues": lligues,
         "limites": limites,
-        "avisos": avisos,
+        "avisos": [],
     }
 
     if len(pruebas) < 50:
@@ -238,7 +199,7 @@ def main():
 
     SALIDA.parent.mkdir(parents=True, exist_ok=True)
     SALIDA.write_text(json.dumps(datos, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"{len(pruebas)} pruebas, {len(limites)} límites, {len(avisos)} avisos → {SALIDA}")
+    print(f"{len(pruebas)} proves · {len(limites)} dates límit · lligues: {', '.join(lligues)}")
 
 
 if __name__ == "__main__":
