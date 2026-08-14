@@ -103,6 +103,11 @@ function esportDe(idEsport) {
   return torneig ? (torneig.esports || []).find((e) => e.id === idEsport) : null;
 }
 
+/** Els noms del calendari i els del quadre venen del mateix full: coincideixen. */
+function esportPerNom(nom) {
+  return torneig ? (torneig.esports || []).find((e) => e.nom === nom) : null;
+}
+
 /** Els partits del quadre que es juguen en aquesta franja del calendari. */
 function partitsDe(p) {
   const esport = esportDe(p.esportId);
@@ -344,7 +349,12 @@ function pintarPunts() {
     fila.appendChild(el("td", null, String(e.punts)));
   }
 
-  if (!jo) return;
+  if (!jo) {
+    pas.appendChild(
+      el("p", "vacio", "Quan sapiguem quin equip som, aquí sortirà com anem a cada esport. Mentrestant, mira els quadres més avall.")
+    );
+    return;
+  }
   for (const esport of torneig.esports) {
     const fila = el("button", "resumen-fila clicable");
     fila.type = "button";
@@ -614,9 +624,16 @@ function pintarEquipo() {
     resumen.appendChild(el("p", "vacio", "Encara no s'hi ha apuntat ningú."));
   }
   for (const e of conGente) {
-    const fila = el("div", "resumen-fila");
     const gente = apuntadosA(e.nombre);
-    fila.appendChild(el("strong", null, `${e.nombre} (${gente.length})`));
+    const delQuadre = esportPerNom(e.nombre);
+    const fila = el("div", "resumen-fila");
+    const titol = el(delQuadre ? "button" : "strong", null, `${e.nombre} (${gente.length})`);
+    if (delQuadre) {
+      titol.type = "button";
+      titol.className = "obre-quadre";
+      titol.addEventListener("click", () => obrirQuadre(delQuadre.id));
+    }
+    fila.appendChild(titol);
     const pills = el("div");
     for (const p of gente) pills.appendChild(el("span", "pastilla", p.nombre));
     fila.appendChild(pills);

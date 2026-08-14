@@ -344,6 +344,22 @@ body:has(.modal[open]) { overflow: hidden; }
 }
 .resumen-fila.clicable:hover { background: var(--neutre-fons); }
 
+/* El nom de l'esport, dins el resum d'equip, obre el quadre. */
+.obre-quadre {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  color: inherit;
+  text-align: left;
+  text-decoration: underline dotted var(--gris);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.obre-quadre::after { content: " ›"; color: var(--gris); font-weight: 400; }
+.obre-quadre:hover { text-decoration: underline solid currentColor; }
+
 /* ---------- calendari ---------- */
 
 .dias { display: flex; flex-direction: column; gap: 24px; }
