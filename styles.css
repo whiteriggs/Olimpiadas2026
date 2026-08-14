@@ -130,7 +130,8 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 }
 .tab {
   appearance: none; border: 0; background: none; color: #b8c9dd;
-  flex: 1; min-width: 0; padding: 8px 10px; font: inherit; font-size: 0.9rem;
+  /* Base 'auto': els noms llargs es queden l'espai que necessiten. */
+  flex: 1 1 auto; min-width: 0; padding: 8px 10px; font: inherit; font-size: 0.9rem;
   font-weight: 600; cursor: pointer; border-radius: 999px;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   transition: color var(--transicio), background var(--transicio);
@@ -244,7 +245,9 @@ textarea { resize: vertical; }
 
 .modal {
   width: min(560px, calc(100vw - 24px));
-  max-height: min(84vh, 760px);
+  max-height: min(86vh, 760px);
+  max-height: min(86dvh, 760px);
+  margin: auto;
   padding: 0;
   border: none;
   border-radius: var(--radio);
@@ -260,7 +263,7 @@ textarea { resize: vertical; }
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  flex: none;
+  flex: 0 0 auto;
   padding: 14px 16px;
   border-bottom: 1px solid var(--borde);
   background: var(--superficie);
@@ -280,10 +283,12 @@ textarea { resize: vertical; }
 }
 .tanca:hover { background: var(--rojo); border-color: var(--rojo); color: #fff; }
 .modal-cos {
-  flex: 1;
+  /* Base 'auto', no 0: amb 'flex: 1' Safari deixa el cos a zero i només es veu la capçalera. */
+  flex: 1 1 auto;
   min-height: 0;
   padding: 4px 16px 18px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: var(--borde) transparent;
