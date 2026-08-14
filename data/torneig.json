@@ -1,46 +1,46 @@
 {
- "actualizado": "2026-08-14T07:04:41+00:00",
- "nosaltres": null,
+ "actualizado": "2026-08-14T17:16:05+00:00",
+ "nosaltres": "E6",
  "equips": [
   {
    "id": "E1",
-   "nom": "Equip 1"
+   "nom": "La Jee-peta"
   },
   {
    "id": "E2",
-   "nom": "Equip 2"
+   "nom": "Passa directament"
   },
   {
    "id": "E3",
-   "nom": "Equip 3"
+   "nom": "Olimpiakojos"
   },
   {
    "id": "E4",
-   "nom": "Equip 4"
+   "nom": "Vaig molt cremat"
   },
   {
    "id": "E5",
-   "nom": "Equip 5"
+   "nom": "Yayo Vallecano"
   },
   {
    "id": "E6",
-   "nom": "Equip 6"
+   "nom": "Diablos"
   },
   {
    "id": "E7",
-   "nom": "Equip 7"
+   "nom": "Esperando a los Palomos"
   },
   {
    "id": "E8",
-   "nom": "Equip 8"
+   "nom": "Massumba y los mas zumbaos"
   },
   {
    "id": "E9",
-   "nom": "Equip 9"
+   "nom": "Joga Vomito"
   },
   {
    "id": "E10",
-   "nom": "Equip 10"
+   "nom": "La Once"
   }
  ],
  "esports": [
@@ -4306,62 +4306,62 @@
  ],
  "general": [
   {
-   "id": "E1",
-   "nom": "Equip 1",
-   "punts": 0,
-   "posicio": 1
-  },
-  {
-   "id": "E10",
-   "nom": "Equip 10",
-   "punts": 0,
-   "posicio": 1
-  },
-  {
-   "id": "E2",
-   "nom": "Equip 2",
-   "punts": 0,
-   "posicio": 1
-  },
-  {
-   "id": "E3",
-   "nom": "Equip 3",
-   "punts": 0,
-   "posicio": 1
-  },
-  {
-   "id": "E4",
-   "nom": "Equip 4",
-   "punts": 0,
-   "posicio": 1
-  },
-  {
-   "id": "E5",
-   "nom": "Equip 5",
-   "punts": 0,
-   "posicio": 1
-  },
-  {
    "id": "E6",
-   "nom": "Equip 6",
+   "nom": "Diablos",
    "punts": 0,
    "posicio": 1
   },
   {
    "id": "E7",
-   "nom": "Equip 7",
-   "punts": 0,
-   "posicio": 1
-  },
-  {
-   "id": "E8",
-   "nom": "Equip 8",
+   "nom": "Esperando a los Palomos",
    "punts": 0,
    "posicio": 1
   },
   {
    "id": "E9",
-   "nom": "Equip 9",
+   "nom": "Joga Vomito",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E1",
+   "nom": "La Jee-peta",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E10",
+   "nom": "La Once",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E8",
+   "nom": "Massumba y los mas zumbaos",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E3",
+   "nom": "Olimpiakojos",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E2",
+   "nom": "Passa directament",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E4",
+   "nom": "Vaig molt cremat",
+   "punts": 0,
+   "posicio": 1
+  },
+  {
+   "id": "E5",
+   "nom": "Yayo Vallecano",
    "punts": 0,
    "posicio": 1
   }
