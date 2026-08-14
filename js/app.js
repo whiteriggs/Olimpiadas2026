@@ -140,19 +140,29 @@ function quiPotVenir(p) {
 
 /* ---------- calendari ---------- */
 
+/** Data d'avui en hora local: amb toISOString a la nit ens saltaria al dia anterior. */
+function avui() {
+  const d = new Date();
+  return `${d.getFullYear()}-${dosXifres(d.getMonth() + 1)}-${dosXifres(d.getDate())}`;
+}
+let filtreRapid = "tot";
+let jaHeAnatAAvui = false;
+
 function pintarCalendario() {
   const cont = $("#listaCalendario");
   vaciar(cont);
 
   const dia = $("#filtroDia").value;
   const esport = $("#filtroDeporte").value;
-  const soloMios = $("#filtroMios").checked;
   const mios = new Set((yo && yo.esports) || []);
+  const avuiIso = avui();
 
   const visibles = cal.pruebas.filter((p) => {
     if (dia && p.fecha !== dia) return false;
     if (esport && p.esport !== esport) return false;
-    if (soloMios && !mios.has(p.esport)) return false;
+    if (filtreRapid === "avui" && p.fecha !== avuiIso) return false;
+    if (filtreRapid === "meus" && !mios.has(p.esport)) return false;
+    if (filtreRapid === "nostres" && hiJuguem(p) !== true) return false;
     return true;
   });
 
@@ -165,14 +175,20 @@ function pintarCalendario() {
     const delDia = visibles.filter((p) => p.fecha === fecha);
     const limitsDelDia = (cal.limites || []).filter((l) => {
       if (l.fecha !== fecha) return false;
+      if (dia && l.fecha !== dia) return false;
       if (esport && !l.esports.includes(esport)) return false;
-      if (soloMios && !l.esports.some((e) => mios.has(e))) return false;
+      if (filtreRapid === "avui" && l.fecha !== avuiIso) return false;
+      if (filtreRapid === "meus" && !l.esports.some((e) => mios.has(e))) return false;
       return true;
     });
     if (!delDia.length && !limitsDelDia.length) continue;
 
     const bloque = el("section", "dia");
-    bloque.appendChild(el("h3", null, fmtDia.format(aFecha(fecha))));
+    if (fecha === avuiIso) bloque.classList.add("avui");
+    bloque.id = "dia-" + fecha;
+    const titol = el("h3", null, fmtDia.format(aFecha(fecha)));
+    if (fecha === avuiIso) titol.appendChild(el("span", "etiqueta-avui", "avui"));
+    bloque.appendChild(titol);
 
     for (const lim of limitsDelDia) {
       const caja = el("div", "limit");
@@ -185,6 +201,15 @@ function pintarCalendario() {
     for (const p of delDia) lista.appendChild(tarjetaEvento(p, mios));
     bloque.appendChild(lista);
     cont.appendChild(bloque);
+  }
+
+  // El primer cop obrim el calendari pel dia d'avui, no pel 14 d'agost.
+  if (!jaHeAnatAAvui) {
+    const avuiBloc = cont.querySelector(".dia.avui");
+    if (avuiBloc) {
+      jaHeAnatAAvui = true;
+      requestAnimationFrame(() => avuiBloc.scrollIntoView({ block: "start" }));
+    }
   }
 }
 
@@ -208,7 +233,18 @@ function tarjetaEvento(p, mios) {
 
   const partits = partitsDe(p);
   if (partits.length) {
-    for (const partit of partits) cuerpo.appendChild(liniaPartit(partit));
+    const jo = nosaltres();
+    // Els nostres primer: és l'únic que interessa d'una franja amb quatre partits.
+    const ordenats = [...partits].sort(
+      (a, b) => Number(b.equips.includes(jo)) - Number(a.equips.includes(jo))
+    );
+    const altres = jo && ordenats.some((x) => x.equips.includes(jo));
+    for (const partit of ordenats) {
+      const nostre = jo && partit.equips.includes(jo);
+      const fila = liniaPartit(partit);
+      if (altres && !nostre) fila.classList.add("apagat");
+      cuerpo.appendChild(fila);
+    }
   } else {
     for (const linea of (p.quiJuga || "").split("\n").filter(Boolean)) {
       cuerpo.appendChild(el("div", "rival", linea));
@@ -217,6 +253,14 @@ function tarjetaEvento(p, mios) {
 
   const gente = apuntadosA(p.esport);
   if (gente.length) {
+    const { poden } = quiPotVenir(p);
+    cuerpo.appendChild(
+      el(
+        "div",
+        "compte" + (poden ? "" : " alerta"),
+        `${poden} de ${gente.length} poden venir`
+      )
+    );
     const fila = el("div", "apuntados");
     for (const persona of gente) {
       const estado = dispoDe(persona, p.fecha);
@@ -260,11 +304,28 @@ function liniaPartit(partit) {
   return fila;
 }
 
+/** "d'aquí a 2 dies", "d'aquí a 6 h 20 min", "d'aquí a 12 min". */
+function quantFalta(quan) {
+  const min = Math.round((quan - new Date()) / 60000);
+  if (min <= 0) return "ara mateix";
+  if (min < 60) return `d'aquí a ${min} min`;
+  const hores = Math.floor(min / 60);
+  if (hores < 24) {
+    const resta = min % 60;
+    return `d'aquí a ${hores} h${resta ? ` ${resta} min` : ""}`;
+  }
+  const dies = Math.round(hores / 24);
+  return `d'aquí a ${dies} ${dies === 1 ? "dia" : "dies"}`;
+}
+
+let comptadorSeguent = null;
+
 /** Targeta de dalt: el pròxim compromís nostre, amb qui hi pot anar. */
 function pintarSeguent() {
   const caja = $("#seguent");
   vaciar(caja);
   caja.hidden = true;
+  clearInterval(comptadorSeguent);
   if (!nosaltres()) return;
 
   const ara = new Date();
@@ -275,12 +336,15 @@ function pintarSeguent() {
     .sort((a, b) => a.quan - b.quan)[0];
   if (!proxima) return;
 
-  const { p } = proxima;
+  const { p, quan } = proxima;
   const meus = partitsDe(p).filter((x) => x.equips.includes(nosaltres()));
   const gent = quiPotVenir(p);
 
   caja.hidden = false;
-  caja.appendChild(el("span", "seguent-etiqueta", "El pròxim nostre"));
+  const falta = el("span", "seguent-etiqueta", quantFalta(quan));
+  caja.appendChild(falta);
+  comptadorSeguent = setInterval(() => (falta.textContent = quantFalta(quan)), 30000);
+
   caja.appendChild(el("strong", null, p.esport));
   caja.appendChild(
     el("span", "seguent-quan", `${fmtCorto.format(aFecha(p.fecha))} · ${p.hora} · ${p.lloc}`)
@@ -289,15 +353,14 @@ function pintarSeguent() {
     const rival = rivalNostre(partit);
     caja.appendChild(el("span", "seguent-rival", `${partit.nom}: contra ${rival || "?"}`));
   }
-  caja.appendChild(
-    el(
-      "span",
-      "seguent-gent",
-      gent.total
-        ? `Hi poden anar ${gent.poden} dels ${gent.total} apuntats.`
-        : "Encara no s'hi ha apuntat ningú."
-    )
+  const gentTxt = el(
+    "span",
+    "seguent-gent" + (gent.total && gent.poden ? "" : " alerta"),
+    gent.total
+      ? `${gent.poden} de ${gent.total} apuntats hi poden anar.`
+      : "Encara no s'hi ha apuntat ningú."
   );
+  caja.appendChild(gentTxt);
 }
 
 /* ---------- punts ---------- */
@@ -747,17 +810,13 @@ function pintarCuentaAtras() {
 
   const refrescar = () => {
     const ara = new Date();
-    if (ara > fi) {
+    // Un cop comencen, el compte enrere útil és el del pròxim partit nostre.
+    if (ara > fi || ara >= inici) {
       caja.hidden = true;
       clearInterval(rellotge);
       return;
     }
     caja.hidden = false;
-    if (ara >= inici) {
-      num.textContent = "🔥";
-      txt.textContent = "en marxa";
-      return;
-    }
     const falten = Math.floor((inici - ara) / 1000);
     const dies = Math.floor(falten / 86400);
     const rellotgeTxt = [
@@ -972,7 +1031,15 @@ async function iniciar() {
   conectarPestanias();
   $("#filtroDia").addEventListener("change", pintarCalendario);
   $("#filtroDeporte").addEventListener("change", pintarCalendario);
-  $("#filtroMios").addEventListener("change", pintarCalendario);
+  for (const xip of document.querySelectorAll(".xip-filtre")) {
+    xip.addEventListener("click", () => {
+      filtreRapid = xip.dataset.rapid;
+      for (const altre of document.querySelectorAll(".xip-filtre")) {
+        altre.classList.toggle("activa", altre === xip);
+      }
+      pintarCalendario();
+    });
+  }
   $("#guardar").addEventListener("click", guardar);
   $("#borrarme").addEventListener("click", borrarme);
   $("#nombre").addEventListener("change", recuperarSiJaHiEs);

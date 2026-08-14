@@ -153,11 +153,11 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 @keyframes gira { to { transform: rotate(360deg); } }
 
 @media (max-width: 430px) {
-  .tab { padding: 8px 2px; font-size: 0.79rem; letter-spacing: -0.02em; }
+  .tab { padding: 8px 6px; font-size: 0.84rem; letter-spacing: -0.02em; }
   .refresca { width: 34px; height: 34px; }
 }
 @media (max-width: 340px) {
-  .tab { font-size: 0.71rem; }
+  .tab { font-size: 0.75rem; padding: 8px 3px; }
 }
 
 .refresca:focus-visible, .tab:focus-visible, .btn:focus-visible,
@@ -192,6 +192,35 @@ main { padding-top: 22px; padding-bottom: 40px; }
   border-radius: var(--radio); padding: 14px; margin-bottom: 20px;
   box-shadow: var(--ombra);
 }
+
+/* ---------- filtres ràpids del calendari ---------- */
+
+.filtres-rapids {
+  display: flex; gap: 6px; margin-bottom: 12px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.filtres-rapids::-webkit-scrollbar { display: none; }
+.xip-filtre {
+  appearance: none; flex: 0 0 auto; cursor: pointer;
+  background: var(--superficie); color: var(--gris);
+  border: 1px solid var(--borde); border-radius: 999px;
+  padding: 7px 14px; font: inherit; font-size: 0.85rem; font-weight: 600;
+  transition: color var(--transicio), background var(--transicio),
+    border-color var(--transicio);
+}
+.xip-filtre:hover { color: var(--texto); }
+.xip-filtre.activa {
+  background: var(--azul); border-color: var(--azul); color: #fff;
+}
+.filtres-mes { margin-bottom: 20px; }
+.filtres-mes summary {
+  cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--gris);
+  padding: 4px 2px; list-style: none;
+}
+.filtres-mes summary::-webkit-details-marker { display: none; }
+.filtres-mes summary::after { content: " ▾"; }
+.filtres-mes[open] summary::after { content: " ▴"; }
+.filtres-mes .filtros { margin-top: 8px; }
 label {
   display: block; font-size: 0.72rem; font-weight: 600; color: var(--gris);
   text-transform: uppercase; letter-spacing: 0.05em;
@@ -203,7 +232,7 @@ label.check {
 label.check input { width: auto; accent-color: var(--azul-2); }
 .opc { font-weight: 400; }
 .fila { display: flex; gap: 12px; flex-wrap: wrap; }
-.crece { flex: 1 1 220px; }
+.crece { flex: 1 1 140px; min-width: 0; }
 
 input[type="text"], input[type="tel"], input[type="password"], select, textarea {
   width: 100%; margin-top: 5px; padding: 10px 11px; font: inherit;
@@ -417,6 +446,17 @@ body:has(.modal[open]) { overflow: hidden; }
   font-variant-numeric: tabular-nums;
 }
 .evento .apuntados { font-size: 0.85rem; margin-top: 8px; }
+.evento .compte {
+  margin-top: 9px; font-size: 0.8rem; font-weight: 700; color: var(--verde);
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.evento .compte.alerta { color: var(--rojo); }
+
+.etiqueta-avui {
+  margin-left: 8px; padding: 1px 7px; border-radius: 999px;
+  background: var(--oro); color: #1b1200; letter-spacing: 0.06em;
+}
+.dia.avui h3 { color: var(--texto); }
 
 /* ---------- els nostres partits ---------- */
 
@@ -428,6 +468,8 @@ body:has(.modal[open]) { overflow: hidden; }
 }
 .evento .rival.nostre { font-weight: 600; }
 .evento .rival.nostre .sigla { color: var(--oro); }
+/* Quan hi som nosaltres, els altres partits de la franja passen a segon pla. */
+.evento .rival.apagat { opacity: 0.5; }
 .resultat {
   margin-left: 8px; font-weight: 700; font-size: 0.78rem;
   border-radius: 6px; padding: 1px 7px;
@@ -450,6 +492,7 @@ body:has(.modal[open]) { overflow: hidden; }
 .seguent-quan { font-size: 0.88rem; color: #9fb6d0; }
 .seguent-rival { font-size: 0.95rem; font-weight: 600; margin-top: 4px; }
 .seguent-gent { font-size: 0.85rem; color: #9fb6d0; margin-top: 6px; }
+.seguent-gent.alerta { color: var(--oro); font-weight: 600; }
 
 .tarjeta.destacada { border-color: var(--oro); }
 .tarjeta.destacada .gran {

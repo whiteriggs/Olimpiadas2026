@@ -40,6 +40,7 @@
       <h1 id="titulo">Diablos</h1>
       <p id="subtitulo" class="sub">Olimpíades Begues 2026</p>
     </div>
+    <button type="button" id="refresca" class="refresca" title="Actualitza-ho tot" aria-label="Actualitza-ho tot">↻</button>
     <div class="cuenta-atras" id="cuentaAtras" hidden>
       <strong id="cuentaAtrasNum">–</strong>
       <span id="cuentaAtrasTxt">dies</span>
@@ -52,7 +53,6 @@
       <button class="tab" role="tab" data-panel="equipo" aria-selected="false" aria-controls="panel-equipo">Equip</button>
       <button class="tab" role="tab" data-panel="punts" aria-selected="false" aria-controls="panel-punts">Classificació</button>
     </nav>
-    <button type="button" id="refresca" class="refresca" title="Actualitza-ho tot" aria-label="Actualitza-ho tot">↻</button>
   </div>
 </header>
 
@@ -62,17 +62,23 @@
 
   <section id="panel-calendario" class="panel" role="tabpanel">
     <div id="seguent" class="seguent" hidden></div>
-    <div class="filtros">
-      <label>Dia
-        <select id="filtroDia"><option value="">Tots</option></select>
-      </label>
-      <label>Esport
-        <select id="filtroDeporte"><option value="">Tots</option></select>
-      </label>
-      <label class="check">
-        <input type="checkbox" id="filtroMios"> Només els meus
-      </label>
+    <div class="filtres-rapids" role="group" aria-label="Filtres ràpids">
+      <button type="button" class="xip-filtre activa" data-rapid="tot">Tot</button>
+      <button type="button" class="xip-filtre" data-rapid="avui">Avui</button>
+      <button type="button" class="xip-filtre" data-rapid="nostres">On juguem</button>
+      <button type="button" class="xip-filtre" data-rapid="meus">Els meus</button>
     </div>
+    <details class="filtres-mes">
+      <summary>Filtrar per dia o esport</summary>
+      <div class="filtros">
+        <label>Dia
+          <select id="filtroDia"><option value="">Tots</option></select>
+        </label>
+        <label>Esport
+          <select id="filtroDeporte"><option value="">Tots</option></select>
+        </label>
+      </div>
+    </details>
     <div id="listaCalendario" class="dias"></div>
   </section>
 
