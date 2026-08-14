@@ -317,18 +317,28 @@ function pintarPunts() {
 
   const jo = nosaltres();
   const meu = jo && torneig.general.find((e) => e.id === jo);
+  // Mentre ningú no ha puntuat, tothom empata a 1r: no té sentit dir "anem primers".
+  const hiHaPunts = torneig.general.some((e) => e.punts > 0);
   if (meu) {
     const caja = el("div", "tarjeta destacada");
     caja.appendChild(el("span", "seguent-etiqueta", "Diablos"));
-    caja.appendChild(el("strong", "gran", `${ordinal(meu.posicio)} · ${meu.punts} punts`));
+    caja.appendChild(
+      el(
+        "strong",
+        "gran",
+        hiHaPunts ? `${ordinal(meu.posicio)} · ${meu.punts} punts` : "Encara sense punts"
+      )
+    );
     const lider = torneig.general[0];
     caja.appendChild(
       el(
         "span",
         "meta",
-        meu.posicio === 1
-          ? "Anem primers."
-          : `A ${lider.punts - meu.punts} punts del primer (${lider.nom}).`
+        !hiHaPunts
+          ? "Comencem de zero: cap esport no ha donat punts encara."
+          : meu.posicio === 1
+            ? "Anem primers."
+            : `A ${lider.punts - meu.punts} punts del primer (${lider.nom}).`
       )
     );
     estat.appendChild(caja);
@@ -344,7 +354,7 @@ function pintarPunts() {
   for (const e of torneig.general) {
     const fila = cos.insertRow();
     if (e.id === jo) fila.className = "meu";
-    fila.appendChild(el("td", null, String(e.posicio)));
+    fila.appendChild(el("td", null, hiHaPunts ? String(e.posicio) : "–"));
     fila.appendChild(el("td", null, e.nom));
     fila.appendChild(el("td", null, String(e.punts)));
   }
