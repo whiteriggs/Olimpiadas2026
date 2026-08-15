@@ -103,9 +103,11 @@ def clave(texto):
 
 
 def baixa_pestanya(nombre):
+    # Sense headers=1, si totes les columnes son text el gviz decideix sol quantes
+    # files son capcalera i ens ajunta les dades dins del nom de la columna.
     url = (
         f"https://docs.google.com/spreadsheets/d/{HOJA}/gviz/tq"
-        f"?tqx=out:csv&sheet={urllib.parse.quote(nombre)}"
+        f"?tqx=out:csv&headers=1&sheet={urllib.parse.quote(nombre)}"
     )
     with urllib.request.urlopen(url, timeout=60) as r:  # noqa: S310 - URL fija
         texto = r.read().decode("utf-8")

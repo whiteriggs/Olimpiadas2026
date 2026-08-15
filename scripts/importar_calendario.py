@@ -23,8 +23,10 @@ from comu import ESPORTS, PARTIT_PER_NOM
 
 HOJA = "1gB3BzDDBQATh5wTy8JRPxCHLMUqPpnQwFcp3pIsIvLo"
 PESTANIA = "Calendari"
+# headers=1 o el gviz s'inventa quantes files son capcalera i ens menja dades.
 CSV_URL = (
-    f"https://docs.google.com/spreadsheets/d/{HOJA}/gviz/tq?tqx=out:csv&sheet={PESTANIA}"
+    f"https://docs.google.com/spreadsheets/d/{HOJA}/gviz/tq"
+    f"?tqx=out:csv&headers=1&sheet={PESTANIA}"
 )
 
 ANIO = 2026
