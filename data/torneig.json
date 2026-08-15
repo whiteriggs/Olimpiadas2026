@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-15T14:58:06+00:00",
+ "actualizado": "2026-08-15T17:30:09+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -314,10 +314,10 @@
       "E1",
       "E8"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E1",
+     "perdedor": "E8",
+     "marcador": "2-0",
+     "estat": "jugat"
     },
     {
      "id": "previa2",
@@ -328,10 +328,10 @@
       "E10",
       "E5"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E10",
+     "perdedor": "E5",
+     "marcador": "2-0",
+     "estat": "jugat"
     },
     {
      "id": "qf1",
@@ -339,13 +339,13 @@
      "nom": "Quarts 1",
      "sigla": "QF1",
      "equips": [
-      null,
+      "E1",
       "E3"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "qf2",
@@ -356,10 +356,10 @@
       "E2",
       "E6"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E2",
+     "perdedor": "E6",
+     "marcador": "2-0",
+     "estat": "jugat"
     },
     {
      "id": "qf3",
@@ -367,13 +367,13 @@
      "nom": "Quarts 3",
      "sigla": "QF3",
      "equips": [
-      null,
+      "E10",
       "E9"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "qf4",
@@ -396,7 +396,7 @@
      "sigla": "SF1",
      "equips": [
       null,
-      null
+      "E2"
      ],
      "guanyador": null,
      "perdedor": null,
@@ -452,7 +452,7 @@
      "sigla": "SC1",
      "equips": [
       null,
-      null
+      "E6"
      ],
      "guanyador": null,
      "perdedor": null,
@@ -507,13 +507,13 @@
      "nom": "9è i 10è lloc",
      "sigla": "9è/10è",
      "equips": [
-      null,
-      null
+      "E8",
+      "E5"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     }
    ],
    "posicions": [
