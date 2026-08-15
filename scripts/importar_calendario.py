@@ -38,6 +38,12 @@ NUESTRA = {"", "MASCULI"}
 # Los partidos de la liga femenina se llaman «F1-F2».
 PARTIDO_FEMENINO = re.compile(r"^F\d\s*-\s*F\d$", re.I)
 
+# Cambios de hora que la organización ha dicho de palabra pero no ha tocado en
+# la hoja. Clave: (fecha, esport) → hora nueva.
+CORRECCIONES_HORA = {
+    ("2026-08-15", "Natació"): "09:30",
+}
+
 
 def sin_acentos(texto):
     return "".join(
@@ -146,6 +152,7 @@ def main():
             continue
 
         for esport in esports:
+            hora_esport = CORRECCIONES_HORA.get((fecha, esport), hora)
             base = re.sub(r"[^a-z0-9]+", "-", sin_acentos(esport).lower()).strip("-")
             ident = f"{fecha}-{hora[:2] or 'xx'}-{base}"
             sufijo = 2
@@ -161,7 +168,7 @@ def main():
                 "partits": [PARTIT_PER_NOM[p] for p in partidos if p in PARTIT_PER_NOM],
                 "tipo": "acte" if tipo_fila == "ACTE" else "esport",
                 "fecha": fecha,
-                "hora": hora,
+                "hora": hora_esport,
                 "horaFin": hora_fin,
                 "orden": orden,
                 "lloc": normaliza(fila.get("Lloc")),
