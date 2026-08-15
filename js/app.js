@@ -143,9 +143,11 @@ function quiPotVenir(p) {
 /* ---------- calendari ---------- */
 
 /** Data d'avui en hora local: amb toISOString a la nit ens saltaria al dia anterior. */
+const dataIso = (d) =>
+  `${d.getFullYear()}-${dosXifres(d.getMonth() + 1)}-${dosXifres(d.getDate())}`;
+
 function avui() {
-  const d = new Date();
-  return `${d.getFullYear()}-${dosXifres(d.getMonth() + 1)}-${dosXifres(d.getDate())}`;
+  return dataIso(new Date());
 }
 let filtreRapid = "tot";
 
@@ -393,6 +395,198 @@ function pintarSeguent() {
       : "Encara no s'hi ha apuntat ningú."
   );
   caja.appendChild(gentTxt);
+}
+
+/* ---------- compartir el pla i recordatoris ---------- */
+
+/** Les proves d'un dia que ens toquen: les altres no interessen ni al grup ni al calendari. */
+function provesNostres(fecha) {
+  return totesLesProves()
+    .filter((p) => !fecha || p.fecha === fecha)
+    .filter((p) => p.tipo !== "esport" || hiJuguem(p) !== false)
+    .sort(
+      (a, b) =>
+        a.fecha.localeCompare(b.fecha) ||
+        (a.hora || "").localeCompare(b.hora || "") ||
+        a.orden - b.orden
+    );
+}
+
+const inici = (p) => new Date(`${p.fecha}T${p.hora || "09:00"}:00`);
+
+/** El full de calça algun acte com a "Acte" i posa el nom de veritat a qui hi juga. */
+function nomProva(p) {
+  if (p.esport !== "Acte") return p.esport;
+  const rotul = (p.quiJuga || "").split("\n").filter(Boolean)[0];
+  return rotul || p.esport;
+}
+
+/** El dia que val la pena passar al grup: avui si encara queda res, si no el següent. */
+function diaPerCompartir() {
+  const ara = new Date();
+  const queda = provesNostres().find((p) => inici(p) > ara);
+  return queda ? queda.fecha : "";
+}
+
+function textDelPla(fecha) {
+  const linies = [`${EQUIP} · ${fmtDia.format(aFecha(fecha))}`];
+  for (const p of provesNostres(fecha)) {
+    linies.push("", [p.hora, nomProva(p), p.lloc].filter(Boolean).join(" · "));
+    for (const partit of partitsDe(p).filter((x) => x.equips.includes(nosaltres()))) {
+      linies.push(`${partit.nom}: contra ${rivalNostre(partit) || "?"}`);
+    }
+    if (p.tipo === "esport") {
+      const gent = quiPotVenir(p);
+      linies.push(
+        gent.total
+          ? `${gent.poden} de ${gent.total} apuntats hi poden anar`
+          : "Encara no s'hi ha apuntat ningú"
+      );
+    }
+  }
+  linies.push("", location.origin + location.pathname);
+  return linies.join("\n");
+}
+
+async function copiar(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    aviso("Pla copiat: ja el pots enganxar al grup.", "ok");
+  } catch (err) {
+    aviso("No s'ha pogut copiar el pla.");
+  }
+}
+
+async function compartirPla() {
+  const fecha = diaPerCompartir();
+  if (!fecha) return;
+  const text = textDelPla(fecha);
+  if (!navigator.share) return copiar(text);
+  try {
+    await navigator.share({ text });
+  } catch (err) {
+    // Tancar el full de compartir no és cap error: només cal avisar si ha petat.
+    if (!err || err.name !== "AbortError") copiar(text);
+  }
+}
+
+/* ---------- fitxer de calendari ---------- */
+
+const dataIcs = (d) =>
+  `${d.getFullYear()}${dosXifres(d.getMonth() + 1)}${dosXifres(d.getDate())}T` +
+  `${dosXifres(d.getHours())}${dosXifres(d.getMinutes())}00`;
+
+const segellIcs = (d) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d+/, "");
+
+function finalDe(p) {
+  const comenca = inici(p);
+  if (!p.horaFin) return new Date(comenca.getTime() + 3600000);
+  const acaba = new Date(`${p.fecha}T${p.horaFin}:00`);
+  // Hi ha proves que acaben passada la mitjanit: llavors la fi cau al dia següent.
+  return acaba > comenca ? acaba : new Date(acaba.getTime() + 86400000);
+}
+
+const escapaIcs = (v) =>
+  String(v)
+    .replace(/\\/g, "\\\\")
+    .replace(/[;,]/g, (c) => "\\" + c)
+    .replace(/\r?\n/g, "\\n");
+
+/** L'estàndard demana talls a 75 octets: hi ha calendaris que si no es queixen. */
+function plegaIcs(linia) {
+  const fora = [];
+  let resta = linia;
+  let max = 73;
+  while (resta.length > max) {
+    fora.push((fora.length ? " " : "") + resta.slice(0, max));
+    resta = resta.slice(max);
+    max = 72;
+  }
+  fora.push((fora.length ? " " : "") + resta);
+  return fora.join("\r\n");
+}
+
+/** Els meus esports; si encara no me n'he apuntat a cap, tot el que juga l'equip. */
+function provesPerRecordar() {
+  const meus = new Set((yo && yo.esports) || []);
+  const ara = new Date();
+  return provesNostres()
+    .filter((p) => inici(p) > ara)
+    .filter((p) => p.tipo !== "esport" || !meus.size || meus.has(p.esport));
+}
+
+function fitxerIcs(proves) {
+  const ara = segellIcs(new Date());
+  const linies = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Diablos//Olimpiades Begues 2026//CA",
+    "CALSCALE:GREGORIAN",
+  ];
+  for (const p of proves) {
+    const meus = partitsDe(p).filter((x) => x.equips.includes(nosaltres()));
+    const detall = meus.map((x) => `${x.nom}: contra ${rivalNostre(x) || "?"}`).join("\n");
+    linies.push(
+      "BEGIN:VEVENT",
+      plegaIcs(`UID:${p.id}@olimpiades-begues-2026`),
+      `DTSTAMP:${ara}`,
+      // Hora local sense zona: tothom hi és a Begues i així no cal arrossegar-la.
+      `DTSTART:${dataIcs(inici(p))}`,
+      `DTEND:${dataIcs(finalDe(p))}`,
+      plegaIcs(`SUMMARY:${escapaIcs(nomProva(p))}`)
+    );
+    if (p.lloc) linies.push(plegaIcs(`LOCATION:${escapaIcs(p.lloc)}`));
+    if (detall) linies.push(plegaIcs(`DESCRIPTION:${escapaIcs(detall)}`));
+    linies.push(
+      "BEGIN:VALARM",
+      "ACTION:DISPLAY",
+      "TRIGGER:-PT30M",
+      plegaIcs(`DESCRIPTION:${escapaIcs(nomProva(p))}`),
+      "END:VALARM",
+      "END:VEVENT"
+    );
+  }
+  linies.push("END:VCALENDAR");
+  return linies.join("\r\n") + "\r\n";
+}
+
+async function alCalendari() {
+  const proves = provesPerRecordar();
+  if (!proves.length) return aviso("No queda cap prova per recordar.");
+  const text = fitxerIcs(proves);
+  const nom = "olimpiades-begues.ics";
+  const fitxer = new File([text], nom, { type: "text/calendar" });
+  if (navigator.canShare && navigator.canShare({ files: [fitxer] })) {
+    try {
+      return await navigator.share({ files: [fitxer], title: "Olimpíades Begues" });
+    } catch (err) {
+      if (err && err.name === "AbortError") return;
+    }
+  }
+  const url = URL.createObjectURL(new Blob([text], { type: "text/calendar" }));
+  const enllac = el("a");
+  enllac.href = url;
+  enllac.download = nom;
+  document.body.appendChild(enllac);
+  enllac.click();
+  enllac.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+  aviso(`Descarregades ${proves.length} proves: obre el fitxer per afegir-les.`, "ok");
+}
+
+function pintarAccions() {
+  const boto = $("#compartirPla");
+  const fecha = diaPerCompartir();
+  boto.hidden = !fecha;
+  $("#alCalendari").hidden = !provesPerRecordar().length;
+  if (!fecha) return;
+  const dema = new Date(aFecha(avui()).getTime() + 86400000);
+  boto.textContent =
+    fecha === avui()
+      ? "Compartir el pla d'avui"
+      : fecha === dataIso(dema)
+        ? "Compartir el pla de demà"
+        : `Compartir el pla de ${fmtCorto.format(aFecha(fecha))}`;
 }
 
 /* ---------- quedades de les lligues ---------- */
@@ -1054,6 +1248,7 @@ function pintarCuentaAtras() {
 function repintar() {
   pintarCalendario();
   pintarSeguent();
+  pintarAccions();
   pintarPerQuedar();
   pintarFormulario();
   pintarEquipo();
@@ -1280,6 +1475,8 @@ async function iniciar() {
   }
   $("#guardar").addEventListener("click", guardar);
   $("#borrarme").addEventListener("click", borrarme);
+  $("#compartirPla").addEventListener("click", compartirPla);
+  $("#alCalendari").addEventListener("click", alCalendari);
   $("#nombre").addEventListener("change", recuperarSiJaHiEs);
   $("#accesoForm").addEventListener("submit", intentarEntrar);
   $("#refresca").addEventListener("click", refrescarTot);

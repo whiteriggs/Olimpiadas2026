@@ -248,6 +248,19 @@ main { padding-top: 22px; padding-bottom: 40px; }
 .filtres-mes summary::after { content: " ▾"; }
 .filtres-mes[open] summary::after { content: " ▴"; }
 .filtres-mes .filtros { margin-top: 8px; }
+
+/* ---------- accions del calendari ---------- */
+
+.accions-cal { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.accio {
+  appearance: none; cursor: pointer; flex: 1 1 auto;
+  background: var(--superficie); color: var(--texto);
+  border: 1px solid var(--borde); border-radius: var(--radio-s);
+  padding: 10px 14px; font: inherit; font-size: 0.85rem; font-weight: 600;
+  transition: border-color var(--transicio), background var(--transicio);
+}
+.accio:hover { border-color: var(--azul); }
+.accio[hidden] { display: none; }
 .passats { margin-bottom: 18px; }
 .passats summary {
   cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--gris);
