@@ -38,7 +38,6 @@
     <img class="escut" src="assets/escut-180.png" alt="Escut dels Diablos" width="180" height="180">
     <div class="crece">
       <h1 id="titulo">Diablos</h1>
-      <p id="subtitulo" class="sub">Olimpíades Begues 2026</p>
     </div>
     <button type="button" id="refresca" class="refresca" title="Actualitza-ho tot" aria-label="Actualitza-ho tot">↻</button>
     <div class="cuenta-atras" id="cuentaAtras" hidden>
@@ -62,6 +61,11 @@
 
   <section id="panel-calendario" class="panel" role="tabpanel">
     <div id="seguent" class="seguent" hidden></div>
+    <div class="tarjeta" id="perQuedar" hidden>
+      <h2>Partits per quedar</h2>
+      <p class="ayuda">Aquests esports no tenen horari: heu de quedar amb l'altre equip abans de la data límit.</p>
+      <div id="llistaPerQuedar"></div>
+    </div>
     <div class="filtres-rapids" role="group" aria-label="Filtres ràpids">
       <button type="button" class="xip-filtre activa" data-rapid="tot">Tot</button>
       <button type="button" class="xip-filtre" data-rapid="avui">Avui</button>
@@ -148,6 +152,30 @@
       <button id="tancaQuadre" class="tanca" aria-label="Tanca">&times;</button>
     </div>
     <div id="quadreCos" class="modal-cos"></div>
+  </dialog>
+
+  <dialog id="quedada" class="modal">
+    <div class="modal-cap">
+      <h2 id="quedadaTitol"></h2>
+      <button id="tancaQuedada" class="tanca" aria-label="Tanca">&times;</button>
+    </div>
+    <form id="quedadaForm" class="modal-cos" method="dialog">
+      <p id="quedadaLimit" class="ayuda"></p>
+      <label>Dia
+        <input type="date" id="quedadaData" required>
+      </label>
+      <label>Hora
+        <input type="time" id="quedadaHora" required>
+      </label>
+      <label>On
+        <input type="text" id="quedadaLloc" maxlength="60" placeholder="Club de Begues, bar…">
+      </label>
+      <p id="quedadaEstat" class="estado" role="status"></p>
+      <div class="acciones">
+        <button type="submit" class="btn primario">Desa</button>
+        <button type="button" id="esborraQuedada" class="btn peligro" hidden>Esborra</button>
+      </div>
+    </form>
   </dialog>
 
 </main>

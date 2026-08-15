@@ -91,7 +91,8 @@ h1, h2, h3 { letter-spacing: -0.02em; }
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 .cabecera h1 {
-  margin: 0; font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em;
+  margin: 0; font-size: 2.3rem; font-weight: 800; letter-spacing: -0.04em;
+  line-height: 1.05;
 }
 .sub { margin: 3px 0 0; color: #9fb6d0; font-size: 0.875rem; }
 
@@ -119,6 +120,8 @@ h1, h2, h3 { letter-spacing: -0.02em; }
   }
   .cuenta-atras strong { display: inline; font-size: 1.05rem; }
 }
+/* El 'display: flex' de dalt guanya a l'atribut hidden si no ho diem. */
+.cuenta-atras[hidden] { display: none; }
 
 /* ---------- pestanyes ---------- */
 
@@ -234,12 +237,15 @@ label.check input { width: auto; accent-color: var(--azul-2); }
 .fila { display: flex; gap: 12px; flex-wrap: wrap; }
 .crece { flex: 1 1 140px; min-width: 0; }
 
-input[type="text"], input[type="tel"], input[type="password"], select, textarea {
+input[type="text"], input[type="tel"], input[type="password"],
+input[type="date"], input[type="time"], select, textarea {
   width: 100%; margin-top: 5px; padding: 10px 11px; font: inherit;
   color: var(--texto); background: var(--superficie);
   border: 1px solid var(--borde); border-radius: var(--radio-s);
   transition: border-color var(--transicio);
 }
+/* Safari deixa els camps de data i hora a l'amplada del contingut. */
+input[type="date"], input[type="time"] { display: block; min-height: 44px; }
 textarea { resize: vertical; }
 .ayuda { font-size: 0.82rem; color: var(--gris); margin: 10px 0 0; }
 
@@ -586,6 +592,22 @@ body:has(.modal[open]) { overflow: hidden; }
 }
 .btn.primario:hover { background: var(--azul-2); }
 .btn.peligro { color: var(--rojo); border-color: color-mix(in srgb, var(--rojo) 35%, var(--borde)); }
+.btn.petit { padding: 8px 14px; font-size: 0.85rem; flex-shrink: 0; }
+
+/* ---------- partits per quedar ---------- */
+
+.per-quedar {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 12px 0; border-top: 1px solid var(--borde);
+}
+.per-quedar:first-child { border-top: 0; padding-top: 4px; }
+.per-quedar-dades { display: flex; flex-direction: column; gap: 2px; flex: 1 1 190px; min-width: 0; }
+.per-quedar-dades strong { font-size: 0.95rem; }
+.per-quedar-limit { font-size: 0.85rem; font-weight: 700; color: var(--ambar); }
+.per-quedar-quan { font-size: 0.85rem; font-weight: 700; color: var(--verde); }
+
+#quedadaForm label { margin-bottom: 12px; }
+#quedadaForm .acciones { margin-top: 4px; }
 .estado { font-size: 0.85rem; font-weight: 500; color: var(--verde); }
 .estado.error { color: var(--rojo); }
 .estado.pendent { color: var(--ambar); }
@@ -652,7 +674,7 @@ body:has(.modal[open]) { overflow: hidden; }
 .pie a { color: var(--texto); text-underline-offset: 2px; }
 
 @media (max-width: 520px) {
-  .cabecera h1 { font-size: 1.3rem; }
+  .cabecera h1 { font-size: 2rem; }
   .dispo-fila { flex-direction: column; align-items: stretch; }
   .opciones button { flex: 1; padding: 8px 10px; }
 }

@@ -79,6 +79,19 @@ la URL no cambia.
 Sin backend la web también funciona: deja `API_URL` vacío y cada persona guarda
 lo suyo en su navegador, sin compartirlo con nadie.
 
+## Partidos que hay que acordar
+
+Billar, Dòmino, Frontó, Pàdel, Petanca y Tennis no tienen horario en el
+calendario oficial: cada eliminatoria se juega cuando los dos equipos quedan,
+antes de la fecha límite de la ronda. La tarjeta *Partits per quedar* del
+calendario lista nuestro siguiente partido de cada uno de esos deportes con su
+límite, y desde ahí se pone día, hora y sitio.
+
+Esos acuerdos se guardan en la misma hoja `inscripcions` que la gente, como
+filas con `tipus: "partit"` e id `partit:<esport>:<partit>`. Así no hace falta
+tocar ni volver a publicar el Apps Script. La web las separa al cargarlas y las
+pinta en el calendario como una prueba más.
+
 ## Publicar
 
 Publicada con GitHub Pages desde `main` / `root`. Cada `git push` a `main`

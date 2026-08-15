@@ -32,6 +32,7 @@ const canonic = (nom) => ALIES[nom] || nom;
 let cal = { pruebas: [], lligues: [], limites: [], avisos: [] };
 let torneig = null;
 let personas = [];
+let acords = [];
 let yo = null;
 let fechas = [];
 let esports = [];
@@ -157,7 +158,7 @@ function pintarCalendario() {
   const mios = new Set((yo && yo.esports) || []);
   const avuiIso = avui();
 
-  const visibles = cal.pruebas.filter((p) => {
+  const visibles = totesLesProves().filter((p) => {
     if (dia && p.fecha !== dia) return false;
     if (esport && p.esport !== esport) return false;
     if (filtreRapid === "avui" && p.fecha !== avuiIso) return false;
@@ -177,8 +178,13 @@ function pintarCalendario() {
     return;
   }
 
-  for (const fecha of fechas) {
-    const delDia = visibles.filter((p) => p.fecha === fecha);
+  // Les quedades poden caure en dies que el calendari oficial no cobreix.
+  const dies = [...new Set([...fechas, ...visibles.map((p) => p.fecha)])].sort();
+
+  for (const fecha of dies) {
+    const delDia = visibles
+      .filter((p) => p.fecha === fecha)
+      .sort((a, b) => (a.hora || "").localeCompare(b.hora || "") || a.orden - b.orden);
     const limitsDelDia = limitsVisibles.filter((l) => l.fecha === fecha);
     if (!delDia.length && !limitsDelDia.length) continue;
 
@@ -328,7 +334,7 @@ function pintarSeguent() {
   if (!nosaltres()) return;
 
   const ara = new Date();
-  const proxima = cal.pruebas
+  const proxima = totesLesProves()
     .filter((p) => p.tipo === "esport" && hiJuguem(p) !== false)
     .map((p) => ({ p, quan: new Date(`${p.fecha}T${p.hora || "09:00"}:00`) }))
     .filter((x) => x.quan > ara)
@@ -360,6 +366,169 @@ function pintarSeguent() {
       : "Encara no s'hi ha apuntat ningú."
   );
   caja.appendChild(gentTxt);
+}
+
+/* ---------- quedades de les lligues ---------- */
+
+const idAcord = (esportId, partitId) => `partit:${esportId}:${partitId}`;
+
+const acordDe = (esportId, partitId) =>
+  acords.find((a) => a.id === idAcord(esportId, partitId));
+
+/** La data límit que li toca a un partit d'una lliga, si en té. */
+function limitDe(nomEsport, nomPartit) {
+  return (cal.limites || []).find(
+    (l) => l.esports.includes(nomEsport) && l.rondes.includes(nomPartit)
+  );
+}
+
+/** Els nostres partits de lliga que encara s'han de jugar, amb data límit i quedada. */
+function partitsPerQuedar() {
+  const jo = nosaltres();
+  if (!jo || !torneig) return [];
+  const fora = [];
+  for (const nom of cal.lligues || []) {
+    const esport = esportPerNom(nom);
+    if (!esport) continue;
+    for (const partit of esport.partits) {
+      if (partit.guanyador || !partit.equips.includes(jo)) continue;
+      const limit = limitDe(nom, partit.nom);
+      if (!limit) continue;
+      fora.push({ esport, partit, limit, acord: acordDe(esport.id, partit.id) });
+      break; // només el següent de cada esport
+    }
+  }
+  return fora.sort((a, b) => a.limit.fecha.localeCompare(b.limit.fecha));
+}
+
+/** Una quedada es pinta al calendari com una prova més. */
+function provesAcordades() {
+  const fora = [];
+  for (const a of acords) {
+    if (!a.data || !a.hora) continue;
+    fora.push({
+      id: "acord-" + a.id,
+      esport: a.esport,
+      esportId: a.esportId,
+      detalle: a.partitNom || "",
+      partits: [a.partitId],
+      tipo: "esport",
+      fecha: a.data,
+      hora: a.hora,
+      horaFin: "",
+      orden: Number(a.hora.slice(0, 2)) || 0,
+      lloc: a.lloc || "",
+      quiJuga: "",
+      nota: "Quedat amb ells",
+      acord: a,
+    });
+  }
+  return fora;
+}
+
+const totesLesProves = () => [...cal.pruebas, ...provesAcordades()];
+
+function pintarPerQuedar() {
+  const caja = $("#perQuedar");
+  const llista = $("#llistaPerQuedar");
+  vaciar(llista);
+  const pendents = partitsPerQuedar();
+  caja.hidden = !pendents.length;
+  if (!pendents.length) return;
+
+  for (const { esport, partit, limit, acord } of pendents) {
+    const fila = el("div", "per-quedar" + (acord ? " tancat" : ""));
+    const dades = el("div", "per-quedar-dades");
+    dades.appendChild(el("strong", null, `${esport.nom} · ${partit.nom}`));
+
+    const rival = rivalNostre(partit);
+    dades.appendChild(
+      el("span", "meta", rival ? `Contra ${rival}` : "Esperem rival de la ronda anterior")
+    );
+    dades.appendChild(
+      el(
+        "span",
+        acord ? "per-quedar-quan" : "per-quedar-limit",
+        acord
+          ? `${fmtDia.format(aFecha(acord.data))} · ${acord.hora}${acord.lloc ? " · " + acord.lloc : ""}`
+          : `Abans del ${fmtDia.format(aFecha(limit.fecha))}`
+      )
+    );
+    fila.appendChild(dades);
+
+    const boto = el("button", "btn petit", acord ? "Canvia" : "Posa dia i hora");
+    boto.type = "button";
+    boto.addEventListener("click", () => obrirQuedada(esport, partit, limit));
+    fila.appendChild(boto);
+    llista.appendChild(fila);
+  }
+}
+
+let quedadaActual = null;
+
+function obrirQuedada(esport, partit, limit) {
+  const acord = acordDe(esport.id, partit.id);
+  quedadaActual = { esport, partit, limit };
+  $("#quedadaTitol").textContent = `${esport.nom} · ${partit.nom}`;
+  $("#quedadaLimit").textContent = `S'ha de jugar abans del ${fmtDia.format(aFecha(limit.fecha))}.`;
+  $("#quedadaData").value = acord ? acord.data : "";
+  $("#quedadaData").max = limit.fecha;
+  $("#quedadaHora").value = acord ? acord.hora : "";
+  $("#quedadaLloc").value = acord ? acord.lloc || "" : "";
+  $("#quedadaEstat").textContent = "";
+  $("#quedadaEstat").className = "estado";
+  $("#esborraQuedada").hidden = !acord;
+  $("#quedada").showModal();
+}
+
+async function desarQuedada(evento) {
+  evento.preventDefault();
+  if (!quedadaActual) return;
+  const { esport, partit } = quedadaActual;
+  const acord = {
+    id: idAcord(esport.id, partit.id),
+    nombre: `${esport.nom} · ${partit.nom}`,
+    tipus: "partit",
+    esport: esport.nom,
+    esportId: esport.id,
+    partitId: partit.id,
+    partitNom: partit.nom,
+    data: $("#quedadaData").value,
+    hora: $("#quedadaHora").value,
+    lloc: $("#quedadaLloc").value.trim(),
+    actualizado: new Date().toISOString(),
+  };
+  if (!acord.data || !acord.hora) return;
+
+  const estat = $("#quedadaEstat");
+  estat.textContent = "Desant…";
+  estat.className = "estado pendent";
+  try {
+    await store.guardarPersona(acord);
+    acords = [...acords.filter((a) => a.id !== acord.id), acord];
+    $("#quedada").close();
+    repintar();
+  } catch (e) {
+    estat.textContent = "No s'ha pogut desar: " + e.message;
+    estat.className = "estado error";
+  }
+}
+
+async function esborrarQuedada() {
+  if (!quedadaActual) return;
+  const id = idAcord(quedadaActual.esport.id, quedadaActual.partit.id);
+  const estat = $("#quedadaEstat");
+  estat.textContent = "Esborrant…";
+  estat.className = "estado pendent";
+  try {
+    await store.borrarPersona(id);
+    acords = acords.filter((a) => a.id !== id);
+    $("#quedada").close();
+    repintar();
+  } catch (e) {
+    estat.textContent = "No s'ha pogut esborrar: " + e.message;
+    estat.className = "estado error";
+  }
 }
 
 /* ---------- punts ---------- */
@@ -839,6 +1008,7 @@ function pintarCuentaAtras() {
 function repintar() {
   pintarCalendario();
   pintarSeguent();
+  pintarPerQuedar();
   pintarFormulario();
   pintarEquipo();
   pintarPunts();
@@ -852,7 +1022,9 @@ async function recargarPersonas() {
 }
 
 function usarPersonas(llista) {
-  personas = llista;
+  // Les quedades viuen al mateix full que la gent, marcades amb tipus "partit".
+  acords = llista.filter((p) => p.tipus === "partit");
+  personas = llista.filter((p) => p.tipus !== "partit");
   for (const p of personas) {
     p.esports = [...new Set((p.esports || []).map(canonic))];
   }
@@ -888,7 +1060,6 @@ async function carregarCalendari(forcant) {
   torneig = resT && resT.ok ? await resT.json().catch(() => null) : null;
 
   document.title = `${EQUIP} · ${cal.titulo}`;
-  $("#subtitulo").textContent = `${cal.titulo} · ${cal.subtitulo}`;
   if (cal.actualizado) {
     $("#actualitzat").textContent =
       "Calendari actualitzat el " + fmtDia.format(aFecha(cal.actualizado)) + ".";
@@ -1058,13 +1229,20 @@ async function iniciar() {
   $("#accesoForm").addEventListener("submit", intentarEntrar);
   $("#refresca").addEventListener("click", refrescarTot);
   $("#tancaQuadre").addEventListener("click", () => $("#quadre").close());
+  $("#tancaQuedada").addEventListener("click", () => $("#quedada").close());
+  $("#quedadaForm").addEventListener("submit", desarQuedada);
+  $("#esborraQuedada").addEventListener("click", esborrarQuedada);
   // Clic al fons fosc del dialog: el tanquem.
   $("#quadre").addEventListener("click", (e) => {
     if (e.target.id === "quadre") $("#quadre").close();
   });
+  $("#quedada").addEventListener("click", (e) => {
+    if (e.target.id === "quedada") $("#quedada").close();
+  });
   // Alguns navegadors no tanquen el dialog amb Escape; ho fem nosaltres.
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && $("#quadre").open) $("#quadre").close();
+    if (e.key !== "Escape") return;
+    for (const id of ["#quadre", "#quedada"]) if ($(id).open) $(id).close();
   });
   addEventListener("beforeunload", (e) => {
     if (!canvisSenseDesar) return;
