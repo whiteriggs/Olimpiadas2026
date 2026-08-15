@@ -429,12 +429,31 @@ function provesAcordades() {
 const totesLesProves = () => [...cal.pruebas, ...provesAcordades()];
 
 function pintarPerQuedar() {
-  const caja = $("#perQuedar");
-  const llista = $("#llistaPerQuedar");
-  vaciar(llista);
   const pendents = partitsPerQuedar();
-  caja.hidden = !pendents.length;
-  if (!pendents.length) return;
+  const falten = pendents.filter((x) => !x.acord);
+  const fets = pendents.filter((x) => x.acord);
+
+  const tab = document.querySelector('.tab[data-panel="quedar"]');
+  const xifra = $("#numPerQuedar");
+  tab.hidden = !pendents.length;
+  xifra.hidden = !falten.length;
+  xifra.textContent = falten.length || "";
+  // Si la pestanya desapareix mentre la miraves, torna al calendari.
+  if (tab.hidden && tab.classList.contains("activa")) activarPestanya("calendario");
+
+  omplirLlistaQuedades($("#llistaPerQuedar"), falten, $("#quedarPendents"));
+  omplirLlistaQuedades($("#llistaQuedats"), fets, $("#quedarFets"));
+
+  const crida = $("#cridaQuedar");
+  crida.hidden = !falten.length;
+  crida.textContent = falten.length === 1
+    ? "Hi ha 1 partit sense dia · posa-li hora"
+    : `Hi ha ${falten.length} partits sense dia · posa'ls hora`;
+}
+
+function omplirLlistaQuedades(llista, pendents, caixa) {
+  vaciar(llista);
+  caixa.hidden = !pendents.length;
 
   for (const { esport, partit, limit, acord } of pendents) {
     const fila = el("div", "per-quedar" + (acord ? " tancat" : ""));
@@ -1186,18 +1205,23 @@ async function intentarEntrar(evento) {
 
 /* ---------- arrencada ---------- */
 
-function conectarPestanias() {
-  const tabs = [...document.querySelectorAll(".tab")];
-  for (const tab of tabs) {
-    tab.addEventListener("click", () => {
-      for (const t of tabs) {
-        const activa = t === tab;
-        t.classList.toggle("activa", activa);
-        t.setAttribute("aria-selected", String(activa));
-        $("#panel-" + t.dataset.panel).hidden = !activa;
-      }
-    });
+function activarPestanya(nom) {
+  for (const t of document.querySelectorAll(".tab")) {
+    const activa = t.dataset.panel === nom;
+    t.classList.toggle("activa", activa);
+    t.setAttribute("aria-selected", String(activa));
+    $("#panel-" + t.dataset.panel).hidden = !activa;
   }
+}
+
+function conectarPestanias() {
+  for (const tab of document.querySelectorAll(".tab")) {
+    tab.addEventListener("click", () => activarPestanya(tab.dataset.panel));
+  }
+  $("#cridaQuedar").addEventListener("click", () => {
+    activarPestanya("quedar");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }
 
 async function iniciar() {

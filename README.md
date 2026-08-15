@@ -83,9 +83,11 @@ lo suyo en su navegador, sin compartirlo con nadie.
 
 Billar, Dòmino, Frontó, Pàdel, Petanca y Tennis no tienen horario en el
 calendario oficial: cada eliminatoria se juega cuando los dos equipos quedan,
-antes de la fecha límite de la ronda. La tarjeta *Partits per quedar* del
-calendario lista nuestro siguiente partido de cada uno de esos deportes con su
-límite, y desde ahí se pone día, hora y sitio.
+antes de la fecha límite de la ronda. La pestaña *Quedar* lista nuestro
+siguiente partido de cada uno de esos deportes con su límite y desde ahí se pone
+día, hora y sitio; una vez puesto, el partido aparece en el calendario en su
+sitio. La pestaña solo sale si hay partidos de estos, y lleva una chapa con
+cuántos siguen sin día.
 
 Esos acuerdos se guardan en la misma hoja `inscripcions` que la gente, como
 filas con `tipus: "partit"` e id `partit:<esport>:<partit>`. Así no hace falta

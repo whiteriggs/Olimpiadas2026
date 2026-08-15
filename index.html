@@ -48,9 +48,10 @@
   <div class="contenedor barra">
     <nav class="tabs" role="tablist">
       <button class="tab activa" role="tab" data-panel="calendario" aria-selected="true" aria-controls="panel-calendario">Calendari</button>
+      <button class="tab" role="tab" data-panel="quedar" aria-selected="false" aria-controls="panel-quedar" hidden>Quedar<span class="xifra" id="numPerQuedar" hidden></span></button>
       <button class="tab" role="tab" data-panel="apuntarse" aria-selected="false" aria-controls="panel-apuntarse">M'apunto</button>
       <button class="tab" role="tab" data-panel="equipo" aria-selected="false" aria-controls="panel-equipo">Equip</button>
-      <button class="tab" role="tab" data-panel="punts" aria-selected="false" aria-controls="panel-punts">Classificació</button>
+      <button class="tab" role="tab" data-panel="punts" aria-selected="false" aria-controls="panel-punts">Punts</button>
     </nav>
   </div>
 </header>
@@ -61,11 +62,7 @@
 
   <section id="panel-calendario" class="panel" role="tabpanel">
     <div id="seguent" class="seguent" hidden></div>
-    <div class="tarjeta" id="perQuedar" hidden>
-      <h2>Partits per quedar</h2>
-      <p class="ayuda">Aquests esports no tenen horari: heu de quedar amb l'altre equip abans de la data límit.</p>
-      <div id="llistaPerQuedar"></div>
-    </div>
+    <button type="button" class="crida" id="cridaQuedar" hidden></button>
     <div class="filtres-rapids" role="group" aria-label="Filtres ràpids">
       <button type="button" class="xip-filtre activa" data-rapid="tot">Tot</button>
       <button type="button" class="xip-filtre" data-rapid="avui">Avui</button>
@@ -82,6 +79,18 @@
       </div>
     </details>
     <div id="listaCalendario" class="dias"></div>
+  </section>
+
+  <section id="panel-quedar" class="panel" role="tabpanel" hidden>
+    <p class="ayuda intro">Billar, dòmino, frontó, pàdel, petanca i tennis no tenen horari al calendari: heu de quedar amb l'altre equip i jugar-lo abans de la data límit. Quan poseu dia i hora, el partit surt al calendari al seu lloc.</p>
+    <div class="tarjeta" id="quedarPendents" hidden>
+      <h2>Falta quedar</h2>
+      <div id="llistaPerQuedar"></div>
+    </div>
+    <div class="tarjeta" id="quedarFets" hidden>
+      <h2>Ja tenen dia</h2>
+      <div id="llistaQuedats"></div>
+    </div>
   </section>
 
   <section id="panel-apuntarse" class="panel" role="tabpanel" hidden>

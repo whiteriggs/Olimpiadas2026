@@ -144,6 +144,12 @@ h1, h2, h3 { letter-spacing: -0.02em; }
   color: var(--azul); background: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
+.tab[hidden] { display: none; }
+.xifra {
+  display: inline-block; margin-left: 5px; padding: 0 5px; min-width: 17px;
+  font-size: 0.72rem; font-weight: 800; line-height: 17px; text-align: center;
+  color: #fff; background: var(--rojo); border-radius: 999px;
+}
 .refresca {
   appearance: none; border: 0; background: rgba(255, 255, 255, 0.08); color: #b8c9dd;
   width: 38px; height: 38px; font-size: 1.2rem; line-height: 1; cursor: pointer;
@@ -595,6 +601,18 @@ body:has(.modal[open]) { overflow: hidden; }
 .btn.petit { padding: 8px 14px; font-size: 0.85rem; flex-shrink: 0; }
 
 /* ---------- partits per quedar ---------- */
+
+.crida {
+  display: block; width: 100%; margin-bottom: 14px; padding: 12px 14px;
+  font: inherit; font-size: 0.9rem; font-weight: 700; text-align: left;
+  color: var(--ambar); background: color-mix(in srgb, var(--ambar) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ambar) 45%, transparent);
+  border-radius: var(--radio-s); cursor: pointer;
+  transition: background var(--transicio);
+}
+.crida::after { content: " ›"; font-weight: 800; }
+.crida:hover { background: color-mix(in srgb, var(--ambar) 20%, transparent); }
+.intro { margin: 0 0 14px; }
 
 .per-quedar {
   display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
