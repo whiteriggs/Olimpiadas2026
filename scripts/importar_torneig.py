@@ -188,6 +188,24 @@ def main():
     }
 
     antiguo = json.loads(SALIDA.read_text(encoding="utf-8")) if SALIDA.exists() else {}
+
+    # Els resultats només poden anar a més: si en surten menys és que hem llegit
+    # malament el full, i val més quedar-nos amb les dades velles que publicar zeros.
+    def compta(dades):
+        esp = dades.get("esports", [])
+        return (
+            sum(1 for e in esp for p in e["partits"] if p["estat"] == "jugat"),
+            sum(1 for e in esp for p in e["posicions"] if p),
+        )
+
+    jugats, decidits = compta(datos)
+    abans = compta(antiguo)
+    if (jugats, decidits) < abans:
+        raise SystemExit(
+            f"Em surten {jugats} partits jugats i {decidits} llocs decidits, i el fitxer "
+            f"ja en tenia {abans[0]} i {abans[1]}. No toco res: revisa el full."
+        )
+
     if {k: v for k, v in antiguo.items() if k != "actualizado"} == {
         k: v for k, v in datos.items() if k != "actualizado"
     }:
@@ -195,8 +213,6 @@ def main():
 
     SALIDA.write_text(json.dumps(datos, ensure_ascii=False, indent=1) + "\n", "utf-8")
 
-    jugats = sum(1 for e in esports for p in e["partits"] if p["estat"] == "jugat")
-    decidits = sum(1 for e in esports for p in e["posicions"] if p)
     print(
         f"{len(equips)} equips · {jugats} partits jugats · {decidits} llocs decidits · "
         f"nosaltres: {nosaltres or 'encara no se sap'}"
