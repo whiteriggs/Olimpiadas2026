@@ -147,7 +147,6 @@ function avui() {
   return `${d.getFullYear()}-${dosXifres(d.getMonth() + 1)}-${dosXifres(d.getDate())}`;
 }
 let filtreRapid = "tot";
-let jaHeAnatAAvui = false;
 
 function pintarCalendario() {
   const cont = $("#listaCalendario");
@@ -181,6 +180,13 @@ function pintarCalendario() {
   // Les quedades poden caure en dies que el calendari oficial no cobreix.
   const dies = [...new Set([...fechas, ...visibles.map((p) => p.fecha)])].sort();
 
+  // Els dies ja jugats es pleguen: el que interessa és el que ve.
+  const passats = el("details", "passats");
+  passats.appendChild(el("summary"));
+  cont.appendChild(passats);
+  let nPassats = 0;
+  let nPerVenir = 0;
+
   for (const fecha of dies) {
     const delDia = visibles
       .filter((p) => p.fecha === fecha)
@@ -205,16 +211,23 @@ function pintarCalendario() {
     const lista = el("div", "eventos");
     for (const p of delDia) lista.appendChild(tarjetaEvento(p, mios));
     bloque.appendChild(lista);
-    cont.appendChild(bloque);
+
+    if (fecha < avuiIso) {
+      nPassats++;
+      passats.appendChild(bloque);
+    } else {
+      nPerVenir++;
+      cont.appendChild(bloque);
+    }
   }
 
-  // El primer cop obrim el calendari pel dia d'avui, no pel 14 d'agost.
-  if (!jaHeAnatAAvui) {
-    const avuiBloc = cont.querySelector(".dia.avui");
-    if (avuiBloc) {
-      jaHeAnatAAvui = true;
-      requestAnimationFrame(() => avuiBloc.scrollIntoView({ block: "start" }));
-    }
+  if (nPassats) {
+    passats.querySelector("summary").textContent =
+      nPassats === 1 ? "1 dia ja jugat" : `${nPassats} dies ja jugats`;
+    // Si el filtre només deixa dies passats, obre'ls o semblaria que no hi ha res.
+    passats.open = !nPerVenir;
+  } else {
+    passats.remove();
   }
 }
 

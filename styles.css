@@ -230,6 +230,15 @@ main { padding-top: 22px; padding-bottom: 40px; }
 .filtres-mes summary::after { content: " ▾"; }
 .filtres-mes[open] summary::after { content: " ▴"; }
 .filtres-mes .filtros { margin-top: 8px; }
+.passats { margin-bottom: 18px; }
+.passats summary {
+  cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--gris);
+  padding: 8px 2px; list-style: none;
+}
+.passats summary::-webkit-details-marker { display: none; }
+.passats summary::after { content: " ▾"; }
+.passats[open] summary::after { content: " ▴"; }
+.passats .dia { opacity: 0.7; }
 label {
   display: block; font-size: 0.72rem; font-weight: 600; color: var(--gris);
   text-transform: uppercase; letter-spacing: 0.05em;
