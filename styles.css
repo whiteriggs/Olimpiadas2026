@@ -81,17 +81,17 @@ h1, h2, h3 { letter-spacing: -0.02em; }
   color: #fff;
   padding-top: env(safe-area-inset-top);
   background:
-    /* Acaba en pla per enllaçar amb la barra de pestanyes, que ja no hi és a dins. */
-    linear-gradient(to bottom, transparent 55%, var(--azul) 100%),
+    /* Nomes els ultims pixels son plans, per enllacar amb la barra de pestanyes. */
+    linear-gradient(to bottom, transparent 88%, var(--azul) 100%),
     radial-gradient(120% 140% at 12% 0%, #1c4576 0%, transparent 60%),
     linear-gradient(160deg, var(--azul-2) 0%, var(--azul) 70%);
 }
 .cabecera-fila {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; padding-top: 14px; padding-bottom: 8px;
+  gap: 14px; padding-top: 22px; padding-bottom: 14px;
 }
 .escut {
-  width: 46px; height: 46px; border-radius: 11px; flex-shrink: 0;
+  width: 56px; height: 56px; border-radius: 12px; flex-shrink: 0;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 .cabecera h1 {
@@ -132,7 +132,7 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 /* Fora de la capçalera perquè es puguin quedar enganxades a dalt. */
 .barra-fixa {
   position: sticky; top: env(safe-area-inset-top); z-index: 5;
-  background: var(--azul); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+  background: var(--azul);
 }
 /* Tapa la franja de la barra d'estat quan la barra queda enganxada. */
 .barra-fixa::before {
