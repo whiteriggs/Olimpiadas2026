@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-15T14:33:17+00:00",
+ "actualizado": "2026-08-15T14:58:06+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -4293,18 +4293,25 @@
     "E7",
     "E4",
     "E1",
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null
+    "E2",
+    "E9",
+    "E8",
+    "E5",
+    "E10",
+    "E3",
+    "E6"
    ],
    "punts": {
     "E7": 50,
     "E4": 37,
-    "E1": 33
+    "E1": 33,
+    "E2": 29,
+    "E9": 25,
+    "E8": 21,
+    "E5": 17,
+    "E10": 13,
+    "E3": 9,
+    "E6": 5
    }
   }
  ],
@@ -4328,46 +4335,46 @@
    "posicio": 3
   },
   {
-   "id": "E6",
-   "nom": "Diablos",
-   "punts": 0,
+   "id": "E2",
+   "nom": "Passa directament",
+   "punts": 29,
    "posicio": 4
   },
   {
    "id": "E9",
    "nom": "Joga Vomito",
-   "punts": 0,
-   "posicio": 4
-  },
-  {
-   "id": "E10",
-   "nom": "La Once",
-   "punts": 0,
-   "posicio": 4
+   "punts": 25,
+   "posicio": 5
   },
   {
    "id": "E8",
    "nom": "Massumba y los mas zumbaos",
-   "punts": 0,
-   "posicio": 4
-  },
-  {
-   "id": "E3",
-   "nom": "Olimpiakojos",
-   "punts": 0,
-   "posicio": 4
-  },
-  {
-   "id": "E2",
-   "nom": "Passa directament",
-   "punts": 0,
-   "posicio": 4
+   "punts": 21,
+   "posicio": 6
   },
   {
    "id": "E5",
    "nom": "Yayo Vallecano",
-   "punts": 0,
-   "posicio": 4
+   "punts": 17,
+   "posicio": 7
+  },
+  {
+   "id": "E10",
+   "nom": "La Once",
+   "punts": 13,
+   "posicio": 8
+  },
+  {
+   "id": "E3",
+   "nom": "Olimpiakojos",
+   "punts": 9,
+   "posicio": 9
+  },
+  {
+   "id": "E6",
+   "nom": "Diablos",
+   "punts": 5,
+   "posicio": 10
   }
  ],
  "avisos": []
