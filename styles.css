@@ -512,6 +512,7 @@ body:has(.modal[open]) { overflow: hidden; }
 }
 .seguent-quan { font-size: 0.88rem; color: #9fb6d0; }
 .seguent-rival { font-size: 0.95rem; font-weight: 600; margin-top: 4px; }
+.seguent-ordre { font-size: 0.85rem; color: #9fb6d0; font-weight: 600; margin-top: 4px; }
 .seguent-gent { font-size: 0.85rem; color: #9fb6d0; margin-top: 6px; }
 .seguent-gent.alerta { color: var(--oro); font-weight: 600; }
 

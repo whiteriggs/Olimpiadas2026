@@ -113,7 +113,8 @@ function esportPerNom(nom) {
 function partitsDe(p) {
   const esport = esportDe(p.esportId);
   if (!esport || !p.partits.length) return [];
-  return esport.partits.filter((x) => p.partits.includes(x.id));
+  // En l'ordre que els llista l'organització: és l'ordre en què es jugaran.
+  return p.partits.map((id) => esport.partits.find((x) => x.id === id)).filter(Boolean);
 }
 
 /**
@@ -252,12 +253,9 @@ function tarjetaEvento(p, mios) {
   const partits = partitsDe(p);
   if (partits.length) {
     const jo = nosaltres();
-    // Els nostres primer: és l'únic que interessa d'una franja amb quatre partits.
-    const ordenats = [...partits].sort(
-      (a, b) => Number(b.equips.includes(jo)) - Number(a.equips.includes(jo))
-    );
-    const altres = jo && ordenats.some((x) => x.equips.includes(jo));
-    for (const partit of ordenats) {
+    // Sense tocar l'ordre: la organització els llista en l'ordre en què es juguen.
+    const altres = jo && partits.some((x) => x.equips.includes(jo));
+    for (const partit of partits) {
       const nostre = jo && partit.equips.includes(jo);
       const fila = liniaPartit(partit);
       if (altres && !nostre) fila.classList.add("apagat");
@@ -338,6 +336,8 @@ function quantFalta(quan) {
 
 let comptadorSeguent = null;
 
+const ordinalCa = (n) => n + (n === 1 ? "r" : n === 2 ? "n" : n === 3 ? "r" : n === 4 ? "t" : "è");
+
 /** Targeta de dalt: el pròxim compromís nostre, amb qui hi pot anar. */
 function pintarSeguent() {
   const caja = $("#seguent");
@@ -355,7 +355,8 @@ function pintarSeguent() {
   if (!proxima) return;
 
   const { p, quan } = proxima;
-  const meus = partitsDe(p).filter((x) => x.equips.includes(nosaltres()));
+  const tots = partitsDe(p);
+  const meus = tots.filter((x) => x.equips.includes(nosaltres()));
   const gent = quiPotVenir(p);
 
   caja.hidden = false;
@@ -370,6 +371,19 @@ function pintarSeguent() {
   for (const partit of meus) {
     const rival = rivalNostre(partit);
     caja.appendChild(el("span", "seguent-rival", `${partit.nom}: contra ${rival || "?"}`));
+  }
+  // A la franja hi caben quatre partits: l'hora d'inici no és la nostra hora.
+  if (meus.length && tots.length > 1) {
+    const lloc = tots.indexOf(meus[0]) + 1;
+    caja.appendChild(
+      el(
+        "span",
+        "seguent-ordre",
+        lloc === 1
+          ? `Comencem nosaltres: som el 1r dels ${tots.length} partits de la franja.`
+          : `Juguem el ${ordinalCa(lloc)} dels ${tots.length} partits de la franja, no a l'hora en punt.`
+      )
+    );
   }
   const gentTxt = el(
     "span",
