@@ -470,115 +470,12 @@ async function compartirPla() {
   }
 }
 
-/* ---------- fitxer de calendari ---------- */
-
-const dataIcs = (d) =>
-  `${d.getFullYear()}${dosXifres(d.getMonth() + 1)}${dosXifres(d.getDate())}T` +
-  `${dosXifres(d.getHours())}${dosXifres(d.getMinutes())}00`;
-
-const segellIcs = (d) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d+/, "");
-
-function finalDe(p) {
-  const comenca = inici(p);
-  if (!p.horaFin) return new Date(comenca.getTime() + 3600000);
-  const acaba = new Date(`${p.fecha}T${p.horaFin}:00`);
-  // Hi ha proves que acaben passada la mitjanit: llavors la fi cau al dia següent.
-  return acaba > comenca ? acaba : new Date(acaba.getTime() + 86400000);
-}
-
-const escapaIcs = (v) =>
-  String(v)
-    .replace(/\\/g, "\\\\")
-    .replace(/[;,]/g, (c) => "\\" + c)
-    .replace(/\r?\n/g, "\\n");
-
-/** L'estàndard demana talls a 75 octets: hi ha calendaris que si no es queixen. */
-function plegaIcs(linia) {
-  const fora = [];
-  let resta = linia;
-  let max = 73;
-  while (resta.length > max) {
-    fora.push((fora.length ? " " : "") + resta.slice(0, max));
-    resta = resta.slice(max);
-    max = 72;
-  }
-  fora.push((fora.length ? " " : "") + resta);
-  return fora.join("\r\n");
-}
-
-/** Els meus esports; si encara no me n'he apuntat a cap, tot el que juga l'equip. */
-function provesPerRecordar() {
-  const meus = new Set((yo && yo.esports) || []);
-  const ara = new Date();
-  return provesNostres()
-    .filter((p) => inici(p) > ara)
-    .filter((p) => p.tipo !== "esport" || !meus.size || meus.has(p.esport));
-}
-
-function fitxerIcs(proves) {
-  const ara = segellIcs(new Date());
-  const linies = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Diablos//Olimpiades Begues 2026//CA",
-    "CALSCALE:GREGORIAN",
-  ];
-  for (const p of proves) {
-    const meus = partitsDe(p).filter((x) => x.equips.includes(nosaltres()));
-    const detall = meus.map((x) => `${x.nom}: contra ${rivalNostre(x) || "?"}`).join("\n");
-    linies.push(
-      "BEGIN:VEVENT",
-      plegaIcs(`UID:${p.id}@olimpiades-begues-2026`),
-      `DTSTAMP:${ara}`,
-      // Hora local sense zona: tothom hi és a Begues i així no cal arrossegar-la.
-      `DTSTART:${dataIcs(inici(p))}`,
-      `DTEND:${dataIcs(finalDe(p))}`,
-      plegaIcs(`SUMMARY:${escapaIcs(nomProva(p))}`)
-    );
-    if (p.lloc) linies.push(plegaIcs(`LOCATION:${escapaIcs(p.lloc)}`));
-    if (detall) linies.push(plegaIcs(`DESCRIPTION:${escapaIcs(detall)}`));
-    linies.push(
-      "BEGIN:VALARM",
-      "ACTION:DISPLAY",
-      "TRIGGER:-PT30M",
-      plegaIcs(`DESCRIPTION:${escapaIcs(nomProva(p))}`),
-      "END:VALARM",
-      "END:VEVENT"
-    );
-  }
-  linies.push("END:VCALENDAR");
-  return linies.join("\r\n") + "\r\n";
-}
-
-async function alCalendari() {
-  const proves = provesPerRecordar();
-  if (!proves.length) return aviso("No queda cap prova per recordar.");
-  const text = fitxerIcs(proves);
-  const nom = "olimpiades-begues.ics";
-  const fitxer = new File([text], nom, { type: "text/calendar" });
-  if (navigator.canShare && navigator.canShare({ files: [fitxer] })) {
-    try {
-      return await navigator.share({ files: [fitxer], title: "Olimpíades Begues" });
-    } catch (err) {
-      if (err && err.name === "AbortError") return;
-    }
-  }
-  const url = URL.createObjectURL(new Blob([text], { type: "text/calendar" }));
-  const enllac = el("a");
-  enllac.href = url;
-  enllac.download = nom;
-  document.body.appendChild(enllac);
-  enllac.click();
-  enllac.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 4000);
-  aviso(`Descarregades ${proves.length} proves: obre el fitxer per afegir-les.`, "ok");
-}
+/* ---------- botons del calendari ---------- */
 
 function pintarAccions() {
   const boto = $("#compartirPla");
   const fecha = diaPerCompartir();
   boto.hidden = !fecha;
-  $("#alCalendari").hidden = !provesPerRecordar().length;
   if (!fecha) return;
   const dema = new Date(aFecha(avui()).getTime() + 86400000);
   boto.textContent =
@@ -1476,7 +1373,6 @@ async function iniciar() {
   $("#guardar").addEventListener("click", guardar);
   $("#borrarme").addEventListener("click", borrarme);
   $("#compartirPla").addEventListener("click", compartirPla);
-  $("#alCalendari").addEventListener("click", alCalendari);
   $("#nombre").addEventListener("change", recuperarSiJaHiEs);
   $("#accesoForm").addEventListener("submit", intentarEntrar);
   $("#refresca").addEventListener("click", refrescarTot);
