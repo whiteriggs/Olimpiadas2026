@@ -1243,7 +1243,11 @@ function activarPestanya(nom) {
 
 function conectarPestanias() {
   for (const tab of document.querySelectorAll(".tab")) {
-    tab.addEventListener("click", () => activarPestanya(tab.dataset.panel));
+    tab.addEventListener("click", () => {
+      activarPestanya(tab.dataset.panel);
+      // Amb les pestanyes enganxades pots canviar des de baix de tot: torna a dalt.
+      window.scrollTo({ top: 0 });
+    });
   }
   $("#cridaQuedar").addEventListener("click", () => {
     activarPestanya("quedar");
