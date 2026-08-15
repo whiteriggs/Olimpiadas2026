@@ -88,10 +88,10 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 }
 .cabecera-fila {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 14px; padding-top: 22px; padding-bottom: 14px;
+  gap: 12px; padding-top: 14px; padding-bottom: 8px;
 }
 .escut {
-  width: 56px; height: 56px; border-radius: 12px; flex-shrink: 0;
+  width: 46px; height: 46px; border-radius: 11px; flex-shrink: 0;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 .cabecera h1 {
