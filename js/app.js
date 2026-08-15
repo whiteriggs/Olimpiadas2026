@@ -236,9 +236,14 @@ function pintarCalendario() {
 
 function tarjetaEvento(p, mios) {
   const juguem = hiJuguem(p);
+  // Mentre no sapiguem si hi som (falta la ronda anterior) tampoc ens reclama res.
+  const alie = p.tipo === "esport" && nosaltres() && juguem !== true;
   const art = el(
     "article",
-    "evento" + (mios.has(p.esport) ? " apuntado" : "") + (juguem ? " nostre" : "")
+    "evento" +
+      (mios.has(p.esport) ? " apuntado" : "") +
+      (juguem ? " nostre" : "") +
+      (alie ? " alie" : "")
   );
   art.appendChild(el("div", "hora", p.hora));
 

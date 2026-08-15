@@ -521,6 +521,17 @@ body:has(.modal[open]) { overflow: hidden; }
 /* ---------- els nostres partits ---------- */
 
 .evento.nostre { border-color: color-mix(in srgb, var(--azul-2) 40%, var(--borde)); }
+/* On no juguem no ens demanen res: fora targeta, que només cridin l'atenció els nostres. */
+.evento.alie {
+  background: none;
+  border-color: var(--borde);
+  box-shadow: none;
+}
+.evento.alie:hover { box-shadow: none; transform: none; }
+.evento.alie .hora,
+.evento.alie .deporte,
+.evento.alie .rival { color: var(--gris); font-weight: 600; }
+.evento.alie .ronda { background: none; padding-left: 0; padding-right: 0; color: var(--gris); }
 .evento .rival .sigla {
   display: inline-block; min-width: 44px; margin-right: 6px;
   font-size: 0.68rem; font-weight: 700; color: var(--gris);
