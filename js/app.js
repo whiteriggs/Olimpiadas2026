@@ -161,26 +161,25 @@ function pintarCalendario() {
     if (dia && p.fecha !== dia) return false;
     if (esport && p.esport !== esport) return false;
     if (filtreRapid === "avui" && p.fecha !== avuiIso) return false;
-    if (filtreRapid === "meus" && !mios.has(p.esport)) return false;
-    if (filtreRapid === "nostres" && hiJuguem(p) !== true) return false;
     return true;
   });
 
-  if (!visibles.length) {
+  // Les lligues (petanca, tennis…) nomes surten com a data limit: sense aixo desapareixien.
+  const limitsVisibles = (cal.limites || []).filter((l) => {
+    if (dia && l.fecha !== dia) return false;
+    if (esport && !l.esports.includes(esport)) return false;
+    if (filtreRapid === "avui" && l.fecha !== avuiIso) return false;
+    return true;
+  });
+
+  if (!visibles.length && !limitsVisibles.length) {
     cont.appendChild(el("p", "vacio", "No hi ha proves amb aquests filtres."));
     return;
   }
 
   for (const fecha of fechas) {
     const delDia = visibles.filter((p) => p.fecha === fecha);
-    const limitsDelDia = (cal.limites || []).filter((l) => {
-      if (l.fecha !== fecha) return false;
-      if (dia && l.fecha !== dia) return false;
-      if (esport && !l.esports.includes(esport)) return false;
-      if (filtreRapid === "avui" && l.fecha !== avuiIso) return false;
-      if (filtreRapid === "meus" && !l.esports.some((e) => mios.has(e))) return false;
-      return true;
-    });
+    const limitsDelDia = limitsVisibles.filter((l) => l.fecha === fecha);
     if (!delDia.length && !limitsDelDia.length) continue;
 
     const bloque = el("section", "dia");
@@ -777,7 +776,10 @@ function pintarFiltros() {
   const omplir = (sel, valors, etiqueta) => {
     const anterior = sel.value;
     vaciar(sel);
-    sel.appendChild(el("option", null, "Tots"));
+    // Sense value="" explicit, l'opció val "Tots" i el filtre no troba res.
+    const cap = el("option", null, "Tots");
+    cap.value = "";
+    sel.appendChild(cap);
     for (const v of valors) {
       const o = el("option", null, etiqueta(v));
       o.value = v;
@@ -1029,14 +1031,24 @@ function conectarPestanias() {
 
 async function iniciar() {
   conectarPestanias();
-  $("#filtroDia").addEventListener("change", pintarCalendario);
-  $("#filtroDeporte").addEventListener("change", pintarCalendario);
+  const marcarXip = (nom) => {
+    filtreRapid = nom;
+    for (const x of document.querySelectorAll(".xip-filtre")) {
+      x.classList.toggle("activa", x.dataset.rapid === nom);
+    }
+  };
+  // Triar dia o esport al desplegable ha de veure's sobre tot el calendari.
+  const filtrarPerDesplegable = () => {
+    marcarXip("tot");
+    pintarCalendario();
+  };
+  $("#filtroDia").addEventListener("change", filtrarPerDesplegable);
+  $("#filtroDeporte").addEventListener("change", filtrarPerDesplegable);
   for (const xip of document.querySelectorAll(".xip-filtre")) {
     xip.addEventListener("click", () => {
-      filtreRapid = xip.dataset.rapid;
-      for (const altre of document.querySelectorAll(".xip-filtre")) {
-        altre.classList.toggle("activa", altre === xip);
-      }
+      $("#filtroDia").value = "";
+      $("#filtroDeporte").value = "";
+      marcarXip(xip.dataset.rapid);
       pintarCalendario();
     });
   }
