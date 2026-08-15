@@ -131,6 +131,62 @@
       "id": "2026-08-16-10-ping-pong",
       "esport": "Ping-pong",
       "esportId": "ping-pong",
+      "detalle": "Semifinal consolació 1, Semifinal consolació 2, 3r i 4t lloc, Final",
+      "partits": [
+        "consSf1",
+        "consSf2",
+        "tercerPuesto",
+        "final"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-16",
+      "hora": "10:00",
+      "horaFin": "11:00",
+      "orden": 10,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-16-11-ping-pong",
+      "esport": "Ping-pong",
+      "esportId": "ping-pong",
+      "detalle": "Final consolació · 5è i 6è lloc, 7è i 8è lloc",
+      "partits": [
+        "consFinal",
+        "consTercero"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-16",
+      "hora": "11:00",
+      "horaFin": "12:00",
+      "orden": 11,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-16-11-voleibol-platja",
+      "esport": "Voleibol platja",
+      "esportId": "voleibol-playa",
+      "detalle": "Semifinal 1, Semifinal 2",
+      "partits": [
+        "sf1",
+        "sf2"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-16",
+      "hora": "11:30",
+      "horaFin": "13:00",
+      "orden": 11,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-16-13-voleibol-platja",
+      "esport": "Voleibol platja",
+      "esportId": "voleibol-playa",
       "detalle": "Semifinal consolació 1, Semifinal consolació 2",
       "partits": [
         "consSf1",
@@ -138,24 +194,9 @@
       ],
       "tipo": "esport",
       "fecha": "2026-08-16",
-      "hora": "10:00",
-      "horaFin": "20:00",
-      "orden": 10,
-      "lloc": "Club de Begues",
-      "quiJuga": "",
-      "nota": ""
-    },
-    {
-      "id": "2026-08-16-10-voleibol-platja",
-      "esport": "Voleibol platja",
-      "esportId": "voleibol-playa",
-      "detalle": "",
-      "partits": [],
-      "tipo": "esport",
-      "fecha": "2026-08-16",
-      "hora": "10:00",
-      "horaFin": "20:00",
-      "orden": 10,
+      "hora": "13:00",
+      "horaFin": "14:30",
+      "orden": 13,
       "lloc": "Club de Begues",
       "quiJuga": "",
       "nota": ""
