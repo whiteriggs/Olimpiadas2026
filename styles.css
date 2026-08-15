@@ -429,6 +429,14 @@ body:has(.modal[open]) { overflow: hidden; }
   cursor: pointer;
 }
 .resumen-fila.clicable:hover { background: var(--neutre-fons); }
+/* Un esport ja jugat no demana res: es queda apagat perquè destaquin els que queden. */
+.resumen-fila.clicable.acabat {
+  padding-left: 9px;
+  border-left: 3px solid var(--verde);
+  background: var(--neutre-fons);
+  color: var(--gris);
+}
+.resumen-fila.clicable.acabat strong { font-weight: 600; }
 
 /* El nom de l'esport, dins el resum d'equip, obre el quadre. */
 .obre-quadre {

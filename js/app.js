@@ -734,7 +734,8 @@ function pintarPunts() {
     return;
   }
   for (const esport of torneig.esports) {
-    const fila = el("button", "resumen-fila clicable");
+    const acabat = esport.posicions.includes(jo);
+    const fila = el("button", "resumen-fila clicable" + (acabat ? " acabat" : ""));
     fila.type = "button";
     fila.appendChild(el("strong", null, esport.nom));
     fila.appendChild(el("span", "meta", resumEsport(esport, jo)));
