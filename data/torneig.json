@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-16T15:56:33+00:00",
+ "actualizado": "2026-08-16T16:35:21+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -3347,10 +3347,10 @@
       "E7",
       "E3"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E3",
+     "perdedor": "E7",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "final",
@@ -3359,12 +3359,12 @@
      "sigla": "Final",
      "equips": [
       "E4",
-      null
+      "E3"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E4",
+     "perdedor": "E3",
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "jugat"
     },
     {
      "id": "tercerPuesto",
@@ -3373,12 +3373,12 @@
      "sigla": "3r/4t",
      "equips": [
       "E2",
-      null
+      "E7"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consSf1",
@@ -3417,10 +3417,10 @@
       "E9",
       "E5"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E9",
+     "perdedor": "E5",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consTercero",
@@ -3431,10 +3431,10 @@
       "E1",
       "E6"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E1",
+     "perdedor": "E6",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "puesto9",
@@ -3452,18 +3452,24 @@
     }
    ],
    "posicions": [
+    "E4",
+    "E3",
     null,
     null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    "E9",
+    "E5",
+    "E1",
+    "E6",
     "E10",
     "E8"
    ],
    "punts": {
+    "E4": 40,
+    "E3": 32,
+    "E9": 20,
+    "E5": 17,
+    "E1": 14,
+    "E6": 11,
     "E10": 8,
     "E8": 5
    }
@@ -4350,34 +4356,34 @@
  ],
  "general": [
   {
-   "id": "E1",
-   "nom": "La Jee-peta",
-   "punts": 85,
+   "id": "E4",
+   "nom": "Vaig molt cremat",
+   "punts": 117,
    "posicio": 1
   },
   {
    "id": "E3",
    "nom": "Olimpiakojos",
-   "punts": 78,
+   "punts": 110,
    "posicio": 2
   },
   {
-   "id": "E4",
-   "nom": "Vaig molt cremat",
-   "punts": 77,
+   "id": "E1",
+   "nom": "La Jee-peta",
+   "punts": 99,
    "posicio": 3
+  },
+  {
+   "id": "E5",
+   "nom": "Yayo Vallecano",
+   "punts": 86,
+   "posicio": 4
   },
   {
    "id": "E2",
    "nom": "Passa directament",
    "punts": 69,
-   "posicio": 4
-  },
-  {
-   "id": "E5",
-   "nom": "Yayo Vallecano",
-   "punts": 69,
-   "posicio": 4
+   "posicio": 5
   },
   {
    "id": "E7",
@@ -4386,27 +4392,27 @@
    "posicio": 6
   },
   {
-   "id": "E10",
-   "nom": "La Once",
-   "punts": 52,
+   "id": "E9",
+   "nom": "Joga Vomito",
+   "punts": 58,
    "posicio": 7
   },
   {
    "id": "E6",
    "nom": "Diablos",
-   "punts": 45,
+   "punts": 56,
    "posicio": 8
+  },
+  {
+   "id": "E10",
+   "nom": "La Once",
+   "punts": 52,
+   "posicio": 9
   },
   {
    "id": "E8",
    "nom": "Massumba y los mas zumbaos",
    "punts": 42,
-   "posicio": 9
-  },
-  {
-   "id": "E9",
-   "nom": "Joga Vomito",
-   "punts": 38,
    "posicio": 10
   }
  ],
