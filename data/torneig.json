@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-16T16:35:21+00:00",
+ "actualizado": "2026-08-16T16:59:27+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -3020,10 +3020,10 @@
       "E3",
       "E6"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E3",
+     "perdedor": "E6",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "qf1",
@@ -3059,13 +3059,13 @@
      "nom": "Quarts 3",
      "sigla": "QF3",
      "equips": [
-      null,
+      "E3",
       "E4"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "qf4",
@@ -3200,7 +3200,7 @@
      "sigla": "9è/10è",
      "equips": [
       null,
-      null
+      "E6"
      ],
      "guanyador": null,
      "perdedor": null,
@@ -3375,10 +3375,10 @@
       "E2",
       "E7"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E7",
+     "perdedor": "E2",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consSf1",
@@ -3454,8 +3454,8 @@
    "posicions": [
     "E4",
     "E3",
-    null,
-    null,
+    "E7",
+    "E2",
     "E9",
     "E5",
     "E1",
@@ -3466,6 +3466,8 @@
    "punts": {
     "E4": 40,
     "E3": 32,
+    "E7": 29,
+    "E2": 26,
     "E9": 20,
     "E5": 17,
     "E1": 14,
@@ -4374,21 +4376,21 @@
    "posicio": 3
   },
   {
-   "id": "E5",
-   "nom": "Yayo Vallecano",
-   "punts": 86,
-   "posicio": 4
-  },
-  {
    "id": "E2",
    "nom": "Passa directament",
-   "punts": 69,
-   "posicio": 5
+   "punts": 95,
+   "posicio": 4
   },
   {
    "id": "E7",
    "nom": "Esperando a los Palomos",
-   "punts": 64,
+   "punts": 93,
+   "posicio": 5
+  },
+  {
+   "id": "E5",
+   "nom": "Yayo Vallecano",
+   "punts": 86,
    "posicio": 6
   },
   {
