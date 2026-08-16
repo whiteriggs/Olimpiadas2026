@@ -33,6 +33,7 @@ let cal = { pruebas: [], lligues: [], limites: [], avisos: [] };
 let torneig = null;
 let personas = [];
 let acords = [];
+let alineacions = [];
 let yo = null;
 let fechas = [];
 let esports = [];
@@ -311,6 +312,30 @@ function tarjetaEvento(p, mios) {
     cuerpo.appendChild(el("div", "apuntados vacio", "Ningú apuntat encara"));
   }
 
+  // Qui juga només es decideix quan ja hi ha gent apuntada, i només urgeix el dia mateix.
+  if (juguem === true && gente.length) {
+    const juguen = quiJuga(p);
+    const urgent = !juguen.length && p.fecha <= avui();
+    const caixa = el(
+      "div",
+      "alineacio-fila" + (juguen.length ? " tancada" : urgent ? " urgent" : "")
+    );
+    caixa.appendChild(
+      el(
+        "span",
+        "alineacio-noms",
+        juguen.length
+          ? "Juguen: " + juguen.map((x) => x.nombre).join(", ")
+          : "Falta dir qui juga"
+      )
+    );
+    const boto = el("button", "btn petit", juguen.length ? "Canvia" : "Tria qui juga");
+    boto.type = "button";
+    boto.addEventListener("click", () => obrirAlineacio(p));
+    caixa.appendChild(boto);
+    cuerpo.appendChild(caixa);
+  }
+
   art.appendChild(cuerpo);
   return art;
 }
@@ -467,12 +492,17 @@ function textDelPla(fecha) {
       linies.push(`${partit.nom}: contra ${rivalNostre(partit) || "?"}`);
     }
     if (p.tipo === "esport") {
-      const gent = quiPotVenir(p);
-      linies.push(
-        gent.total
-          ? `${gent.poden} de ${gent.total} apuntats hi poden anar`
-          : "Encara no s'hi ha apuntat ningú"
-      );
+      const juguen = quiJuga(p);
+      if (juguen.length) {
+        linies.push("Juguen: " + juguen.map((x) => x.nombre).join(", "));
+      } else {
+        const gent = quiPotVenir(p);
+        linies.push(
+          gent.total
+            ? `${gent.poden} de ${gent.total} apuntats hi poden anar`
+            : "Encara no s'hi ha apuntat ningú"
+        );
+      }
     }
   }
   linies.push("", location.origin + location.pathname);
@@ -695,6 +725,101 @@ async function esborrarQuedada() {
     repintar();
   } catch (e) {
     estat.textContent = "No s'ha pogut esborrar: " + e.message;
+    estat.className = "estado error";
+  }
+}
+
+/* ---------- qui juga cada prova ---------- */
+
+const idAlineacio = (provaId) => `juga:${provaId}`;
+const alineacioDe = (provaId) => alineacions.find((a) => a.id === idAlineacio(provaId));
+
+/** Els que finalment juguen: hi ha proves on només hi caben dos o tres. */
+function quiJuga(p) {
+  const tria = alineacioDe(p.id);
+  if (!tria) return [];
+  return (tria.qui || [])
+    .map((id) => personas.find((x) => x.id === id))
+    .filter(Boolean)
+    .sort((a, b) => (a.nombre || "").localeCompare(b.nombre || "", "ca"));
+}
+
+let alineacioActual = null;
+
+function obrirAlineacio(p) {
+  alineacioActual = p;
+  $("#alineacioTitol").textContent = `${p.esport} · ${p.hora}`;
+  const triats = new Set((alineacioDe(p.id) || {}).qui || []);
+  const gent = apuntadosA(p.esport);
+  const llista = $("#alineacioLlista");
+  vaciar(llista);
+
+  $("#alineacioAjuda").textContent = gent.length
+    ? "Marca qui hi juga de veritat. Els que no poden venir surten al final."
+    : `Encara no s'hi ha apuntat ningú, a ${p.esport.toLowerCase()}.`;
+
+  // Primer els que han dit que sí: són els que de debò pots posar.
+  const ordre = { si: 0, quizas: 1, "": 2, no: 3 };
+  for (const persona of [...gent].sort(
+    (a, b) => ordre[dispoDe(a, p.fecha)] - ordre[dispoDe(b, p.fecha)]
+  )) {
+    const estat = dispoDe(persona, p.fecha);
+    const fila = el("label", "tria-persona");
+    const casella = el("input");
+    casella.type = "checkbox";
+    casella.value = persona.id;
+    casella.checked = triats.has(persona.id);
+    fila.appendChild(casella);
+    fila.appendChild(el("span", "tria-nom", persona.nombre));
+    fila.appendChild(
+      el(
+        "span",
+        "tria-dispo " + (estat || "sense"),
+        estat === "si" ? "pot venir"
+        : estat === "no" ? "no pot"
+        : estat === "quizas" ? "potser"
+        : "no ho ha dit"
+      )
+    );
+    llista.appendChild(fila);
+  }
+
+  $("#alineacioEstat").textContent = "";
+  $("#alineacioEstat").className = "estado";
+  $("#alineacio").showModal();
+}
+
+async function desarAlineacio(evento) {
+  evento.preventDefault();
+  if (!alineacioActual) return;
+  const p = alineacioActual;
+  const qui = [...$("#alineacioLlista").querySelectorAll("input:checked")].map((x) => x.value);
+  const id = idAlineacio(p.id);
+  const estat = $("#alineacioEstat");
+  estat.textContent = "Desant…";
+  estat.className = "estado pendent";
+  try {
+    if (qui.length) {
+      const tria = {
+        id,
+        nombre: `${p.esport} · ${p.fecha} ${p.hora}`,
+        tipus: "alineacio",
+        provaId: p.id,
+        esport: p.esport,
+        fecha: p.fecha,
+        qui,
+        actualizado: new Date().toISOString(),
+      };
+      await store.guardarPersona(tria);
+      alineacions = [...alineacions.filter((a) => a.id !== id), tria];
+    } else if (alineacioDe(p.id)) {
+      await store.borrarPersona(id);
+      alineacions = alineacions.filter((a) => a.id !== id);
+    }
+    $("#alineacio").close();
+    repintar();
+  } catch (e) {
+    estat.textContent = "No s'ha pogut desar: " + e.message;
     estat.className = "estado error";
   }
 }
@@ -1197,9 +1322,10 @@ async function recargarPersonas() {
 }
 
 function usarPersonas(llista) {
-  // Les quedades viuen al mateix full que la gent, marcades amb tipus "partit".
+  // Les quedades i les alineacions viuen al mateix full que la gent, amb tipus.
   acords = llista.filter((p) => p.tipus === "partit");
-  personas = llista.filter((p) => p.tipus !== "partit");
+  alineacions = llista.filter((p) => p.tipus === "alineacio");
+  personas = llista.filter((p) => !p.tipus);
   for (const p of personas) {
     p.esports = [...new Set((p.esports || []).map(canonic))];
   }
@@ -1417,6 +1543,8 @@ async function iniciar() {
   $("#tancaQuedada").addEventListener("click", () => $("#quedada").close());
   $("#quedadaForm").addEventListener("submit", desarQuedada);
   $("#esborraQuedada").addEventListener("click", esborrarQuedada);
+  $("#tancaAlineacio").addEventListener("click", () => $("#alineacio").close());
+  $("#alineacioForm").addEventListener("submit", desarAlineacio);
   // Clic al fons fosc del dialog: el tanquem.
   $("#quadre").addEventListener("click", (e) => {
     if (e.target.id === "quadre") $("#quadre").close();

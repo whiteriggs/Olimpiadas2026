@@ -520,8 +520,7 @@ body:has(.modal[open]) { overflow: hidden; }
 
 /* ---------- els nostres partits ---------- */
 
-/* El color de la samarreta. L'anell fa que el blanc i el negre es vegin als dos temes. */
-.punt-equip {
+/* El color de la samarreta. L'anell fa que el blanc i el negre es vegin als dos temes. */.punt-equip {
   display: inline-block;
   width: 9px; height: 9px;
   margin-right: 6px;
@@ -530,6 +529,31 @@ body:has(.modal[open]) { overflow: hidden; }
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--texto) 30%, transparent);
 }
 .punt-equip.sense { background: none; }
+
+/* ---------- qui juga ---------- */
+
+.alineacio-fila {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-top: 10px; padding-top: 10px;
+  border-top: 1px dashed var(--borde);
+}
+.alineacio-noms { flex: 1; min-width: 0; font-size: 0.85rem; font-weight: 600; color: var(--gris); }
+.alineacio-fila.urgent .alineacio-noms { color: var(--ambar); }
+.alineacio-fila.tancada .alineacio-noms { color: var(--verde); }
+
+.tria-gent { display: flex; flex-direction: column; gap: 2px; }
+.tria-persona {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 4px; border-bottom: 1px solid var(--borde); cursor: pointer;
+  text-transform: none; letter-spacing: 0; font-size: 0.95rem; color: var(--texto);
+}
+.tria-persona:last-child { border-bottom: 0; }
+.tria-persona input { width: 20px; height: 20px; flex: none; accent-color: var(--azul); }
+.tria-nom { flex: 1; min-width: 0; font-weight: 600; }
+.tria-dispo { font-size: 0.78rem; font-weight: 700; color: var(--gris); }
+.tria-dispo.si { color: var(--verde); }
+.tria-dispo.no { color: var(--rojo); }
+.tria-dispo.quizas { color: var(--ambar); }
 
 .evento.nostre { border-color: color-mix(in srgb, var(--azul-2) 40%, var(--borde)); }
 /* On no juguem no ens demanen res: fora targeta, que només cridin l'atenció els nostres. */
