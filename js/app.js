@@ -36,10 +36,7 @@ const ESPORTS_EQUIP = new Set([
   "Handbol",
   "Bàsquet",
   "Voleibol pista",
-  "Voleibol platja",
   "Waterpolo",
-  "Atletisme",
-  "Ciclisme",
 ]);
 
 let cal = { pruebas: [], lligues: [], limites: [], avisos: [] };
