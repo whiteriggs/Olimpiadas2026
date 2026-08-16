@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-16T07:37:30+00:00",
+ "actualizado": "2026-08-16T09:58:45+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -1665,10 +1665,10 @@
       "E5",
       "E4"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E4",
+     "perdedor": "E5",
+     "marcador": "2-0",
+     "estat": "jugat"
     },
     {
      "id": "consSf1",
@@ -1744,8 +1744,8 @@
    "posicions": [
     "E3",
     "E1",
-    null,
-    null,
+    "E4",
+    "E5",
     null,
     null,
     null,
@@ -1756,6 +1756,8 @@
    "punts": {
     "E3": 40,
     "E1": 32,
+    "E4": 29,
+    "E5": 26,
     "E6": 8,
     "E9": 5
    }
@@ -4332,51 +4334,51 @@
  ],
  "general": [
   {
+   "id": "E4",
+   "nom": "Vaig molt cremat",
+   "punts": 66,
+   "posicio": 1
+  },
+  {
    "id": "E1",
    "nom": "La Jee-peta",
    "punts": 65,
-   "posicio": 1
+   "posicio": 2
   },
   {
    "id": "E7",
    "nom": "Esperando a los Palomos",
    "punts": 50,
-   "posicio": 2
+   "posicio": 3
   },
   {
    "id": "E3",
    "nom": "Olimpiakojos",
    "punts": 49,
-   "posicio": 3
+   "posicio": 4
   },
   {
-   "id": "E4",
-   "nom": "Vaig molt cremat",
-   "punts": 37,
-   "posicio": 4
+   "id": "E5",
+   "nom": "Yayo Vallecano",
+   "punts": 43,
+   "posicio": 5
   },
   {
    "id": "E9",
    "nom": "Joga Vomito",
    "punts": 30,
-   "posicio": 5
+   "posicio": 6
   },
   {
    "id": "E2",
    "nom": "Passa directament",
    "punts": 29,
-   "posicio": 6
+   "posicio": 7
   },
   {
    "id": "E8",
    "nom": "Massumba y los mas zumbaos",
    "punts": 21,
-   "posicio": 7
-  },
-  {
-   "id": "E5",
-   "nom": "Yayo Vallecano",
-   "punts": 17,
    "posicio": 8
   },
   {
