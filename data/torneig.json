@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-16T19:03:01+00:00",
+ "actualizado": "2026-08-16T19:39:44+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -1793,7 +1793,7 @@
      ],
      "guanyador": null,
      "perdedor": null,
-     "marcador": "0-5",
+     "marcador": "",
      "estat": "pendent"
     },
     {
@@ -1807,7 +1807,7 @@
      ],
      "guanyador": null,
      "perdedor": null,
-     "marcador": "3-1",
+     "marcador": "",
      "estat": "pendent"
     },
     {
@@ -2034,10 +2034,10 @@
       "E5",
       "E4"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E4",
+     "perdedor": "E5",
+     "marcador": "0-4",
+     "estat": "jugat"
     },
     {
      "id": "previa2",
@@ -2048,10 +2048,10 @@
       "E7",
       "E9"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E7",
+     "perdedor": "E9",
+     "marcador": "3-1",
+     "estat": "jugat"
     },
     {
      "id": "qf1",
@@ -2059,13 +2059,13 @@
      "nom": "Quarts 1",
      "sigla": "QF1",
      "equips": [
-      null,
+      "E4",
       "E10"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "qf2",
@@ -2087,13 +2087,13 @@
      "nom": "Quarts 3",
      "sigla": "QF3",
      "equips": [
-      null,
+      "E7",
       "E2"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "qf4",
@@ -2227,13 +2227,13 @@
      "nom": "9è i 10è lloc",
      "sigla": "9è/10è",
      "equips": [
-      null,
-      null
+      "E5",
+      "E9"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     }
    ],
    "posicions": [
@@ -4418,8 +4418,5 @@
    "posicio": 10
   }
  ],
- "avisos": [
-  "Futbol sala · Prèvia 1: Vaig molt cremat no juga aquest partit.",
-  "Futbol sala · Prèvia 2: Esperando a los Palomos no juga aquest partit."
- ]
+ "avisos": []
 }
