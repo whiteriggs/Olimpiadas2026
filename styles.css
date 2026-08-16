@@ -803,6 +803,20 @@ body:has(.modal[open]) { overflow: hidden; }
 .tabla .no { background: var(--rojo-fons); }
 .tabla .quizas { background: var(--ambar-fons); }
 
+/* Amb tants esports els títols no hi caben de pla: van girats i la taula llisca. */
+.tabla.creuada th.columna-esport { padding: 6px 3px; vertical-align: bottom; }
+.tabla.creuada th.columna-esport span {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-size: 0.72rem; font-weight: 600;
+}
+.tabla.creuada .columna-equip { max-width: 120px; overflow: hidden; text-overflow: ellipsis; }
+.tabla.creuada td.num { font-variant-numeric: tabular-nums; color: var(--gris); }
+.tabla.creuada td.num.or {
+  color: var(--texto); font-weight: 700;
+  background: color-mix(in srgb, var(--oro) 22%, transparent);
+}
+.tabla.creuada .columna-total { color: var(--texto); font-weight: 700; }
+
 .vacio { color: var(--gris); font-size: 0.88rem; }
 .apuntados.vacio { font-style: italic; }
 

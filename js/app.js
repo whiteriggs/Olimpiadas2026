@@ -945,6 +945,8 @@ function pintarPunts() {
     fila.appendChild(el("td", null, String(e.punts)));
   }
 
+  pintarPuntsPerEsport();
+
   if (!jo) {
     pas.appendChild(
       el("p", "vacio", "Quan sapiguem quin equip som, aquí sortirà com anem a cada esport. Mentrestant, mira els quadres més avall.")
@@ -970,8 +972,43 @@ function pintarPunts() {
   }
 }
 
-/* ---------- quadres ---------- */
+/** Qui ha guanyat què: una columna per esport, que és com es mira el marcador. */
+function pintarPuntsPerEsport() {
+  const caixa = $("#caixaPerEsport");
+  const tabla = $("#puntsPerEsport");
+  vaciar(tabla);
+  const jo = nosaltres();
+  const esports = torneig.esports.filter((e) => e.posicions.some(Boolean));
+  caixa.hidden = !esports.length;
+  if (!esports.length) return;
 
+  const cap = tabla.createTHead().insertRow();
+  cap.appendChild(el("th", "columna-equip", "Equip"));
+  cap.appendChild(el("th", "columna-total", "Total"));
+  for (const esport of esports) {
+    const th = el("th", "columna-esport");
+    th.appendChild(el("span", null, esport.nom));
+    cap.appendChild(th);
+  }
+
+  const cos = tabla.createTBody();
+  for (const e of torneig.general) {
+    const fila = cos.insertRow();
+    if (e.id === jo) fila.className = "meu";
+    const nom = el("td", "columna-equip");
+    nom.appendChild(nomAmbColor(e.id));
+    fila.appendChild(nom);
+    fila.appendChild(el("td", "num columna-total", String(e.punts)));
+    for (const esport of esports) {
+      const lloc = esport.posicions.indexOf(e.id);
+      const cel = el("td", "num" + (lloc === 0 ? " or" : ""), lloc < 0 ? "–" : String(esport.taulaPunts[lloc]));
+      if (lloc >= 0) cel.title = `${esport.nom}: ${ordinal(lloc + 1)} lloc`;
+      fila.appendChild(cel);
+    }
+  }
+}
+
+/* ---------- quadres ---------- */
 const RONDES = [
   ["Prèvies", ["previa1", "previa2"]],
   ["Quarts", ["qf1", "qf2", "qf3", "qf4"]],
