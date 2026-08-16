@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-16T12:54:22+00:00",
+ "actualizado": "2026-08-16T13:36:56+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -810,10 +810,10 @@
       "E2",
       "E7"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E7",
+     "perdedor": "E2",
+     "marcador": "2-1",
+     "estat": "jugat"
     },
     {
      "id": "previa2",
@@ -835,13 +835,13 @@
      "nom": "Quarts 1",
      "sigla": "QF1",
      "equips": [
-      null,
+      "E7",
       "E5"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "qf2",
@@ -1003,7 +1003,7 @@
      "nom": "9è i 10è lloc",
      "sigla": "9è/10è",
      "equips": [
-      null,
+      "E2",
       null
      ],
      "guanyador": null,
