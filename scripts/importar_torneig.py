@@ -27,6 +27,20 @@ from comu import (
 SALIDA = RAIZ / "data" / "torneig.json"
 NOSALTRES = "DIABLOS"
 
+# El color de la samarreta de cada equip, que al full no el posen.
+COLORS = {
+    "MASSUMBA Y LOS MAS ZUMBAOS": "#2f56d6",  # blau royal
+    "DIABLOS": "#d92b2b",  # vermell
+    "PASSA DIRECTAMENT": "#ff5f4d",  # coral fluor
+    "LA JEE-PETA": "#e6f000",  # groc fluor
+    "LA ONCE": "#4f7942",  # verd falguera
+    "VAIG MOLT CREMAT": "#a3835c",  # sorra fosca
+    "OLIMPIAKOJOS": "#5fe0ae",  # verd menta
+    "YAYO VALLECANO": "#1c1c1c",  # negre
+    "ESPERANDO A LOS PALOMOS": "#132a5e",  # blau mari
+    "JOGA VOMITO": "#ffffff",  # blanc
+}
+
 
 def llegeix_equips():
     equips = []
@@ -34,10 +48,21 @@ def llegeix_equips():
         if clave(fila.get("Competició")) != "MASCULI":
             continue
         ident = normaliza(fila.get("Id"))
-        if ident:
-            equips.append({"id": ident, "nom": normaliza(fila.get("Nom")) or ident})
+        if not ident:
+            continue
+        nom = normaliza(fila.get("Nom")) or ident
+        equips.append(
+            {
+                "id": ident,
+                "nom": nom,
+                "color": normaliza(fila.get("Color")) or COLORS.get(clave(nom), ""),
+            }
+        )
     if not equips:
         raise SystemExit("La pestaña «Equips» no tiene ningún equipo masculino.")
+    sense = [e["nom"] for e in equips if not e["color"]]
+    if sense:
+        print("  aviso: sense color:", ", ".join(sense))
     return equips
 
 

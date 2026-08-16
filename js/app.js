@@ -100,6 +100,18 @@ function nomEquip(id) {
   return equip ? equip.nom : id;
 }
 
+/** Un punt del color de la samarreta, per reconèixer-los al camp. */
+function nomAmbColor(id) {
+  const cos = document.createDocumentFragment();
+  const equip = (torneig.equips || []).find((e) => e.id === id);
+  const punt = el("span", "punt-equip");
+  if (equip && equip.color) punt.style.background = equip.color;
+  else punt.classList.add("sense");
+  cos.appendChild(punt);
+  cos.appendChild(document.createTextNode(nomEquip(id)));
+  return cos;
+}
+
 function esportDe(idEsport) {
   return torneig ? (torneig.esports || []).find((e) => e.id === idEsport) : null;
 }
@@ -310,8 +322,15 @@ function liniaPartit(partit) {
   fila.appendChild(el("span", "sigla", partit.sigla));
 
   const [a, b] = partit.equips;
-  const enfront = a && b ? `${nomEquip(a)} – ${nomEquip(b)}` : "pendent de la ronda anterior";
-  fila.appendChild(el("span", null, enfront));
+  const enfront = el("span");
+  if (a && b) {
+    enfront.appendChild(nomAmbColor(a));
+    enfront.appendChild(document.createTextNode(" – "));
+    enfront.appendChild(nomAmbColor(b));
+  } else {
+    enfront.textContent = "pendent de la ronda anterior";
+  }
+  fila.appendChild(enfront);
 
   if (partit.guanyador) {
     const guanyem = partit.guanyador === jo;
@@ -735,7 +754,9 @@ function pintarPunts() {
     const fila = cos.insertRow();
     if (e.id === jo) fila.className = "meu";
     fila.appendChild(el("td", null, hiHaPunts ? String(e.posicio) : "–"));
-    fila.appendChild(el("td", null, e.nom));
+    const nom = el("td");
+    nom.appendChild(nomAmbColor(e.id));
+    fila.appendChild(nom);
     fila.appendChild(el("td", null, String(e.punts)));
   }
 
@@ -822,7 +843,9 @@ function obrirQuadre(idEsport) {
       if (!idEquip) return;
       const fila = el("div", "lloc" + (idEquip === nosaltres() ? " nostre" : ""));
       fila.appendChild(el("span", "sigla", ordinal(i + 1)));
-      fila.appendChild(el("span", null, nomEquip(idEquip)));
+      const nom = el("span");
+      nom.appendChild(nomAmbColor(idEquip));
+      fila.appendChild(nom);
       fila.appendChild(el("span", "punts-lloc", `${esport.taulaPunts[i]} p`));
       bloc.appendChild(fila);
     });
@@ -847,7 +870,8 @@ function filaQuadre(partit) {
         (idEquip && idEquip === partit.guanyador ? " guanya" : "") +
         (idEquip && idEquip === jo ? " jo" : "")
     );
-    linia.textContent = idEquip ? nomEquip(idEquip) : "—";
+    if (idEquip) linia.appendChild(nomAmbColor(idEquip));
+    else linia.textContent = "—";
     centre.appendChild(linia);
   }
   fila.appendChild(centre);

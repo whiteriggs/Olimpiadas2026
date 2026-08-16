@@ -520,6 +520,17 @@ body:has(.modal[open]) { overflow: hidden; }
 
 /* ---------- els nostres partits ---------- */
 
+/* El color de la samarreta. L'anell fa que el blanc i el negre es vegin als dos temes. */
+.punt-equip {
+  display: inline-block;
+  width: 9px; height: 9px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: var(--gris);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--texto) 30%, transparent);
+}
+.punt-equip.sense { background: none; }
+
 .evento.nostre { border-color: color-mix(in srgb, var(--azul-2) 40%, var(--borde)); }
 /* On no juguem no ens demanen res: fora targeta, que només cridin l'atenció els nostres. */
 .evento.alie {

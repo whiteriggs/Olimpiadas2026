@@ -1,46 +1,56 @@
 {
- "actualizado": "2026-08-16T06:55:13+00:00",
+ "actualizado": "2026-08-16T07:00:59+00:00",
  "nosaltres": "E6",
  "equips": [
   {
    "id": "E1",
-   "nom": "La Jee-peta"
+   "nom": "La Jee-peta",
+   "color": "#e6f000"
   },
   {
    "id": "E2",
-   "nom": "Passa directament"
+   "nom": "Passa directament",
+   "color": "#ff5f4d"
   },
   {
    "id": "E3",
-   "nom": "Olimpiakojos"
+   "nom": "Olimpiakojos",
+   "color": "#5fe0ae"
   },
   {
    "id": "E4",
-   "nom": "Vaig molt cremat"
+   "nom": "Vaig molt cremat",
+   "color": "#a3835c"
   },
   {
    "id": "E5",
-   "nom": "Yayo Vallecano"
+   "nom": "Yayo Vallecano",
+   "color": "#1c1c1c"
   },
   {
    "id": "E6",
-   "nom": "Diablos"
+   "nom": "Diablos",
+   "color": "#d92b2b"
   },
   {
    "id": "E7",
-   "nom": "Esperando a los Palomos"
+   "nom": "Esperando a los Palomos",
+   "color": "#132a5e"
   },
   {
    "id": "E8",
-   "nom": "Massumba y los mas zumbaos"
+   "nom": "Massumba y los mas zumbaos",
+   "color": "#2f56d6"
   },
   {
    "id": "E9",
-   "nom": "Joga Vomito"
+   "nom": "Joga Vomito",
+   "color": "#ffffff"
   },
   {
    "id": "E10",
-   "nom": "La Once"
+   "nom": "La Once",
+   "color": "#4f7942"
   }
  ],
  "esports": [
