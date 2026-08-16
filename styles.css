@@ -539,7 +539,11 @@ body:has(.modal[open]) { overflow: hidden; }
 }
 .alineacio-noms { flex: 1; min-width: 0; font-size: 0.85rem; font-weight: 600; color: var(--gris); }
 .alineacio-fila.urgent .alineacio-noms { color: var(--ambar); }
-.alineacio-fila.tancada .alineacio-noms { color: var(--verde); }
+/* Un cop decidit, el botó no ha de competir amb els noms: es fa petit i s'aparta. */
+.alineacio-fila.tancada {
+  justify-content: flex-end;
+  margin-top: 6px; padding-top: 0; border-top: 0;
+}
 
 .tria-gent { display: flex; flex-direction: column; gap: 2px; }
 .tria-persona {
@@ -618,6 +622,15 @@ body:has(.modal[open]) { overflow: hidden; }
 .pastilla.falta { background: var(--rojo-fons); color: var(--rojo); }
 .pastilla.quizas { background: var(--ambar-fons); color: var(--ambar); }
 .pastilla.ok { background: var(--verde-fons); color: var(--verde); }
+
+/* Amb l'alineació decidida només han de saltar a la vista els que juguen.
+   El text va del color de la superfície perquè s'inverteixi sol amb el tema fosc. */
+.apuntados.triada .pastilla { opacity: 0.45; }
+.apuntados.triada .pastilla.juga {
+  opacity: 1; font-weight: 700;
+  background: var(--verde); color: var(--superficie);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--verde) 30%, transparent);
+}
 
 @media (prefers-color-scheme: dark) {
   .evento .ronda { color: #b8c9dd; }

@@ -288,16 +288,19 @@ function tarjetaEvento(p, mios) {
   }
 
   const gente = apuntadosA(p.esport);
+  // Qui juga només es decideix quan ja hi ha gent apuntada, i només urgeix el dia mateix.
+  const potTriar = juguem === true && gente.length;
+  const juguen = potTriar ? quiJuga(p) : [];
+  const triats = new Set(juguen.map((x) => x.id));
+
   if (gente.length) {
     const { poden } = quiPotVenir(p);
     cuerpo.appendChild(
-      el(
-        "div",
-        "compte" + (poden ? "" : " alerta"),
-        `${poden} de ${gente.length} poden venir`
-      )
+      triats.size
+        ? el("div", "compte", `Juguen ${triats.size} dels ${gente.length} apuntats`)
+        : el("div", "compte" + (poden ? "" : " alerta"), `${poden} de ${gente.length} poden venir`)
     );
-    const fila = el("div", "apuntados");
+    const fila = el("div", "apuntados" + (triats.size ? " triada" : ""));
     for (const persona of gente) {
       const estado = dispoDe(persona, p.fecha);
       const clase =
@@ -305,31 +308,21 @@ function tarjetaEvento(p, mios) {
         : estado === "no" ? "pastilla falta"
         : estado === "quizas" ? "pastilla quizas"
         : "pastilla";
-      fila.appendChild(el("span", clase, persona.nombre));
+      fila.appendChild(el("span", clase + (triats.has(persona.id) ? " juga" : ""), persona.nombre));
     }
     cuerpo.appendChild(fila);
   } else if (p.tipo === "esport") {
     cuerpo.appendChild(el("div", "apuntados vacio", "Ningú apuntat encara"));
   }
 
-  // Qui juga només es decideix quan ja hi ha gent apuntada, i només urgeix el dia mateix.
-  if (juguem === true && gente.length) {
-    const juguen = quiJuga(p);
-    const urgent = !juguen.length && p.fecha <= avui();
+  if (potTriar) {
+    const urgent = !triats.size && p.fecha <= avui();
     const caixa = el(
       "div",
-      "alineacio-fila" + (juguen.length ? " tancada" : urgent ? " urgent" : "")
+      "alineacio-fila" + (triats.size ? " tancada" : urgent ? " urgent" : "")
     );
-    caixa.appendChild(
-      el(
-        "span",
-        "alineacio-noms",
-        juguen.length
-          ? "Juguen: " + juguen.map((x) => x.nombre).join(", ")
-          : "Falta dir qui juga"
-      )
-    );
-    const boto = el("button", "btn petit", juguen.length ? "Canvia" : "Tria qui juga");
+    if (!triats.size) caixa.appendChild(el("span", "alineacio-noms", "Falta dir qui juga"));
+    const boto = el("button", "btn petit", triats.size ? "Canvia qui juga" : "Tria qui juga");
     boto.type = "button";
     boto.addEventListener("click", () => obrirAlineacio(p));
     caixa.appendChild(boto);
