@@ -465,6 +465,12 @@ body:has(.modal[open]) { overflow: hidden; }
 }
 .resumen-fila.clicable.acabat strong { font-weight: 600; }
 
+/* Encara hi som: aquests són els que poden moure la classificació. */
+.resumen-fila.clicable.viu {
+  padding-left: 9px;
+  border-left: 3px solid var(--ambar);
+}
+
 /* El nom de l'esport, dins el resum d'equip, obre el quadre. */
 .obre-quadre {
   padding: 0;

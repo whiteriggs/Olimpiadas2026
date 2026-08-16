@@ -953,7 +953,15 @@ function pintarPunts() {
   }
   for (const esport of torneig.esports) {
     const acabat = esport.posicions.includes(jo);
-    const fila = el("button", "resumen-fila clicable" + (acabat ? " acabat" : ""));
+    // Vius: hi tenim creuament al quadre i encara no hem quedat en cap lloc.
+    const viu =
+      !acabat &&
+      esport.format === "quadre" &&
+      esport.partits.some((p) => p.equips.includes(jo));
+    const fila = el(
+      "button",
+      "resumen-fila clicable" + (acabat ? " acabat" : viu ? " viu" : "")
+    );
     fila.type = "button";
     fila.appendChild(el("strong", null, esport.nom));
     fila.appendChild(el("span", "meta", resumEsport(esport, jo)));
@@ -1073,19 +1081,25 @@ function resumEsport(esport, jo) {
   }
   if (esport.format !== "quadre") return "Pendent de disputar-se.";
 
+  const assegurats = (id) => esport.taulaPunts[PITJOR_SI_PERD[id]];
+
   const seguent = esport.partits.find(
     (p) => p.estat === "pendent" && p.equips.includes(jo)
   );
   if (seguent) {
     const punts = esport.taulaPunts[PITJOR_SI_GUANYA[seguent.id]];
-    return `${seguent.nom} contra ${rivalNostre(seguent)}. Si guanyem, mínim ${punts} punts.`;
+    return `${seguent.nom} contra ${rivalNostre(seguent)}. Ara sumaríem ${assegurats(seguent.id)} punts; si guanyem, mínim ${punts}.`;
   }
   const ultim = [...esport.partits].reverse().find((p) => p.equips.includes(jo));
-  if (ultim && ultim.estat === "jugat") return `Esperem rival després de ${ultim.nom}.`;
+  if (ultim && ultim.estat === "jugat") {
+    return `Esperem rival després de ${ultim.nom}. Ara sumaríem ${esport.taulaPunts[PITJOR_SI_GUANYA[ultim.id]]} punts.`;
+  }
   const bloquejat = esport.partits.find(
     (p) => p.estat === "bloquejat" && p.equips.includes(jo)
   );
-  if (bloquejat) return `${bloquejat.nom}: esperem rival de la ronda anterior.`;
+  if (bloquejat) {
+    return `${bloquejat.nom}: esperem rival de la ronda anterior. Ara sumaríem ${assegurats(bloquejat.id)} punts.`;
+  }
   return "Pendent de rondes anteriors.";
 }
 
@@ -1097,6 +1111,16 @@ const PITJOR_SI_GUANYA = {
   final: 0, tercerPuesto: 2,
   consSf1: 5, consSf2: 5,
   consFinal: 4, consTercero: 6, puesto9: 8,
+};
+
+/** Pitjor lloc (índex) al qual pots caure si perds aquest partit i tots els següents. */
+const PITJOR_SI_PERD = {
+  previa1: 9, previa2: 9,
+  qf1: 7, qf2: 7, qf3: 7, qf4: 7,
+  sf1: 3, sf2: 3,
+  final: 1, tercerPuesto: 3,
+  consSf1: 7, consSf2: 7,
+  consFinal: 5, consTercero: 7, puesto9: 9,
 };
 
 /* ---------- apuntar-se ---------- */
