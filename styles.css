@@ -261,6 +261,33 @@ main { padding-top: 22px; padding-bottom: 40px; }
 }
 .accio:hover { border-color: var(--azul); }
 .accio[hidden] { display: none; }
+
+/* El dia normal ja el tria el botó: això només és per si vols passar el d'un altre dia. */
+.tria-dia { position: relative; flex: 0 0 auto; }
+.tria-dia[hidden] { display: none; }
+.tria-dia summary {
+  list-style: none; cursor: pointer;
+  height: 100%; display: flex; align-items: center;
+  padding: 0 12px;
+  background: var(--superficie); border: 1px solid var(--borde);
+  border-radius: var(--radio-s); color: var(--gris);
+}
+.tria-dia summary::-webkit-details-marker { display: none; }
+.tria-dia summary::after { content: "▾"; font-size: 0.9rem; }
+.tria-dia[open] summary { border-color: var(--azul); color: var(--texto); }
+.menu-dies {
+  position: absolute; right: 0; top: calc(100% + 4px); z-index: 20;
+  display: flex; flex-direction: column; min-width: 140px;
+  background: var(--superficie); border: 1px solid var(--borde);
+  border-radius: var(--radio-s); box-shadow: var(--ombra-alta); overflow: hidden;
+}
+.dia-opcio {
+  appearance: none; cursor: pointer; text-align: left;
+  background: none; border: 0; border-bottom: 1px solid var(--borde);
+  padding: 11px 14px; font: inherit; font-size: 0.85rem; font-weight: 600; color: var(--texto);
+}
+.dia-opcio:last-child { border-bottom: 0; }
+.dia-opcio:hover { background: var(--neutre-fons); }
 .passats { margin-bottom: 18px; }
 .passats summary {
   cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--gris);

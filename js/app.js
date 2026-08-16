@@ -499,6 +499,20 @@ function diaPerCompartir() {
   return queda ? queda.fecha : "";
 }
 
+/** Els dies que encara tenen res nostre, per si vols passar el de demà. */
+function diesPerCompartir() {
+  const ara = new Date();
+  return [...new Set(provesNostres().filter((p) => inici(p) > ara).map((p) => p.fecha))];
+}
+
+/** Avui, demà o el dia curt: al menú els noms llargs no hi caben. */
+function nomDia(fecha) {
+  const dema = dataIso(new Date(aFecha(avui()).getTime() + 86400000));
+  if (fecha === avui()) return "Avui";
+  if (fecha === dema) return "Demà";
+  return fmtCorto.format(aFecha(fecha));
+}
+
 // WhatsApp només entén *negreta*, _cursiva_ i emojis: ni mides ni colors.
 function textDelPla(fecha) {
   const linies = [`*${EQUIP.toUpperCase()} · ${fmtDia.format(aFecha(fecha))}*`];
@@ -535,8 +549,8 @@ async function copiar(text) {
   }
 }
 
-async function compartirPla() {
-  const fecha = diaPerCompartir();
+async function compartirPla(dia) {
+  const fecha = dia || diaPerCompartir();
   if (!fecha) return;
   const text = textDelPla(fecha);
   if (!navigator.share) return copiar(text);
@@ -554,14 +568,29 @@ function pintarAccions() {
   const boto = $("#compartirPla");
   const fecha = diaPerCompartir();
   boto.hidden = !fecha;
+  const tria = $("#triaDia");
+  // Amb els cinc pròxims n'hi ha prou: el pla d'un dia llunyà encara no diu res.
+  const dies = diesPerCompartir()
+    .filter((d) => d !== fecha)
+    .slice(0, 5);
+  tria.hidden = !fecha || !dies.length;
+  tria.open = false;
   if (!fecha) return;
-  const dema = new Date(aFecha(avui()).getTime() + 86400000);
+
   boto.textContent =
-    fecha === avui()
-      ? "Compartir el pla d'avui"
-      : fecha === dataIso(dema)
-        ? "Compartir el pla de demà"
-        : `Compartir el pla de ${fmtCorto.format(aFecha(fecha))}`;
+    fecha === avui() ? "Compartir el pla d'avui" : `Compartir el pla de ${nomDia(fecha).toLowerCase()}`;
+
+  const menu = $("#menuDies");
+  vaciar(menu);
+  for (const dia of dies) {
+    const opcio = el("button", "dia-opcio", nomDia(dia));
+    opcio.type = "button";
+    opcio.addEventListener("click", () => {
+      tria.open = false;
+      compartirPla(dia);
+    });
+    menu.appendChild(opcio);
+  }
 }
 
 /* ---------- quedades de les lligues ---------- */
@@ -1566,7 +1595,12 @@ async function iniciar() {
   }
   $("#guardar").addEventListener("click", guardar);
   $("#borrarme").addEventListener("click", borrarme);
-  $("#compartirPla").addEventListener("click", compartirPla);
+  $("#compartirPla").addEventListener("click", () => compartirPla());
+  // El desplegable de dies s'ha de tancar sol si toques a fora.
+  document.addEventListener("click", (e) => {
+    const tria = $("#triaDia");
+    if (tria.open && !tria.contains(e.target)) tria.open = false;
+  });
   $("#nombre").addEventListener("change", recuperarSiJaHiEs);
   $("#accesoForm").addEventListener("submit", intentarEntrar);
   $("#refresca").addEventListener("click", refrescarTot);
