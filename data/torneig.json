@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-16T13:59:25+00:00",
+ "actualizado": "2026-08-16T15:30:58+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -4211,18 +4211,29 @@
    ],
    "partits": [],
    "posicions": [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null
+    "E2",
+    "E6",
+    "E3",
+    "E5",
+    "E1",
+    "E10",
+    "E7",
+    "E4",
+    "E9",
+    "E8"
    ],
-   "punts": {}
+   "punts": {
+    "E2": 40,
+    "E6": 32,
+    "E3": 29,
+    "E5": 26,
+    "E1": 20,
+    "E10": 17,
+    "E7": 14,
+    "E4": 11,
+    "E9": 8,
+    "E8": 5
+   }
   },
   {
    "id": "ciclismo",
@@ -4334,64 +4345,64 @@
  ],
  "general": [
   {
-   "id": "E4",
-   "nom": "Vaig molt cremat",
-   "punts": 66,
-   "posicio": 1
-  },
-  {
    "id": "E1",
    "nom": "La Jee-peta",
-   "punts": 65,
-   "posicio": 2
-  },
-  {
-   "id": "E7",
-   "nom": "Esperando a los Palomos",
-   "punts": 50,
-   "posicio": 3
+   "punts": 85,
+   "posicio": 1
   },
   {
    "id": "E3",
    "nom": "Olimpiakojos",
-   "punts": 49,
+   "punts": 78,
+   "posicio": 2
+  },
+  {
+   "id": "E4",
+   "nom": "Vaig molt cremat",
+   "punts": 77,
+   "posicio": 3
+  },
+  {
+   "id": "E2",
+   "nom": "Passa directament",
+   "punts": 69,
    "posicio": 4
   },
   {
    "id": "E5",
    "nom": "Yayo Vallecano",
-   "punts": 43,
-   "posicio": 5
+   "punts": 69,
+   "posicio": 4
   },
   {
-   "id": "E9",
-   "nom": "Joga Vomito",
-   "punts": 30,
+   "id": "E7",
+   "nom": "Esperando a los Palomos",
+   "punts": 64,
    "posicio": 6
-  },
-  {
-   "id": "E2",
-   "nom": "Passa directament",
-   "punts": 29,
-   "posicio": 7
-  },
-  {
-   "id": "E8",
-   "nom": "Massumba y los mas zumbaos",
-   "punts": 21,
-   "posicio": 8
   },
   {
    "id": "E6",
    "nom": "Diablos",
-   "punts": 13,
-   "posicio": 9
+   "punts": 45,
+   "posicio": 7
+  },
+  {
+   "id": "E9",
+   "nom": "Joga Vomito",
+   "punts": 38,
+   "posicio": 8
   },
   {
    "id": "E10",
    "nom": "La Once",
-   "punts": 13,
+   "punts": 30,
    "posicio": 9
+  },
+  {
+   "id": "E8",
+   "nom": "Massumba y los mas zumbaos",
+   "punts": 26,
+   "posicio": 10
   }
  ],
  "avisos": []
