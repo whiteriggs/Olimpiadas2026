@@ -814,14 +814,22 @@ body:has(.modal[open]) { overflow: hidden; }
   writing-mode: vertical-rl; transform: rotate(180deg);
   font-size: 0.72rem; font-weight: 600;
 }
-.tabla.creuada .columna-equip {
-  width: 32px; padding: 7px 0; text-align: center;
+/* El nom llisca lliure i s'amaga sota el punt de color, que sí que queda enganxat. */
+.tabla.creuada th:first-child, .tabla.creuada td:first-child {
+  position: static; z-index: auto; background: none;
 }
-.tabla.creuada .columna-equip .punt-equip { margin: 0; width: 12px; height: 12px; }
-.nomes-lectors {
-  position: absolute; width: 1px; height: 1px;
-  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+.tabla.creuada .columna-nom {
+  text-align: right; padding-right: 4px; border-right: 0;
+  max-width: 150px; overflow: hidden; text-overflow: ellipsis;
 }
+.tabla.creuada .columna-punt {
+  position: sticky; left: 0; z-index: 1;
+  width: 24px; padding: 7px 8px 7px 0; border-left: 0;
+  background: var(--superficie);
+}
+.tabla.creuada .columna-punt .punt-equip { margin: 0; vertical-align: middle; }
+.tabla.creuada tr.meu .columna-punt { background: color-mix(in srgb, var(--oro) 16%, var(--superficie)); }
+.tabla.creuada thead .columna-punt { background: var(--superficie-2); }
 .tabla.creuada td.num { font-variant-numeric: tabular-nums; color: var(--gris); }
 /* El groc ja marca la nostra fila: el guanyador de cada esport es distingeix en negreta. */
 .tabla.creuada td.num.or { color: var(--texto); font-weight: 700; }
