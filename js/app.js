@@ -404,11 +404,18 @@ function pintarSeguent() {
 
 /* ---------- compartir el pla i recordatoris ---------- */
 
-/** Les proves d'un dia que ens toquen: les altres no interessen ni al grup ni al calendari. */
+/** Les proves d'un dia que ens toquen: les altres no interessen al grup. */
 function provesNostres(fecha) {
+  const jo = nosaltres();
   return totesLesProves()
     .filter((p) => !fecha || p.fecha === fecha)
-    .filter((p) => p.tipo !== "esport" || hiJuguem(p) !== false)
+    .filter((p) => {
+      if (p.tipo !== "esport") return true;
+      if (hiJuguem(p) !== true) return false;
+      // Amb lloc a la classificació la nostra participació ja s'ha acabat.
+      const esport = esportDe(p.esportId);
+      return !esport || !esport.posicions.includes(jo);
+    })
     .sort(
       (a, b) =>
         a.fecha.localeCompare(b.fecha) ||
