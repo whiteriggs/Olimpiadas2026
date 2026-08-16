@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-16T17:29:34+00:00",
+ "actualizado": "2026-08-16T19:03:01+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -1793,7 +1793,7 @@
      ],
      "guanyador": null,
      "perdedor": null,
-     "marcador": "",
+     "marcador": "0-5",
      "estat": "pendent"
     },
     {
@@ -1807,7 +1807,7 @@
      ],
      "guanyador": null,
      "perdedor": null,
-     "marcador": "",
+     "marcador": "3-1",
      "estat": "pendent"
     },
     {
@@ -4418,5 +4418,8 @@
    "posicio": 10
   }
  ],
- "avisos": []
+ "avisos": [
+  "Futbol sala · Prèvia 1: Vaig molt cremat no juga aquest partit.",
+  "Futbol sala · Prèvia 2: Esperando a los Palomos no juga aquest partit."
+ ]
 }
