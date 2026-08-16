@@ -499,28 +499,30 @@ function diaPerCompartir() {
   return queda ? queda.fecha : "";
 }
 
+// WhatsApp només entén *negreta*, _cursiva_ i emojis: ni mides ni colors.
 function textDelPla(fecha) {
-  const linies = [`${EQUIP} · ${fmtDia.format(aFecha(fecha))}`];
+  const linies = [`*${EQUIP.toUpperCase()} · ${fmtDia.format(aFecha(fecha))}*`];
   for (const p of provesNostres(fecha)) {
-    linies.push("", [p.hora, nomProva(p), p.lloc].filter(Boolean).join(" · "));
+    linies.push("", `*${[p.hora, nomProva(p)].filter(Boolean).join(" · ")}*`);
+    if (p.lloc) linies.push(`📍 _${p.lloc}_`);
     for (const partit of partitsDe(p).filter((x) => x.equips.includes(nosaltres()))) {
-      linies.push(`${partit.nom}: contra ${rivalNostre(partit) || "?"}`);
+      linies.push(`🆚 ${partit.nom}: contra ${rivalNostre(partit) || "?"}`);
     }
     if (p.tipo === "esport") {
       const juguen = quiJuga(p);
       if (juguen.length) {
-        linies.push("Juguen: " + juguen.map((x) => x.nombre).join(", "));
+        linies.push("✅ Juguen: " + juguen.map((x) => x.nombre).join(", "));
       } else {
         const gent = quiPotVenir(p);
         linies.push(
           gent.total
-            ? `${gent.poden} de ${gent.total} apuntats hi poden anar`
-            : "Encara no s'hi ha apuntat ningú"
+            ? `👥 ${gent.poden} de ${gent.total} apuntats hi poden anar`
+            : "⚠️ Encara no s'hi ha apuntat ningú"
         );
       }
     }
   }
-  linies.push("", location.origin + location.pathname);
+  linies.push("", "🔗 " + location.origin + location.pathname);
   return linies.join("\n");
 }
 
