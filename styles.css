@@ -544,6 +544,15 @@ body:has(.modal[open]) { overflow: hidden; }
   justify-content: flex-end;
   margin-top: 6px; padding-top: 0; border-top: 0;
 }
+.alineacio-fila.convocats { margin-top: 6px; padding-top: 0; border-top: 0; }
+.alineacio-fila.convocats .alineacio-noms { color: var(--verde); }
+
+.mes-gent { margin-top: 4px; }
+.mes-gent summary {
+  cursor: pointer; padding: 10px 4px;
+  font-size: 0.8rem; font-weight: 700; color: var(--azul-2);
+}
+@media (prefers-color-scheme: dark) { .mes-gent summary { color: var(--oro); } }
 
 .tria-gent { display: flex; flex-direction: column; gap: 2px; }
 .tria-persona {

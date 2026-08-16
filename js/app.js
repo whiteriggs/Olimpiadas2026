@@ -29,6 +29,19 @@ const ALIES = {
 };
 const canonic = (nom) => ALIES[nom] || nom;
 
+// On hi juga tot l'equip no cal triar ningú: només cal fer-ho on hi caben pocs.
+const ESPORTS_EQUIP = new Set([
+  "Futbol 7",
+  "Futbol sala",
+  "Handbol",
+  "Bàsquet",
+  "Voleibol pista",
+  "Voleibol platja",
+  "Waterpolo",
+  "Atletisme",
+  "Ciclisme",
+]);
+
 let cal = { pruebas: [], lligues: [], limites: [], avisos: [] };
 let torneig = null;
 let personas = [];
@@ -289,19 +302,27 @@ function tarjetaEvento(p, mios) {
 
   const gente = apuntadosA(p.esport);
   // Qui juga només es decideix quan ja hi ha gent apuntada, i només urgeix el dia mateix.
-  const potTriar = juguem === true && gente.length;
+  const potTriar = juguem === true && gente.length && !ESPORTS_EQUIP.has(p.esport);
   const juguen = potTriar ? quiJuga(p) : [];
   const triats = new Set(juguen.map((x) => x.id));
+  // Qui juga sense haver-s'hi apuntat també ha de sortir a la llista.
+  const mostrats = [...gente, ...juguen.filter((x) => !gente.includes(x))];
 
   if (gente.length) {
     const { poden } = quiPotVenir(p);
     cuerpo.appendChild(
       triats.size
-        ? el("div", "compte", `Juguen ${triats.size} dels ${gente.length} apuntats`)
+        ? el(
+            "div",
+            "compte",
+            mostrats.length > gente.length
+              ? `Juguen ${triats.size} dels ${mostrats.length}`
+              : `Juguen ${triats.size} dels ${gente.length} apuntats`
+          )
         : el("div", "compte" + (poden ? "" : " alerta"), `${poden} de ${gente.length} poden venir`)
     );
     const fila = el("div", "apuntados" + (triats.size ? " triada" : ""));
-    for (const persona of gente) {
+    for (const persona of mostrats) {
       const estado = dispoDe(persona, p.fecha);
       const clase =
         estado === "si" ? "pastilla ok"
@@ -326,6 +347,10 @@ function tarjetaEvento(p, mios) {
     boto.type = "button";
     boto.addEventListener("click", () => obrirAlineacio(p));
     caixa.appendChild(boto);
+    cuerpo.appendChild(caixa);
+  } else if (juguem === true && gente.length && ESPORTS_EQUIP.has(p.esport)) {
+    const caixa = el("div", "alineacio-fila convocats");
+    caixa.appendChild(el("span", "alineacio-noms", "Tots convocats"));
     cuerpo.appendChild(caixa);
   }
 
@@ -743,28 +768,31 @@ function obrirAlineacio(p) {
   alineacioActual = p;
   $("#alineacioTitol").textContent = `${p.esport} · ${p.hora}`;
   const triats = new Set((alineacioDe(p.id) || {}).qui || []);
-  const gent = apuntadosA(p.esport);
+  const apuntats = apuntadosA(p.esport);
+  const ja = new Set(apuntats.map((x) => x.id));
+  // Si hem triat algú que no s'hi havia apuntat, ha de sortir amunt i no amagat al desplegable.
+  const principals = [...apuntats, ...personas.filter((x) => !ja.has(x.id) && triats.has(x.id))];
+  const altres = personas.filter((x) => !ja.has(x.id) && !triats.has(x.id));
   const llista = $("#alineacioLlista");
   vaciar(llista);
 
-  $("#alineacioAjuda").textContent = gent.length
+  $("#alineacioAjuda").textContent = apuntats.length
     ? "Marca qui hi juga de veritat. Els que no poden venir surten al final."
-    : `Encara no s'hi ha apuntat ningú, a ${p.esport.toLowerCase()}.`;
+    : `Ningú s'ha apuntat a ${p.esport.toLowerCase()}: tria'ls de la llista de sota.`;
 
-  // Primer els que han dit que sí: són els que de debò pots posar.
   const ordre = { si: 0, quizas: 1, "": 2, no: 3 };
-  for (const persona of [...gent].sort(
-    (a, b) => ordre[dispoDe(a, p.fecha)] - ordre[dispoDe(b, p.fecha)]
-  )) {
+  const perDisponibilitat = (a, b) => ordre[dispoDe(a, p.fecha)] - ordre[dispoDe(b, p.fecha)];
+
+  const fila = (persona) => {
     const estat = dispoDe(persona, p.fecha);
-    const fila = el("label", "tria-persona");
+    const f = el("label", "tria-persona");
     const casella = el("input");
     casella.type = "checkbox";
     casella.value = persona.id;
     casella.checked = triats.has(persona.id);
-    fila.appendChild(casella);
-    fila.appendChild(el("span", "tria-nom", persona.nombre));
-    fila.appendChild(
+    f.appendChild(casella);
+    f.appendChild(el("span", "tria-nom", persona.nombre));
+    f.appendChild(
       el(
         "span",
         "tria-dispo " + (estat || "sense"),
@@ -774,7 +802,18 @@ function obrirAlineacio(p) {
         : "no ho ha dit"
       )
     );
-    llista.appendChild(fila);
+    return f;
+  };
+
+  // Primer els que han dit que sí: són els que de debò pots posar.
+  for (const persona of [...principals].sort(perDisponibilitat)) llista.appendChild(fila(persona));
+
+  if (altres.length) {
+    const mes = el("details", "mes-gent");
+    mes.appendChild(el("summary", "", "Algú que no s'hi ha apuntat"));
+    if (!principals.length) mes.open = true;
+    for (const persona of [...altres].sort(perDisponibilitat)) mes.appendChild(fila(persona));
+    llista.appendChild(mes);
   }
 
   $("#alineacioEstat").textContent = "";
