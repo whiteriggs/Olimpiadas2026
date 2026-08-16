@@ -553,7 +553,8 @@ body:has(.modal[open]) { overflow: hidden; }
 
 /* ---------- els nostres partits ---------- */
 
-/* El color de la samarreta. L'anell fa que el blanc i el negre es vegin als dos temes. */.punt-equip {
+/* El color de la samarreta. L'anell fa que el blanc i el negre es vegin als dos temes. */
+.punt-equip {
   display: inline-block;
   width: 9px; height: 9px;
   margin-right: 6px;
@@ -798,23 +799,32 @@ body:has(.modal[open]) { overflow: hidden; }
 .tabla th { font-weight: 600; color: var(--gris); background: var(--superficie-2); }
 .tabla th:first-child, .tabla td:first-child {
   text-align: left; position: sticky; left: 0; background: var(--superficie);
+  /* Sense z-index les altres columnes passen per damunt en lliscar. */
+  z-index: 1;
 }
 .tabla .si { background: var(--verde-fons); }
 .tabla .no { background: var(--rojo-fons); }
 .tabla .quizas { background: var(--ambar-fons); }
 
-/* Amb tants esports els títols no hi caben de pla: van girats i la taula llisca. */
+/* Amb tants esports els títols no hi caben de pla: van girats i la taula llisca.
+   L'amplada va a raig: amb pocs esports no volem columnes estirades. */
+.tabla.creuada { width: auto; }
 .tabla.creuada th.columna-esport { padding: 6px 3px; vertical-align: bottom; }
 .tabla.creuada th.columna-esport span {
   writing-mode: vertical-rl; transform: rotate(180deg);
   font-size: 0.72rem; font-weight: 600;
 }
-.tabla.creuada .columna-equip { max-width: 120px; overflow: hidden; text-overflow: ellipsis; }
-.tabla.creuada td.num { font-variant-numeric: tabular-nums; color: var(--gris); }
-.tabla.creuada td.num.or {
-  color: var(--texto); font-weight: 700;
-  background: color-mix(in srgb, var(--oro) 22%, transparent);
+.tabla.creuada .columna-equip {
+  width: 32px; padding: 7px 0; text-align: center;
 }
+.tabla.creuada .columna-equip .punt-equip { margin: 0; width: 12px; height: 12px; }
+.nomes-lectors {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+.tabla.creuada td.num { font-variant-numeric: tabular-nums; color: var(--gris); }
+/* El groc ja marca la nostra fila: el guanyador de cada esport es distingeix en negreta. */
+.tabla.creuada td.num.or { color: var(--texto); font-weight: 700; }
 .tabla.creuada .columna-total { color: var(--texto); font-weight: 700; }
 
 .vacio { color: var(--gris); font-size: 0.88rem; }

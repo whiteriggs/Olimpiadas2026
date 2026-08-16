@@ -983,7 +983,7 @@ function pintarPuntsPerEsport() {
   if (!esports.length) return;
 
   const cap = tabla.createTHead().insertRow();
-  cap.appendChild(el("th", "columna-equip", "Equip"));
+  cap.appendChild(el("th", "columna-equip", ""));
   cap.appendChild(el("th", "columna-total", "Total"));
   for (const esport of esports) {
     const th = el("th", "columna-esport");
@@ -995,8 +995,16 @@ function pintarPuntsPerEsport() {
   for (const e of torneig.general) {
     const fila = cos.insertRow();
     if (e.id === jo) fila.className = "meu";
+    // Amb vint columnes el nom no hi cap: les files van en el mateix ordre que la general,
+    // i el punt de color ja diu qui és qui.
     const nom = el("td", "columna-equip");
-    nom.appendChild(nomAmbColor(e.id));
+    const equip = (torneig.equips || []).find((x) => x.id === e.id);
+    const punt = el("span", "punt-equip");
+    if (equip && equip.color) punt.style.background = equip.color;
+    else punt.classList.add("sense");
+    nom.title = nomEquip(e.id);
+    nom.appendChild(punt);
+    nom.appendChild(el("span", "nomes-lectors", nomEquip(e.id)));
     fila.appendChild(nom);
     fila.appendChild(el("td", "num columna-total", String(e.punts)));
     for (const esport of esports) {
