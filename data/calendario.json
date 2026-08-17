@@ -547,6 +547,23 @@
       "nota": ""
     },
     {
+      "id": "2026-08-20-18-voleibol-platja",
+      "esport": "Voleibol platja",
+      "esportId": "voleibol-playa",
+      "detalle": "9è i 10è lloc",
+      "partits": [
+        "puesto9"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-20",
+      "hora": "18:30",
+      "horaFin": "19:30",
+      "orden": 18,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
       "id": "2026-08-20-19-basquet",
       "esport": "Bàsquet",
       "esportId": "baloncesto",
@@ -1251,6 +1268,40 @@
       "nota": ""
     },
     {
+      "id": "2026-08-25-18-voleibol-platja",
+      "esport": "Voleibol platja",
+      "esportId": "voleibol-playa",
+      "detalle": "7è i 8è lloc",
+      "partits": [
+        "consTercero"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-25",
+      "hora": "18:00",
+      "horaFin": "19:00",
+      "orden": 18,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-25-19-voleibol-platja",
+      "esport": "Voleibol platja",
+      "esportId": "voleibol-playa",
+      "detalle": "3r i 4t lloc",
+      "partits": [
+        "tercerPuesto"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-25",
+      "hora": "19:00",
+      "horaFin": "20:00",
+      "orden": 19,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
       "id": "2026-08-26-18-futbol-sala",
       "esport": "Futbol sala",
       "esportId": "futbol-sala",
@@ -1333,6 +1384,23 @@
       "orden": 23,
       "lloc": "Poliesportiu",
       "quiJuga": "Equip 6 - Equip 9",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-27-19-voleibol-platja",
+      "esport": "Voleibol platja",
+      "esportId": "voleibol-playa",
+      "detalle": "Final consolació · 5è i 6è lloc",
+      "partits": [
+        "consFinal"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-27",
+      "hora": "19:00",
+      "horaFin": "20:00",
+      "orden": 19,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
       "nota": ""
     },
     {
