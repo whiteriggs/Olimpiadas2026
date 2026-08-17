@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-17T01:47:03+00:00",
+ "actualizado": "2026-08-17T09:04:30+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -1707,10 +1707,10 @@
       "E2",
       "E7"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E7",
+     "perdedor": "E2",
+     "marcador": "2-0",
+     "estat": "jugat"
     },
     {
      "id": "consTercero",
@@ -1746,8 +1746,8 @@
     "E1",
     "E4",
     "E5",
-    null,
-    null,
+    "E7",
+    "E2",
     "E10",
     "E8",
     "E6",
@@ -1758,6 +1758,8 @@
     "E1": 32,
     "E4": 29,
     "E5": 26,
+    "E7": 20,
+    "E2": 17,
     "E10": 14,
     "E8": 11,
     "E6": 8,
@@ -2520,10 +2522,10 @@
       "E6",
       "E5"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E6",
+     "perdedor": "E5",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "previa2",
@@ -2545,13 +2547,13 @@
      "nom": "Quarts 1",
      "sigla": "QF1",
      "equips": [
-      null,
+      "E6",
       "E7"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "qf2",
@@ -2713,13 +2715,13 @@
      "nom": "9è i 10è lloc",
      "sigla": "9è/10è",
      "equips": [
-      null,
+      "E5",
       "E4"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     }
    ],
    "posicions": [
@@ -4364,27 +4366,27 @@
    "posicio": 1
   },
   {
+   "id": "E7",
+   "nom": "Esperando a los Palomos",
+   "punts": 113,
+   "posicio": 2
+  },
+  {
+   "id": "E2",
+   "nom": "Passa directament",
+   "punts": 112,
+   "posicio": 3
+  },
+  {
    "id": "E3",
    "nom": "Olimpiakojos",
    "punts": 110,
-   "posicio": 2
+   "posicio": 4
   },
   {
    "id": "E1",
    "nom": "La Jee-peta",
    "punts": 99,
-   "posicio": 3
-  },
-  {
-   "id": "E2",
-   "nom": "Passa directament",
-   "punts": 95,
-   "posicio": 4
-  },
-  {
-   "id": "E7",
-   "nom": "Esperando a los Palomos",
-   "punts": 93,
    "posicio": 5
   },
   {
