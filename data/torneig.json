@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-16T20:57:40+00:00",
+ "actualizado": "2026-08-17T01:47:03+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -2534,10 +2534,10 @@
       "E4",
       "E10"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E10",
+     "perdedor": "E4",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "qf1",
@@ -2573,13 +2573,13 @@
      "nom": "Quarts 3",
      "sigla": "QF3",
      "equips": [
-      null,
+      "E10",
       "E8"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "qf4",
@@ -2714,7 +2714,7 @@
      "sigla": "9è/10è",
      "equips": [
       null,
-      null
+      "E4"
      ],
      "guanyador": null,
      "perdedor": null,
