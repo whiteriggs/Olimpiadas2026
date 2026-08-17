@@ -2,7 +2,7 @@
   "titulo": "Olimpíades Begues 2026",
   "subtitulo": "14–29 d'agost",
   "fuente": "https://docs.google.com/spreadsheets/d/1gB3BzDDBQATh5wTy8JRPxCHLMUqPpnQwFcp3pIsIvLo/gviz/tq?tqx=out:csv&headers=1&sheet=Calendari",
-  "actualizado": "2026-08-16",
+  "actualizado": "2026-08-17",
   "pruebas": [
     {
       "id": "2026-08-14-18-reunio-informativa",
@@ -1282,6 +1282,23 @@
       "orden": 19,
       "lloc": "Poliesportiu",
       "quiJuga": "Equip 3 - Equip 5",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-26-19-voleibol-platja",
+      "esport": "Voleibol platja",
+      "esportId": "voleibol-playa",
+      "detalle": "Final",
+      "partits": [
+        "final"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-26",
+      "hora": "19:30",
+      "horaFin": "20:30",
+      "orden": 19,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
       "nota": ""
     },
     {
