@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-17T18:50:23+00:00",
+ "actualizado": "2026-08-17T22:31:20+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -81,10 +81,10 @@
       "E5",
       "E9"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E9",
+     "perdedor": "E5",
+     "marcador": "0-2",
+     "estat": "jugat"
     },
     {
      "id": "previa2",
@@ -106,13 +106,13 @@
      "nom": "Quarts 1",
      "sigla": "QF1",
      "equips": [
-      null,
+      "E9",
       "E1"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "qf2",
@@ -274,7 +274,7 @@
      "nom": "9è i 10è lloc",
      "sigla": "9è/10è",
      "equips": [
-      null,
+      "E5",
       null
      ],
      "guanyador": null,
@@ -2064,10 +2064,10 @@
       "E4",
       "E10"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E4",
+     "perdedor": "E10",
+     "marcador": "3-2",
+     "estat": "jugat"
     },
     {
      "id": "qf2",
@@ -2078,10 +2078,10 @@
       "E6",
       "E1"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E1",
+     "perdedor": "E6",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "qf3",
@@ -2092,10 +2092,10 @@
       "E7",
       "E2"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E7",
+     "perdedor": "E2",
+     "marcador": "4-1",
+     "estat": "jugat"
     },
     {
      "id": "qf4",
@@ -2106,10 +2106,10 @@
       "E8",
       "E3"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E3",
+     "perdedor": "E8",
+     "marcador": "3-4",
+     "estat": "jugat"
     },
     {
      "id": "sf1",
@@ -2117,13 +2117,13 @@
      "nom": "Semifinal 1",
      "sigla": "SF1",
      "equips": [
-      null,
-      null
+      "E4",
+      "E1"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "sf2",
@@ -2131,13 +2131,13 @@
      "nom": "Semifinal 2",
      "sigla": "SF2",
      "equips": [
-      null,
-      null
+      "E7",
+      "E3"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "final",
@@ -2173,13 +2173,13 @@
      "nom": "Semifinal consolació 1",
      "sigla": "SC1",
      "equips": [
-      null,
-      null
+      "E10",
+      "E6"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consSf2",
@@ -2187,13 +2187,13 @@
      "nom": "Semifinal consolació 2",
      "sigla": "SC2",
      "equips": [
-      null,
-      null
+      "E2",
+      "E8"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consFinal",
@@ -2232,10 +2232,10 @@
       "E5",
       "E9"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E9",
+     "perdedor": "E5",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     }
    ],
    "posicions": [
@@ -2247,10 +2247,13 @@
     null,
     null,
     null,
-    null,
-    null
+    "E9",
+    "E5"
    ],
-   "punts": {}
+   "punts": {
+    "E9": 10,
+    "E5": 5
+   }
   },
   {
    "id": "balonmano",
@@ -2293,10 +2296,10 @@
       "E3",
       "E1"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E1",
+     "perdedor": "E3",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "qf1",
@@ -2332,13 +2335,13 @@
      "nom": "Quarts 3",
      "sigla": "QF3",
      "equips": [
-      null,
+      "E1",
       "E7"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "qf4",
@@ -2473,12 +2476,12 @@
      "sigla": "9è/10è",
      "equips": [
       "E5",
-      null
+      "E3"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     }
    ],
    "posicions": [
@@ -4392,13 +4395,13 @@
   {
    "id": "E5",
    "nom": "Yayo Vallecano",
-   "punts": 86,
+   "punts": 91,
    "posicio": 6
   },
   {
    "id": "E9",
    "nom": "Joga Vomito",
-   "punts": 58,
+   "punts": 68,
    "posicio": 7
   },
   {
