@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-19T19:58:13+00:00",
+ "actualizado": "2026-08-19T22:31:52+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -2148,10 +2148,10 @@
       "E1",
       "E7"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E1",
+     "perdedor": "E7",
+     "marcador": "5-0",
+     "estat": "jugat"
     },
     {
      "id": "tercerPuesto",
@@ -2162,10 +2162,10 @@
       "E4",
       "E3"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E4",
+     "perdedor": "E3",
+     "marcador": "3-1",
+     "estat": "jugat"
     },
     {
      "id": "consSf1",
@@ -2204,10 +2204,10 @@
       "E10",
       "E8"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E10",
+     "perdedor": "E8",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consTercero",
@@ -2220,7 +2220,7 @@
      ],
      "guanyador": "E2",
      "perdedor": "E6",
-     "marcador": "",
+     "marcador": "1-8",
      "estat": "jugat"
     },
     {
@@ -2239,18 +2239,24 @@
     }
    ],
    "posicions": [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    "E1",
+    "E7",
+    "E4",
+    "E3",
+    "E10",
+    "E8",
     "E2",
     "E6",
     "E9",
     "E5"
    ],
    "punts": {
+    "E1": 70,
+    "E7": 54,
+    "E4": 48,
+    "E3": 42,
+    "E10": 30,
+    "E8": 25,
     "E2": 20,
     "E6": 15,
     "E9": 10,
@@ -2368,10 +2374,10 @@
       "E8",
       "E4"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E4",
+     "perdedor": "E8",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "sf2",
@@ -2393,7 +2399,7 @@
      "nom": "Final",
      "sigla": "Final",
      "equips": [
-      null,
+      "E4",
       null
      ],
      "guanyador": null,
@@ -2407,7 +2413,7 @@
      "nom": "3r i 4t lloc",
      "sigla": "3r/4t",
      "equips": [
-      null,
+      "E8",
       null
      ],
      "guanyador": null,
@@ -4365,33 +4371,33 @@
  ],
  "general": [
   {
-   "id": "E2",
-   "nom": "Passa directament",
-   "punts": 132,
+   "id": "E1",
+   "nom": "La Jee-peta",
+   "punts": 169,
    "posicio": 1
-  },
-  {
-   "id": "E4",
-   "nom": "Vaig molt cremat",
-   "punts": 117,
-   "posicio": 2
   },
   {
    "id": "E7",
    "nom": "Esperando a los Palomos",
-   "punts": 113,
+   "punts": 167,
+   "posicio": 2
+  },
+  {
+   "id": "E4",
+   "nom": "Vaig molt cremat",
+   "punts": 165,
    "posicio": 3
   },
   {
    "id": "E3",
    "nom": "Olimpiakojos",
-   "punts": 110,
+   "punts": 152,
    "posicio": 4
   },
   {
-   "id": "E1",
-   "nom": "La Jee-peta",
-   "punts": 99,
+   "id": "E2",
+   "nom": "Passa directament",
+   "punts": 132,
    "posicio": 5
   },
   {
@@ -4401,27 +4407,27 @@
    "posicio": 6
   },
   {
+   "id": "E10",
+   "nom": "La Once",
+   "punts": 82,
+   "posicio": 7
+  },
+  {
    "id": "E6",
    "nom": "Diablos",
    "punts": 71,
-   "posicio": 7
+   "posicio": 8
   },
   {
    "id": "E9",
    "nom": "Joga Vomito",
    "punts": 68,
-   "posicio": 8
-  },
-  {
-   "id": "E10",
-   "nom": "La Once",
-   "punts": 52,
    "posicio": 9
   },
   {
    "id": "E8",
    "nom": "Massumba y los mas zumbaos",
-   "punts": 42,
+   "punts": 67,
    "posicio": 10
   }
  ],
