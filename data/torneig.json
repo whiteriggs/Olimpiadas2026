@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-19T19:31:58+00:00",
+ "actualizado": "2026-08-19T19:58:13+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -2218,10 +2218,10 @@
       "E6",
       "E2"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E2",
+     "perdedor": "E6",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "puesto9",
@@ -2245,12 +2245,14 @@
     null,
     null,
     null,
-    null,
-    null,
+    "E2",
+    "E6",
     "E9",
     "E5"
    ],
    "punts": {
+    "E2": 20,
+    "E6": 15,
     "E9": 10,
     "E5": 5
    }
@@ -4363,21 +4365,21 @@
  ],
  "general": [
   {
+   "id": "E2",
+   "nom": "Passa directament",
+   "punts": 132,
+   "posicio": 1
+  },
+  {
    "id": "E4",
    "nom": "Vaig molt cremat",
    "punts": 117,
-   "posicio": 1
+   "posicio": 2
   },
   {
    "id": "E7",
    "nom": "Esperando a los Palomos",
    "punts": 113,
-   "posicio": 2
-  },
-  {
-   "id": "E2",
-   "nom": "Passa directament",
-   "punts": 112,
    "posicio": 3
   },
   {
@@ -4399,15 +4401,15 @@
    "posicio": 6
   },
   {
-   "id": "E9",
-   "nom": "Joga Vomito",
-   "punts": 68,
+   "id": "E6",
+   "nom": "Diablos",
+   "punts": 71,
    "posicio": 7
   },
   {
-   "id": "E6",
-   "nom": "Diablos",
-   "punts": 56,
+   "id": "E9",
+   "nom": "Joga Vomito",
+   "punts": 68,
    "posicio": 8
   },
   {
