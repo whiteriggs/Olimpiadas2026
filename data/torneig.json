@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-19T22:31:52+00:00",
+ "actualizado": "2026-08-19T22:59:19+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -2376,7 +2376,7 @@
      ],
      "guanyador": "E4",
      "perdedor": "E8",
-     "marcador": "",
+     "marcador": "3-18",
      "estat": "jugat"
     },
     {
@@ -2388,10 +2388,10 @@
       "E7",
       "E10"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E7",
+     "perdedor": "E10",
+     "marcador": "18-17",
+     "estat": "jugat"
     },
     {
      "id": "final",
@@ -2400,12 +2400,12 @@
      "sigla": "Final",
      "equips": [
       "E4",
-      null
+      "E7"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "tercerPuesto",
@@ -2414,12 +2414,12 @@
      "sigla": "3r/4t",
      "equips": [
       "E8",
-      null
+      "E10"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consSf1",
@@ -2432,7 +2432,7 @@
      ],
      "guanyador": "E2",
      "perdedor": "E6",
-     "marcador": "15-12",
+     "marcador": "12-15",
      "estat": "jugat"
     },
     {
@@ -2446,7 +2446,7 @@
      ],
      "guanyador": "E1",
      "perdedor": "E9",
-     "marcador": "8-7",
+     "marcador": "18-17",
      "estat": "jugat"
     },
     {
