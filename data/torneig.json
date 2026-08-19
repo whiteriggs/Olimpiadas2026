@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-19T01:47:12+00:00",
+ "actualizado": "2026-08-19T08:49:21+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -109,10 +109,10 @@
       "E9",
       "E1"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E1",
+     "perdedor": "E9",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "qf2",
@@ -162,7 +162,7 @@
      "nom": "Semifinal 1",
      "sigla": "SF1",
      "equips": [
-      null,
+      "E1",
       null
      ],
      "guanyador": null,
@@ -218,7 +218,7 @@
      "nom": "Semifinal consolació 1",
      "sigla": "SC1",
      "equips": [
-      null,
+      "E9",
       null
      ],
      "guanyador": null,
