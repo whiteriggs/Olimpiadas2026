@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-20T20:36:44+00:00",
+ "actualizado": "2026-08-20T21:03:58+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -570,10 +570,10 @@
       "E2",
       "E3"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E2",
+     "perdedor": "E3",
+     "marcador": "2-0",
+     "estat": "jugat"
     },
     {
      "id": "previa2",
@@ -595,13 +595,13 @@
      "nom": "Quarts 1",
      "sigla": "QF1",
      "equips": [
-      null,
+      "E2",
       "E8"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "qf2",
@@ -763,7 +763,7 @@
      "nom": "9è i 10è lloc",
      "sigla": "9è/10è",
      "equips": [
-      null,
+      "E3",
       null
      ],
      "guanyador": null,
@@ -3519,10 +3519,10 @@
       "E7",
       "E5"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E5",
+     "perdedor": "E7",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "previa2",
@@ -3544,13 +3544,13 @@
      "nom": "Quarts 1",
      "sigla": "QF1",
      "equips": [
-      null,
+      "E5",
       "E6"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "qf2",
@@ -3712,7 +3712,7 @@
      "nom": "9è i 10è lloc",
      "sigla": "9è/10è",
      "equips": [
-      null,
+      "E7",
       null
      ],
      "guanyador": null,
