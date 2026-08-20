@@ -564,12 +564,11 @@
       "nota": ""
     },
     {
-      "id": "2026-08-20-19-basquet",
-      "esport": "Bàsquet",
-      "esportId": "baloncesto",
-      "detalle": "Quarts 1, Quarts 2",
+      "id": "2026-08-20-19-voleibol-pista",
+      "esport": "Voleibol pista",
+      "esportId": "voleibol-pista",
+      "detalle": "Quarts 2",
       "partits": [
-        "qf1",
         "qf2"
       ],
       "tipo": "esport",
@@ -578,25 +577,7 @@
       "horaFin": "20:00",
       "orden": 19,
       "lloc": "Poliesportiu",
-      "quiJuga": "QF1: Guanyador P1 - Equip 7QF2: Equip 2 - Equip 1",
-      "nota": ""
-    },
-    {
-      "id": "2026-08-20-20-basquet",
-      "esport": "Bàsquet",
-      "esportId": "baloncesto",
-      "detalle": "Quarts 3, Quarts 4",
-      "partits": [
-        "qf3",
-        "qf4"
-      ],
-      "tipo": "esport",
-      "fecha": "2026-08-20",
-      "hora": "20:00",
-      "horaFin": "21:00",
-      "orden": 20,
-      "lloc": "Poliesportiu",
-      "quiJuga": "QF3: Guanyador P2 - Equip 8QF4: Equip 3 - Equip 9",
+      "quiJuga": "",
       "nota": ""
     },
     {
