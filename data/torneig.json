@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-19T22:59:19+00:00",
+ "actualizado": "2026-08-20T17:37:01+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -520,10 +520,10 @@
       "E8",
       "E5"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E8",
+     "perdedor": "E5",
+     "marcador": "2-0",
+     "estat": "jugat"
     }
    ],
    "posicions": [
@@ -535,10 +535,13 @@
     null,
     null,
     null,
-    null,
-    null
+    "E8",
+    "E5"
    ],
-   "punts": {}
+   "punts": {
+    "E8": 8,
+    "E5": 5
+   }
   },
   {
    "id": "voleibol-pista",
@@ -866,10 +869,10 @@
       "E1",
       "E6"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E1",
+     "perdedor": "E6",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "qf4",
@@ -905,7 +908,7 @@
      "nom": "Semifinal 2",
      "sigla": "SF2",
      "equips": [
-      null,
+      "E1",
       null
      ],
      "guanyador": null,
@@ -961,7 +964,7 @@
      "nom": "Semifinal consolació 2",
      "sigla": "SC2",
      "equips": [
-      null,
+      "E6",
       null
      ],
      "guanyador": null,
@@ -1081,10 +1084,10 @@
       "E3",
       "E6"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E3",
+     "perdedor": "E6",
+     "marcador": "21-1",
+     "estat": "jugat"
     },
     {
      "id": "qf2",
@@ -1134,13 +1137,13 @@
      "nom": "Semifinal 1",
      "sigla": "SF1",
      "equips": [
-      null,
+      "E3",
       "E10"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "sf2",
@@ -1190,13 +1193,13 @@
      "nom": "Semifinal consolació 1",
      "sigla": "SC1",
      "equips": [
-      null,
+      "E6",
       "E2"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consSf2",
@@ -1352,10 +1355,10 @@
       "E8",
       "E2"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E8",
+     "perdedor": "E2",
+     "marcador": "9-2",
+     "estat": "jugat"
     },
     {
      "id": "qf4",
@@ -1391,7 +1394,7 @@
      "nom": "Semifinal 2",
      "sigla": "SF2",
      "equips": [
-      null,
+      "E8",
       null
      ],
      "guanyador": null,
@@ -1447,7 +1450,7 @@
      "nom": "Semifinal consolació 2",
      "sigla": "SC2",
      "equips": [
-      null,
+      "E2",
       null
      ],
      "guanyador": null,
@@ -4403,7 +4406,7 @@
   {
    "id": "E5",
    "nom": "Yayo Vallecano",
-   "punts": 91,
+   "punts": 96,
    "posicio": 6
   },
   {
@@ -4413,21 +4416,21 @@
    "posicio": 7
   },
   {
+   "id": "E8",
+   "nom": "Massumba y los mas zumbaos",
+   "punts": 75,
+   "posicio": 8
+  },
+  {
    "id": "E6",
    "nom": "Diablos",
    "punts": 71,
-   "posicio": 8
+   "posicio": 9
   },
   {
    "id": "E9",
    "nom": "Joga Vomito",
    "punts": 68,
-   "posicio": 9
-  },
-  {
-   "id": "E8",
-   "nom": "Massumba y los mas zumbaos",
-   "punts": 67,
    "posicio": 10
   }
  ],
