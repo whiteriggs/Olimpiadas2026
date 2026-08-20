@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-20T21:03:58+00:00",
+ "actualizado": "2026-08-20T21:48:34+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -584,10 +584,10 @@
       "E4",
       "E9"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E4",
+     "perdedor": "E9",
+     "marcador": "2-1",
+     "estat": "jugat"
     },
     {
      "id": "qf1",
@@ -623,13 +623,13 @@
      "nom": "Quarts 3",
      "sigla": "QF3",
      "equips": [
-      null,
+      "E4",
       "E5"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "qf4",
@@ -764,12 +764,12 @@
      "sigla": "9è/10è",
      "equips": [
       "E3",
-      null
+      "E9"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     }
    ],
    "posicions": [
@@ -3804,10 +3804,10 @@
       "E10",
       "E3"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E10",
+     "perdedor": "E3",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "qf3",
@@ -3844,7 +3844,7 @@
      "sigla": "SF1",
      "equips": [
       null,
-      null
+      "E10"
      ],
      "guanyador": null,
      "perdedor": null,
@@ -3900,7 +3900,7 @@
      "sigla": "SC1",
      "equips": [
       null,
-      null
+      "E3"
      ],
      "guanyador": null,
      "perdedor": null,
