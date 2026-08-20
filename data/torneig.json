@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-20T17:37:01+00:00",
+ "actualizado": "2026-08-20T19:06:17+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -640,10 +640,10 @@
       "E6",
       "E10"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E10",
+     "perdedor": "E6",
+     "marcador": "0-2",
+     "estat": "jugat"
     },
     {
      "id": "sf1",
@@ -666,7 +666,7 @@
      "sigla": "SF2",
      "equips": [
       null,
-      null
+      "E10"
      ],
      "guanyador": null,
      "perdedor": null,
@@ -722,7 +722,7 @@
      "sigla": "SC2",
      "equips": [
       null,
-      null
+      "E6"
      ],
      "guanyador": null,
      "perdedor": null,
