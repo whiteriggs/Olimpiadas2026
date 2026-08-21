@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-21T09:44:25+00:00",
+ "actualizado": "2026-08-21T13:02:07+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -841,10 +841,10 @@
       "E7",
       "E5"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E7",
+     "perdedor": "E5",
+     "marcador": "2-0",
+     "estat": "jugat"
     },
     {
      "id": "qf2",
@@ -894,13 +894,13 @@
      "nom": "Semifinal 1",
      "sigla": "SF1",
      "equips": [
-      null,
+      "E7",
       "E10"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "sf2",
@@ -950,13 +950,13 @@
      "nom": "Semifinal consolació 1",
      "sigla": "SC1",
      "equips": [
-      null,
+      "E5",
       "E8"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consSf2",
