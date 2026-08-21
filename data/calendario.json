@@ -823,36 +823,6 @@
       "nota": ""
     },
     {
-      "id": "2026-08-21-20-dards",
-      "esport": "Dards",
-      "esportId": "dardos",
-      "detalle": "",
-      "partits": [],
-      "tipo": "esport",
-      "fecha": "2026-08-21",
-      "hora": "20:00",
-      "horaFin": "01:00",
-      "orden": 20,
-      "lloc": "Altres",
-      "quiJuga": "QF1: Guanyador P1 - Equip 6QF2: Equip 1 - Equip 3QF3: Guanyador P2 - Equip 8QF4: Equip 9 - Equip 4F2-F5: Tocapelotas - DynamosF3-F4: Motomamis - Birra sanaF1-F5: Las potras salvajes - DynamosF2-F3: Tocapelotas - Motomamis",
-      "nota": ""
-    },
-    {
-      "id": "2026-08-21-20-futboli",
-      "esport": "Futbolí",
-      "esportId": "futbolin",
-      "detalle": "",
-      "partits": [],
-      "tipo": "esport",
-      "fecha": "2026-08-21",
-      "hora": "20:00",
-      "horaFin": "01:00",
-      "orden": 20,
-      "lloc": "Altres",
-      "quiJuga": "QF1: Guanyador P1 - Equip 2QF2: Equip 10 - Equip 3QF3: Guanyador P2 - Equip 8QF4: Equip 5 - Equip 1F1-F5: Las potras salvajes - DynamosF2-F3: Tocapelotas - MotomamisF1-F4: Las potras salvajes - Birra sanaF5-F3: Dynamos - Motomamis",
-      "nota": ""
-    },
-    {
       "id": "2026-08-21-20-waterpolo",
       "esport": "Waterpolo",
       "esportId": "waterpolo",
@@ -902,6 +872,59 @@
       "horaFin": "23:00",
       "orden": 22,
       "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-21-23-dards",
+      "esport": "Dards",
+      "esportId": "dardos",
+      "detalle": "Semifinal consolació 1, 9è i 10è lloc",
+      "partits": [
+        "consSf1",
+        "puesto9"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-21",
+      "hora": "23:00",
+      "horaFin": "23:45",
+      "orden": 23,
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-21-23-dards-2",
+      "esport": "Dards",
+      "esportId": "dardos",
+      "detalle": "Semifinal consolació 2, Semifinal 1",
+      "partits": [
+        "consSf2",
+        "sf1"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-21",
+      "hora": "23:45",
+      "horaFin": "00:30",
+      "orden": 23,
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-21-00-dards",
+      "esport": "Dards",
+      "esportId": "dardos",
+      "detalle": "Semifinal 2",
+      "partits": [
+        "sf2"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-21",
+      "hora": "00:30",
+      "horaFin": "01:15",
+      "orden": 24,
+      "lloc": "Altres",
       "quiJuga": "",
       "nota": ""
     },
