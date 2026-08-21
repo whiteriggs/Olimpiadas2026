@@ -2,7 +2,7 @@
   "titulo": "Olimpíades Begues 2026",
   "subtitulo": "14–29 d'agost",
   "fuente": "https://docs.google.com/spreadsheets/d/1gB3BzDDBQATh5wTy8JRPxCHLMUqPpnQwFcp3pIsIvLo/gviz/tq?tqx=out:csv&headers=1&sheet=Calendari",
-  "actualizado": "2026-08-20",
+  "actualizado": "2026-08-21",
   "pruebas": [
     {
       "id": "2026-08-14-18-reunio-informativa",
@@ -875,10 +875,10 @@
       "id": "2026-08-21-21-basquet",
       "esport": "Bàsquet",
       "esportId": "baloncesto",
-      "detalle": "Semifinal consolació 1, Semifinal consolació 2",
+      "detalle": "Quarts 1, Quarts 2",
       "partits": [
-        "consSf1",
-        "consSf2"
+        "qf1",
+        "qf2"
       ],
       "tipo": "esport",
       "fecha": "2026-08-21",
@@ -893,10 +893,10 @@
       "id": "2026-08-21-22-basquet",
       "esport": "Bàsquet",
       "esportId": "baloncesto",
-      "detalle": "Semifinal 1, Semifinal 2",
+      "detalle": "Quarts 3, Quarts 4",
       "partits": [
-        "sf1",
-        "sf2"
+        "qf3",
+        "qf4"
       ],
       "tipo": "esport",
       "fecha": "2026-08-21",
