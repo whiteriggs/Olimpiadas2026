@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-21T19:02:42+00:00",
+ "actualizado": "2026-08-21T23:34:21+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -1126,10 +1126,10 @@
       "E9",
       "E7"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E7",
+     "perdedor": "E9",
+     "marcador": "0-2",
+     "estat": "jugat"
     },
     {
      "id": "sf1",
@@ -1152,12 +1152,12 @@
      "sigla": "SF2",
      "equips": [
       "E5",
-      null
+      "E7"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "final",
@@ -1208,12 +1208,12 @@
      "sigla": "SC2",
      "equips": [
       "E8",
-      null
+      "E9"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consFinal",
@@ -2578,10 +2578,10 @@
       "E2",
       "E1"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E2",
+     "perdedor": "E1",
+     "marcador": "24-21",
+     "estat": "jugat"
     },
     {
      "id": "qf3",
@@ -2592,10 +2592,10 @@
       "E10",
       "E8"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E10",
+     "perdedor": "E8",
+     "marcador": "55-39",
+     "estat": "jugat"
     },
     {
      "id": "qf4",
@@ -2618,7 +2618,7 @@
      "sigla": "SF1",
      "equips": [
       null,
-      null
+      "E2"
      ],
      "guanyador": null,
      "perdedor": null,
@@ -2631,7 +2631,7 @@
      "nom": "Semifinal 2",
      "sigla": "SF2",
      "equips": [
-      null,
+      "E10",
       null
      ],
      "guanyador": null,
@@ -2674,7 +2674,7 @@
      "sigla": "SC1",
      "equips": [
       null,
-      null
+      "E1"
      ],
      "guanyador": null,
      "perdedor": null,
@@ -2687,7 +2687,7 @@
      "nom": "Semifinal consolació 2",
      "sigla": "SC2",
      "equips": [
-      null,
+      "E8",
       null
      ],
      "guanyador": null,
@@ -3078,10 +3078,10 @@
       "E3",
       "E4"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E3",
+     "perdedor": "E4",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "qf4",
@@ -3092,10 +3092,10 @@
       "E7",
       "E8"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E7",
+     "perdedor": "E8",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "sf1",
@@ -3117,13 +3117,13 @@
      "nom": "Semifinal 2",
      "sigla": "SF2",
      "equips": [
-      null,
-      null
+      "E3",
+      "E7"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "final",
@@ -3173,13 +3173,13 @@
      "nom": "Semifinal consolació 2",
      "sigla": "SC2",
      "equips": [
-      null,
-      null
+      "E4",
+      "E8"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consFinal",
@@ -3846,10 +3846,10 @@
       "E2",
       "E10"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E10",
+     "perdedor": "E2",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "sf2",
@@ -3860,10 +3860,10 @@
       "E8",
       "E1"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E8",
+     "perdedor": "E1",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "final",
@@ -3871,13 +3871,13 @@
      "nom": "Final",
      "sigla": "Final",
      "equips": [
-      null,
-      null
+      "E10",
+      "E8"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E10",
+     "perdedor": "E8",
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "jugat"
     },
     {
      "id": "tercerPuesto",
@@ -3885,13 +3885,13 @@
      "nom": "3r i 4t lloc",
      "sigla": "3r/4t",
      "equips": [
-      null,
-      null
+      "E2",
+      "E1"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consSf1",
@@ -3965,8 +3965,8 @@
     }
    ],
    "posicions": [
-    null,
-    null,
+    "E10",
+    "E8",
     null,
     null,
     null,
@@ -3976,7 +3976,10 @@
     null,
     null
    ],
-   "punts": {}
+   "punts": {
+    "E10": 40,
+    "E8": 32
+   }
   },
   {
    "id": "billar",
@@ -4404,21 +4407,21 @@
    "posicio": 5
   },
   {
-   "id": "E5",
-   "nom": "Yayo Vallecano",
-   "punts": 96,
-   "posicio": 6
-  },
-  {
    "id": "E10",
    "nom": "La Once",
-   "punts": 82,
-   "posicio": 7
+   "punts": 122,
+   "posicio": 6
   },
   {
    "id": "E8",
    "nom": "Massumba y los mas zumbaos",
-   "punts": 75,
+   "punts": 107,
+   "posicio": 7
+  },
+  {
+   "id": "E5",
+   "nom": "Yayo Vallecano",
+   "punts": 96,
    "posicio": 8
   },
   {
