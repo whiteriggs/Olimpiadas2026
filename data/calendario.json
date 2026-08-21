@@ -1121,6 +1121,24 @@
       "nota": ""
     },
     {
+      "id": "2026-08-22-00-basquet",
+      "esport": "Bàsquet",
+      "esportId": "baloncesto",
+      "detalle": "Semifinal 1, Semifinal 2",
+      "partits": [
+        "sf1",
+        "sf2"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-22",
+      "hora": "00:00",
+      "horaFin": "01:00",
+      "orden": 24,
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
       "id": "2026-08-23-10-atletisme",
       "esport": "Atletisme",
       "esportId": "atletismo",
@@ -1226,10 +1244,9 @@
       "id": "2026-08-23-22-basquet",
       "esport": "Bàsquet",
       "esportId": "baloncesto",
-      "detalle": "Semifinal 1, Semifinal 2",
+      "detalle": "Final",
       "partits": [
-        "sf1",
-        "sf2"
+        "final"
       ],
       "tipo": "esport",
       "fecha": "2026-08-23",
@@ -1244,9 +1261,9 @@
       "id": "2026-08-23-23-basquet",
       "esport": "Bàsquet",
       "esportId": "baloncesto",
-      "detalle": "Final consolació · 5è i 6è lloc, 9è i 10è lloc",
+      "detalle": "3r i 4t lloc, 9è i 10è lloc",
       "partits": [
-        "consFinal",
+        "tercerPuesto",
         "puesto9"
       ],
       "tipo": "esport",
@@ -1254,6 +1271,24 @@
       "hora": "23:00",
       "horaFin": "00:00",
       "orden": 23,
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-23-00-basquet",
+      "esport": "Bàsquet",
+      "esportId": "baloncesto",
+      "detalle": "Final consolació · 5è i 6è lloc, 7è i 8è lloc",
+      "partits": [
+        "consFinal",
+        "consTercero"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-23",
+      "hora": "00:00",
+      "horaFin": "01:00",
+      "orden": 24,
       "lloc": "Poliesportiu",
       "quiJuga": "",
       "nota": ""
