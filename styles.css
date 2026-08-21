@@ -608,11 +608,15 @@ body:has(.modal[open]) { overflow: hidden; }
   background: none;
   border-color: var(--borde);
   box-shadow: none;
+  gap: 10px; padding: 9px 12px; border-radius: var(--radio-s);
 }
 .evento.alie:hover { box-shadow: none; transform: none; }
 .evento.alie .hora,
 .evento.alie .deporte,
 .evento.alie .rival { color: var(--gris); font-weight: 600; }
+.evento.alie .hora { min-width: 44px; font-size: 0.84rem; }
+.evento.alie .deporte { font-size: 0.9rem; }
+.evento.alie .meta, .evento.alie .rival { font-size: 0.76rem; }
 .evento.alie .ronda { background: none; padding-left: 0; padding-right: 0; color: var(--gris); }
 .evento .rival .sigla {
   display: inline-block; min-width: 44px; margin-right: 6px;

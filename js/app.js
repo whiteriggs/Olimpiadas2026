@@ -259,8 +259,7 @@ function pintarCalendario() {
 
 function tarjetaEvento(p, mios) {
   const juguem = hiJuguem(p);
-  // Mentre no sapiguem si hi som (falta la ronda anterior) tampoc ens reclama res.
-  const alie = p.tipo === "esport" && nosaltres() && juguem !== true;
+  const alie = p.tipo === "esport" && nosaltres() && juguem === false;
   const art = el(
     "article",
     "evento" +
@@ -272,7 +271,7 @@ function tarjetaEvento(p, mios) {
 
   const cuerpo = el("div", "cuerpo");
   cuerpo.appendChild(el("div", "deporte", p.esport));
-  if (p.detalle) cuerpo.appendChild(el("div", "ronda", p.detalle));
+  if (p.detalle && !alie) cuerpo.appendChild(el("div", "ronda", p.detalle));
   cuerpo.appendChild(
     el("div", "meta", [p.lloc, [p.hora, p.horaFin].filter(Boolean).join("–")]
       .filter(Boolean)
@@ -295,6 +294,12 @@ function tarjetaEvento(p, mios) {
     for (const linea of (p.quiJuga || "").split("\n").filter(Boolean)) {
       cuerpo.appendChild(el("div", "rival", linea));
     }
+  }
+
+  // Una prova aliena només informa del partit; la nostra plantilla no hi pinta res.
+  if (alie) {
+    art.appendChild(cuerpo);
+    return art;
   }
 
   const gente = apuntadosA(p.esport);
