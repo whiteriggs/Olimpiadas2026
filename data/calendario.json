@@ -2,7 +2,7 @@
   "titulo": "Olimpíades Begues 2026",
   "subtitulo": "14–29 d'agost",
   "fuente": "https://docs.google.com/spreadsheets/d/1gB3BzDDBQATh5wTy8JRPxCHLMUqPpnQwFcp3pIsIvLo/gviz/tq?tqx=out:csv&headers=1&sheet=Calendari",
-  "actualizado": "2026-08-21",
+  "actualizado": "2026-08-22",
   "pruebas": [
     {
       "id": "2026-08-14-18-reunio-informativa",
@@ -1094,36 +1094,6 @@
       "lloc": "Club de Begues",
       "quiJuga": "",
       "nota": "ATLETISME / PES / SALT LONGITUD"
-    },
-    {
-      "id": "2026-08-22-22-dards",
-      "esport": "Dards",
-      "esportId": "dardos",
-      "detalle": "",
-      "partits": [],
-      "tipo": "esport",
-      "fecha": "2026-08-22",
-      "hora": "22:00",
-      "horaFin": "01:00",
-      "orden": 22,
-      "lloc": "Altres",
-      "quiJuga": "",
-      "nota": ""
-    },
-    {
-      "id": "2026-08-22-22-futboli",
-      "esport": "Futbolí",
-      "esportId": "futbolin",
-      "detalle": "",
-      "partits": [],
-      "tipo": "esport",
-      "fecha": "2026-08-22",
-      "hora": "22:00",
-      "horaFin": "01:00",
-      "orden": 22,
-      "lloc": "Altres",
-      "quiJuga": "",
-      "nota": ""
     },
     {
       "id": "2026-08-22-23-voleibol-pista",
