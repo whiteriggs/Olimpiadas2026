@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-22T12:54:41+00:00",
+ "actualizado": "2026-08-22T13:37:30+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -2821,10 +2821,10 @@
       "E1",
       "E4"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E4",
+     "perdedor": "E1",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "qf3",
@@ -2861,12 +2861,12 @@
      "sigla": "SF1",
      "equips": [
       "E7",
-      null
+      "E4"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "sf2",
@@ -2917,12 +2917,12 @@
      "sigla": "SC1",
      "equips": [
       "E3",
-      null
+      "E1"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consSf2",
