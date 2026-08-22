@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-22T16:58:35+00:00",
+ "actualizado": "2026-08-22T20:58:38+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -2637,10 +2637,10 @@
       "E10",
       "E9"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E10",
+     "perdedor": "E9",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "final",
@@ -2649,7 +2649,7 @@
      "sigla": "Final",
      "equips": [
       null,
-      null
+      "E10"
      ],
      "guanyador": null,
      "perdedor": null,
@@ -2663,7 +2663,7 @@
      "sigla": "3r/4t",
      "equips": [
       null,
-      null
+      "E9"
      ],
      "guanyador": null,
      "perdedor": null,
