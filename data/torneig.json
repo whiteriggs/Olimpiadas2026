@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-22T20:58:38+00:00",
+ "actualizado": "2026-08-22T23:29:04+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -654,10 +654,10 @@
       "E2",
       "E1"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E2",
+     "perdedor": "E1",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "sf2",
@@ -668,10 +668,10 @@
       "E4",
       "E10"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E4",
+     "perdedor": "E10",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "final",
@@ -679,13 +679,13 @@
      "nom": "Final",
      "sigla": "Final",
      "equips": [
-      null,
-      null
+      "E2",
+      "E4"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "tercerPuesto",
@@ -693,13 +693,13 @@
      "nom": "3r i 4t lloc",
      "sigla": "3r/4t",
      "equips": [
-      null,
-      null
+      "E1",
+      "E10"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consSf1",
@@ -724,10 +724,10 @@
       "E5",
       "E6"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E6",
+     "perdedor": "E5",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consFinal",
@@ -736,12 +736,12 @@
      "sigla": "5è/6è",
      "equips": [
       "E7",
-      null
+      "E6"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consTercero",
@@ -750,12 +750,12 @@
      "sigla": "7è/8è",
      "equips": [
       "E8",
-      null
+      "E5"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "puesto9",
@@ -2623,10 +2623,10 @@
       "E7",
       "E2"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E7",
+     "perdedor": "E2",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "sf2",
@@ -2648,13 +2648,13 @@
      "nom": "Final",
      "sigla": "Final",
      "equips": [
-      null,
+      "E7",
       "E10"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "tercerPuesto",
@@ -2662,13 +2662,13 @@
      "nom": "3r i 4t lloc",
      "sigla": "3r/4t",
      "equips": [
-      null,
+      "E2",
       "E9"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consSf1",
