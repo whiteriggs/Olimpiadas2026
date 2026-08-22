@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-22T15:30:18+00:00",
+ "actualizado": "2026-08-22T16:58:35+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -710,10 +710,10 @@
       "E8",
       "E7"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E7",
+     "perdedor": "E8",
+     "marcador": "2-0",
+     "estat": "jugat"
     },
     {
      "id": "consSf2",
@@ -735,7 +735,7 @@
      "nom": "Final consolació · 5è i 6è lloc",
      "sigla": "5è/6è",
      "equips": [
-      null,
+      "E7",
       null
      ],
      "guanyador": null,
@@ -749,7 +749,7 @@
      "nom": "7è i 8è lloc",
      "sigla": "7è/8è",
      "equips": [
-      null,
+      "E8",
       null
      ],
      "guanyador": null,
@@ -766,10 +766,10 @@
       "E3",
       "E9"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E3",
+     "perdedor": "E9",
+     "marcador": "2-0",
+     "estat": "jugat"
     }
    ],
    "posicions": [
@@ -781,10 +781,13 @@
     null,
     null,
     null,
-    null,
-    null
+    "E3",
+    "E9"
    ],
-   "punts": {}
+   "punts": {
+    "E3": 10,
+    "E9": 5
+   }
   },
   {
    "id": "tenis",
@@ -4397,15 +4400,15 @@
    "posicio": 3
   },
   {
-   "id": "E2",
-   "nom": "Passa directament",
-   "punts": 161,
+   "id": "E3",
+   "nom": "Olimpiakojos",
+   "punts": 162,
    "posicio": 4
   },
   {
-   "id": "E3",
-   "nom": "Olimpiakojos",
-   "punts": 152,
+   "id": "E2",
+   "nom": "Passa directament",
+   "punts": 161,
    "posicio": 5
   },
   {
@@ -4427,15 +4430,15 @@
    "posicio": 8
   },
   {
-   "id": "E6",
-   "nom": "Diablos",
-   "punts": 71,
+   "id": "E9",
+   "nom": "Joga Vomito",
+   "punts": 73,
    "posicio": 9
   },
   {
-   "id": "E9",
-   "nom": "Joga Vomito",
-   "punts": 68,
+   "id": "E6",
+   "nom": "Diablos",
+   "punts": 71,
    "posicio": 10
   }
  ],
