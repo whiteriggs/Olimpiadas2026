@@ -1150,18 +1150,66 @@
       "id": "2026-08-23-13-waterpolo",
       "esport": "Waterpolo",
       "esportId": "waterpolo",
-      "detalle": "Semifinal consolació 1, Semifinal consolació 2, Semifinal 1, Semifinal 2",
+      "detalle": "Semifinal consolació 1",
       "partits": [
-        "consSf1",
-        "consSf2",
-        "sf1",
-        "sf2"
+        "consSf1"
       ],
       "tipo": "esport",
       "fecha": "2026-08-23",
       "hora": "13:00",
-      "horaFin": "16:00",
+      "horaFin": "13:45",
       "orden": 13,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-23-13-waterpolo-2",
+      "esport": "Waterpolo",
+      "esportId": "waterpolo",
+      "detalle": "Semifinal consolació 2",
+      "partits": [
+        "consSf2"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-23",
+      "hora": "13:45",
+      "horaFin": "14:30",
+      "orden": 13,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-23-14-waterpolo",
+      "esport": "Waterpolo",
+      "esportId": "waterpolo",
+      "detalle": "Semifinal 1",
+      "partits": [
+        "sf1"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-23",
+      "hora": "14:30",
+      "horaFin": "15:15",
+      "orden": 14,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-23-15-waterpolo",
+      "esport": "Waterpolo",
+      "esportId": "waterpolo",
+      "detalle": "Semifinal 2",
+      "partits": [
+        "sf2"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-23",
+      "hora": "15:15",
+      "horaFin": "16:00",
+      "orden": 15,
       "lloc": "Club de Begues",
       "quiJuga": "",
       "nota": ""
