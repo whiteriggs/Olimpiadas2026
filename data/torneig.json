@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-23T14:44:58+00:00",
+ "actualizado": "2026-08-23T15:29:27+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -235,10 +235,10 @@
       "E2",
       "E6"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E6",
+     "perdedor": "E2",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consFinal",
@@ -247,7 +247,7 @@
      "sigla": "5è/6è",
      "equips": [
       null,
-      null
+      "E6"
      ],
      "guanyador": null,
      "perdedor": null,
@@ -261,7 +261,7 @@
      "sigla": "7è/8è",
      "equips": [
       null,
-      null
+      "E2"
      ],
      "guanyador": null,
      "perdedor": null,
@@ -2478,10 +2478,10 @@
       "E6",
       "E9"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E9",
+     "perdedor": "E6",
+     "marcador": "6-12",
+     "estat": "jugat"
     },
     {
      "id": "puesto9",
@@ -2505,12 +2505,15 @@
     null,
     null,
     null,
-    null,
-    null,
+    "E9",
+    "E6",
     null,
     null
    ],
-   "punts": {}
+   "punts": {
+    "E9": 20,
+    "E6": 15
+   }
   },
   {
    "id": "baloncesto",
@@ -3109,10 +3112,10 @@
       "E1",
       "E10"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E1",
+     "perdedor": "E10",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "sf2",
@@ -3134,7 +3137,7 @@
      "nom": "Final",
      "sigla": "Final",
      "equips": [
-      null,
+      "E1",
       null
      ],
      "guanyador": null,
@@ -3148,7 +3151,7 @@
      "nom": "3r i 4t lloc",
      "sigla": "3r/4t",
      "equips": [
-      null,
+      "E10",
       null
      ],
      "guanyador": null,
@@ -3919,10 +3922,10 @@
       "E6",
       "E5"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E5",
+     "perdedor": "E6",
+     "marcador": "2-0",
+     "estat": "jugat"
     },
     {
      "id": "consFinal",
@@ -3931,12 +3934,12 @@
      "sigla": "5è/6è",
      "equips": [
       "E4",
-      null
+      "E5"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consTercero",
@@ -3945,12 +3948,12 @@
      "sigla": "7è/8è",
      "equips": [
       "E3",
-      null
+      "E6"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "puesto9",
@@ -4429,27 +4432,27 @@
    "posicio": 6
   },
   {
+   "id": "E9",
+   "nom": "Joga Vomito",
+   "punts": 122,
+   "posicio": 7
+  },
+  {
    "id": "E5",
    "nom": "Yayo Vallecano",
    "punts": 113,
-   "posicio": 7
+   "posicio": 8
   },
   {
    "id": "E8",
    "nom": "Massumba y los mas zumbaos",
    "punts": 112,
-   "posicio": 8
-  },
-  {
-   "id": "E9",
-   "nom": "Joga Vomito",
-   "punts": 102,
    "posicio": 9
   },
   {
    "id": "E6",
    "nom": "Diablos",
-   "punts": 80,
+   "punts": 95,
    "posicio": 10
   }
  ],
