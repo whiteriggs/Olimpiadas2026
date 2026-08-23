@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-23T22:31:13+00:00",
+ "actualizado": "2026-08-23T22:57:20+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -3614,10 +3614,10 @@
       "E5",
       "E3"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E3",
+     "perdedor": "E5",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "sf2",
@@ -3639,13 +3639,13 @@
      "nom": "Final",
      "sigla": "Final",
      "equips": [
-      null,
+      "E3",
       "E8"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "tercerPuesto",
@@ -3653,13 +3653,13 @@
      "nom": "3r i 4t lloc",
      "sigla": "3r/4t",
      "equips": [
-      null,
+      "E5",
       "E4"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consSf1",
