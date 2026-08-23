@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-23T19:05:37+00:00",
+ "actualizado": "2026-08-23T21:56:52+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -2656,10 +2656,10 @@
       "E7",
       "E10"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E7",
+     "perdedor": "E10",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "tercerPuesto",
@@ -2747,8 +2747,8 @@
     }
    ],
    "posicions": [
-    null,
-    null,
+    "E7",
+    "E10",
     null,
     null,
     null,
@@ -2758,7 +2758,10 @@
     null,
     null
    ],
-   "punts": {}
+   "punts": {
+    "E7": 70,
+    "E10": 54
+   }
   },
   {
    "id": "waterpolo",
@@ -3625,10 +3628,10 @@
       "E8",
       "E4"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E8",
+     "perdedor": "E4",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "final",
@@ -3637,7 +3640,7 @@
      "sigla": "Final",
      "equips": [
       null,
-      null
+      "E8"
      ],
      "guanyador": null,
      "perdedor": null,
@@ -3651,7 +3654,7 @@
      "sigla": "3r/4t",
      "equips": [
       null,
-      null
+      "E4"
      ],
      "guanyador": null,
      "perdedor": null,
@@ -4060,10 +4063,10 @@
       "E3",
       "E9"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E9",
+     "perdedor": "E3",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "qf3",
@@ -4100,12 +4103,12 @@
      "sigla": "SF1",
      "equips": [
       "E2",
-      null
+      "E9"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "sf2",
@@ -4156,12 +4159,12 @@
      "sigla": "SC1",
      "equips": [
       "E5",
-      null
+      "E3"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consSf2",
@@ -4398,33 +4401,33 @@
  ],
  "general": [
   {
+   "id": "E7",
+   "nom": "Esperando a los Palomos",
+   "punts": 262,
+   "posicio": 1
+  },
+  {
+   "id": "E10",
+   "nom": "La Once",
+   "punts": 261,
+   "posicio": 2
+  },
+  {
    "id": "E4",
    "nom": "Vaig molt cremat",
    "punts": 215,
-   "posicio": 1
+   "posicio": 3
   },
   {
    "id": "E1",
    "nom": "La Jee-peta",
    "punts": 208,
-   "posicio": 2
-  },
-  {
-   "id": "E10",
-   "nom": "La Once",
-   "punts": 207,
-   "posicio": 3
+   "posicio": 4
   },
   {
    "id": "E2",
    "nom": "Passa directament",
    "punts": 194,
-   "posicio": 4
-  },
-  {
-   "id": "E7",
-   "nom": "Esperando a los Palomos",
-   "punts": 192,
    "posicio": 5
   },
   {
