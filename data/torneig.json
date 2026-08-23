@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-23T22:57:20+00:00",
+ "actualizado": "2026-08-23T23:29:31+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -2740,10 +2740,10 @@
       "E5",
       "E4"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E4",
+     "perdedor": "E5",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     }
    ],
    "posicions": [
@@ -2755,12 +2755,14 @@
     null,
     null,
     null,
-    null,
-    null
+    "E4",
+    "E5"
    ],
    "punts": {
     "E10": 70,
-    "E7": 54
+    "E7": 54,
+    "E4": 10,
+    "E5": 5
    }
   },
   {
@@ -4415,7 +4417,7 @@
   {
    "id": "E4",
    "nom": "Vaig molt cremat",
-   "punts": 215,
+   "punts": 225,
    "posicio": 3
   },
   {
@@ -4451,7 +4453,7 @@
   {
    "id": "E5",
    "nom": "Yayo Vallecano",
-   "punts": 113,
+   "punts": 118,
    "posicio": 9
   },
   {
