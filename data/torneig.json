@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-23T13:38:55+00:00",
+ "actualizado": "2026-08-23T14:44:58+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -3905,10 +3905,10 @@
       "E4",
       "E3"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E4",
+     "perdedor": "E3",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consSf2",
@@ -3930,7 +3930,7 @@
      "nom": "Final consolació · 5è i 6è lloc",
      "sigla": "5è/6è",
      "equips": [
-      null,
+      "E4",
       null
      ],
      "guanyador": null,
@@ -3944,7 +3944,7 @@
      "nom": "7è i 8è lloc",
      "sigla": "7è/8è",
      "equips": [
-      null,
+      "E3",
       null
      ],
      "guanyador": null,
@@ -4291,18 +4291,29 @@
    ],
    "partits": [],
    "posicions": [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null
+    "E4",
+    "E10",
+    "E2",
+    "E9",
+    "E7",
+    "E3",
+    "E5",
+    "E1",
+    "E6",
+    "E8"
    ],
-   "punts": {}
+   "punts": {
+    "E4": 50,
+    "E10": 37,
+    "E2": 33,
+    "E9": 29,
+    "E7": 25,
+    "E3": 21,
+    "E5": 17,
+    "E1": 13,
+    "E6": 9,
+    "E8": 5
+   }
   },
   {
    "id": "atletismo",
@@ -4382,63 +4393,63 @@
  ],
  "general": [
   {
-   "id": "E1",
-   "nom": "La Jee-peta",
-   "punts": 195,
+   "id": "E4",
+   "nom": "Vaig molt cremat",
+   "punts": 215,
    "posicio": 1
   },
   {
-   "id": "E7",
-   "nom": "Esperando a los Palomos",
-   "punts": 167,
+   "id": "E1",
+   "nom": "La Jee-peta",
+   "punts": 208,
    "posicio": 2
-  },
-  {
-   "id": "E4",
-   "nom": "Vaig molt cremat",
-   "punts": 165,
-   "posicio": 3
-  },
-  {
-   "id": "E3",
-   "nom": "Olimpiakojos",
-   "punts": 162,
-   "posicio": 4
   },
   {
    "id": "E2",
    "nom": "Passa directament",
-   "punts": 161,
+   "punts": 194,
+   "posicio": 3
+  },
+  {
+   "id": "E7",
+   "nom": "Esperando a los Palomos",
+   "punts": 192,
+   "posicio": 4
+  },
+  {
+   "id": "E3",
+   "nom": "Olimpiakojos",
+   "punts": 183,
    "posicio": 5
   },
   {
    "id": "E10",
    "nom": "La Once",
-   "punts": 122,
+   "punts": 159,
    "posicio": 6
-  },
-  {
-   "id": "E8",
-   "nom": "Massumba y los mas zumbaos",
-   "punts": 107,
-   "posicio": 7
   },
   {
    "id": "E5",
    "nom": "Yayo Vallecano",
-   "punts": 96,
+   "punts": 113,
+   "posicio": 7
+  },
+  {
+   "id": "E8",
+   "nom": "Massumba y los mas zumbaos",
+   "punts": 112,
    "posicio": 8
   },
   {
    "id": "E9",
    "nom": "Joga Vomito",
-   "punts": 73,
+   "punts": 102,
    "posicio": 9
   },
   {
    "id": "E6",
    "nom": "Diablos",
-   "punts": 71,
+   "punts": 80,
    "posicio": 10
   }
  ],
