@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-23T18:39:20+00:00",
+ "actualizado": "2026-08-23T19:05:37+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -2887,7 +2887,7 @@
      ],
      "guanyador": "E8",
      "perdedor": "E5",
-     "marcador": "",
+     "marcador": "1-6",
      "estat": "jugat"
     },
     {
@@ -2929,7 +2929,7 @@
      ],
      "guanyador": "E1",
      "perdedor": "E3",
-     "marcador": "",
+     "marcador": "1-2",
      "estat": "jugat"
     },
     {
@@ -2943,7 +2943,7 @@
      ],
      "guanyador": "E6",
      "perdedor": "E9",
-     "marcador": "",
+     "marcador": "5-6",
      "estat": "jugat"
     },
     {
