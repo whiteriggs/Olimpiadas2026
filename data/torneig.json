@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-23T15:29:27+00:00",
+ "actualizado": "2026-08-23T16:36:34+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -2422,10 +2422,10 @@
       "E8",
       "E10"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E10",
+     "perdedor": "E8",
+     "marcador": "8-17",
+     "estat": "jugat"
     },
     {
      "id": "consSf1",
@@ -2501,8 +2501,8 @@
    "posicions": [
     null,
     null,
-    null,
-    null,
+    "E10",
+    "E8",
     null,
     null,
     "E9",
@@ -2511,6 +2511,8 @@
     null
    ],
    "punts": {
+    "E10": 48,
+    "E8": 42,
     "E9": 20,
     "E6": 15
    }
@@ -4408,45 +4410,45 @@
    "posicio": 2
   },
   {
+   "id": "E10",
+   "nom": "La Once",
+   "punts": 207,
+   "posicio": 3
+  },
+  {
    "id": "E2",
    "nom": "Passa directament",
    "punts": 194,
-   "posicio": 3
+   "posicio": 4
   },
   {
    "id": "E7",
    "nom": "Esperando a los Palomos",
    "punts": 192,
-   "posicio": 4
+   "posicio": 5
   },
   {
    "id": "E3",
    "nom": "Olimpiakojos",
    "punts": 183,
-   "posicio": 5
+   "posicio": 6
   },
   {
-   "id": "E10",
-   "nom": "La Once",
-   "punts": 159,
-   "posicio": 6
+   "id": "E8",
+   "nom": "Massumba y los mas zumbaos",
+   "punts": 154,
+   "posicio": 7
   },
   {
    "id": "E9",
    "nom": "Joga Vomito",
    "punts": 122,
-   "posicio": 7
+   "posicio": 8
   },
   {
    "id": "E5",
    "nom": "Yayo Vallecano",
    "punts": 113,
-   "posicio": 8
-  },
-  {
-   "id": "E8",
-   "nom": "Massumba y los mas zumbaos",
-   "punts": 112,
    "posicio": 9
   },
   {
