@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-23T23:29:31+00:00",
+ "actualizado": "2026-08-23T23:56:11+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -2670,10 +2670,10 @@
       "E2",
       "E9"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E9",
+     "perdedor": "E2",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consSf1",
@@ -2684,10 +2684,10 @@
       "E6",
       "E1"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E6",
+     "perdedor": "E1",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consSf2",
@@ -2698,10 +2698,10 @@
       "E8",
       "E3"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E3",
+     "perdedor": "E8",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consFinal",
@@ -2709,13 +2709,13 @@
      "nom": "Final consolació · 5è i 6è lloc",
      "sigla": "5è/6è",
      "equips": [
-      null,
-      null
+      "E6",
+      "E3"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consTercero",
@@ -2723,13 +2723,13 @@
      "nom": "7è i 8è lloc",
      "sigla": "7è/8è",
      "equips": [
-      null,
-      null
+      "E1",
+      "E8"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "puesto9",
@@ -2749,8 +2749,8 @@
    "posicions": [
     "E10",
     "E7",
-    null,
-    null,
+    "E9",
+    "E2",
     null,
     null,
     null,
@@ -2761,6 +2761,8 @@
    "punts": {
     "E10": 70,
     "E7": 54,
+    "E9": 48,
+    "E2": 42,
     "E4": 10,
     "E5": 5
    }
@@ -2878,7 +2880,7 @@
      ],
      "guanyador": "E4",
      "perdedor": "E7",
-     "marcador": "3-1",
+     "marcador": "1-3",
      "estat": "jugat"
     },
     {
@@ -4415,21 +4417,21 @@
    "posicio": 2
   },
   {
+   "id": "E2",
+   "nom": "Passa directament",
+   "punts": 236,
+   "posicio": 3
+  },
+  {
    "id": "E4",
    "nom": "Vaig molt cremat",
    "punts": 225,
-   "posicio": 3
+   "posicio": 4
   },
   {
    "id": "E1",
    "nom": "La Jee-peta",
    "punts": 208,
-   "posicio": 4
-  },
-  {
-   "id": "E2",
-   "nom": "Passa directament",
-   "punts": 194,
    "posicio": 5
   },
   {
@@ -4439,15 +4441,15 @@
    "posicio": 6
   },
   {
-   "id": "E8",
-   "nom": "Massumba y los mas zumbaos",
-   "punts": 154,
+   "id": "E9",
+   "nom": "Joga Vomito",
+   "punts": 170,
    "posicio": 7
   },
   {
-   "id": "E9",
-   "nom": "Joga Vomito",
-   "punts": 122,
+   "id": "E8",
+   "nom": "Massumba y los mas zumbaos",
+   "punts": 154,
    "posicio": 8
   },
   {
