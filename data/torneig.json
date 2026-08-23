@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-23T21:56:52+00:00",
+ "actualizado": "2026-08-23T22:31:13+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -2656,8 +2656,8 @@
       "E7",
       "E10"
      ],
-     "guanyador": "E7",
-     "perdedor": "E10",
+     "guanyador": "E10",
+     "perdedor": "E7",
      "marcador": "",
      "estat": "jugat"
     },
@@ -2747,8 +2747,8 @@
     }
    ],
    "posicions": [
-    "E7",
     "E10",
+    "E7",
     null,
     null,
     null,
@@ -2759,8 +2759,8 @@
     null
    ],
    "punts": {
-    "E7": 70,
-    "E10": 54
+    "E10": 70,
+    "E7": 54
    }
   },
   {
@@ -4401,15 +4401,15 @@
  ],
  "general": [
   {
-   "id": "E7",
-   "nom": "Esperando a los Palomos",
-   "punts": 262,
+   "id": "E10",
+   "nom": "La Once",
+   "punts": 277,
    "posicio": 1
   },
   {
-   "id": "E10",
-   "nom": "La Once",
-   "punts": 261,
+   "id": "E7",
+   "nom": "Esperando a los Palomos",
+   "punts": 246,
    "posicio": 2
   },
   {
