@@ -902,7 +902,7 @@ function renderRiscCullera(analisi) {
   const punts = el("div", "risc-punts");
   for (const [etiqueta, valor] of [
     ["Mínim", analisi.punts.minim],
-    ["Esperats", analisi.punts.esperats],
+    ["Mitjana model", analisi.punts.esperats],
     ["Màxim", analisi.punts.maxim],
   ]) {
     const item = el("div", "risc-punt");
@@ -916,8 +916,8 @@ function renderRiscCullera(analisi) {
     "p",
     "risc-model",
     analisi.risc.definitiu
-      ? "Resultat matemàtic amb tots els finals encara possibles."
-      : `Estimació neutral sobre ${analisi.risc.iteracions.toLocaleString("ca-ES")} finals: cada partit pendent és 50/50.`
+      ? "Resultat matemàtic dins del model: Diablos té un 0% de victòria a futbol sala; la resta de partits pendents són 50/50."
+      : `Model de ${analisi.risc.iteracions.toLocaleString("ca-ES")} finals: Diablos té un 0% de victòria a futbol sala; la resta de partits pendents són 50/50.`
   ));
 
   if (analisi.diferencia) {
@@ -928,17 +928,35 @@ function renderRiscCullera(analisi) {
     ));
   }
 
-  if (analisi.impactes.length) {
-    cos.appendChild(el("h3", "risc-subtitol", "El que més redueix el risc"));
-    const llista = el("ul", "risc-impactes");
-    for (const impacte of analisi.impactes) {
-      const item = el("li");
-      item.appendChild(el("span", null, impacte.text));
-      item.appendChild(el(
-        "strong",
-        null,
-        `−${(impacte.canvi * 100).toLocaleString("ca-ES", { maximumFractionDigits: 1 })} punts de risc`
-      ));
+  cos.appendChild(el("h3", "risc-subtitol", "Què ha de passar"));
+  if (analisi.exempleSalvacio) {
+    const exemple = el("div", "risc-exemple");
+    exemple.appendChild(el(
+      "strong",
+      null,
+      `Un final que ens salva: Diablos ${analisi.exempleSalvacio.puntsPropis} · ${analisi.exempleSalvacio.rivalNom} ${analisi.exempleSalvacio.puntsRival}`
+    ));
+    exemple.appendChild(el("p", null, "Entre altres resultats, en aquest final passa això:"));
+    const condicions = el("ul", "risc-condicions");
+    for (const condicio of analisi.exempleSalvacio.condicions) {
+      condicions.appendChild(el("li", null, condicio.text));
+    }
+    exemple.appendChild(condicions);
+    cos.appendChild(exemple);
+  } else {
+    cos.appendChild(el("p", "risc-seguretat", "El model no ha trobat cap final que ens tregui de l'últim lloc."));
+  }
+
+  if (analisi.rutes.length) {
+    cos.appendChild(el("h3", "risc-subtitol", "Dues condicions que més ajuden"));
+    cos.appendChild(el("p", "risc-model", "No garanteixen salvar-nos totes soles; indiquem el risc que queda quan passen totes dues."));
+    const llista = el("div", "risc-rutes");
+    for (const ruta of analisi.rutes) {
+      const item = el("div", "risc-ruta");
+      const condicions = el("ul", "risc-condicions");
+      ruta.condicions.forEach((condicio) => condicions.appendChild(el("li", null, condicio.text)));
+      item.appendChild(condicions);
+      item.appendChild(el("strong", "risc-ruta-resultat", `Risc si passa: ${ruta.risc.etiqueta}`));
       llista.appendChild(item);
     }
     cos.appendChild(llista);
@@ -954,7 +972,7 @@ function pintarRiscCullera() {
   targeta.hidden = !torneig || !equipId;
   if (!torneig || !equipId) return;
 
-  const clau = `${torneig.actualizado || ""}:${equipId}`;
+  const clau = `${torneig.actualizado || ""}:${equipId}:futbol-sala-0-v1`;
   if (clauRisc === clau && calculRisc) return;
   clauRisc = clau;
   $("#riscCulleraXifra").textContent = "";
@@ -963,7 +981,9 @@ function pintarRiscCullera() {
   cos.appendChild(el("p", "risc-carregant", "Calculant 50.000 finals possibles…"));
   targeta.setAttribute("aria-busy", "true");
 
-  calculRisc = analitzaRisc(torneig, equipId)
+  calculRisc = analitzaRisc(torneig, equipId, {
+    probabilitats: { [`futbol-sala:${equipId}`]: 0 },
+  })
     .then((analisi) => {
       if (clauRisc !== clau) return;
       renderRiscCullera(analisi);

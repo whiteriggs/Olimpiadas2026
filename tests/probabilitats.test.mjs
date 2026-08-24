@@ -126,3 +126,62 @@ test("cedeix mentre calcula els rangs exactes", async () => {
 
   assert.ok(cessions > 0);
 });
+
+test("una probabilitat zero fa perdre tots els partits pendents de futbol sala", () => {
+  const torneig = torneigQuadre();
+  torneig.esports[0].id = "futbol-sala";
+  torneig.esports[0].nom = "Futbol sala";
+
+  const final = simulaFinal(torneig, creaAleatori(7), {
+    probabilitats: { "futbol-sala:E6": 0 },
+  });
+
+  assert.equal(final.esports[0].posicions.indexOf("E6"), 7);
+  assert.equal(final.esports[0].punts.E6, 11);
+});
+
+test("el rang exacte també respecta el zero per cent de futbol sala", async () => {
+  const torneig = torneigQuadre();
+  torneig.esports[0].id = "futbol-sala";
+  torneig.esports[0].nom = "Futbol sala";
+
+  const analisi = await analitzaRisc(torneig, "E6", {
+    iteracions: 20,
+    cedeix: async () => {},
+    probabilitats: { "futbol-sala:E6": 0 },
+  });
+
+  assert.deepEqual(
+    { minim: analisi.punts.minim, maxim: analisi.punts.maxim },
+    { minim: 11, maxim: 11 }
+  );
+});
+
+test("proposa rutes que combinen un resultat propi i un del rival immediat", async () => {
+  const torneig = torneigClassificacio(Array(10).fill(null));
+  torneig.esports.push({
+    ...structuredClone(torneig.esports[0]),
+    id: "atletismo",
+    nom: "Atletisme",
+  });
+  torneig.equips.find((equip) => equip.id === "E5").nom = "Yayo Vallecano";
+  torneig.general = torneig.equips.map((equip) => ({
+    ...equip,
+    punts: equip.id === "E5" ? 1 : equip.id === "E6" ? 0 : 10,
+    posicio: equip.id === "E6" ? 10 : equip.id === "E5" ? 9 : 1,
+  }));
+
+  const analisi = await analitzaRisc(torneig, "E6", {
+    iteracions: 5000,
+    cedeix: async () => {},
+  });
+
+  assert.ok(analisi.rutes.length > 0);
+  assert.ok(analisi.rutes.every((ruta) =>
+    ruta.condicions.some((condicio) => condicio.equipId === "E6") &&
+    ruta.condicions.some((condicio) => condicio.equipId === "E5")
+  ));
+  assert.ok(analisi.exempleSalvacio);
+  assert.ok(analisi.exempleSalvacio.puntsPropis > analisi.exempleSalvacio.puntsRival);
+  assert.ok(analisi.exempleSalvacio.condicions.length > 0);
+});

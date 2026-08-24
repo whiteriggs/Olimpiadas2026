@@ -52,7 +52,16 @@ function participantsPartit(id, originals, resolts) {
   return deriva[id]();
 }
 
-function completaQuadre(esport, aleatori, guanyadors) {
+function triaGuanyador(esportId, equips, aleatori, probabilitats) {
+  for (const [index, equip] of equips.entries()) {
+    const clau = `${esportId}:${equip}`;
+    if (!Object.hasOwn(probabilitats, clau)) continue;
+    return aleatori() < probabilitats[clau] ? equip : equips[1 - index];
+  }
+  return equips[aleatori() < 0.5 ? 0 : 1];
+}
+
+function completaQuadre(esport, aleatori, guanyadors, probabilitats = {}) {
   const originals = new Map(esport.partits.map((partit) => [partit.id, partit]));
   const resolts = new Map();
 
@@ -64,7 +73,7 @@ function completaQuadre(esport, aleatori, guanyadors) {
     const publicat = original.guanyador;
     const guanyador = equips.includes(publicat)
       ? publicat
-      : equips.includes(forcat) ? forcat : equips[aleatori() < 0.5 ? 0 : 1];
+      : equips.includes(forcat) ? forcat : triaGuanyador(esport.id, equips, aleatori, probabilitats);
     const perdedor = guanyador === equips[0] ? equips[1] : equips[0];
     resolts.set(id, {
       ...original,
@@ -114,8 +123,9 @@ function completaClassificacio(esport, equips, aleatori, llocs) {
 export function simulaFinal(torneig, aleatori, condicions = {}) {
   const guanyadors = condicions.guanyadors || {};
   const llocs = condicions.llocs || {};
+  const probabilitats = condicions.probabilitats || {};
   const esports = torneig.esports.map((esport) => esport.format === "quadre"
-    ? completaQuadre(esport, aleatori, guanyadors)
+    ? completaQuadre(esport, aleatori, guanyadors, probabilitats)
     : completaClassificacio(esport, torneig.equips, aleatori, llocs));
   const totals = Object.fromEntries(torneig.equips.map((equip) => [equip.id, 0]));
   esports.forEach((esport) => {
@@ -167,7 +177,7 @@ export function calculaRang(torneig, equipId) {
   return rangsExactes(torneig)[equipId];
 }
 
-async function rangsExactesPerLots(torneig, cedeix) {
+async function rangsExactesPerLots(torneig, cedeix, probabilitats) {
   const rangs = Object.fromEntries(torneig.equips.map((equip) => [equip.id, {
     minim: 0,
     maxim: 0,
@@ -191,7 +201,7 @@ async function rangsExactesPerLots(torneig, cedeix) {
       for (let mascara = 0; mascara < combinacions; mascara += 1) {
         let bit = 0;
         const aleatori = () => ((mascara >> bit++) & 1) ? 0.75 : 0.25;
-        const final = completaQuadre(esport, aleatori, {});
+        const final = completaQuadre(esport, aleatori, {}, probabilitats);
         final.posicions.forEach((equip, index) => {
           possibles[equip].add(esport.taulaPunts[index]);
         });
@@ -208,7 +218,7 @@ async function rangsExactesPerLots(torneig, cedeix) {
   return rangs;
 }
 
-function llavorTorneig(torneig) {
+function llavorTorneig(torneig, probabilitats = {}) {
   const dades = JSON.stringify({
     equips: torneig.equips.map((equip) => equip.id),
     esports: torneig.esports.map((esport) => ({
@@ -217,6 +227,7 @@ function llavorTorneig(torneig) {
       partits: esport.partits.map((partit) => [partit.id, partit.equips, partit.guanyador]),
       posicions: esport.posicions,
     })),
+    probabilitats,
   });
   let hash = 2166136261;
   for (let index = 0; index < dades.length; index += 1) {
@@ -282,8 +293,10 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
   const iteracions = opcions.iteracions || 50000;
   const midaLot = opcions.midaLot || 500;
   const cedeix = opcions.cedeix || (() => new Promise((resolve) => setTimeout(resolve, 0)));
-  const aleatori = creaAleatori(llavorTorneig(torneig));
-  const rangs = await rangsExactesPerLots(torneig, cedeix);
+  const probabilitats = opcions.probabilitats || {};
+  const aleatori = creaAleatori(llavorTorneig(torneig, probabilitats));
+  const rangs = await rangsExactesPerLots(torneig, cedeix, probabilitats);
+  const esportsOriginals = new Map(torneig.esports.map((esport) => [esport.id, esport]));
   const originalsPerEsport = new Map(torneig.esports.map((esport) => [
     esport.id,
     new Map(esport.partits.map((partit) => [partit.id, partit])),
@@ -291,15 +304,57 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
   let casos = 0;
   let sumaPunts = 0;
   const impactes = new Map();
+  const combinacions = new Map();
+  let exempleSalvacio = null;
+  const diferencia = diferenciaActual(torneig, equipId);
+  const rivalId = diferencia?.rivalId || null;
+  const nomEquip = (id) => torneig.equips.find((equip) => equip.id === id)?.nom || id;
+  const ordinal = (lloc) => `${lloc}${["", "r", "n", "r", "t"][lloc] || "è"}`;
 
   for (let index = 0; index < iteracions; index += 1) {
-    const final = simulaFinal(torneig, aleatori);
+    const final = simulaFinal(torneig, aleatori, { probabilitats });
     const punts = final.totals[equipId];
     const cullera = punts === Math.min(...Object.values(final.totals));
     if (cullera) casos += 1;
     sumaPunts += punts;
+    if (!cullera && (!exempleSalvacio || punts < exempleSalvacio.puntsPropis)) {
+      const [rivalSalvat] = Object.entries(final.totals)
+        .filter(([id, total]) => id !== equipId && total < punts)
+        .sort((a, b) => b[1] - a[1]);
+      if (rivalSalvat) {
+        const [idRival, puntsRival] = rivalSalvat;
+        const condicions = final.esports
+          .map((esportFinal, esportIndex) => {
+            const esportOriginal = torneig.esports[esportIndex];
+            const llocPropi = esportFinal.posicions.indexOf(equipId);
+            const llocRival = esportFinal.posicions.indexOf(idRival);
+            const diferenciaPunts = esportFinal.punts[equipId] - esportFinal.punts[idRival];
+            const totsFixats = esportOriginal.posicions.includes(equipId) &&
+              esportOriginal.posicions.includes(idRival);
+            if (diferenciaPunts <= 0 || totsFixats) return null;
+            return {
+              esportId: esportFinal.id,
+              diferenciaPunts,
+              text: `${esportFinal.nom}: ${nomEquip(equipId)} ${ordinal(llocPropi + 1)} i ${nomEquip(idRival)} ${ordinal(llocRival + 1)}`,
+            };
+          })
+          .filter(Boolean)
+          .sort((a, b) => b.diferenciaPunts - a.diferenciaPunts)
+          .slice(0, 4);
+        exempleSalvacio = {
+          rivalId: idRival,
+          rivalNom: nomEquip(idRival),
+          puntsPropis: punts,
+          puntsRival,
+          condicions,
+        };
+      }
+    }
+    const propis = [];
+    const rivals = [];
 
     for (const esportFinal of final.esports) {
+      const esportOriginal = esportsOriginals.get(esportFinal.id);
       const originals = originalsPerEsport.get(esportFinal.id);
       if (esportFinal.format === "quadre") {
         for (const partit of esportFinal.partits) {
@@ -327,6 +382,35 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
         if (cullera) comptador.culleres += 1;
         impactes.set(clau, comptador);
       }
+      const llocPropi = esportFinal.posicions.indexOf(equipId);
+      const llocPropiFixat = esportOriginal.posicions.includes(equipId);
+      if (!llocPropiFixat && llocPropi < 5) {
+        propis.push({
+          clau: `lloc:${esportFinal.id}:${equipId}:${llocPropi}`,
+          equipId,
+          text: `${nomEquip(equipId)} queda ${ordinal(llocPropi + 1)} a ${esportFinal.nom}`,
+        });
+      }
+      const llocRival = rivalId ? esportFinal.posicions.indexOf(rivalId) : -1;
+      const llocRivalFixat = rivalId && esportOriginal.posicions.includes(rivalId);
+      if (rivalId && !llocRivalFixat && llocRival >= 5) {
+        rivals.push({
+          clau: `lloc:${esportFinal.id}:${rivalId}:${llocRival}`,
+          equipId: rivalId,
+          text: `${nomEquip(rivalId)} queda ${ordinal(llocRival + 1)} a ${esportFinal.nom}`,
+        });
+      }
+    }
+    for (const propi of propis) {
+      for (const rival of rivals) {
+        const clau = `${propi.clau}|${rival.clau}`;
+        const comptador = combinacions.get(clau) || {
+          condicions: [propi, rival], casos: 0, culleres: 0,
+        };
+        comptador.casos += 1;
+        if (cullera) comptador.culleres += 1;
+        combinacions.set(clau, comptador);
+      }
     }
     if ((index + 1) % midaLot === 0 && index + 1 < iteracions) await cedeix();
   }
@@ -337,7 +421,6 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
   const segurSi = rivals.every(([, rang]) => rangs[equipId].maxim <= rang.minim);
   const probabilitat = segurNo ? 0 : segurSi ? 1 : probabilitatMostra;
   const definitiu = segurNo || segurSi;
-  const nomEquip = (id) => torneig.equips.find((equip) => equip.id === id)?.nom || id;
   const millores = [...impactes.values()]
     .filter((impacte) => impacte.casos > 0)
     .map((impacte) => ({
@@ -349,6 +432,23 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
     }))
     .filter((impacte) => impacte.canvi > 0.0005)
     .sort((a, b) => b.canvi - a.canvi)
+    .slice(0, 3);
+  const rutes = [...combinacions.values()]
+    .filter((combinacio) => combinacio.casos >= Math.max(20, iteracions * 0.005))
+    .map((combinacio) => {
+      const probabilitat = combinacio.culleres / combinacio.casos;
+      return {
+        condicions: combinacio.condicions,
+        risc: {
+          probabilitat,
+          etiqueta: etiquetaPercentatge(probabilitat, false),
+        },
+        canvi: probabilitatMostra - probabilitat,
+        frequencia: combinacio.casos / iteracions,
+      };
+    })
+    .filter((ruta) => ruta.canvi > 0.005)
+    .sort((a, b) => b.canvi - a.canvi || b.frequencia - a.frequencia)
     .slice(0, 3);
 
   return {
@@ -364,8 +464,10 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
       definitiu,
       etiqueta: etiquetaPercentatge(probabilitat, definitiu),
     },
-    diferencia: diferenciaActual(torneig, equipId),
+    diferencia,
     impactes: millores,
+    rutes,
+    exempleSalvacio,
     seguretat: resumSeguretat(rangs, equipId, nomEquip),
   };
 }
