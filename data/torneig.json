@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-23T23:56:11+00:00",
+ "actualizado": "2026-08-24T20:53:26+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -682,10 +682,10 @@
       "E2",
       "E4"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E4",
+     "perdedor": "E2",
+     "marcador": "0-2",
+     "estat": "jugat"
     },
     {
      "id": "tercerPuesto",
@@ -696,10 +696,10 @@
       "E1",
       "E10"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E1",
+     "perdedor": "E10",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consSf1",
@@ -738,10 +738,10 @@
       "E7",
       "E6"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E7",
+     "perdedor": "E6",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consTercero",
@@ -752,10 +752,10 @@
       "E8",
       "E5"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E8",
+     "perdedor": "E5",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "puesto9",
@@ -773,18 +773,26 @@
     }
    ],
    "posicions": [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    "E4",
+    "E2",
+    "E1",
+    "E10",
+    "E7",
+    "E6",
+    "E8",
+    "E5",
     "E3",
     "E9"
    ],
    "punts": {
+    "E4": 70,
+    "E2": 54,
+    "E1": 48,
+    "E10": 42,
+    "E7": 30,
+    "E6": 25,
+    "E8": 20,
+    "E5": 15,
     "E3": 10,
     "E9": 5
    }
@@ -2726,10 +2734,10 @@
       "E1",
       "E8"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E8",
+     "perdedor": "E1",
+     "marcador": "11-27",
+     "estat": "jugat"
     },
     {
      "id": "puesto9",
@@ -2753,8 +2761,8 @@
     "E2",
     null,
     null,
-    null,
-    null,
+    "E8",
+    "E1",
     "E4",
     "E5"
    ],
@@ -2763,6 +2771,8 @@
     "E7": 54,
     "E9": 48,
     "E2": 42,
+    "E8": 20,
+    "E1": 15,
     "E4": 10,
     "E5": 5
    }
@@ -2906,10 +2916,10 @@
       "E4",
       "E8"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E4",
+     "perdedor": "E8",
+     "marcador": "3-0",
+     "estat": "jugat"
     },
     {
      "id": "tercerPuesto",
@@ -2997,8 +3007,8 @@
     }
    ],
    "posicions": [
-    null,
-    null,
+    "E4",
+    "E8",
     null,
     null,
     null,
@@ -3008,7 +3018,10 @@
     null,
     null
    ],
-   "punts": {}
+   "punts": {
+    "E4": 70,
+    "E8": 54
+   }
   },
   {
    "id": "domino",
@@ -4405,63 +4418,63 @@
  ],
  "general": [
   {
-   "id": "E10",
-   "nom": "La Once",
-   "punts": 277,
+   "id": "E4",
+   "nom": "Vaig molt cremat",
+   "punts": 365,
    "posicio": 1
   },
   {
-   "id": "E7",
-   "nom": "Esperando a los Palomos",
-   "punts": 246,
+   "id": "E10",
+   "nom": "La Once",
+   "punts": 319,
    "posicio": 2
   },
   {
    "id": "E2",
    "nom": "Passa directament",
-   "punts": 236,
+   "punts": 290,
    "posicio": 3
   },
   {
-   "id": "E4",
-   "nom": "Vaig molt cremat",
-   "punts": 225,
+   "id": "E7",
+   "nom": "Esperando a los Palomos",
+   "punts": 276,
    "posicio": 4
   },
   {
    "id": "E1",
    "nom": "La Jee-peta",
-   "punts": 208,
+   "punts": 271,
    "posicio": 5
+  },
+  {
+   "id": "E8",
+   "nom": "Massumba y los mas zumbaos",
+   "punts": 248,
+   "posicio": 6
   },
   {
    "id": "E3",
    "nom": "Olimpiakojos",
    "punts": 183,
-   "posicio": 6
+   "posicio": 7
   },
   {
    "id": "E9",
    "nom": "Joga Vomito",
    "punts": 170,
-   "posicio": 7
-  },
-  {
-   "id": "E8",
-   "nom": "Massumba y los mas zumbaos",
-   "punts": 154,
    "posicio": 8
   },
   {
    "id": "E5",
    "nom": "Yayo Vallecano",
-   "punts": 118,
+   "punts": 133,
    "posicio": 9
   },
   {
    "id": "E6",
    "nom": "Diablos",
-   "punts": 95,
+   "punts": 120,
    "posicio": 10
   }
  ],
