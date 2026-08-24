@@ -120,13 +120,49 @@ function completaClassificacio(esport, equips, aleatori, llocs) {
   };
 }
 
+function completaEsport(esport, torneig, aleatori, condicions) {
+  const provisionals = condicions.posicionsProvisionals?.[esport.id];
+  const equipId = condicions.equipProvisional;
+  const jaOficial = equipId && esport.posicions.includes(equipId);
+  if (!provisionals?.length || !equipId || jaOficial) {
+    return esport.format === "quadre"
+      ? completaQuadre(esport, aleatori, condicions.guanyadors, condicions.probabilitats)
+      : completaClassificacio(esport, torneig.equips, aleatori, condicions.llocs);
+  }
+
+  if (esport.format === "classificacio") {
+    const possibles = provisionals.filter((lloc) => !esport.posicions[lloc]);
+    if (!possibles.length) {
+      throw new Error(`Posició provisional impossible a ${esport.nom}`);
+    }
+    const lloc = possibles[Math.floor(aleatori() * possibles.length)];
+    return completaClassificacio(esport, torneig.equips, aleatori, {
+      ...condicions.llocs,
+      [`${esport.id}:${equipId}`]: lloc,
+    });
+  }
+
+  for (let intent = 0; intent < 1024; intent += 1) {
+    const final = completaQuadre(
+      esport,
+      aleatori,
+      condicions.guanyadors,
+      condicions.probabilitats
+    );
+    if (provisionals.includes(final.posicions.indexOf(equipId))) return final;
+  }
+  throw new Error(`Posició provisional impossible a ${esport.nom}`);
+}
+
 export function simulaFinal(torneig, aleatori, condicions = {}) {
-  const guanyadors = condicions.guanyadors || {};
-  const llocs = condicions.llocs || {};
-  const probabilitats = condicions.probabilitats || {};
-  const esports = torneig.esports.map((esport) => esport.format === "quadre"
-    ? completaQuadre(esport, aleatori, guanyadors, probabilitats)
-    : completaClassificacio(esport, torneig.equips, aleatori, llocs));
+  const completes = {
+    ...condicions,
+    guanyadors: condicions.guanyadors || {},
+    llocs: condicions.llocs || {},
+    probabilitats: condicions.probabilitats || {},
+  };
+  const esports = torneig.esports.map((esport) =>
+    completaEsport(esport, torneig, aleatori, completes));
   const totals = Object.fromEntries(torneig.equips.map((equip) => [equip.id, 0]));
   esports.forEach((esport) => {
     Object.entries(esport.punts).forEach(([equip, punts]) => { totals[equip] += punts; });
@@ -177,7 +213,13 @@ export function calculaRang(torneig, equipId) {
   return rangsExactes(torneig)[equipId];
 }
 
-async function rangsExactesPerLots(torneig, cedeix, probabilitats) {
+async function rangsExactesPerLots(
+  torneig,
+  cedeix,
+  probabilitats,
+  posicionsProvisionals = {},
+  equipProvisional = null
+) {
   const rangs = Object.fromEntries(torneig.equips.map((equip) => [equip.id, {
     minim: 0,
     maxim: 0,
@@ -185,14 +227,28 @@ async function rangsExactesPerLots(torneig, cedeix, probabilitats) {
 
   for (const esport of torneig.esports) {
     const possibles = Object.fromEntries(torneig.equips.map((equip) => [equip.id, new Set()]));
+    const provisionals = posicionsProvisionals[esport.id];
+    const aplicaProvisional = provisionals?.length &&
+      equipProvisional && !esport.posicions.includes(equipProvisional);
     if (esport.format === "classificacio") {
       const ocupats = new Set(esport.posicions.filter(Boolean));
       const forats = esport.posicions
         .map((equip, index) => equip ? null : index)
         .filter((index) => index !== null);
+      const provisionalsPossibles = aplicaProvisional
+        ? provisionals.filter((lloc) => forats.includes(lloc))
+        : [];
+      if (aplicaProvisional && !provisionalsPossibles.length) {
+        throw new Error(`Posició provisional impossible a ${esport.nom}`);
+      }
       for (const equip of torneig.equips) {
         const lloc = esport.posicions.indexOf(equip.id);
-        const llocs = lloc >= 0 ? [lloc] : ocupats.has(equip.id) ? [] : forats;
+        const llocs = lloc >= 0
+          ? [lloc]
+          : ocupats.has(equip.id) ? []
+            : aplicaProvisional && equip.id === equipProvisional
+              ? provisionalsPossibles
+              : forats;
         llocs.forEach((index) => possibles[equip.id].add(esport.taulaPunts[index]));
       }
     } else {
@@ -202,6 +258,10 @@ async function rangsExactesPerLots(torneig, cedeix, probabilitats) {
         let bit = 0;
         const aleatori = () => ((mascara >> bit++) & 1) ? 0.75 : 0.25;
         const final = completaQuadre(esport, aleatori, {}, probabilitats);
+        if (aplicaProvisional &&
+          !provisionals.includes(final.posicions.indexOf(equipProvisional))) {
+          continue;
+        }
         final.posicions.forEach((equip, index) => {
           possibles[equip].add(esport.taulaPunts[index]);
         });
@@ -210,6 +270,9 @@ async function rangsExactesPerLots(torneig, cedeix, probabilitats) {
     }
     for (const equip of torneig.equips) {
       const punts = [...possibles[equip.id]];
+      if (!punts.length) {
+        throw new Error(`No hi ha finals compatibles a ${esport.nom} per ${equip.id}`);
+      }
       rangs[equip.id].minim += Math.min(...punts);
       rangs[equip.id].maxim += Math.max(...punts);
     }
@@ -218,7 +281,7 @@ async function rangsExactesPerLots(torneig, cedeix, probabilitats) {
   return rangs;
 }
 
-function llavorTorneig(torneig, probabilitats = {}) {
+function llavorTorneig(torneig, probabilitats = {}, posicionsProvisionals = {}) {
   const dades = JSON.stringify({
     equips: torneig.equips.map((equip) => equip.id),
     esports: torneig.esports.map((esport) => ({
@@ -228,6 +291,7 @@ function llavorTorneig(torneig, probabilitats = {}) {
       posicions: esport.posicions,
     })),
     probabilitats,
+    posicionsProvisionals,
   });
   let hash = 2166136261;
   for (let index = 0; index < dades.length; index += 1) {
@@ -294,8 +358,15 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
   const midaLot = opcions.midaLot || 500;
   const cedeix = opcions.cedeix || (() => new Promise((resolve) => setTimeout(resolve, 0)));
   const probabilitats = opcions.probabilitats || {};
-  const aleatori = creaAleatori(llavorTorneig(torneig, probabilitats));
-  const rangs = await rangsExactesPerLots(torneig, cedeix, probabilitats);
+  const posicionsProvisionals = opcions.posicionsProvisionals || {};
+  const aleatori = creaAleatori(llavorTorneig(torneig, probabilitats, posicionsProvisionals));
+  const rangs = await rangsExactesPerLots(
+    torneig,
+    cedeix,
+    probabilitats,
+    posicionsProvisionals,
+    equipId
+  );
   const esportsOriginals = new Map(torneig.esports.map((esport) => [esport.id, esport]));
   const originalsPerEsport = new Map(torneig.esports.map((esport) => [
     esport.id,
@@ -305,6 +376,7 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
   let sumaPunts = 0;
   const impactes = new Map();
   const combinacions = new Map();
+  const partitsPendents = new Map();
   let exempleSalvacio = null;
   const diferencia = diferenciaActual(torneig, equipId);
   const rivalId = diferencia?.rivalId || null;
@@ -312,7 +384,11 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
   const ordinal = (lloc) => `${lloc}${["", "r", "n", "r", "t"][lloc] || "è"}`;
 
   for (let index = 0; index < iteracions; index += 1) {
-    const final = simulaFinal(torneig, aleatori, { probabilitats });
+    const final = simulaFinal(torneig, aleatori, {
+      probabilitats,
+      posicionsProvisionals,
+      equipProvisional: equipId,
+    });
     const punts = final.totals[equipId];
     const cullera = punts === Math.min(...Object.values(final.totals));
     if (cullera) casos += 1;
@@ -359,6 +435,25 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
       if (esportFinal.format === "quadre") {
         for (const partit of esportFinal.partits) {
           const original = originals.get(partit.id);
+          if (original?.estat === "pendent" && original.equips.every(Boolean)) {
+            const clauPartit = `${esportFinal.id}:${partit.id}`;
+            const comptadorPartit = partitsPendents.get(clauPartit) || {
+              esportId: esportFinal.id,
+              esportNom: esportFinal.nom,
+              partitId: partit.id,
+              partitNom: partit.sigla || partit.nom || partit.id,
+              equips: [...original.equips],
+              resultats: new Map(),
+            };
+            const resultat = comptadorPartit.resultats.get(partit.guanyador) || {
+              casos: 0,
+              culleres: 0,
+            };
+            resultat.casos += 1;
+            if (cullera) resultat.culleres += 1;
+            comptadorPartit.resultats.set(partit.guanyador, resultat);
+            partitsPendents.set(clauPartit, comptadorPartit);
+          }
           if (original?.guanyador || partit.guanyador !== equipId) continue;
           const clau = `${esportFinal.id}:${partit.id}`;
           const comptador = impactes.get(clau) || {
@@ -441,7 +536,7 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
         condicions: combinacio.condicions,
         risc: {
           probabilitat,
-          etiqueta: etiquetaPercentatge(probabilitat, false),
+          etiqueta: etiquetaPercentatge(probabilitat, definitiu),
         },
         canvi: probabilitatMostra - probabilitat,
         frequencia: combinacio.casos / iteracions,
@@ -450,6 +545,26 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
     .filter((ruta) => ruta.canvi > 0.005)
     .sort((a, b) => b.canvi - a.canvi || b.frequencia - a.frequencia)
     .slice(0, 3);
+  const partits = [...partitsPendents.values()].map((partit) => ({
+    esportId: partit.esportId,
+    esportNom: partit.esportNom,
+    partitId: partit.partitId,
+    partitNom: partit.partitNom,
+    equips: partit.equips,
+    resultats: [...partit.resultats.entries()].map(([guanyadorId, resultat]) => {
+      const probabilitat = resultat.culleres / resultat.casos;
+      return {
+        guanyadorId,
+        guanyadorNom: nomEquip(guanyadorId),
+        casos: resultat.casos,
+        risc: {
+          probabilitat,
+          etiqueta: etiquetaPercentatge(probabilitat, definitiu),
+        },
+        canvi: probabilitatMostra - probabilitat,
+      };
+    }),
+  }));
 
   return {
     punts: {
@@ -466,6 +581,7 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
     },
     diferencia,
     impactes: millores,
+    partits,
     rutes,
     exempleSalvacio,
     seguretat: resumSeguretat(rangs, equipId, nomEquip),

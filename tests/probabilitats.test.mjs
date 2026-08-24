@@ -185,3 +185,92 @@ test("proposa rutes que combinen un resultat propi i un del rival immediat", asy
   assert.ok(analisi.exempleSalvacio.puntsPropis > analisi.exempleSalvacio.puntsRival);
   assert.ok(analisi.exempleSalvacio.condicions.length > 0);
 });
+
+test("limita cada esport a les posicions provisionals de Diablos", async () => {
+  const torneig = torneigQuadre();
+  const provisionals = { petanca: [4, 5] };
+  const aleatori = creaAleatori(91);
+  const llocs = new Set();
+
+  for (let index = 0; index < 100; index += 1) {
+    const final = simulaFinal(torneig, aleatori, {
+      posicionsProvisionals: provisionals,
+      equipProvisional: "E6",
+    });
+    llocs.add(final.esports[0].posicions.indexOf("E6"));
+  }
+
+  assert.deepEqual([...llocs].sort(), [4, 5]);
+
+  const analisi = await analitzaRisc(torneig, "E6", {
+    iteracions: 100,
+    cedeix: async () => {},
+    posicionsProvisionals: provisionals,
+  });
+  assert.deepEqual(
+    { minim: analisi.punts.minim, maxim: analisi.punts.maxim },
+    { minim: 17, maxim: 20 }
+  );
+});
+
+test("compara el risc dels dos guanyadors de cada partit pendent", async () => {
+  const torneig = torneigQuadre();
+  const analisi = await analitzaRisc(torneig, "E6", {
+    iteracions: 5000,
+    cedeix: async () => {},
+  });
+  const quarts = analisi.partits.find((partit) =>
+    partit.esportId === "petanca" && partit.partitId === "qf4"
+  );
+
+  assert.deepEqual(quarts.equips.sort(), ["E4", "E6"]);
+  assert.equal(quarts.resultats.length, 2);
+  assert.ok(quarts.resultats.every((resultat) =>
+    resultat.guanyadorId && typeof resultat.risc.probabilitat === "number"
+  ));
+});
+
+test("els partits mostren cent per cent quan la cullera és definitiva", async () => {
+  const torneig = torneigQuadre();
+  torneig.esports[0].taulaPunts = Array(10).fill(5);
+  const analisi = await analitzaRisc(torneig, "E6", {
+    iteracions: 100,
+    cedeix: async () => {},
+  });
+
+  assert.equal(analisi.risc.definitiu, true);
+  assert.ok(analisi.partits.every((partit) =>
+    partit.resultats.every((resultat) => resultat.risc.etiqueta === "100%")
+  ));
+});
+
+test("una posició oficial substitueix la provisional", async () => {
+  const torneig = torneigClassificacio([
+    "E6", null, null, null, null, null, null, null, null, null,
+  ]);
+  const analisi = await analitzaRisc(torneig, "E6", {
+    iteracions: 20,
+    cedeix: async () => {},
+    posicionsProvisionals: { minigolf: [9] },
+  });
+
+  assert.deepEqual(
+    { minim: analisi.punts.minim, maxim: analisi.punts.maxim },
+    { minim: 40, maxim: 40 }
+  );
+});
+
+test("rebutja una posició provisional ocupada per un altre equip", async () => {
+  const torneig = torneigClassificacio([
+    "E1", null, null, null, null, null, null, null, null, null,
+  ]);
+
+  await assert.rejects(
+    analitzaRisc(torneig, "E6", {
+      iteracions: 20,
+      cedeix: async () => {},
+      posicionsProvisionals: { minigolf: [0] },
+    }),
+    /provisional impossible/i
+  );
+});

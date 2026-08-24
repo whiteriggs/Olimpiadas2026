@@ -695,16 +695,42 @@ body:has(.modal[open]) { overflow: hidden; }
   background: color-mix(in srgb, var(--verde-fons) 55%, transparent);
 }
 .risc-exemple > p { margin: 5px 0 7px; color: var(--gris); font-size: 0.84rem; }
+.risc-provisionals {
+  margin-top: 14px; padding: 11px 13px; border: 1px dashed var(--ambar);
+  border-radius: var(--radio-s); background: var(--ambar-fons);
+}
+.risc-provisionals > strong { display: block; margin-bottom: 6px; font-size: 0.86rem; }
 .risc-condicions { margin: 0; padding-left: 19px; font-size: 0.86rem; }
 .risc-condicions li + li { margin-top: 4px; }
 .risc-rutes { border-top: 1px solid var(--borde); }
 .risc-ruta { padding: 11px 0; border-bottom: 1px solid var(--borde); }
 .risc-ruta-resultat { display: block; margin-top: 6px; color: var(--ambar); font-size: 0.82rem; }
+.risc-conclusio {
+  margin: 0; padding: 11px 13px; border-left: 3px solid var(--rojo);
+  background: var(--rojo-fons); color: var(--rojo); font-size: 0.9rem;
+}
+.risc-esports { border-top: 1px solid var(--borde); }
+.risc-esport { border-bottom: 1px solid var(--borde); }
+.risc-esport summary {
+  display: flex; justify-content: space-between; gap: 12px; cursor: pointer;
+  padding: 11px 0; font-size: 0.9rem;
+}
+.risc-esport summary span { color: var(--gris); font-size: 0.78rem; }
+.risc-partit { padding: 0 0 12px 16px; }
+.risc-partit-nom { display: block; margin-bottom: 4px; font-size: 0.8rem; color: var(--gris); }
+.risc-resultat { display: flex; justify-content: space-between; gap: 12px; font-size: 0.82rem; }
+.risc-resultat + .risc-resultat { margin-top: 3px; }
+.risc-resultat strong { color: var(--gris); white-space: nowrap; }
+.risc-resultat strong.millora { color: var(--verde); }
+.risc-resultat strong.empitjora { color: var(--rojo); }
+.risc-fixat { display: block; margin-top: 4px; color: var(--gris); font-size: 0.72rem; }
 .risc-carregant { color: var(--gris); margin: 16px 0 0; }
 
 @media (max-width: 430px) {
   .risc-impactes li { display: block; }
   .risc-impactes strong { display: block; text-align: left; margin-top: 2px; white-space: normal; }
+  .risc-resultat { display: block; }
+  .risc-resultat strong { display: block; white-space: normal; }
 }
 
 .tabla tr.meu td { background: color-mix(in srgb, var(--oro) 16%, var(--superficie)); font-weight: 700; }

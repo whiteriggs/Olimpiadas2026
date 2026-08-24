@@ -40,6 +40,20 @@ const ESPORTS_EQUIP = new Set([
   "Waterpolo",
 ]);
 
+// Resultats que l'equip ja coneix però l'organització encara no ha publicat.
+// Són índexs zero-based; quan arriba la posició oficial el motor els ignora.
+const RESULTATS_PROVISIONALS = {
+  atletismo: [8, 9],
+  waterpolo: [5],
+  billar: [9],
+  futbolin: [7],
+  domino: [8, 9],
+  petanca: [4, 5],
+  tenis: [6, 7],
+  baloncesto: [4, 5],
+  dardos: [4, 5],
+};
+
 let cal = { pruebas: [], lligues: [], limites: [], avisos: [] };
 let torneig = null;
 let personas = [];
@@ -920,6 +934,24 @@ function renderRiscCullera(analisi) {
       : `Model de ${analisi.risc.iteracions.toLocaleString("ca-ES")} finals: Diablos té un 0% de victòria a futbol sala; la resta de partits pendents són 50/50.`
   ));
 
+  const provisionalsActius = torneig.esports.filter((esport) =>
+    RESULTATS_PROVISIONALS[esport.id] && !esport.posicions.includes(nosaltres())
+  );
+  if (provisionalsActius.length) {
+    const caixa = el("div", "risc-provisionals");
+    caixa.appendChild(el("strong", null, "Resultats avançats, encara no oficials"));
+    const llista = el("ul", "risc-condicions");
+    for (const esport of provisionalsActius) {
+      const llocs = RESULTATS_PROVISIONALS[esport.id];
+      const punts = llocs.map((lloc) => esport.taulaPunts[lloc]);
+      const rangLloc = llocs.map((lloc) => ordinal(lloc + 1)).join("–");
+      const rangPunts = [...new Set(punts)].sort((a, b) => a - b).join("–");
+      llista.appendChild(el("li", null, `${esport.nom}: ${rangLloc} · ${rangPunts} punts`));
+    }
+    caixa.appendChild(llista);
+    cos.appendChild(caixa);
+  }
+
   if (analisi.diferencia) {
     cos.appendChild(el(
       "p",
@@ -929,7 +961,12 @@ function renderRiscCullera(analisi) {
   }
 
   cos.appendChild(el("h3", "risc-subtitol", "Què ha de passar"));
-  if (analisi.exempleSalvacio) {
+  if (analisi.risc.definitiu && analisi.risc.probabilitat === 1) {
+    const conclusio = el("p", "risc-conclusio");
+    conclusio.appendChild(el("strong", null, "No hi ha cap combinació que ens salvi."));
+    conclusio.append(" Amb aquests resultats provisionals i perdent tots els partits de futbol sala, Diablos queda últim o empatat a últim en tots els finals possibles.");
+    cos.appendChild(conclusio);
+  } else if (analisi.exempleSalvacio) {
     const exemple = el("div", "risc-exemple");
     exemple.appendChild(el(
       "strong",
@@ -947,17 +984,39 @@ function renderRiscCullera(analisi) {
     cos.appendChild(el("p", "risc-seguretat", "El model no ha trobat cap final que ens tregui de l'últim lloc."));
   }
 
-  if (analisi.rutes.length) {
-    cos.appendChild(el("h3", "risc-subtitol", "Dues condicions que més ajuden"));
-    cos.appendChild(el("p", "risc-model", "No garanteixen salvar-nos totes soles; indiquem el risc que queda quan passen totes dues."));
-    const llista = el("div", "risc-rutes");
-    for (const ruta of analisi.rutes) {
-      const item = el("div", "risc-ruta");
-      const condicions = el("ul", "risc-condicions");
-      ruta.condicions.forEach((condicio) => condicions.appendChild(el("li", null, condicio.text)));
-      item.appendChild(condicions);
-      item.appendChild(el("strong", "risc-ruta-resultat", `Risc si passa: ${ruta.risc.etiqueta}`));
-      llista.appendChild(item);
+  if (analisi.partits.length) {
+    cos.appendChild(el("h3", "risc-subtitol", "Partit per partit"));
+    cos.appendChild(el("p", "risc-model", "Per cada resultat tornem a sumar els punts finals de tots els equips. Només apareixen partits amb els dos rivals ja coneguts."));
+    const perEsport = Map.groupBy(analisi.partits, (partit) => partit.esportNom);
+    const llista = el("div", "risc-esports");
+    for (const [esportNom, partits] of perEsport) {
+      const detall = el("details", "risc-esport");
+      const summary = el("summary");
+      summary.appendChild(el("strong", null, esportNom));
+      summary.appendChild(el("span", null, `${partits.length} ${partits.length === 1 ? "partit" : "partits"}`));
+      detall.appendChild(summary);
+      for (const partit of partits) {
+        const bloc = el("div", "risc-partit");
+        bloc.appendChild(el("strong", "risc-partit-nom", partit.partitNom));
+        for (const resultat of partit.resultats) {
+          const fila = el("div", "risc-resultat");
+          fila.appendChild(el("span", null, `Si guanya ${resultat.guanyadorNom}`));
+          const canvi = resultat.canvi * 100;
+          const descripcio = Math.abs(canvi) < 0.05
+            ? "no canvia"
+            : canvi > 0
+              ? `baixa ${canvi.toLocaleString("ca-ES", { maximumFractionDigits: 1 })} punts`
+              : `puja ${Math.abs(canvi).toLocaleString("ca-ES", { maximumFractionDigits: 1 })} punts`;
+          const valor = el("strong", canvi > 0.05 ? "millora" : canvi < -0.05 ? "empitjora" : "", `${resultat.risc.etiqueta} · ${descripcio}`);
+          fila.appendChild(valor);
+          bloc.appendChild(fila);
+        }
+        if (partit.resultats.length === 1) {
+          bloc.appendChild(el("span", "risc-fixat", "L'altre resultat contradiria els provisionals."));
+        }
+        detall.appendChild(bloc);
+      }
+      llista.appendChild(detall);
     }
     cos.appendChild(llista);
   }
@@ -972,7 +1031,7 @@ function pintarRiscCullera() {
   targeta.hidden = !torneig || !equipId;
   if (!torneig || !equipId) return;
 
-  const clau = `${torneig.actualizado || ""}:${equipId}:futbol-sala-0-v1`;
+  const clau = `${torneig.actualizado || ""}:${equipId}:provisionals-v2`;
   if (clauRisc === clau && calculRisc) return;
   clauRisc = clau;
   $("#riscCulleraXifra").textContent = "";
@@ -983,6 +1042,7 @@ function pintarRiscCullera() {
 
   calculRisc = analitzaRisc(torneig, equipId, {
     probabilitats: { [`futbol-sala:${equipId}`]: 0 },
+    posicionsProvisionals: RESULTATS_PROVISIONALS,
   })
     .then((analisi) => {
       if (clauRisc !== clau) return;
