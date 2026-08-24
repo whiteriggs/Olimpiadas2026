@@ -1,4 +1,5 @@
 import * as store from "./store.js";
+import { analitzaRisc } from "./probabilitats.js";
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -50,6 +51,8 @@ let esports = [];
 let esportsPerDia = new Map();
 const pastillasPorDia = new Map();
 let canvisSenseDesar = false;
+let clauRisc = null;
+let calculRisc = null;
 
 /* ---------- utilitats DOM ---------- */
 
@@ -891,6 +894,90 @@ async function desarAlineacio(evento) {
 
 /* ---------- punts ---------- */
 
+function renderRiscCullera(analisi) {
+  const cos = $("#riscCulleraCos");
+  vaciar(cos);
+  $("#riscCulleraXifra").textContent = analisi.risc.etiqueta;
+
+  const punts = el("div", "risc-punts");
+  for (const [etiqueta, valor] of [
+    ["Mínim", analisi.punts.minim],
+    ["Esperats", analisi.punts.esperats],
+    ["Màxim", analisi.punts.maxim],
+  ]) {
+    const item = el("div", "risc-punt");
+    item.appendChild(el("span", null, etiqueta));
+    item.appendChild(el("strong", null, `${valor} p`));
+    punts.appendChild(item);
+  }
+  cos.appendChild(punts);
+
+  cos.appendChild(el(
+    "p",
+    "risc-model",
+    analisi.risc.definitiu
+      ? "Resultat matemàtic amb tots els finals encara possibles."
+      : `Estimació neutral sobre ${analisi.risc.iteracions.toLocaleString("ca-ES")} finals: cada partit pendent és 50/50.`
+  ));
+
+  if (analisi.diferencia) {
+    cos.appendChild(el(
+      "p",
+      "risc-diferencia",
+      `Ara ens calen ${analisi.diferencia.punts} punts per superar ${analisi.diferencia.rivalNom}.`
+    ));
+  }
+
+  if (analisi.impactes.length) {
+    cos.appendChild(el("h3", "risc-subtitol", "El que més redueix el risc"));
+    const llista = el("ul", "risc-impactes");
+    for (const impacte of analisi.impactes) {
+      const item = el("li");
+      item.appendChild(el("span", null, impacte.text));
+      item.appendChild(el(
+        "strong",
+        null,
+        `−${(impacte.canvi * 100).toLocaleString("ca-ES", { maximumFractionDigits: 1 })} punts de risc`
+      ));
+      llista.appendChild(item);
+    }
+    cos.appendChild(llista);
+  }
+
+  cos.appendChild(el("h3", "risc-subtitol", "Seguretat total"));
+  cos.appendChild(el("p", "risc-seguretat", analisi.seguretat.text));
+}
+
+function pintarRiscCullera() {
+  const targeta = $("#riscCullera");
+  const equipId = nosaltres();
+  targeta.hidden = !torneig || !equipId;
+  if (!torneig || !equipId) return;
+
+  const clau = `${torneig.actualizado || ""}:${equipId}`;
+  if (clauRisc === clau && calculRisc) return;
+  clauRisc = clau;
+  $("#riscCulleraXifra").textContent = "";
+  const cos = $("#riscCulleraCos");
+  vaciar(cos);
+  cos.appendChild(el("p", "risc-carregant", "Calculant 50.000 finals possibles…"));
+  targeta.setAttribute("aria-busy", "true");
+
+  calculRisc = analitzaRisc(torneig, equipId)
+    .then((analisi) => {
+      if (clauRisc !== clau) return;
+      renderRiscCullera(analisi);
+    })
+    .catch(() => {
+      if (clauRisc !== clau) return;
+      vaciar(cos);
+      cos.appendChild(el("p", "vacio", "No s'ha pogut calcular els finals possibles."));
+    })
+    .finally(() => {
+      if (clauRisc === clau) targeta.removeAttribute("aria-busy");
+    });
+}
+
 function pintarPunts() {
   const estat = $("#nostreEstat");
   vaciar(estat);
@@ -936,6 +1023,8 @@ function pintarPunts() {
       el("p", "aviso", "Encara no sé quin equip som: falta que l'organització posi els noms del sorteig.")
     );
   }
+
+  pintarRiscCullera();
 
   const cap = tabla.createTHead().insertRow();
   for (const t of ["#", "Equip", "Punts"]) cap.appendChild(el("th", null, t));

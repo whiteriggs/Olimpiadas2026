@@ -1,13 +1,14 @@
 // Xarxa primer i memòria com a reserva: així el calendari sempre surt actualitzat
 // si hi ha cobertura, i la web segueix funcionant sense connexió.
 
-const CAU = "olimpiades2026-v40";
+const CAU = "olimpiades2026-v41";
 const BASE = [
   "./",
   "./index.html",
   "./styles.css",
   "./config.js",
   "./js/app.js",
+  "./js/probabilitats.js",
   "./js/store.js",
   "./data/calendario.json",
   "./data/torneig.json",

@@ -659,6 +659,44 @@ body:has(.modal[open]) { overflow: hidden; }
 .tarjeta.destacada .seguent-etiqueta { color: var(--ambar); }
 .tarjeta.destacada .meta { font-size: 0.88rem; color: var(--gris); }
 
+.risc-cullera {
+  border-top: 3px solid var(--oro);
+  scroll-margin-top: calc(var(--barra) + var(--inset-dalt) + 12px);
+}
+.risc-cap {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+}
+.risc-cap h2 { margin: 2px 0 0; font-size: 1.25rem; }
+.risc-xifra {
+  font-size: clamp(2rem, 7vw, 3rem); line-height: 1; color: var(--ambar);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.risc-punts {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--borde); border-radius: var(--radio-s); margin-top: 16px;
+  background: var(--superficie-2);
+}
+.risc-punt { padding: 11px 12px; text-align: center; border-right: 1px solid var(--borde); }
+.risc-punt:last-child { border-right: 0; }
+.risc-punt span { display: block; color: var(--gris); font-size: 0.75rem; }
+.risc-punt strong { display: block; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.risc-model { margin: 12px 0 0; color: var(--gris); font-size: 0.82rem; }
+.risc-diferencia, .risc-seguretat { margin: 14px 0 0; }
+.risc-subtitol { margin: 18px 0 8px; font-size: 0.9rem; }
+.risc-impactes { list-style: none; padding: 0; margin: 0; }
+.risc-impactes li {
+  display: flex; justify-content: space-between; gap: 12px;
+  padding: 9px 0; border-bottom: 1px solid var(--borde); font-size: 0.86rem;
+}
+.risc-impactes li:last-child { border-bottom: 0; }
+.risc-impactes strong { color: var(--verde); text-align: right; white-space: nowrap; }
+.risc-carregant { color: var(--gris); margin: 16px 0 0; }
+
+@media (max-width: 430px) {
+  .risc-impactes li { display: block; }
+  .risc-impactes strong { display: block; text-align: left; margin-top: 2px; white-space: normal; }
+}
+
 .tabla tr.meu td { background: color-mix(in srgb, var(--oro) 16%, var(--superficie)); font-weight: 700; }
 
 .pastilla {
