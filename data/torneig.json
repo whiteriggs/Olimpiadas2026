@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-24T20:53:26+00:00",
+ "actualizado": "2026-08-24T23:19:50+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -4234,10 +4234,10 @@
       "E4",
       "E6"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E4",
+     "perdedor": "E6",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     }
    ],
    "posicions": [
@@ -4249,10 +4249,13 @@
     null,
     null,
     null,
-    null,
-    null
+    "E4",
+    "E6"
    ],
-   "punts": {}
+   "punts": {
+    "E4": 8,
+    "E6": 5
+   }
   },
   {
    "id": "minigolf",
@@ -4359,18 +4362,29 @@
    ],
    "partits": [],
    "posicions": [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null
+    "E10",
+    "E7",
+    "E3",
+    "E1",
+    "E9",
+    "E8",
+    "E4",
+    "E5",
+    "E6",
+    "E2"
    ],
-   "punts": {}
+   "punts": {
+    "E10": 50,
+    "E7": 37,
+    "E3": 33,
+    "E1": 29,
+    "E9": 25,
+    "E8": 21,
+    "E4": 17,
+    "E5": 13,
+    "E6": 9,
+    "E2": 5
+   }
   },
   {
    "id": "natacion",
@@ -4420,61 +4434,61 @@
   {
    "id": "E4",
    "nom": "Vaig molt cremat",
-   "punts": 365,
+   "punts": 390,
    "posicio": 1
   },
   {
    "id": "E10",
    "nom": "La Once",
-   "punts": 319,
+   "punts": 369,
    "posicio": 2
-  },
-  {
-   "id": "E2",
-   "nom": "Passa directament",
-   "punts": 290,
-   "posicio": 3
   },
   {
    "id": "E7",
    "nom": "Esperando a los Palomos",
-   "punts": 276,
-   "posicio": 4
+   "punts": 313,
+   "posicio": 3
   },
   {
    "id": "E1",
    "nom": "La Jee-peta",
-   "punts": 271,
+   "punts": 300,
+   "posicio": 4
+  },
+  {
+   "id": "E2",
+   "nom": "Passa directament",
+   "punts": 295,
    "posicio": 5
   },
   {
    "id": "E8",
    "nom": "Massumba y los mas zumbaos",
-   "punts": 248,
+   "punts": 269,
    "posicio": 6
   },
   {
    "id": "E3",
    "nom": "Olimpiakojos",
-   "punts": 183,
+   "punts": 216,
    "posicio": 7
   },
   {
    "id": "E9",
    "nom": "Joga Vomito",
-   "punts": 170,
+   "punts": 195,
    "posicio": 8
   },
   {
    "id": "E5",
    "nom": "Yayo Vallecano",
-   "punts": 133,
+   "punts": 146,
    "posicio": 9
   },
   {
    "id": "E6",
    "nom": "Diablos",
-   "punts": 120,
+   "punts": 134,
    "posicio": 10
   }
  ],
