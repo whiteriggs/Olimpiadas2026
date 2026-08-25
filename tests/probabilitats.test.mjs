@@ -157,6 +157,22 @@ test("el rang exacte també respecta el zero per cent de futbol sala", async () 
   );
 });
 
+test("el risc respecta un guanyador forçat abans de simular la resta", async () => {
+  const torneig = torneigQuadre();
+
+  const analisi = await analitzaRisc(torneig, "E6", {
+    iteracions: 20,
+    cedeix: async () => {},
+    guanyadors: { "petanca:qf4": "E6" },
+    probabilitats: { "petanca:E6": 0 },
+  });
+
+  assert.deepEqual(
+    { minim: analisi.punts.minim, maxim: analisi.punts.maxim },
+    { minim: 26, maxim: 26 }
+  );
+});
+
 test("proposa rutes que combinen un resultat propi i un del rival immediat", async () => {
   const torneig = torneigClassificacio(Array(10).fill(null));
   torneig.esports.push({

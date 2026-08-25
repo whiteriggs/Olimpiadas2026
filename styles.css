@@ -709,6 +709,24 @@ body:has(.modal[open]) { overflow: hidden; }
   margin: 0; padding: 11px 13px; border-left: 3px solid var(--rojo);
   background: var(--rojo-fons); color: var(--rojo); font-size: 0.9rem;
 }
+.risc-hazanya {
+  margin-top: 18px; padding: 13px; border: 1px solid var(--ambar);
+  border-radius: var(--radio-s); background: var(--ambar-fons);
+}
+.risc-hazanya > h3 { margin: 0; font-size: 1rem; }
+.risc-hazanya > .risc-model { margin-top: 5px; color: inherit; }
+.risc-hazanya-fila {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px;
+  align-items: center; padding-top: 12px; margin-top: 12px;
+  border-top: 1px solid color-mix(in srgb, var(--ambar) 55%, transparent);
+}
+.risc-hazanya-fila > div:first-child strong,
+.risc-hazanya-fila > div:first-child span { display: block; }
+.risc-hazanya-fila > div:first-child strong { font-size: 0.86rem; }
+.risc-hazanya-fila > div:first-child span { margin-top: 3px; font-size: 0.76rem; }
+.risc-hazanya-resultat { text-align: right; white-space: nowrap; }
+.risc-hazanya-resultat strong { display: block; font-size: 1.05rem; }
+.risc-hazanya-resultat span { display: block; font-size: 0.7rem; }
 .risc-esports { border-top: 1px solid var(--borde); }
 .risc-esport { border-bottom: 1px solid var(--borde); }
 .risc-esport summary {
@@ -731,6 +749,8 @@ body:has(.modal[open]) { overflow: hidden; }
   .risc-impactes strong { display: block; text-align: left; margin-top: 2px; white-space: normal; }
   .risc-resultat { display: block; }
   .risc-resultat strong { display: block; white-space: normal; }
+  .risc-hazanya-fila { display: block; }
+  .risc-hazanya-resultat { margin-top: 7px; text-align: left; white-space: normal; }
 }
 
 .tabla tr.meu td { background: color-mix(in srgb, var(--oro) 16%, var(--superficie)); font-weight: 700; }

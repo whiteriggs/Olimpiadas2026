@@ -908,7 +908,68 @@ async function desarAlineacio(evento) {
 
 /* ---------- punts ---------- */
 
-function renderRiscCullera(analisi) {
+function etiquetaSalvacio(analisi) {
+  const probabilitat = 1 - analisi.risc.probabilitat;
+  if (probabilitat === 0) return "0%";
+  if (probabilitat === 1) return "100%";
+  if (probabilitat < 0.001) return "<0,1%";
+  return `${(probabilitat * 100).toLocaleString("ca-ES", {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  })}%`;
+}
+
+async function calculaHazanyes(equipId) {
+  const joga = torneig.equips.find((equip) => equip.nom === "Joga Vomito");
+  const futbolSala = torneig.esports.find((esport) => esport.id === "futbol-sala");
+  const enfrontament = futbolSala?.partits.find((partit) =>
+    !partit.guanyador && partit.equips.includes(equipId) && partit.equips.includes(joga?.id)
+  );
+  if (!joga || !futbolSala || !enfrontament) return [];
+
+  const guanyadors = { [`${futbolSala.id}:${enfrontament.id}`]: equipId };
+  const base = {
+    iteracions: 20000,
+    posicionsProvisionals: RESULTATS_PROVISIONALS,
+  };
+  const jogaPerd = Object.fromEntries(
+    torneig.esports.map((esport) => [`${esport.id}:${joga.id}`, 0])
+  );
+  const escenaris = [
+    {
+      titol: "Guanyem a Joga i després perdem",
+      detall: "4t lloc a futbol sala.",
+      guanyadors,
+      probabilitats: { [`${futbolSala.id}:${equipId}`]: 0 },
+    },
+    {
+      titol: "Guanyem tots els partits de futbol sala",
+      detall: "Campions de futbol sala.",
+      guanyadors: {},
+      probabilitats: { [`${futbolSala.id}:${equipId}`]: 1 },
+    },
+    {
+      titol: "Guanyem a Joga i Joga perd els altres encreuaments",
+      detall: "Després perdem nosaltres; els altres resultats continuen al 50/50.",
+      guanyadors,
+      probabilitats: {
+        ...jogaPerd,
+        [`${futbolSala.id}:${equipId}`]: 0,
+      },
+    },
+  ];
+
+  return Promise.all(escenaris.map(async (escenari) => ({
+    ...escenari,
+    analisi: await analitzaRisc(torneig, equipId, {
+      ...base,
+      guanyadors: escenari.guanyadors,
+      probabilitats: escenari.probabilitats,
+    }),
+  })));
+}
+
+function renderRiscCullera(analisi, hazanyes) {
   const cos = $("#riscCulleraCos");
   vaciar(cos);
   $("#riscCulleraXifra").textContent = analisi.risc.etiqueta;
@@ -984,6 +1045,33 @@ function renderRiscCullera(analisi) {
     cos.appendChild(el("p", "risc-seguretat", "El model no ha trobat cap final que ens tregui de l'últim lloc."));
   }
 
+  if (hazanyes.length) {
+    const caixa = el("section", "risc-hazanya");
+    caixa.appendChild(el("h3", null, "Hazaña"));
+    caixa.appendChild(el(
+      "p",
+      "risc-model",
+      "El 100% és l'escenari realista. Aquestes opcions obliguen resultats que el model principal considera impossibles."
+    ));
+    for (const hazanya of hazanyes) {
+      const fila = el("div", "risc-hazanya-fila");
+      const text = el("div");
+      text.appendChild(el("strong", null, hazanya.titol));
+      text.appendChild(el(
+        "span",
+        null,
+        `${hazanya.detall} Final possible: ${hazanya.analisi.punts.minim}–${hazanya.analisi.punts.maxim} punts.`
+      ));
+      fila.appendChild(text);
+      const resultat = el("div", "risc-hazanya-resultat");
+      resultat.appendChild(el("strong", null, etiquetaSalvacio(hazanya.analisi)));
+      resultat.appendChild(el("span", null, "d'evitar la cullera"));
+      fila.appendChild(resultat);
+      caixa.appendChild(fila);
+    }
+    cos.appendChild(caixa);
+  }
+
   if (analisi.partits.length) {
     cos.appendChild(el("h3", "risc-subtitol", "Partit per partit"));
     cos.appendChild(el("p", "risc-model", "Per cada resultat tornem a sumar els punts finals de tots els equips. Només apareixen partits amb els dos rivals ja coneguts."));
@@ -1031,22 +1119,25 @@ function pintarRiscCullera() {
   targeta.hidden = !torneig || !equipId;
   if (!torneig || !equipId) return;
 
-  const clau = `${torneig.actualizado || ""}:${equipId}:provisionals-v2`;
+  const clau = `${torneig.actualizado || ""}:${equipId}:provisionals-v3`;
   if (clauRisc === clau && calculRisc) return;
   clauRisc = clau;
   $("#riscCulleraXifra").textContent = "";
   const cos = $("#riscCulleraCos");
   vaciar(cos);
-  cos.appendChild(el("p", "risc-carregant", "Calculant 50.000 finals possibles…"));
+  cos.appendChild(el("p", "risc-carregant", "Calculant finals possibles i hazañas…"));
   targeta.setAttribute("aria-busy", "true");
 
-  calculRisc = analitzaRisc(torneig, equipId, {
-    probabilitats: { [`futbol-sala:${equipId}`]: 0 },
-    posicionsProvisionals: RESULTATS_PROVISIONALS,
-  })
-    .then((analisi) => {
+  calculRisc = Promise.all([
+    analitzaRisc(torneig, equipId, {
+      probabilitats: { [`futbol-sala:${equipId}`]: 0 },
+      posicionsProvisionals: RESULTATS_PROVISIONALS,
+    }),
+    calculaHazanyes(equipId),
+  ])
+    .then(([analisi, hazanyes]) => {
       if (clauRisc !== clau) return;
-      renderRiscCullera(analisi);
+      renderRiscCullera(analisi, hazanyes);
     })
     .catch(() => {
       if (clauRisc !== clau) return;

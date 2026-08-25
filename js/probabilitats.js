@@ -218,7 +218,8 @@ async function rangsExactesPerLots(
   cedeix,
   probabilitats,
   posicionsProvisionals = {},
-  equipProvisional = null
+  equipProvisional = null,
+  guanyadors = {}
 ) {
   const rangs = Object.fromEntries(torneig.equips.map((equip) => [equip.id, {
     minim: 0,
@@ -257,7 +258,7 @@ async function rangsExactesPerLots(
       for (let mascara = 0; mascara < combinacions; mascara += 1) {
         let bit = 0;
         const aleatori = () => ((mascara >> bit++) & 1) ? 0.75 : 0.25;
-        const final = completaQuadre(esport, aleatori, {}, probabilitats);
+        const final = completaQuadre(esport, aleatori, guanyadors, probabilitats);
         if (aplicaProvisional &&
           !provisionals.includes(final.posicions.indexOf(equipProvisional))) {
           continue;
@@ -281,7 +282,12 @@ async function rangsExactesPerLots(
   return rangs;
 }
 
-function llavorTorneig(torneig, probabilitats = {}, posicionsProvisionals = {}) {
+function llavorTorneig(
+  torneig,
+  probabilitats = {},
+  posicionsProvisionals = {},
+  guanyadors = {}
+) {
   const dades = JSON.stringify({
     equips: torneig.equips.map((equip) => equip.id),
     esports: torneig.esports.map((esport) => ({
@@ -292,6 +298,7 @@ function llavorTorneig(torneig, probabilitats = {}, posicionsProvisionals = {}) 
     })),
     probabilitats,
     posicionsProvisionals,
+    guanyadors,
   });
   let hash = 2166136261;
   for (let index = 0; index < dades.length; index += 1) {
@@ -359,13 +366,20 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
   const cedeix = opcions.cedeix || (() => new Promise((resolve) => setTimeout(resolve, 0)));
   const probabilitats = opcions.probabilitats || {};
   const posicionsProvisionals = opcions.posicionsProvisionals || {};
-  const aleatori = creaAleatori(llavorTorneig(torneig, probabilitats, posicionsProvisionals));
+  const guanyadors = opcions.guanyadors || {};
+  const aleatori = creaAleatori(llavorTorneig(
+    torneig,
+    probabilitats,
+    posicionsProvisionals,
+    guanyadors
+  ));
   const rangs = await rangsExactesPerLots(
     torneig,
     cedeix,
     probabilitats,
     posicionsProvisionals,
-    equipId
+    equipId,
+    guanyadors
   );
   const esportsOriginals = new Map(torneig.esports.map((esport) => [esport.id, esport]));
   const originalsPerEsport = new Map(torneig.esports.map((esport) => [
@@ -388,6 +402,7 @@ export async function analitzaRisc(torneig, equipId, opcions = {}) {
       probabilitats,
       posicionsProvisionals,
       equipProvisional: equipId,
+      guanyadors,
     });
     const punts = final.totals[equipId];
     const cullera = punts === Math.min(...Object.values(final.totals));
