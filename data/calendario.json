@@ -2,7 +2,7 @@
   "titulo": "Olimpíades Begues 2026",
   "subtitulo": "14–29 d'agost",
   "fuente": "https://docs.google.com/spreadsheets/d/1gB3BzDDBQATh5wTy8JRPxCHLMUqPpnQwFcp3pIsIvLo/gviz/tq?tqx=out:csv&headers=1&sheet=Calendari",
-  "actualizado": "2026-08-24",
+  "actualizado": "2026-08-25",
   "pruebas": [
     {
       "id": "2026-08-14-18-reunio-informativa",
@@ -1684,6 +1684,23 @@
       "hora": "00:00",
       "horaFin": "01:00",
       "orden": 24,
+      "lloc": "Poliesportiu",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-29-10-basquet",
+      "esport": "Bàsquet",
+      "esportId": "baloncesto",
+      "detalle": "Final consolació · 5è i 6è lloc",
+      "partits": [
+        "consFinal"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-29",
+      "hora": "10:00",
+      "horaFin": "11:00",
+      "orden": 10,
       "lloc": "Poliesportiu",
       "quiJuga": "",
       "nota": ""
