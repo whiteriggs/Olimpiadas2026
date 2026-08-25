@@ -1557,21 +1557,6 @@
       "nota": ""
     },
     {
-      "id": "2026-08-27-21-dards",
-      "esport": "Dards",
-      "esportId": "dardos",
-      "detalle": "",
-      "partits": [],
-      "tipo": "esport",
-      "fecha": "2026-08-27",
-      "hora": "21:00",
-      "horaFin": "22:00",
-      "orden": 21,
-      "lloc": "Altres",
-      "quiJuga": "",
-      "nota": ""
-    },
-    {
       "id": "2026-08-28-17-voleibol-platja",
       "esport": "Voleibol platja",
       "esportId": "voleibol-playa",
@@ -1640,6 +1625,23 @@
       "nota": ""
     },
     {
+      "id": "2026-08-28-20-dards",
+      "esport": "Dards",
+      "esportId": "dardos",
+      "detalle": "7è i 8è lloc",
+      "partits": [
+        "consTercero"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-28",
+      "hora": "20:00",
+      "horaFin": "21:00",
+      "orden": 20,
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
       "id": "2026-08-28-20-futbol-sala",
       "esport": "Futbol sala",
       "esportId": "futbol-sala",
@@ -1660,13 +1662,34 @@
       "id": "2026-08-28-21-dards",
       "esport": "Dards",
       "esportId": "dardos",
-      "detalle": "",
-      "partits": [],
+      "detalle": "Final, 3r i 4t lloc",
+      "partits": [
+        "final",
+        "tercerPuesto"
+      ],
       "tipo": "esport",
       "fecha": "2026-08-28",
       "hora": "21:00",
       "horaFin": "22:00",
       "orden": 21,
+      "lloc": "Altres",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
+      "id": "2026-08-28-22-dards",
+      "esport": "Dards",
+      "esportId": "dardos",
+      "detalle": "Final consolació · 5è i 6è lloc, 9è i 10è lloc",
+      "partits": [
+        "consFinal",
+        "puesto9"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-28",
+      "hora": "22:00",
+      "horaFin": "23:00",
+      "orden": 22,
       "lloc": "Altres",
       "quiJuga": "",
       "nota": ""
