@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-25T18:49:31+00:00",
+ "actualizado": "2026-08-25T21:35:39+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -1169,10 +1169,10 @@
       "E5",
       "E7"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E5",
+     "perdedor": "E7",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "final",
@@ -1181,7 +1181,7 @@
      "sigla": "Final",
      "equips": [
       null,
-      null
+      "E5"
      ],
      "guanyador": null,
      "perdedor": null,
@@ -1195,7 +1195,7 @@
      "sigla": "3r/4t",
      "equips": [
       null,
-      null
+      "E7"
      ],
      "guanyador": null,
      "perdedor": null,
@@ -1211,10 +1211,10 @@
       "E6",
       "E2"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E2",
+     "perdedor": "E6",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consSf2",
@@ -1236,7 +1236,7 @@
      "nom": "Final consolació · 5è i 6è lloc",
      "sigla": "5è/6è",
      "equips": [
-      null,
+      "E2",
       null
      ],
      "guanyador": null,
@@ -1250,7 +1250,7 @@
      "nom": "7è i 8è lloc",
      "sigla": "7è/8è",
      "equips": [
-      null,
+      "E6",
       null
      ],
      "guanyador": null,
@@ -3196,10 +3196,10 @@
       "E9",
       "E5"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E9",
+     "perdedor": "E5",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consSf2",
@@ -3221,7 +3221,7 @@
      "nom": "Final consolació · 5è i 6è lloc",
      "sigla": "5è/6è",
      "equips": [
-      null,
+      "E9",
       null
      ],
      "guanyador": null,
@@ -3235,7 +3235,7 @@
      "nom": "7è i 8è lloc",
      "sigla": "7è/8è",
      "equips": [
-      null,
+      "E5",
       null
      ],
      "guanyador": null,
