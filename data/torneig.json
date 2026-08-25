@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-25T17:00:54+00:00",
+ "actualizado": "2026-08-25T17:50:01+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -450,10 +450,10 @@
       "E3",
       "E10"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E10",
+     "perdedor": "E3",
+     "marcador": "1-2",
+     "estat": "jugat"
     },
     {
      "id": "consSf1",
@@ -529,8 +529,8 @@
    "posicions": [
     null,
     null,
-    null,
-    null,
+    "E10",
+    "E3",
     null,
     null,
     "E9",
@@ -539,6 +539,8 @@
     "E5"
    ],
    "punts": {
+    "E10": 29,
+    "E3": 26,
     "E9": 14,
     "E6": 11,
     "E8": 8,
@@ -4436,15 +4438,15 @@
  ],
  "general": [
   {
-   "id": "E4",
-   "nom": "Vaig molt cremat",
-   "punts": 390,
+   "id": "E10",
+   "nom": "La Once",
+   "punts": 398,
    "posicio": 1
   },
   {
-   "id": "E10",
-   "nom": "La Once",
-   "punts": 369,
+   "id": "E4",
+   "nom": "Vaig molt cremat",
+   "punts": 390,
    "posicio": 2
   },
   {
@@ -4474,7 +4476,7 @@
   {
    "id": "E3",
    "nom": "Olimpiakojos",
-   "punts": 216,
+   "punts": 242,
    "posicio": 7
   },
   {
