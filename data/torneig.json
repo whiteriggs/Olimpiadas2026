@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-25T10:16:14+00:00",
+ "actualizado": "2026-08-25T17:00:54+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -506,10 +506,10 @@
       "E6",
       "E9"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E9",
+     "perdedor": "E6",
+     "marcador": "0-2",
+     "estat": "jugat"
     },
     {
      "id": "puesto9",
@@ -533,12 +533,14 @@
     null,
     null,
     null,
-    null,
-    null,
+    "E9",
+    "E6",
     "E8",
     "E5"
    ],
    "punts": {
+    "E9": 14,
+    "E6": 11,
     "E8": 8,
     "E5": 5
    }
@@ -4478,13 +4480,13 @@
   {
    "id": "E9",
    "nom": "Joga Vomito",
-   "punts": 195,
+   "punts": 209,
    "posicio": 8
   },
   {
    "id": "E6",
    "nom": "Diablos",
-   "punts": 159,
+   "punts": 170,
    "posicio": 9
   },
   {
