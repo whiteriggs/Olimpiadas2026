@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-26T16:04:52+00:00",
+ "actualizado": "2026-08-26T18:08:32+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -954,10 +954,10 @@
       "E7",
       "E3"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E3",
+     "perdedor": "E7",
+     "marcador": "2-1",
+     "estat": "jugat"
     },
     {
      "id": "consSf1",
@@ -1033,8 +1033,8 @@
    "posicions": [
     null,
     null,
-    null,
-    null,
+    "E3",
+    "E7",
     null,
     null,
     null,
@@ -1042,7 +1042,10 @@
     null,
     null
    ],
-   "punts": {}
+   "punts": {
+    "E3": 29,
+    "E7": 26
+   }
   },
   {
    "id": "fronton",
@@ -1827,7 +1830,7 @@
      ],
      "guanyador": "E8",
      "perdedor": "E2",
-     "marcador": "",
+     "marcador": "4-3",
      "estat": "jugat"
     },
     {
@@ -1839,10 +1842,10 @@
       "E1",
       "E4"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E1",
+     "perdedor": "E4",
+     "marcador": "7-1",
+     "estat": "jugat"
     },
     {
      "id": "qf2",
@@ -1892,7 +1895,7 @@
      "nom": "Semifinal 1",
      "sigla": "SF1",
      "equips": [
-      null,
+      "E1",
       null
      ],
      "guanyador": null,
@@ -1948,7 +1951,7 @@
      "nom": "Semifinal consolació 1",
      "sigla": "SC1",
      "equips": [
-      null,
+      "E4",
       null
      ],
      "guanyador": null,
@@ -3182,10 +3185,10 @@
       "E10",
       "E7"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E10",
+     "perdedor": "E7",
+     "marcador": "2-0",
+     "estat": "jugat"
     },
     {
      "id": "consSf1",
@@ -3261,8 +3264,8 @@
    "posicions": [
     null,
     null,
-    null,
-    null,
+    "E10",
+    "E7",
     null,
     null,
     null,
@@ -3270,7 +3273,10 @@
     null,
     null
    ],
-   "punts": {}
+   "punts": {
+    "E10": 29,
+    "E7": 26
+   }
   },
   {
    "id": "ajedrez",
@@ -4440,7 +4446,7 @@
   {
    "id": "E10",
    "nom": "La Once",
-   "punts": 398,
+   "punts": 427,
    "posicio": 1
   },
   {
@@ -4450,15 +4456,15 @@
    "posicio": 2
   },
   {
-   "id": "E1",
-   "nom": "La Jee-peta",
-   "punts": 330,
+   "id": "E7",
+   "nom": "Esperando a los Palomos",
+   "punts": 365,
    "posicio": 3
   },
   {
-   "id": "E7",
-   "nom": "Esperando a los Palomos",
-   "punts": 313,
+   "id": "E1",
+   "nom": "La Jee-peta",
+   "punts": 330,
    "posicio": 4
   },
   {
@@ -4468,15 +4474,15 @@
    "posicio": 5
   },
   {
-   "id": "E8",
-   "nom": "Massumba y los mas zumbaos",
-   "punts": 269,
+   "id": "E3",
+   "nom": "Olimpiakojos",
+   "punts": 271,
    "posicio": 6
   },
   {
-   "id": "E3",
-   "nom": "Olimpiakojos",
-   "punts": 242,
+   "id": "E8",
+   "nom": "Massumba y los mas zumbaos",
+   "punts": 269,
    "posicio": 7
   },
   {
