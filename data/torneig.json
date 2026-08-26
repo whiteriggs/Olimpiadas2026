@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-25T21:35:39+00:00",
+ "actualizado": "2026-08-26T01:48:16+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -912,10 +912,10 @@
       "E7",
       "E10"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E10",
+     "perdedor": "E7",
+     "marcador": "1-2",
+     "estat": "jugat"
     },
     {
      "id": "sf2",
@@ -937,13 +937,13 @@
      "nom": "Final",
      "sigla": "Final",
      "equips": [
-      null,
+      "E10",
       "E1"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "tercerPuesto",
@@ -951,13 +951,13 @@
      "nom": "3r i 4t lloc",
      "sigla": "3r/4t",
      "equips": [
-      null,
+      "E7",
       "E3"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consSf1",
@@ -1454,10 +1454,10 @@
       "E7",
       "E4"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E7",
+     "perdedor": "E4",
+     "marcador": "2-0",
+     "estat": "jugat"
     },
     {
      "id": "consSf2",
@@ -1479,7 +1479,7 @@
      "nom": "Final consolació · 5è i 6è lloc",
      "sigla": "5è/6è",
      "equips": [
-      null,
+      "E7",
       null
      ],
      "guanyador": null,
@@ -1493,7 +1493,7 @@
      "nom": "7è i 8è lloc",
      "sigla": "7è/8è",
      "equips": [
-      null,
+      "E4",
       null
      ],
      "guanyador": null,
@@ -3154,10 +3154,10 @@
       "E3",
       "E7"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E3",
+     "perdedor": "E7",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "final",
@@ -3166,12 +3166,12 @@
      "sigla": "Final",
      "equips": [
       "E1",
-      null
+      "E3"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "tercerPuesto",
@@ -3180,12 +3180,12 @@
      "sigla": "3r/4t",
      "equips": [
       "E10",
-      null
+      "E7"
      ],
      "guanyador": null,
      "perdedor": null,
      "marcador": "",
-     "estat": "bloquejat"
+     "estat": "pendent"
     },
     {
      "id": "consSf1",
