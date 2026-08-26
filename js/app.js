@@ -736,9 +736,9 @@ function obrirQuedada(esport, partit, limit) {
   const acord = acordDe(esport.id, partit.id);
   quedadaActual = { esport, partit, limit };
   $("#quedadaTitol").textContent = `${esport.nom} · ${partit.nom}`;
-  $("#quedadaLimit").textContent = `S'ha de jugar abans del ${fmtDia.format(aFecha(limit.fecha))}.`;
+  $("#quedadaLimit").textContent = `Data límit oficial: ${fmtDia.format(aFecha(limit.fecha))}. Pots posar una data posterior.`;
   $("#quedadaData").value = acord ? acord.data : "";
-  $("#quedadaData").max = limit.fecha;
+  $("#quedadaData").removeAttribute("max");
   $("#quedadaHora").value = acord ? acord.hora : "";
   $("#quedadaLloc").value = acord ? acord.lloc || "" : "";
   $("#quedadaEstat").textContent = "";
