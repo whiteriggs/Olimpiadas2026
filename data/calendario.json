@@ -1540,6 +1540,23 @@
       "nota": ""
     },
     {
+      "id": "2026-08-27-19-waterpolo",
+      "esport": "Waterpolo",
+      "esportId": "waterpolo",
+      "detalle": "7è i 8è lloc",
+      "partits": [
+        "consTercero"
+      ],
+      "tipo": "esport",
+      "fecha": "2026-08-27",
+      "hora": "19:00",
+      "horaFin": "20:00",
+      "orden": 19,
+      "lloc": "Club de Begues",
+      "quiJuga": "",
+      "nota": ""
+    },
+    {
       "id": "2026-08-28-17-voleibol-platja",
       "esport": "Voleibol platja",
       "esportId": "voleibol-playa",
