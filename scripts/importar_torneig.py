@@ -80,6 +80,36 @@ def llegeix_resultats():
     return resultats
 
 
+def conserva_resultats_antics(actuals, antics):
+    """Rellena celdas remotas vacías con el último resultado publicado."""
+    fusionats = {nom: dict(resultats) for nom, resultats in actuals.items()}
+    aliases_equip = {
+        equip["id"]: {clave(equip["id"]), clave(equip["nom"])}
+        for equip in antics.get("equips", [])
+    }
+    for esport in antics.get("esports", []):
+        resultats = fusionats.setdefault(esport["nom"], {})
+        for partit in esport.get("partits", []):
+            guanyador, _ = resultats.get(partit["nom"], ("", ""))
+            if not normaliza(guanyador) and partit.get("guanyador"):
+                resultats[partit["nom"]] = (
+                    partit["guanyador"],
+                    partit.get("marcador", ""),
+                )
+        equips_publicats = {
+            clave(publicat)
+            for clau_lloc, (publicat, _) in resultats.items()
+            if clau_lloc.startswith("Lloc ") and normaliza(publicat)
+        }
+        for index, equip in enumerate(esport.get("posicions", []), 1):
+            clau_lloc = f"Lloc {index}"
+            publicat, _ = resultats.get(clau_lloc, ("", ""))
+            aliases = aliases_equip.get(equip, {clave(equip)}) if equip else set()
+            if not normaliza(publicat) and equip and aliases.isdisjoint(equips_publicats):
+                resultats[clau_lloc] = (equip, "")
+    return fusionats
+
+
 def resol_equip(celda, per_clau):
     """La hoja la rellenan a mano: aceptamos tanto «E5» como el nombre del equipo."""
     return per_clau.get(clave(celda)) if normaliza(celda) else None
@@ -148,6 +178,7 @@ def classificacio(resultats, per_clau, avisos, nom, quants):
 
 
 def main():
+    antiguo = json.loads(SALIDA.read_text(encoding="utf-8")) if SALIDA.exists() else {}
     equips = llegeix_equips()
     per_clau = {}
     for e in equips:
@@ -156,7 +187,7 @@ def main():
 
     nosaltres = next((e["id"] for e in equips if clave(e["nom"]) == NOSALTRES), None)
     sorteig = baixa_sorteig()
-    resultats = llegeix_resultats()
+    resultats = conserva_resultats_antics(llegeix_resultats(), antiguo)
     avisos = []
 
     esports, punts = [], {e["id"]: 0 for e in equips}
@@ -211,8 +242,6 @@ def main():
         "general": general,
         "avisos": avisos,
     }
-
-    antiguo = json.loads(SALIDA.read_text(encoding="utf-8")) if SALIDA.exists() else {}
 
     # Els resultats només poden anar a més: si en surten menys és que hem llegit
     # malament el full, i val més quedar-nos amb les dades velles que publicar zeros.
