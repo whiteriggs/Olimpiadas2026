@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-29T13:47:14+00:00",
+ "actualizado": "2026-08-29T17:38:25+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -2469,10 +2469,10 @@
       "E4",
       "E7"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E4",
+     "perdedor": "E7",
+     "marcador": "19-10",
+     "estat": "jugat"
     },
     {
      "id": "tercerPuesto",
@@ -2525,10 +2525,10 @@
       "E2",
       "E1"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E2",
+     "perdedor": "E1",
+     "marcador": "25-24",
+     "estat": "jugat"
     },
     {
      "id": "consTercero",
@@ -2560,20 +2560,24 @@
     }
    ],
    "posicions": [
-    null,
-    null,
+    "E4",
+    "E7",
     "E10",
     "E8",
-    null,
-    null,
+    "E2",
+    "E1",
     "E9",
     "E6",
     "E3",
     "E5"
    ],
    "punts": {
+    "E4": 70,
+    "E7": 54,
     "E10": 48,
     "E8": 42,
+    "E2": 30,
+    "E1": 25,
     "E9": 20,
     "E6": 15,
     "E3": 10,
@@ -4297,10 +4301,10 @@
       "E3",
       "E7"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E7",
+     "perdedor": "E3",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consTercero",
@@ -4336,8 +4340,8 @@
     "E10",
     "E8",
     "E9",
-    null,
-    null,
+    "E7",
+    "E3",
     "E1",
     "E5",
     "E4",
@@ -4348,6 +4352,8 @@
     "E10": 32,
     "E8": 29,
     "E9": 26,
+    "E7": 20,
+    "E3": 17,
     "E1": 14,
     "E5": 11,
     "E4": 8,
@@ -4529,39 +4535,39 @@
  ],
  "general": [
   {
-   "id": "E10",
-   "nom": "La Once",
-   "punts": 565,
-   "posicio": 1
-  },
-  {
    "id": "E4",
    "nom": "Vaig molt cremat",
-   "punts": 550,
-   "posicio": 2
-  },
-  {
-   "id": "E3",
-   "nom": "Olimpiakojos",
-   "punts": 541,
-   "posicio": 3
-  },
-  {
-   "id": "E1",
-   "nom": "La Jee-peta",
-   "punts": 521,
-   "posicio": 4
+   "punts": 620,
+   "posicio": 1
   },
   {
    "id": "E7",
    "nom": "Esperando a los Palomos",
-   "punts": 500,
+   "punts": 574,
+   "posicio": 2
+  },
+  {
+   "id": "E10",
+   "nom": "La Once",
+   "punts": 565,
+   "posicio": 3
+  },
+  {
+   "id": "E3",
+   "nom": "Olimpiakojos",
+   "punts": 558,
+   "posicio": 4
+  },
+  {
+   "id": "E1",
+   "nom": "La Jee-peta",
+   "punts": 546,
    "posicio": 5
   },
   {
    "id": "E2",
    "nom": "Passa directament",
-   "punts": 435,
+   "punts": 465,
    "posicio": 6
   },
   {
