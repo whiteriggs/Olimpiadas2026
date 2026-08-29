@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import {
+  analitzaCampionat,
   analitzaRisc,
   calculaRang,
   creaAleatori,
@@ -289,4 +290,122 @@ test("rebutja una posició provisional ocupada per un altre equip", async () => 
     }),
     /provisional impossible/i
   );
+});
+
+test("el campionat es decideix pels primers llocs i admet guanyadors compartits", async () => {
+  const torneig = torneigClassificacio([
+    "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10",
+  ]);
+  torneig.esports.push({
+    ...structuredClone(torneig.esports[0]),
+    id: "atletismo",
+    nom: "Atletisme",
+    posicions: ["E2", "E1", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10"],
+  });
+
+  const analisi = await analitzaCampionat(torneig, {
+    iteracions: 20,
+    cedeix: async () => {},
+  });
+
+  assert.equal(analisi.equips.find((equip) => equip.id === "E1").probabilitat, 1);
+  assert.equal(analisi.equips.find((equip) => equip.id === "E2").probabilitat, 1);
+  assert.equal(analisi.equips.find((equip) => equip.id === "E3").probabilitat, 0);
+  assert.deepEqual(analisi.liders.map((equip) => equip.id), ["E1", "E2"]);
+});
+
+test("explica una ruta guanyadora amb els esports pendents que cal guanyar", async () => {
+  const torneig = torneigClassificacio([
+    "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10",
+  ]);
+  torneig.esports.push({
+    ...structuredClone(torneig.esports[0]),
+    id: "atletismo",
+    nom: "Atletisme",
+    posicions: Array(10).fill(null),
+  });
+
+  const analisi = await analitzaCampionat(torneig, {
+    iteracions: 5000,
+    cedeix: async () => {},
+  });
+  const equip1 = analisi.equips.find((equip) => equip.id === "E1");
+  const equip2 = analisi.equips.find((equip) => equip.id === "E2");
+
+  assert.equal(equip1.assegurat, true);
+  assert.equal(equip1.etiqueta, "100%");
+  assert.equal(equip2.orosActuals, 0);
+  assert.equal(equip2.orosMaxims, 1);
+  assert.equal(equip2.possible, true);
+  assert.equal(analisi.exacte, true);
+  assert.equal(equip2.probabilitat, 0.1);
+  assert.ok(equip2.ruta);
+  assert.deepEqual(equip2.ruta.guanyar, ["Atletisme"]);
+  assert.equal(equip2.ruta.orosFinals, 1);
+  assert.deepEqual(equip2.ruta.rivalsLimit, ["Equip 1"]);
+  assert.equal(equip2.ruta.maximRival, 1);
+  const desenllacEquip2 = analisi.desenllacos.find((desenllac) =>
+    desenllac.resultats.some((resultat) => resultat.guanyadorNom === "Equip 2")
+  );
+  assert.equal(desenllacEquip2.probabilitat, 0.1);
+  assert.deepEqual(desenllacEquip2.campions.map((campio) => campio.nom), ["Equip 1", "Equip 2"]);
+});
+
+test("descarta qui no pot igualar els primers llocs ja assegurats pel líder", async () => {
+  const torneig = torneigClassificacio([
+    "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10",
+  ]);
+  torneig.esports.push({
+    ...structuredClone(torneig.esports[0]),
+    id: "atletismo",
+    nom: "Atletisme",
+    posicions: ["E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10"],
+  });
+  torneig.esports.push({
+    ...structuredClone(torneig.esports[0]),
+    id: "petanca-2",
+    nom: "Petanca 2",
+    posicions: [null, null, "E1", "E3", "E4", "E5", "E6", "E7", "E8", "E9"],
+  });
+
+  const analisi = await analitzaCampionat(torneig, {
+    iteracions: 100,
+    cedeix: async () => {},
+  });
+  const equip2 = analisi.equips.find((equip) => equip.id === "E2");
+
+  assert.equal(equip2.orosMaxims, 1);
+  assert.equal(equip2.possible, false);
+  assert.equal(equip2.probabilitat, 0);
+  assert.equal(equip2.ruta, null);
+  assert.deepEqual(analisi.esportsDecisius, []);
+});
+
+test("considera decisius dos esports que un perseguidor necessita guanyar junts", async () => {
+  const torneig = torneigClassificacio([
+    "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10",
+  ]);
+  torneig.esports.push({
+    ...structuredClone(torneig.esports[0]),
+    id: "atletismo",
+    nom: "Atletisme",
+  });
+  for (const [id, nom] of [["petanca-2", "Petanca 2"], ["petanca-3", "Petanca 3"]]) {
+    torneig.esports.push({
+      ...structuredClone(torneig.esports[0]),
+      id,
+      nom,
+      posicions: [null, null, "E1", "E3", "E4", "E5", "E6", "E7", "E8", "E9"],
+    });
+  }
+
+  const analisi = await analitzaCampionat(torneig, {
+    iteracions: 100,
+    cedeix: async () => {},
+  });
+  const equip2 = analisi.equips.find((equip) => equip.id === "E2");
+
+  assert.equal(equip2.orosMaxims, 2);
+  assert.equal(equip2.possible, true);
+  assert.deepEqual(analisi.esportsDecisius, ["Petanca 2", "Petanca 3"]);
 });

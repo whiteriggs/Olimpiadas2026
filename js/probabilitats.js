@@ -319,6 +319,215 @@ function etiquetaPercentatge(probabilitat, definitiu) {
   })}%`;
 }
 
+function etiquetaPercentatgeExacte(probabilitat) {
+  return `${(probabilitat * 100).toLocaleString("ca-ES", {
+    maximumFractionDigits: 1,
+  })}%`;
+}
+
+function distribucioPrimerLloc(esport, torneig) {
+  if (esport.posicions[0]) return [{ equipId: esport.posicions[0], probabilitat: 1 }];
+  if (esport.format === "classificacio") {
+    const classificats = new Set(esport.posicions.filter(Boolean));
+    const candidats = torneig.equips
+      .map((equip) => equip.id)
+      .filter((equipId) => !classificats.has(equipId));
+    return candidats.map((equipId) => ({
+      equipId,
+      probabilitat: 1 / candidats.length,
+    }));
+  }
+
+  const casos = new Map();
+  const pendents = esport.partits.filter((partit) => !partit.guanyador).length;
+  for (let mascara = 0; mascara < 2 ** pendents; mascara += 1) {
+    let bit = 0;
+    const aleatori = () => ((mascara >> bit++) & 1) ? 0.75 : 0.25;
+    const equipId = completaQuadre(esport, aleatori, {}).posicions[0];
+    casos.set(equipId, (casos.get(equipId) || 0) + 1);
+  }
+  const total = 2 ** pendents;
+  return [...casos.entries()].map(([equipId, casosEquip]) => ({
+    equipId,
+    probabilitat: casosEquip / total,
+  }));
+}
+
+function candidatsPrimerLloc(esport, torneig) {
+  return new Set(distribucioPrimerLloc(esport, torneig).map(({ equipId }) => equipId));
+}
+
+export async function analitzaCampionat(torneig, opcions = {}) {
+  const iteracions = opcions.iteracions || 50000;
+  const midaLot = opcions.midaLot || 500;
+  const cedeix = opcions.cedeix || (() => new Promise((resolve) => setTimeout(resolve, 0)));
+  const probabilitats = opcions.probabilitats || {};
+  const posicionsProvisionals = opcions.posicionsProvisionals || {};
+  const equipProvisional = opcions.equipProvisional || null;
+  const guanyadors = opcions.guanyadors || {};
+  const aleatori = creaAleatori(llavorTorneig(
+    torneig,
+    probabilitats,
+    posicionsProvisionals,
+    guanyadors
+  ));
+  const noms = new Map(torneig.equips.map((equip) => [equip.id, equip.nom]));
+  const orosActuals = Object.fromEntries(torneig.equips.map((equip) => [equip.id, 0]));
+  const orosMaxims = Object.fromEntries(torneig.equips.map((equip) => [equip.id, 0]));
+  const casos = Object.fromEntries(torneig.equips.map((equip) => [equip.id, 0]));
+  const rutes = Object.fromEntries(torneig.equips.map((equip) => [equip.id, null]));
+  const pendents = [];
+
+  for (const esport of torneig.esports) {
+    if (esport.posicions[0]) orosActuals[esport.posicions[0]] += 1;
+    else pendents.push({ esport, distribucio: distribucioPrimerLloc(esport, torneig) });
+    for (const equipId of candidatsPrimerLloc(esport, torneig)) {
+      orosMaxims[equipId] += 1;
+    }
+  }
+  const liderActual = Math.max(...Object.values(orosActuals));
+  const esportsDecisiusDades = pendents.filter(({ distribucio }) =>
+    distribucio.some(({ equipId }) => orosMaxims[equipId] >= liderActual)
+  );
+  const idsDecisius = new Set(esportsDecisiusDades.map(({ esport }) => esport.id));
+  let desenllacos = [];
+
+  const registraFinal = (oros, seleccionats, pes) => {
+    const maxim = Math.max(...Object.values(oros));
+    const guanyadorsFinals = torneig.equips
+      .map((equip) => equip.id)
+      .filter((equipId) => oros[equipId] === maxim);
+
+    for (const equipId of guanyadorsFinals) {
+      casos[equipId] += pes;
+      const maximRival = Math.max(...Object.entries(oros)
+        .filter(([id]) => id !== equipId)
+        .map(([, total]) => total));
+      const guanyar = seleccionats
+        .filter((seleccio) => seleccio.equipId === equipId)
+        .map((seleccio) => seleccio.esportNom);
+      const ruta = {
+        guanyar,
+        orosFinals: oros[equipId],
+        compartit: guanyadorsFinals.length > 1,
+        rivalsLimit: Object.entries(oros)
+          .filter(([id, total]) => id !== equipId && total === maximRival)
+          .map(([id]) => noms.get(id)),
+        maximRival,
+      };
+      if (!rutes[equipId] || ruta.guanyar.length < rutes[equipId].guanyar.length ||
+        (ruta.guanyar.length === rutes[equipId].guanyar.length &&
+          ruta.rivalsLimit.length < rutes[equipId].rivalsLimit.length)) {
+        rutes[equipId] = ruta;
+      }
+    }
+  };
+
+  const combinacions = pendents.reduce(
+    (total, pendent) => total * pendent.distribucio.length,
+    1
+  );
+  const provisionalsAfectenOr = Object.values(posicionsProvisionals)
+    .some((llocs) => llocs.includes(0));
+  const exacte = combinacions <= 10000 && !Object.keys(probabilitats).length &&
+    !Object.keys(guanyadors).length && !provisionalsAfectenOr;
+
+  if (exacte) {
+    let finals = [{ oros: { ...orosActuals }, seleccionats: [], probabilitat: 1 }];
+    for (const { esport, distribucio } of pendents) {
+      finals = finals.flatMap((final) => distribucio.map((opcio) => ({
+        oros: { ...final.oros, [opcio.equipId]: final.oros[opcio.equipId] + 1 },
+        seleccionats: [...final.seleccionats, {
+          esportId: esport.id,
+          esportNom: esport.nom,
+          equipId: opcio.equipId,
+        }],
+        probabilitat: final.probabilitat * opcio.probabilitat,
+      })));
+      await cedeix();
+    }
+    finals.forEach((final) => registraFinal(final.oros, final.seleccionats, final.probabilitat));
+    const agrupats = new Map();
+    for (const final of finals) {
+      const resultats = final.seleccionats
+        .filter((seleccio) => idsDecisius.has(seleccio.esportId))
+        .map((seleccio) => ({
+          esportId: seleccio.esportId,
+          esportNom: seleccio.esportNom,
+          guanyadorId: seleccio.equipId,
+          guanyadorNom: noms.get(seleccio.equipId),
+        }));
+      const maxim = Math.max(...Object.values(final.oros));
+      const campions = torneig.equips
+        .filter((equip) => final.oros[equip.id] === maxim)
+        .map((equip) => ({ id: equip.id, nom: equip.nom, oros: maxim }));
+      const clau = JSON.stringify({
+        resultats: resultats.map(({ esportId, guanyadorId }) => [esportId, guanyadorId]),
+        campions: campions.map(({ id }) => id),
+      });
+      const agrupat = agrupats.get(clau) || { resultats, campions, probabilitat: 0 };
+      agrupat.probabilitat += final.probabilitat;
+      agrupats.set(clau, agrupat);
+    }
+    desenllacos = [...agrupats.values()];
+  } else {
+    for (let index = 0; index < iteracions; index += 1) {
+      const final = simulaFinal(torneig, aleatori, {
+        probabilitats,
+        posicionsProvisionals,
+        equipProvisional,
+        guanyadors,
+      });
+      const oros = Object.fromEntries(torneig.equips.map((equip) => [equip.id, 0]));
+      final.esports.forEach((esport) => { oros[esport.posicions[0]] += 1; });
+      const seleccionats = final.esports
+        .filter((esport, esportIndex) => !torneig.esports[esportIndex].posicions[0])
+        .map((esport) => ({
+          esportId: esport.id,
+          esportNom: esport.nom,
+          equipId: esport.posicions[0],
+        }));
+      registraFinal(oros, seleccionats, 1);
+      if ((index + 1) % midaLot === 0 && index + 1 < iteracions) await cedeix();
+    }
+  }
+
+  const hiHaPendents = torneig.esports.some((esport) => !esport.posicions[0]);
+  const equips = torneig.equips.map((equip) => {
+    const possible = orosMaxims[equip.id] >= liderActual;
+    const assegurat = Object.entries(orosMaxims)
+      .filter(([id]) => id !== equip.id)
+      .every(([, maxim]) => orosActuals[equip.id] >= maxim);
+    const probabilitat = assegurat ? 1 : possible
+      ? exacte ? casos[equip.id] : casos[equip.id] / iteracions
+      : 0;
+    return {
+      id: equip.id,
+      nom: equip.nom,
+      orosActuals: orosActuals[equip.id],
+      orosMaxims: orosMaxims[equip.id],
+      possible,
+      assegurat,
+      probabilitat,
+      etiqueta: exacte
+        ? etiquetaPercentatgeExacte(probabilitat)
+        : etiquetaPercentatge(probabilitat, assegurat || !possible || !hiHaPendents),
+      ruta: possible ? rutes[equip.id] : null,
+    };
+  }).sort((a, b) =>
+    b.probabilitat - a.probabilitat || b.orosActuals - a.orosActuals || a.nom.localeCompare(b.nom));
+
+  return {
+    iteracions: exacte ? combinacions : iteracions,
+    exacte,
+    equips,
+    liders: equips.filter((equip) => equip.orosActuals === liderActual),
+    esportsPendents: torneig.esports.filter((esport) => !esport.posicions[0]).map((esport) => esport.nom),
+    esportsDecisius: esportsDecisiusDades.map(({ esport }) => esport.nom),
+    desenllacos,
+  };
+}
+
 function diferenciaActual(torneig, equipId) {
   const propi = torneig.general.find((equip) => equip.id === equipId);
   if (!propi) return null;

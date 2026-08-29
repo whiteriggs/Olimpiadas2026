@@ -1,5 +1,5 @@
 import * as store from "./store.js";
-import { analitzaRisc } from "./probabilitats.js";
+import { analitzaCampionat, analitzaRisc } from "./probabilitats.js";
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -16,6 +16,7 @@ const fmtDia = new Intl.DateTimeFormat("ca-ES", {
 });
 const fmtCorto = new Intl.DateTimeFormat("ca-ES", { weekday: "short", day: "numeric" });
 const fmtHora = new Intl.DateTimeFormat("ca-ES", { hour: "2-digit", minute: "2-digit" });
+const fmtLlista = new Intl.ListFormat("ca-ES", { style: "long", type: "conjunction" });
 
 const aFecha = (iso) => new Date(iso + "T12:00:00");
 
@@ -67,6 +68,8 @@ const pastillasPorDia = new Map();
 let canvisSenseDesar = false;
 let clauRisc = null;
 let calculRisc = null;
+let clauCampionat = null;
+let calculCampionat = null;
 
 /* ---------- utilitats DOM ---------- */
 
@@ -908,6 +911,145 @@ async function desarAlineacio(evento) {
 
 /* ---------- punts ---------- */
 
+function renderCampionat(analisi) {
+  const cos = $("#campionatCos");
+  vaciar(cos);
+  const ambOpcions = analisi.equips.filter((equip) => equip.possible);
+  const eliminats = analisi.equips.length - ambOpcions.length;
+
+  cos.appendChild(el(
+    "p",
+    "risc-model",
+    analisi.exacte
+      ? "Càlcul exacte amb cada final al 50/50. Guanya qui suma més primers llocs; un empat compta com a victòria compartida."
+      : `Model de ${analisi.iteracions.toLocaleString("ca-ES")} finals al 50/50. Guanya qui suma més primers llocs; un empat compta com a victòria compartida.`
+  ));
+  if (analisi.esportsDecisius.length) {
+    const pendents = el("p", "campionat-pendents");
+    pendents.appendChild(el("strong", null, "Finals que decideixen el títol: "));
+    pendents.append(fmtLlista.format(analisi.esportsDecisius));
+    cos.appendChild(pendents);
+  }
+  const noDecisius = analisi.esportsPendents.filter((esport) =>
+    !analisi.esportsDecisius.includes(esport)
+  );
+  if (noDecisius.length) {
+    cos.appendChild(el(
+      "p",
+      "campionat-no-decisius",
+      `${fmtLlista.format(noDecisius)} encara ${noDecisius.length === 1 ? "dona" : "donen"} or, però no ${noDecisius.length === 1 ? "pot" : "poden"} canviar el campió.`
+    ));
+  }
+
+  const llista = el("div", "campionat-equips");
+  for (const equip of ambOpcions) {
+    const fila = el("article", "campionat-equip");
+    const cap = el("div", "campionat-equip-cap");
+    cap.appendChild(el("h3", null, equip.nom));
+    cap.appendChild(el("strong", "campionat-probabilitat", equip.etiqueta));
+    fila.appendChild(cap);
+    fila.appendChild(el(
+      "p",
+      "campionat-oros",
+      `${equip.orosActuals} ${equip.orosActuals === 1 ? "or actual" : "ors actuals"} · màxim ${equip.orosMaxims}`
+    ));
+
+    if (equip.assegurat) {
+      const situacio = el("p", "campionat-ruta");
+      situacio.appendChild(el("strong", null, "Situació: "));
+      situacio.append(`ja té assegurat com a mínim compartir el títol. Pot acabar amb ${equip.orosActuals}–${equip.orosMaxims} ors.`);
+      fila.appendChild(situacio);
+    } else if (equip.ruta) {
+      const ruta = el("p", "campionat-ruta");
+      ruta.appendChild(el("strong", null, "Una ruta: "));
+      ruta.append(equip.ruta.guanyar.length
+        ? `guanyar ${fmtLlista.format(equip.ruta.guanyar)}`
+        : "no necessita sumar cap altre or");
+      if (equip.ruta.rivalsLimit.length) {
+        ruta.append(
+          ` i que ${fmtLlista.format(equip.ruta.rivalsLimit)} no ${equip.ruta.rivalsLimit.length === 1 ? "passi" : "passin"} de ${equip.ruta.maximRival}.`
+        );
+      } else {
+        ruta.append(".");
+      }
+      if (equip.ruta.compartit) ruta.append(` Acabaria compartint el títol amb ${equip.ruta.orosFinals} ors.`);
+      fila.appendChild(ruta);
+    } else {
+      fila.appendChild(el("p", "campionat-ruta", "Té opció matemàtica, però és massa rara per descriure-la amb una ruta de la mostra."));
+    }
+    llista.appendChild(fila);
+  }
+  cos.appendChild(llista);
+
+  if (analisi.desenllacos.length) {
+    cos.appendChild(el("h3", "risc-subtitol", "Què passa a cada combinació"));
+    const desenllacos = el("div", "campionat-desenllacos");
+    for (const desenllac of analisi.desenllacos) {
+      const fila = el("div", "campionat-desenllac");
+      const resultats = el("div");
+      resultats.appendChild(el(
+        "strong",
+        null,
+        desenllac.resultats
+          .map((resultat) => `${resultat.esportNom}: ${resultat.guanyadorNom}`)
+          .join(" · ")
+      ));
+      resultats.appendChild(el(
+        "span",
+        null,
+        `${desenllac.campions.length === 1 ? "Campió" : "Campions"}: ${fmtLlista.format(desenllac.campions.map((campio) => campio.nom))} · ${desenllac.campions[0].oros} ors`
+      ));
+      fila.appendChild(resultats);
+      fila.appendChild(el(
+        "strong",
+        "campionat-desenllac-probabilitat",
+        `${(desenllac.probabilitat * 100).toLocaleString("ca-ES", { maximumFractionDigits: 1 })}%`
+      ));
+      desenllacos.appendChild(fila);
+    }
+    cos.appendChild(desenllacos);
+  }
+
+  if (eliminats) {
+    cos.appendChild(el(
+      "p",
+      "campionat-eliminats",
+      `${eliminats} ${eliminats === 1 ? "equip ja no pot" : "equips ja no poden"} igualar els primers llocs del líder.`
+    ));
+  }
+}
+
+function pintarCampionat() {
+  const targeta = $("#campionat");
+  targeta.hidden = !torneig;
+  if (!torneig) return;
+
+  const clau = `${torneig.actualizado || ""}:campionat-v1`;
+  if (clauCampionat === clau && calculCampionat) return;
+  clauCampionat = clau;
+  const cos = $("#campionatCos");
+  vaciar(cos);
+  cos.appendChild(el("p", "risc-carregant", "Calculant qui encara pot guanyar…"));
+  targeta.setAttribute("aria-busy", "true");
+
+  calculCampionat = analitzaCampionat(torneig, {
+    posicionsProvisionals: RESULTATS_PROVISIONALS,
+    equipProvisional: nosaltres(),
+  })
+    .then((analisi) => {
+      if (clauCampionat !== clau) return;
+      renderCampionat(analisi);
+    })
+    .catch(() => {
+      if (clauCampionat !== clau) return;
+      vaciar(cos);
+      cos.appendChild(el("p", "vacio", "No s'han pogut calcular les opcions al títol."));
+    })
+    .finally(() => {
+      if (clauCampionat === clau) targeta.removeAttribute("aria-busy");
+    });
+}
+
 function etiquetaSalvacio(analisi) {
   const probabilitat = 1 - analisi.risc.probabilitat;
   if (probabilitat === 0) return "0%";
@@ -1150,6 +1292,7 @@ function pintarRiscCullera() {
 }
 
 function pintarPunts() {
+  pintarCampionat();
   const estat = $("#nostreEstat");
   vaciar(estat);
   const tabla = $("#classificacio");

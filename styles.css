@@ -659,6 +659,35 @@ body:has(.modal[open]) { overflow: hidden; }
 .tarjeta.destacada .seguent-etiqueta { color: var(--ambar); }
 .tarjeta.destacada .meta { font-size: 0.88rem; color: var(--gris); }
 
+.campionat { border-top: 3px solid var(--verde); }
+.campionat-pendents { margin: 14px 0 0; font-size: 0.88rem; }
+.campionat-no-decisius { margin: 5px 0 0; color: var(--gris); font-size: 0.8rem; }
+.campionat-equips { margin-top: 16px; border-top: 1px solid var(--borde); }
+.campionat-equip { padding: 14px 0; border-bottom: 1px solid var(--borde); }
+.campionat-equip-cap {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+}
+.campionat-equip h3 { margin: 0; font-size: 1rem; }
+.campionat-probabilitat {
+  color: var(--verde); font-size: 1.25rem; font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.campionat-oros { margin: 3px 0 0; color: var(--gris); font-size: 0.8rem; }
+.campionat-ruta { margin: 8px 0 0; font-size: 0.86rem; }
+.campionat-eliminats { margin: 13px 0 0; color: var(--gris); font-size: 0.82rem; }
+.campionat-desenllacos { border-top: 1px solid var(--borde); }
+.campionat-desenllac {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px;
+  align-items: center; padding: 11px 0; border-bottom: 1px solid var(--borde);
+}
+.campionat-desenllac > div strong,
+.campionat-desenllac > div span { display: block; }
+.campionat-desenllac > div strong { font-size: 0.82rem; }
+.campionat-desenllac > div span { margin-top: 3px; color: var(--gris); font-size: 0.76rem; }
+.campionat-desenllac-probabilitat {
+  color: var(--verde); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+
 .risc-cullera {
   border-top: 3px solid var(--oro);
   scroll-margin-top: calc(var(--barra) + var(--inset-dalt) + 12px);
@@ -745,6 +774,9 @@ body:has(.modal[open]) { overflow: hidden; }
 .risc-carregant { color: var(--gris); margin: 16px 0 0; }
 
 @media (max-width: 430px) {
+  .campionat-equip-cap { align-items: flex-start; }
+  .campionat-desenllac { display: block; }
+  .campionat-desenllac-probabilitat { display: block; margin-top: 5px; }
   .risc-impactes li { display: block; }
   .risc-impactes strong { display: block; text-align: left; margin-top: 2px; white-space: normal; }
   .risc-resultat { display: block; }
