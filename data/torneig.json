@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-29T00:55:47+00:00",
+ "actualizado": "2026-08-29T12:26:34+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -207,10 +207,10 @@
       "E1",
       "E10"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E10",
+     "perdedor": "E1",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consSf1",
@@ -286,8 +286,8 @@
    "posicions": [
     "E3",
     "E8",
-    null,
-    null,
+    "E10",
+    "E1",
     "E4",
     "E6",
     "E9",
@@ -298,6 +298,8 @@
    "punts": {
     "E3": 40,
     "E8": 32,
+    "E10": 29,
+    "E1": 26,
     "E4": 20,
     "E6": 17,
     "E9": 14,
@@ -1009,10 +1011,10 @@
       "E5",
       "E4"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E4",
+     "perdedor": "E5",
+     "marcador": "0-2",
+     "estat": "jugat"
     },
     {
      "id": "consTercero",
@@ -1023,10 +1025,10 @@
       "E8",
       "E6"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E6",
+     "perdedor": "E8",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "puesto9",
@@ -1048,10 +1050,10 @@
     "E10",
     "E3",
     "E7",
-    null,
-    null,
-    null,
-    null,
+    "E4",
+    "E5",
+    "E6",
+    "E8",
     null,
     null
    ],
@@ -1059,7 +1061,11 @@
     "E1": 40,
     "E10": 32,
     "E3": 29,
-    "E7": 26
+    "E7": 26,
+    "E4": 20,
+    "E5": 17,
+    "E6": 14,
+    "E8": 11
    }
   },
   {
@@ -1215,10 +1221,10 @@
       "E3",
       "E7"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E3",
+     "perdedor": "E7",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consSf1",
@@ -1294,8 +1300,8 @@
    "posicions": [
     null,
     null,
-    null,
-    null,
+    "E3",
+    "E7",
     "E2",
     "E8",
     "E6",
@@ -1304,6 +1310,8 @@
     null
    ],
    "punts": {
+    "E3": 29,
+    "E7": 26,
     "E2": 20,
     "E8": 17,
     "E6": 14,
@@ -1519,10 +1527,10 @@
       "E4",
       "E9"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E4",
+     "perdedor": "E9",
+     "marcador": "9-6",
+     "estat": "jugat"
     },
     {
      "id": "puesto9",
@@ -1546,8 +1554,8 @@
     "E8",
     "E7",
     "E2",
-    null,
-    null,
+    "E4",
+    "E9",
     "E10",
     "E6"
    ],
@@ -1558,6 +1566,8 @@
     "E8": 26,
     "E7": 20,
     "E2": 17,
+    "E4": 14,
+    "E9": 11,
     "E10": 8,
     "E6": 5
    }
@@ -1969,10 +1979,10 @@
       "E3",
       "E9"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E9",
+     "perdedor": "E3",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consSf1",
@@ -2025,10 +2035,10 @@
       "E5",
       "E6"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E5",
+     "perdedor": "E6",
+     "marcador": "11-3",
+     "estat": "jugat"
     },
     {
      "id": "puesto9",
@@ -2048,16 +2058,20 @@
    "posicions": [
     null,
     null,
+    "E9",
+    "E3",
     null,
     null,
-    null,
-    null,
-    null,
-    null,
+    "E5",
+    "E6",
     "E10",
     "E2"
    ],
    "punts": {
+    "E9": 48,
+    "E3": 42,
+    "E5": 20,
+    "E6": 15,
     "E10": 10,
     "E2": 5
    }
@@ -2759,10 +2773,10 @@
       "E6",
       "E3"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E3",
+     "perdedor": "E6",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consTercero",
@@ -2798,8 +2812,8 @@
     "E7",
     "E9",
     "E2",
-    null,
-    null,
+    "E3",
+    "E6",
     "E8",
     "E1",
     "E4",
@@ -2810,6 +2824,8 @@
     "E7": 54,
     "E9": 48,
     "E2": 42,
+    "E3": 30,
+    "E6": 25,
     "E8": 20,
     "E1": 15,
     "E4": 10,
@@ -4025,10 +4041,10 @@
       "E4",
       "E5"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E4",
+     "perdedor": "E5",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "consTercero",
@@ -4064,8 +4080,8 @@
     "E8",
     "E2",
     "E1",
-    null,
-    null,
+    "E4",
+    "E5",
     null,
     null,
     "E7",
@@ -4076,6 +4092,8 @@
     "E8": 32,
     "E2": 29,
     "E1": 26,
+    "E4": 20,
+    "E5": 17,
     "E7": 8,
     "E9": 5
    }
@@ -4509,61 +4527,61 @@
   {
    "id": "E10",
    "nom": "La Once",
-   "punts": 539,
+   "punts": 568,
    "posicio": 1
   },
   {
    "id": "E4",
    "nom": "Vaig molt cremat",
-   "punts": 496,
+   "punts": 550,
    "posicio": 2
+  },
+  {
+   "id": "E3",
+   "nom": "Olimpiakojos",
+   "punts": 531,
+   "posicio": 3
   },
   {
    "id": "E1",
    "nom": "La Jee-peta",
-   "punts": 495,
-   "posicio": 3
+   "punts": 521,
+   "posicio": 4
   },
   {
    "id": "E7",
    "nom": "Esperando a los Palomos",
-   "punts": 471,
-   "posicio": 4
+   "punts": 497,
+   "posicio": 5
   },
   {
    "id": "E2",
    "nom": "Passa directament",
    "punts": 435,
-   "posicio": 5
-  },
-  {
-   "id": "E3",
-   "nom": "Olimpiakojos",
-   "punts": 430,
    "posicio": 6
   },
   {
    "id": "E8",
    "nom": "Massumba y los mas zumbaos",
-   "punts": 405,
+   "punts": 416,
    "posicio": 7
   },
   {
    "id": "E9",
    "nom": "Joga Vomito",
-   "punts": 316,
+   "punts": 375,
    "posicio": 8
   },
   {
    "id": "E5",
    "nom": "Yayo Vallecano",
-   "punts": 265,
+   "punts": 319,
    "posicio": 9
   },
   {
    "id": "E6",
    "nom": "Diablos",
-   "punts": 231,
+   "punts": 285,
    "posicio": 10
   }
  ],
