@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-29T12:26:34+00:00",
+ "actualizado": "2026-08-29T13:47:14+00:00",
  "nosaltres": "E6",
  "equips": [
   {
@@ -2553,10 +2553,10 @@
       "E5",
       "E3"
      ],
-     "guanyador": null,
-     "perdedor": null,
-     "marcador": "",
-     "estat": "pendent"
+     "guanyador": "E3",
+     "perdedor": "E5",
+     "marcador": "20-31",
+     "estat": "jugat"
     }
    ],
    "posicions": [
@@ -2568,14 +2568,16 @@
     null,
     "E9",
     "E6",
-    null,
-    null
+    "E3",
+    "E5"
    ],
    "punts": {
     "E10": 48,
     "E8": 42,
     "E9": 20,
-    "E6": 15
+    "E6": 15,
+    "E3": 10,
+    "E5": 5
    }
   },
   {
@@ -3239,9 +3241,9 @@
       "E10",
       "E7"
      ],
-     "guanyador": "E10",
-     "perdedor": "E7",
-     "marcador": "2-0",
+     "guanyador": "E7",
+     "perdedor": "E10",
+     "marcador": "",
      "estat": "jugat"
     },
     {
@@ -3295,10 +3297,10 @@
       "E5",
       "E8"
      ],
-     "guanyador": null,
-     "perdedor": null,
+     "guanyador": "E8",
+     "perdedor": "E5",
      "marcador": "",
-     "estat": "pendent"
+     "estat": "jugat"
     },
     {
      "id": "puesto9",
@@ -3318,22 +3320,24 @@
    "posicions": [
     "E1",
     "E3",
-    "E10",
     "E7",
+    "E10",
     "E4",
     "E9",
-    null,
-    null,
+    "E8",
+    "E5",
     "E6",
     "E2"
    ],
    "punts": {
     "E1": 40,
     "E3": 32,
-    "E10": 29,
-    "E7": 26,
+    "E7": 29,
+    "E10": 26,
     "E4": 20,
     "E9": 17,
+    "E8": 14,
+    "E5": 11,
     "E6": 8,
     "E2": 5
    }
@@ -4527,7 +4531,7 @@
   {
    "id": "E10",
    "nom": "La Once",
-   "punts": 568,
+   "punts": 565,
    "posicio": 1
   },
   {
@@ -4539,7 +4543,7 @@
   {
    "id": "E3",
    "nom": "Olimpiakojos",
-   "punts": 531,
+   "punts": 541,
    "posicio": 3
   },
   {
@@ -4551,7 +4555,7 @@
   {
    "id": "E7",
    "nom": "Esperando a los Palomos",
-   "punts": 497,
+   "punts": 500,
    "posicio": 5
   },
   {
@@ -4563,7 +4567,7 @@
   {
    "id": "E8",
    "nom": "Massumba y los mas zumbaos",
-   "punts": 416,
+   "punts": 430,
    "posicio": 7
   },
   {
@@ -4575,7 +4579,7 @@
   {
    "id": "E5",
    "nom": "Yayo Vallecano",
-   "punts": 319,
+   "punts": 335,
    "posicio": 9
   },
   {
