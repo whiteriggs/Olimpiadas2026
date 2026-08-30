@@ -50,7 +50,7 @@
 <div class="barra-fixa">
   <div class="contenedor barra">
     <nav class="tabs" role="tablist">
-      <button class="tab activa" role="tab" data-panel="calendario" aria-selected="true" aria-controls="panel-calendario">Calendari</button>
+      <button class="tab activa" role="tab" data-panel="calendario" aria-selected="true" aria-controls="panel-calendario">Llegat</button>
       <button class="tab" role="tab" data-panel="quedar" aria-selected="false" aria-controls="panel-quedar" hidden>Quedar<span class="xifra" id="numPerQuedar" hidden></span></button>
       <button class="tab" role="tab" data-panel="apuntarse" aria-selected="false" aria-controls="panel-apuntarse">M'apunto</button>
       <button class="tab" role="tab" data-panel="equipo" aria-selected="false" aria-controls="panel-equipo">Equip</button>
@@ -67,22 +67,22 @@
     <section id="epileg" class="epileg" aria-labelledby="epilegTitol">
       <div class="epileg-cap">
         <span class="epileg-etiqueta">Olimpíades finalitzades · Acta oficial de rigor dubtós</span>
-        <h2 id="epilegTitol">Diablos 2026: la cullera també pesa</h2>
-        <p>Setze dies. Vint-i-un esports. Una plata. I una determinació gairebé científica per explorar la part baixa de cada classificació.</p>
+        <h2 id="epilegTitol">Diablos 2026: campions indiscutibles de la cullera</h2>
+        <p>Setze dies. Vint-i-un esports. Una plata imperial. I una cullera guanyada a pols, partit a partit, amb una constància que frega la llegenda.</p>
       </div>
 
       <div class="epileg-xifres" aria-label="Resum de les Olimpíades dels Diablos">
         <div><strong>296</strong><span>punts</span></div>
         <div><strong>21</strong><span>esports</span></div>
         <div><strong>1</strong><span>plata imperial</span></div>
-        <div><strong>1</strong><span>cullera eterna</span></div>
+        <div><strong>1</strong><span>cullera guanyada a pols</span></div>
       </div>
 
       <div class="epileg-relat">
-        <p>Vam arribar a Begues amb una samarreta, un calendari i una confiança que les dades no havien autoritzat. Vam marxar amb <strong>296 punts, el 10è lloc i la cullera de fusta més treballada de la història moderna</strong>. No va ser una derrota: va ser una auditoria completa del reglament des de baix.</p>
+        <p>Vam arribar a Begues amb una samarreta, un calendari i una confiança que les dades no havien autoritzat. Vam marxar amb <strong>296 punts, el 10è lloc i la cullera de fusta més treballada de la història moderna</strong>. No ens va tocar: la vam conquerir. Ningú va baixar tan lluny, en tants esports i amb tanta dignitat logística.</p>
         <p>La glòria, capritxosa però no del tot cruel, ens va trobar al <strong>Minigolf</strong>. Allà vam conquerir una plata que les futures generacions exageraran fins a convertir-la en una campanya militar. A la resta, vam demostrar una regularitat admirable: sisens, vuitens, novens… Sempre presents. Sovint lluny. Mai avorrits.</p>
-        <blockquote>Potser no vam dominar les Olimpíades. Però ningú va ocupar l'últim lloc amb tanta infraestructura digital.</blockquote>
-        <p>Entre pilotes, pales, tacs, dards i decisions esportives difícils de defensar, vam fer equip. Vam competir, vam riure i vam continuar apareixent a la següent prova com si l'anterior no hagués deixat proves. Això també és resistència. O falta de memòria. En qualsevol cas, és molt Diablos.</p>
+        <blockquote>No tothom pot guanyar la cullera. Cal arribar fins al final, mirar la classificació als ulls i dir: aquesta és nostra.</blockquote>
+        <p>Entre pilotes, pales, tacs, dards i decisions esportives difícils de defensar, vam fer equip. Vam competir, vam riure i vam continuar apareixent a la següent prova com si l'anterior no hagués deixat proves. La cullera no ens pesa: <strong>ens corona</strong>. I queda per sempre com la primera gran peça del palmarès Diablos.</p>
       </div>
 
       <figure class="epileg-escut">
@@ -95,31 +95,33 @@
         <p class="epileg-lema"><strong>Derisio non timenda est.</strong> El ridícul no s'ha de témer.</p>
       </figure>
     </section>
-    <div id="seguent" class="seguent" hidden></div>
-    <button type="button" class="crida" id="cridaQuedar" hidden></button>
-    <div class="accions-cal">
+    <div class="calendari-arxiu" hidden>
+      <div id="seguent" class="seguent" hidden></div>
+      <button type="button" class="crida" id="cridaQuedar" hidden></button>
+      <div class="accions-cal">
       <button type="button" class="accio" id="compartirPla" hidden></button>
       <details class="tria-dia" id="triaDia" hidden>
         <summary aria-label="Compartir el pla d'un altre dia"></summary>
         <div class="menu-dies" id="menuDies"></div>
       </details>
-    </div>
-    <div class="filtres-rapids" role="group" aria-label="Filtres ràpids">
-      <button type="button" class="xip-filtre activa" data-rapid="tot">Tot</button>
-      <button type="button" class="xip-filtre" data-rapid="avui">Avui</button>
-    </div>
-    <details class="filtres-mes">
-      <summary>Filtrar per dia o esport</summary>
-      <div class="filtros">
-        <label>Dia
-          <select id="filtroDia"><option value="">Tots</option></select>
-        </label>
-        <label>Esport
-          <select id="filtroDeporte"><option value="">Tots</option></select>
-        </label>
       </div>
-    </details>
-    <div id="listaCalendario" class="dias"></div>
+      <div class="filtres-rapids" role="group" aria-label="Filtres ràpids">
+        <button type="button" class="xip-filtre activa" data-rapid="tot">Tot</button>
+        <button type="button" class="xip-filtre" data-rapid="avui">Avui</button>
+      </div>
+      <details class="filtres-mes">
+        <summary>Filtrar per dia o esport</summary>
+        <div class="filtros">
+          <label>Dia
+            <select id="filtroDia"><option value="">Tots</option></select>
+          </label>
+          <label>Esport
+            <select id="filtroDeporte"><option value="">Tots</option></select>
+          </label>
+        </div>
+      </details>
+      <div id="listaCalendario" class="dias"></div>
+    </div>
   </section>
 
   <section id="panel-quedar" class="panel" role="tabpanel" hidden>
