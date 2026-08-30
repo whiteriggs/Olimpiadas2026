@@ -981,7 +981,7 @@ function renderCampionat(analisi) {
   }
   cos.appendChild(llista);
 
-  if (analisi.desenllacos.length) {
+  if (analisi.esportsDecisius.length && analisi.desenllacos.length) {
     cos.appendChild(el("h3", "risc-subtitol", "Què passa a cada combinació"));
     const desenllacos = el("div", "campionat-desenllacos");
     for (const desenllac of analisi.desenllacos) {
