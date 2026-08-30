@@ -6,14 +6,14 @@
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0b1d33">
 <title>Diablos · Olimpíades Begues 2026</title>
-<link rel="icon" href="assets/favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="assets/escut-180.png">
+<link rel="icon" href="assets/favicon-diablos.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icona-diablos-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Diablos">
 <meta property="og:title" content="Diablos · Olimpíades Begues 2026">
-<meta property="og:description" content="Calendari, inscripcions i disponibilitat de l'equip.">
+<meta property="og:description" content="Crònica i arxiu històric dels Diablos a les Olimpíades de Begues 2026.">
 <!-- Sense og:image a posta: amb imatge, el WhatsApp planta un cartell que tapa el missatge. -->
 <link rel="stylesheet" href="styles.css">
 <link rel="preload" href="data/calendario.json" as="fetch" crossorigin>
@@ -24,7 +24,7 @@
 
 <div id="acceso" class="acceso" hidden>
   <form class="acceso-caja" id="accesoForm">
-    <img class="escut-gran" src="assets/escut-180.png" alt="Escut dels Diablos" width="180" height="180">
+    <img class="escut-gran" src="assets/icona-diablos-192.png" alt="Nou escut dels Diablos" width="180" height="180">
     <h2>Codi d'accés</h2>
     <p class="ayuda">Introdueix el codi que us ha passat l'equip.</p>
     <input type="password" id="accesoCodi" inputmode="numeric" autocomplete="off" maxlength="20" aria-label="Codi d'accés">
@@ -35,7 +35,7 @@
 
 <header class="cabecera">
   <div class="contenedor cabecera-fila">
-    <img class="escut" src="assets/escut-180.png" alt="Escut dels Diablos" width="180" height="180">
+    <img class="escut" src="assets/icona-diablos-192.png" alt="Nou escut dels Diablos" width="180" height="180">
     <div class="crece">
       <h1 id="titulo">Diablos</h1>
     </div>
@@ -64,6 +64,37 @@
   <p id="aviso" class="aviso" hidden></p>
 
   <section id="panel-calendario" class="panel" role="tabpanel">
+    <section id="epileg" class="epileg" aria-labelledby="epilegTitol">
+      <div class="epileg-cap">
+        <span class="epileg-etiqueta">Olimpíades finalitzades · Acta oficial de rigor dubtós</span>
+        <h2 id="epilegTitol">Diablos 2026: la cullera també pesa</h2>
+        <p>Setze dies. Vint-i-un esports. Una plata. I una determinació gairebé científica per explorar la part baixa de cada classificació.</p>
+      </div>
+
+      <div class="epileg-xifres" aria-label="Resum de les Olimpíades dels Diablos">
+        <div><strong>296</strong><span>punts</span></div>
+        <div><strong>21</strong><span>esports</span></div>
+        <div><strong>1</strong><span>plata imperial</span></div>
+        <div><strong>1</strong><span>cullera eterna</span></div>
+      </div>
+
+      <div class="epileg-relat">
+        <p>Vam arribar a Begues amb una samarreta, un calendari i una confiança que les dades no havien autoritzat. Vam marxar amb <strong>296 punts, el 10è lloc i la cullera de fusta més treballada de la història moderna</strong>. No va ser una derrota: va ser una auditoria completa del reglament des de baix.</p>
+        <p>La glòria, capritxosa però no del tot cruel, ens va trobar al <strong>Minigolf</strong>. Allà vam conquerir una plata que les futures generacions exageraran fins a convertir-la en una campanya militar. A la resta, vam demostrar una regularitat admirable: sisens, vuitens, novens… Sempre presents. Sovint lluny. Mai avorrits.</p>
+        <blockquote>Potser no vam dominar les Olimpíades. Però ningú va ocupar l'últim lloc amb tanta infraestructura digital.</blockquote>
+        <p>Entre pilotes, pales, tacs, dards i decisions esportives difícils de defensar, vam fer equip. Vam competir, vam riure i vam continuar apareixent a la següent prova com si l'anterior no hagués deixat proves. Això també és resistència. O falta de memòria. En qualsevol cas, és molt Diablos.</p>
+      </div>
+
+      <figure class="epileg-escut">
+        <figcaption>
+          <span class="epileg-etiqueta">Nova era, mateix criteri</span>
+          <h3>Presentem el nou escut dels Diablos</h3>
+          <p>Perquè un equip capaç de convertir el desori en tradició mereixia un símbol a l'altura.</p>
+        </figcaption>
+        <img src="assets/escut-diablos-2026.jpg" alt="Nou escut brodat dels Diablos, amb un dimoni corrent sobre una pilota i el lema Derisio non timenda est" width="1200" height="1200" loading="lazy" decoding="async">
+        <p class="epileg-lema"><strong>Derisio non timenda est.</strong> El ridícul no s'ha de témer.</p>
+      </figure>
+    </section>
     <div id="seguent" class="seguent" hidden></div>
     <button type="button" class="crida" id="cridaQuedar" hidden></button>
     <div class="accions-cal">

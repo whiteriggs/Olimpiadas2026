@@ -1,6 +1,6 @@
 # Olimpiadas2026
 
-Web del equipo para las **Olimpíades de Begues 2026** (14–29 de agosto).
+Archivo histórico del equipo tras las **Olimpíades de Begues 2026** (14–29 de agosto).
 
 **https://whiteriggs.github.io/Olimpiadas2026/**
 
@@ -27,9 +27,10 @@ cálculo de la organización (la misma que alimenta su web);
 `scripts/importar_calendario.py` la convierte al JSON que consume la web y de paso
 descarta lo que es solo del equipo femenino.
 
-Una acción programada ([.github/workflows/actualitza-calendari.yml](.github/workflows/actualitza-calendari.yml))
-lo hace sola cada día a las 6:00 UTC y solo hace commit si el calendario ha
-cambiado. También se puede lanzar a mano desde la pestaña *Actions*.
+La acción automática quedó desactivada al terminar las Olimpiadas. Si hace falta
+corregir un resultado, todavía se puede lanzar manualmente desde la pestaña
+*Actions* mediante
+[.github/workflows/actualitza-calendari.yml](.github/workflows/actualitza-calendari.yml).
 
 Para hacerlo en local:
 

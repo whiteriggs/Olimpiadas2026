@@ -1,7 +1,7 @@
 // Xarxa primer i memòria com a reserva: així el calendari sempre surt actualitzat
 // si hi ha cobertura, i la web segueix funcionant sense connexió.
 
-const CAU = "olimpiades2026-v47";
+const CAU = "olimpiades2026-v48";
 const BASE = [
   "./",
   "./index.html",
@@ -13,8 +13,11 @@ const BASE = [
   "./data/calendario.json",
   "./data/torneig.json",
   "./manifest.webmanifest",
-  "./assets/escut-180.png",
-  "./assets/favicon.png",
+  "./assets/escut-diablos-2026.jpg",
+  "./assets/favicon-diablos.png",
+  "./assets/icona-diablos-192.png",
+  "./assets/icona-diablos-512.png",
+  "./assets/icona-diablos-maskable-512.png",
 ];
 
 self.addEventListener("install", (evento) => {

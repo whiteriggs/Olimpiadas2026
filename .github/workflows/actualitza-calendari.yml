@@ -1,10 +1,6 @@
 name: Actualitza el calendari
 
 on:
-  schedule:
-    # Durant les olimpíades cada 20 minuts; la resta de l'any, un cop al dia.
-    - cron: "*/20 * 14-29 8 *"
-    - cron: "0 6 * * *"
   workflow_dispatch:
 
 permissions:

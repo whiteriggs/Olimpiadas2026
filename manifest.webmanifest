@@ -3,7 +3,7 @@
   "short_name": "Diablos",
   "lang": "ca",
   "dir": "ltr",
-  "description": "Calendari, inscripcions i disponibilitat de l'equip Diablos.",
+  "description": "Crònica i arxiu històric dels Diablos a les Olimpíades de Begues 2026.",
   "start_url": "./",
   "scope": "./",
   "id": "./",
@@ -12,10 +12,10 @@
   "background_color": "#0b1d33",
   "theme_color": "#0b1d33",
   "icons": [
-    { "src": "assets/icona-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "assets/icona-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/icona-diablos-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icona-diablos-512.png", "sizes": "512x512", "type": "image/png" },
     {
-      "src": "assets/icona-maskable-512.png",
+      "src": "assets/icona-diablos-maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
